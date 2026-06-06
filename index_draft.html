@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoldFlow — Shop & Marketplace (Draft)</title>
+    <meta name="description" content="Official store for FoldFlow 3ds Max plugin and custom fold alpha packs.">
+    <link rel="stylesheet" href="style_draft.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="FoldFlow Logo" class="logo-img">
+                <span>Fold<span>Flow</span></span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Store</a></li>
+                    <li><a href="#about">About Engine</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+            <div class="cart-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span>Cart (0)</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Showcase Header -->
+    <section class="store-hero">
+        <div class="container">
+            <div class="badge">Asset & Plugin Store</div>
+            <h1>The Fold Marketplace</h1>
+            <p>Expand your workflow with the native 3ds Max deformation engine and premium parametric cloth alpha packs.</p>
+        </div>
+    </section>
+
+    <!-- Store Filter Tabs & Products Grid -->
+    <section class="store-section">
+        <div class="container">
+            
+            <!-- Filters -->
+            <div class="store-filters">
+                <button class="filter-btn active" data-filter="all">All Items</button>
+                <button class="filter-btn" data-filter="plugin">Plugins</button>
+                <button class="filter-btn" data-filter="alpha">Alpha Brushes</button>
+                <button class="filter-btn" data-filter="seams">Seams & Presets</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid">
+                
+                <!-- Product 1: The Plugin -->
+                <div class="product-card" data-category="plugin">
+                    <div class="product-badge featured">Plugin</div>
+                    <div class="product-media">
+                        <img src="images/logo.png" alt="FoldFlow Engine" class="product-img logo-featured">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="version">v1.0.0 PRO</span>
+                            <span class="compat">3ds Max 2024</span>
+                        </div>
+                        <h3>FoldFlow Deformation Engine</h3>
+                        <p>Core C++ modifier plugin. Generate folds along splines in real-time. Includes 10 basic alphas.</p>
+                        <div class="product-footer">
+                            <div class="price">$49.00</div>
+                            <button class="buy-btn">Get License</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Alpha Pack 1 -->
+                <div class="product-card" data-category="alpha">
+                    <div class="product-badge">Alpha Pack</div>
+                    <div class="product-media">
+                        <img src="images/cloth_folds_alpha_1.png" alt="Leather Folds Alpha" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="count">24 Alphas</span>
+                            <span class="format">PNG 16-bit</span>
+                        </div>
+                        <h3>Organic & Leather Folds</h3>
+                        <p>High-resolution heightmaps for heavy drapery, leather sofas, jackets, and realistic cushions.</p>
+                        <div class="product-footer">
+                            <div class="price">$15.00</div>
+                            <button class="buy-btn">Buy Pack</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Zipper Pack -->
+                <div class="product-card" data-category="seams">
+                    <div class="product-badge">Stitches</div>
+                    <div class="product-media">
+                        <img src="images/cloth_folds_zipper_1.png" alt="Zippers & Stitches" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="count">12 Profiles</span>
+                            <span class="format">Max Library</span>
+                        </div>
+                        <h3>Zippers, Seams & Stitches</h3>
+                        <p>Procedural stitch lines, double seams, and metallic/plastic zipper geometry presets for cloth junctions.</p>
+                        <div class="product-footer">
+                            <div class="price">$12.00</div>
+                            <button class="buy-btn">Buy Pack</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Alpha Pack 2 -->
+                <div class="product-card" data-category="alpha">
+                    <div class="product-badge">Alpha Pack</div>
+                    <div class="product-media">
+                        <img src="images/cloth_folds_alpha_2.png" alt="Silk & Satin Folds" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="count">30 Alphas</span>
+                            <span class="format">PNG 16-bit</span>
+                        </div>
+                        <h3>Silk, Satin & Thin Fabrics</h3>
+                        <p>Fine, delicate tension wrinkles and light fabric fold brushes. Perfect for bedding, curtains, and shirts.</p>
+                        <div class="product-footer">
+                            <div class="price">$15.00</div>
+                            <button class="buy-btn">Buy Pack</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 FoldFlow Marketplace. Draft version for local development.</p>
+        </div>
+    </footer>
+
+    <!-- Filter JS -->
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(b => b.classList.remove('active'));
+                // Add active to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'flex';
+                    } else {
+                        const category = card.getAttribute('data-category');
+                        if (category === filterValue) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
