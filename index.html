@@ -12,47 +12,10 @@
     <!-- Background Canvas for 3D Particle Sphere -->
     <canvas id="particle-canvas"></canvas>
 
-    <!-- Glowing Background Orbs -->
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-
-    <!-- Main Content Container -->
-    <main class="content-container">
-        <div class="card">
-            <!-- Badge -->
-            <div class="badge-container">
-                <span class="badge">COMING SOON</span>
-            </div>
-
-            <!-- Logo -->
-            <div class="logo-wrapper">
-                <img src="images/logo.png" alt="FoldFlow Logo" class="logo-image">
-            </div>
-
-            <!-- Titles -->
-            <h1 class="title">Fold<span>Flow</span></h1>
-            <p class="subtitle">Procedural Cloth Deformation for 3ds Max</p>
-
-            <!-- Divider -->
-            <div class="divider"></div>
-
-            <!-- Description -->
-            <p class="description">
-                Animate high-performance drapery, wrinkles, and stitches along splines in real-time. Built natively in C++ for maximum speed and rock-solid rendering stability.
-            </p>
-
-            <!-- Status Indicator -->
-            <div class="status-box">
-                <div class="pulse-dot"></div>
-                <span class="status-text">Entering final testing phases</span>
-            </div>
-
-            <!-- Footer Details -->
-            <div class="footer-info">
-                <p>Designed for professional game development, VFX, and archviz.</p>
-                <p class="copyright">&copy; 2026 FoldFlow. All rights reserved.</p>
-            </div>
-        </div>
+    <!-- Centered Minimalist Text -->
+    <main class="content-wrapper">
+        <h1 class="title">Fold Flow</h1>
+        <p class="subtitle">Coming Soon</p>
     </main>
 
     <!-- Canvas Animation Script -->
@@ -69,7 +32,7 @@
         });
 
         const particles = [];
-        const particleCount = 220; // Perfect balance between density and connection speed
+        const particleCount = 240; // High density for a rich white sphere
 
         // Distribute particles evenly on sphere using golden ratio (Fibonacci sphere)
         for (let i = 0; i < particleCount; i++) {
@@ -81,7 +44,7 @@
                 y: Math.sin(theta) * Math.sin(phi),
                 z: Math.cos(theta),
                 phase: Math.random() * Math.PI * 2,
-                speed: 0.6 + Math.random() * 1.4
+                speed: 0.5 + Math.random() * 1.5
             });
         }
 
@@ -93,17 +56,17 @@
             ctx.clearRect(0, 0, width, height);
             
             // Slow, organic rotations on all axes
-            ry += 0.0025;
-            rx += 0.0012;
-            rz += 0.0006;
+            ry += 0.0018;
+            rx += 0.0009;
+            rz += 0.0004;
             
-            const time = Date.now() * 0.0008;
+            const time = Date.now() * 0.0007;
             
-            // Breathing scale calculation (pulsates dynamically)
+            // Breathing scale calculation (pulsates dynamically) - MADE LARGER
             const minDim = Math.min(width, height);
             const isMobile = width < 768;
-            const baseRadius = minDim * (isMobile ? 0.38 : 0.24);
-            const scale = baseRadius * (1 + 0.12 * Math.sin(time * 1.6));
+            const baseRadius = minDim * (isMobile ? 0.48 : 0.36); // Increased sphere size
+            const scale = baseRadius * (1 + 0.10 * Math.sin(time * 1.4));
             
             const projected = [];
             
@@ -112,7 +75,7 @@
                 const p = particles[i];
                 
                 // Add soft wave deformation to make the sphere feel alive / breathing
-                const wave = Math.sin(time * p.speed + p.phase) * 0.04;
+                const wave = Math.sin(time * p.speed + p.phase) * 0.03;
                 const px = p.x * (1 + wave);
                 const py = p.y * (1 + wave);
                 const pz = p.z * (1 + wave);
@@ -133,9 +96,8 @@
                 const D = 2.4;
                 const perspective = D / (D - z2);
                 
-                // Shift to screen center
-                // On mobile, push the sphere slightly upwards to not overlap with card info
-                const centerY = isMobile ? height * 0.43 : height / 2;
+                // Shift to screen center (perfectly centered on both desktop & mobile)
+                const centerY = height / 2;
                 const screenX = width / 2 + x3 * scale * perspective;
                 const screenY = centerY + y3 * scale * perspective;
                 
@@ -152,12 +114,11 @@
             // Sort by depth (draw back particles first, then front particles)
             projected.sort((a, b) => a.z - b.z);
             
-            // Render connecting wireframe lines (only front ones look cleaner)
-            ctx.lineWidth = 0.6;
+            // Render connecting wireframe lines (pure white, very thin/delicate)
+            ctx.lineWidth = 0.5;
             for (let i = 0; i < projected.length; i++) {
                 const p1 = projected[i];
-                // Skip connecting back particles to keep the design clean
-                if (p1.z < -0.3) continue;
+                if (p1.z < -0.3) continue; // Only connect front particles to keep it clean
 
                 for (let j = i + 1; j < projected.length; j++) {
                     const p2 = projected[j];
@@ -172,76 +133,46 @@
                     // Connect close neighbors
                     if (dist < 0.28) {
                         const distanceFactor = 1 - (dist / 0.28);
-                        // Fade lines that are deep in the Z-buffer
                         const depthFactor = ((p1.z + p2.z) / 4) + 0.5; // map to ~0-1
-                        const opacity = 0.12 * distanceFactor * depthFactor;
+                        // Delicate opacity for white lines
+                        const opacity = 0.08 * distanceFactor * depthFactor;
                         
                         if (opacity > 0.01) {
                             ctx.beginPath();
                             ctx.moveTo(p1.x, p1.y);
                             ctx.lineTo(p2.x, p2.y);
-                            
-                            // Dynamic neon gradient based on latitude coordinates (top vs bottom)
-                            const grad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-                            grad.addColorStop(0, getNeonColor(p1.origY, opacity));
-                            grad.addColorStop(1, getNeonColor(p2.origY, opacity));
-                            
-                            ctx.strokeStyle = grad;
+                            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
                             ctx.stroke();
                         }
                     }
                 }
             }
             
-            // Render points
+            // Render points (pure white with depth-based sizes)
             for (let i = 0; i < projected.length; i++) {
                 const p = projected[i];
                 const depthFactor = (p.z + 1.2) / 2.4; // normalize depth
                 
                 // Point size based on depth
-                const baseSize = isMobile ? 1.6 : 2.5;
-                const size = Math.max(0.6, baseSize * (0.6 + depthFactor * 1.0));
-                const opacity = 0.15 + depthFactor * 0.85;
+                const baseSize = isMobile ? 1.4 : 2.2;
+                const size = Math.max(0.5, baseSize * (0.5 + depthFactor * 1.0));
+                const opacity = 0.12 + depthFactor * 0.78; // Pure white alpha
                 
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
-                ctx.fillStyle = getNeonColor(p.origY, opacity);
+                ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
                 ctx.fill();
                 
-                // Add soft neon glow ring to points that are closest to camera
-                if (p.z > 0.5) {
+                // Subtle glow ring for closest points
+                if (p.z > 0.6) {
                     ctx.beginPath();
-                    ctx.arc(p.x, p.y, size * 2.8, 0, Math.PI * 2);
-                    ctx.fillStyle = getNeonColor(p.origY, opacity * 0.22);
+                    ctx.arc(p.x, p.y, size * 2.5, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.15})`;
                     ctx.fill();
                 }
             }
             
             requestAnimationFrame(animate);
-        }
-
-        // Interpolates color based on y coordinate of particle on the sphere
-        // Top: Neon Magenta -> Middle: Violet -> Bottom: Neon Cyan
-        function getNeonColor(yVal, alpha) {
-            // Normalize yVal from [-1, 1] to [0, 1]
-            const factor = (yVal + 1) / 2;
-            
-            let r, g, b;
-            if (factor < 0.5) {
-                // Bottom to Middle: Cyan (0, 240, 255) to Violet (123, 44, 191)
-                const t = factor * 2;
-                r = Math.round(0 * (1 - t) + 123 * t);
-                g = Math.round(240 * (1 - t) + 44 * t);
-                b = Math.round(255 * (1 - t) + 191 * t);
-            } else {
-                // Middle to Top: Violet (123, 44, 191) to Magenta (255, 0, 127)
-                const t = (factor - 0.5) * 2;
-                r = Math.round(123 * (1 - t) + 255 * t);
-                g = Math.round(44 * (1 - t) + 0 * t);
-                b = Math.round(191 * (1 - t) + 127 * t);
-            }
-            
-            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
         }
 
         // Initialize animation loop
