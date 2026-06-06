@@ -3,200 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoldFlow — High-Performance Cloth Folds for 3ds Max</title>
-    <meta name="description" content="A powerful procedural cloth deformation plugin for Autodesk 3ds Max. Generate folds, wrinkles, and zipper seams along splines dynamically.">
+    <title>FoldFlow — Coming Soon</title>
+    <meta name="description" content="Next-gen procedural cloth deformation engine for Autodesk 3ds Max. Real-time viewport performance, clean quad topology, and parametric spline folds.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo-container">
-                <img src="images/logo.png" alt="FoldFlow Logo" class="logo-img">
-                <span class="logo-text">Fold<span>Flow</span></span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#showcase">Showcase</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-        </div>
-    </header>
+    <!-- Background Canvas for 3D Particle Sphere -->
+    <canvas id="particle-canvas"></canvas>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-badge">Procedural Deformation Engine</div>
-            <h1>Next-Gen Cloth Folds<br>in 3ds Max. <span>Procedural.</span></h1>
-            <p>Generate ultra-realistic folds, wrinkles, and seams along splines. Built as a native C++ modifier, FoldFlow delivers real-time viewport speed and production-ready rendering.</p>
-            <div>
-                <a href="#pricing" class="btn-primary">Buy Pro License — $49</a>
-                <a href="#showcase" class="btn-secondary">View Renders</a>
+    <!-- Glowing Background Orbs -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <!-- Main Content Container -->
+    <main class="content-container">
+        <div class="card">
+            <!-- Badge -->
+            <div class="badge-container">
+                <span class="badge">COMING SOON</span>
+            </div>
+
+            <!-- Logo -->
+            <div class="logo-wrapper">
+                <img src="images/logo.png" alt="FoldFlow Logo" class="logo-image">
+            </div>
+
+            <!-- Titles -->
+            <h1 class="title">Fold<span>Flow</span></h1>
+            <p class="subtitle">Procedural Cloth Deformation for 3ds Max</p>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Description -->
+            <p class="description">
+                Animate high-performance drapery, wrinkles, and stitches along splines in real-time. Built natively in C++ for maximum speed and rock-solid rendering stability.
+            </p>
+
+            <!-- Status Indicator -->
+            <div class="status-box">
+                <div class="pulse-dot"></div>
+                <span class="status-text">Entering final testing phases</span>
+            </div>
+
+            <!-- Footer Details -->
+            <div class="footer-info">
+                <p>Designed for professional game development, VFX, and archviz.</p>
+                <p class="copyright">&copy; 2026 FoldFlow. All rights reserved.</p>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Showcase Grid (tyFlow style category panels) -->
-    <section id="showcase" class="showcase">
-        <div class="container">
-            <div class="section-title">
-                <h2>Feature Showcase</h2>
-                <p>Visual examples of procedural deformations generated directly inside the 3ds Max viewport using FoldFlow.</p>
-            </div>
+    <!-- Canvas Animation Script -->
+    <script>
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = 220; // Perfect balance between density and connection speed
+
+        // Distribute particles evenly on sphere using golden ratio (Fibonacci sphere)
+        for (let i = 0; i < particleCount; i++) {
+            const theta = Math.acos(1 - 2 * (i + 0.5) / particleCount);
+            const phi = Math.PI * (1 + Math.sqrt(5)) * i;
             
-            <div class="showcase-grid">
-                <!-- Card 1: Alpha Folds -->
-                <div class="showcase-card">
-                    <div class="showcase-media">
-                        <img src="images/cloth_folds_alpha_1.png" alt="Alpha Folds Detail" class="showcase-img">
-                    </div>
-                    <div class="showcase-info">
-                        <h3>Alpha Brush Folds</h3>
-                        <p>Generate clean, soft drapery folds using custom height alphas. Replaces hours of manual ZBrush sculpting with a single parametric spline sweep.</p>
-                    </div>
-                </div>
+            particles.push({
+                x: Math.sin(theta) * Math.cos(phi),
+                y: Math.sin(theta) * Math.sin(phi),
+                z: Math.cos(theta),
+                phase: Math.random() * Math.PI * 2,
+                speed: 0.6 + Math.random() * 1.4
+            });
+        }
 
-                <!-- Card 2: Zipper Folds -->
-                <div class="showcase-card">
-                    <div class="showcase-media">
-                        <img src="images/cloth_folds_zipper_1.png" alt="Zipper Seams Detail" class="showcase-img">
-                    </div>
-                    <div class="showcase-info">
-                        <h3>Zipper Seams & Stitches</h3>
-                        <p>Procedural stitching patterns and realistic cloth compression at zipper junctions. Adapts perfectly to the underlying geometry curvature.</p>
-                    </div>
-                </div>
+        let rx = 0.2; // Start with slight tilt
+        let ry = 0.0;
+        let rz = 0.1;
 
-                <!-- Card 3: Advanced Alpha Controls -->
-                <div class="showcase-card">
-                    <div class="showcase-media">
-                        <img src="images/cloth_folds_alpha_2.png" alt="Drape Folds Example" class="showcase-img">
-                    </div>
-                    <div class="showcase-info">
-                        <h3>Drape and Tension Wrinkles</h3>
-                        <p>Procedural tension fold profiles. Controls for falloffs, width, and frequency allow you to construct tension wrinkles of any fabric type.</p>
-                    </div>
-                </div>
-
-                <!-- Card 4: Zipper Tight Junctions -->
-                <div class="showcase-card">
-                    <div class="showcase-media">
-                        <img src="images/cloth_folds_zipper_2.png" alt="Double Zipper Detail" class="showcase-img">
-                    </div>
-                    <div class="showcase-info">
-                        <h3>Double-Sided Compressions</h3>
-                        <p>Add dual-channel compressions along paths. Perfect for jackets, pockets, bags, and complex apparel modeling workflows.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features List Section (Technical parameters) -->
-    <section id="features" class="features-list">
-        <div class="container">
-            <div class="section-title">
-                <h2>Technical Specifications</h2>
-                <p>Designed for professional VFX, games, and architectural visualization pipelines.</p>
-            </div>
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
             
-            <div class="features-list-grid">
-                <div class="feature-item">
-                    <h4>Real-Time Playback</h4>
-                    <p>Unlike heavy dynamics solvers, FoldFlow works procedurally inside the modifier stack. Animate global multipliers and scrub the timeline smoothly with immediate viewport feedback.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>Perfect Topology</h4>
-                    <p>Generates clean, uniform quad topology. Folds conform to the existing mesh and stitch seamlessly without breaking vertex IDs, ideal for subdivisions.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>Flicker-Free Rendering</h4>
-                    <p>Engineered to handle rendering stability. Tested with Corona Renderer, V-Ray, and Arnold — zero flickering or mesh jumping during sequence rendering.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <div class="pricing-card">
-                <div class="pricing-title">FoldFlow Pro License</div>
-                <div class="pricing-price">$49</div>
-                <p style="color: var(--text-secondary); font-size: 15px; font-weight: 300;">One-time payment. Commercial license for freelancers and studios.</p>
+            // Slow, organic rotations on all axes
+            ry += 0.0025;
+            rx += 0.0012;
+            rz += 0.0006;
+            
+            const time = Date.now() * 0.0008;
+            
+            // Breathing scale calculation (pulsates dynamically)
+            const minDim = Math.min(width, height);
+            const isMobile = width < 768;
+            const baseRadius = minDim * (isMobile ? 0.38 : 0.24);
+            const scale = baseRadius * (1 + 0.12 * Math.sin(time * 1.6));
+            
+            const projected = [];
+            
+            // Apply rotations and project coordinates
+            for (let i = 0; i < particleCount; i++) {
+                const p = particles[i];
                 
-                <ul class="pricing-list">
-                    <li>
-                        <svg viewBox="0 0 20 20"><path d="M7.629 14.571L3.125 10.067l-1.42 1.41L7.629 17.4l12-12-1.41-1.41z"/></svg>
-                        Full feature commercial license
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20"><path d="M7.629 14.571L3.125 10.067l-1.42 1.41L7.629 17.4l12-12-1.41-1.41z"/></svg>
-                        Compatible with 3ds Max 2024 (dlm file)
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20"><path d="M7.629 14.571L3.125 10.067l-1.42 1.41L7.629 17.4l12-12-1.41-1.41z"/></svg>
-                        Instant delivery via Digiseller
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20"><path d="M7.629 14.571L3.125 10.067l-1.42 1.41L7.629 17.4l12-12-1.41-1.41z"/></svg>
-                        Free life-time minor updates
-                    </li>
-                </ul>
-
-                <div style="margin-top: 10px;">
-                    <!-- After creating the product in Digiseller, replace this link with your direct purchase link -->
-                    <a href="https://my.digiseller.com/preview/placeholder" class="btn-primary" style="display: block; width: 100%;" target="_blank">Get FoldFlow Pro</a>
-                    <span style="display: block; font-size: 11px; color: var(--text-muted); margin-top: 12px;">Payment processed securely via Cards / WebMoney / Crypto</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="faq">
-        <div class="container">
-            <div class="section-title">
-                <h2>FAQ</h2>
-                <p>Common questions about FoldFlow licenses and installation.</p>
-            </div>
+                // Add soft wave deformation to make the sphere feel alive / breathing
+                const wave = Math.sin(time * p.speed + p.phase) * 0.04;
+                const px = p.x * (1 + wave);
+                const py = p.y * (1 + wave);
+                const pz = p.z * (1 + wave);
+                
+                // Rotate Y-axis
+                let x1 = px * Math.cos(ry) - pz * Math.sin(ry);
+                let z1 = px * Math.sin(ry) + pz * Math.cos(ry);
+                
+                // Rotate X-axis
+                let y2 = py * Math.cos(rx) - z1 * Math.sin(rx);
+                let z2 = py * Math.sin(rx) + z1 * Math.cos(rx);
+                
+                // Rotate Z-axis
+                let x3 = x1 * Math.cos(rz) - y2 * Math.sin(rz);
+                let y3 = x1 * Math.sin(rz) + y2 * Math.cos(rz);
+                
+                // Perspective projection (D is camera distance)
+                const D = 2.4;
+                const perspective = D / (D - z2);
+                
+                // Shift to screen center
+                // On mobile, push the sphere slightly upwards to not overlap with card info
+                const centerY = isMobile ? height * 0.43 : height / 2;
+                const screenX = width / 2 + x3 * scale * perspective;
+                const screenY = centerY + y3 * scale * perspective;
+                
+                projected.push({
+                    x: screenX,
+                    y: screenY,
+                    z: z2,
+                    origX: p.x,
+                    origY: p.y,
+                    origZ: p.z
+                });
+            }
             
-            <div class="faq-grid">
-                <div class="faq-card">
-                    <h4>Do I need a business registration (ИП) to buy or use it?</h4>
-                    <p>No. You can buy the license as an individual artist. Payment methods support personal cards and digital assets.</p>
-                </div>
-                <div class="faq-card">
-                    <h4>How does license delivery work?</h4>
-                    <p>Payments are handled by Digiseller. Immediately after a successful checkout, a unique serial key and your download links are sent to your email.</p>
-                </div>
-                <div class="faq-card">
-                    <h4>Which renderers are supported?</h4>
-                    <p>FoldFlow is compatible with all major render engines for 3ds Max, including Corona Renderer, V-Ray, and Arnold. There is no flicker or frame jump.</p>
-                </div>
-                <div class="faq-card">
-                    <h4>How do I install the plugin?</h4>
-                    <p>Just copy the compiled `Lab.dlm` and `en-US` resource directory to your 3ds Max plugins path (typically `C:\Program Files\Autodesk\3ds Max 2024\Plugins\`) and restart 3ds Max.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            // Sort by depth (draw back particles first, then front particles)
+            projected.sort((a, b) => a.z - b.z);
+            
+            // Render connecting wireframe lines (only front ones look cleaner)
+            ctx.lineWidth = 0.6;
+            for (let i = 0; i < projected.length; i++) {
+                const p1 = projected[i];
+                // Skip connecting back particles to keep the design clean
+                if (p1.z < -0.3) continue;
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <ul class="footer-nav">
-                <li><a href="#showcase">Showcase</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-            <p>&copy; 2026 FoldFlow. All rights reserved.</p>
-            <p style="font-size: 11px; margin-top: 12px; opacity: 0.4;">Autodesk and 3ds Max are registered trademarks of Autodesk, Inc. tyFlow is a trademark of Tyson Ibele.</p>
-        </div>
-    </footer>
+                for (let j = i + 1; j < projected.length; j++) {
+                    const p2 = projected[j];
+                    if (p2.z < -0.3) continue;
+                    
+                    // Distance in 3D unit space
+                    const dx = p1.origX - p2.origX;
+                    const dy = p1.origY - p2.origY;
+                    const dz = p1.origZ - p2.origZ;
+                    const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+                    
+                    // Connect close neighbors
+                    if (dist < 0.28) {
+                        const distanceFactor = 1 - (dist / 0.28);
+                        // Fade lines that are deep in the Z-buffer
+                        const depthFactor = ((p1.z + p2.z) / 4) + 0.5; // map to ~0-1
+                        const opacity = 0.12 * distanceFactor * depthFactor;
+                        
+                        if (opacity > 0.01) {
+                            ctx.beginPath();
+                            ctx.moveTo(p1.x, p1.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            
+                            // Dynamic neon gradient based on latitude coordinates (top vs bottom)
+                            const grad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
+                            grad.addColorStop(0, getNeonColor(p1.origY, opacity));
+                            grad.addColorStop(1, getNeonColor(p2.origY, opacity));
+                            
+                            ctx.strokeStyle = grad;
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+            
+            // Render points
+            for (let i = 0; i < projected.length; i++) {
+                const p = projected[i];
+                const depthFactor = (p.z + 1.2) / 2.4; // normalize depth
+                
+                // Point size based on depth
+                const baseSize = isMobile ? 1.6 : 2.5;
+                const size = Math.max(0.6, baseSize * (0.6 + depthFactor * 1.0));
+                const opacity = 0.15 + depthFactor * 0.85;
+                
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+                ctx.fillStyle = getNeonColor(p.origY, opacity);
+                ctx.fill();
+                
+                // Add soft neon glow ring to points that are closest to camera
+                if (p.z > 0.5) {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, size * 2.8, 0, Math.PI * 2);
+                    ctx.fillStyle = getNeonColor(p.origY, opacity * 0.22);
+                    ctx.fill();
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
 
+        // Interpolates color based on y coordinate of particle on the sphere
+        // Top: Neon Magenta -> Middle: Violet -> Bottom: Neon Cyan
+        function getNeonColor(yVal, alpha) {
+            // Normalize yVal from [-1, 1] to [0, 1]
+            const factor = (yVal + 1) / 2;
+            
+            let r, g, b;
+            if (factor < 0.5) {
+                // Bottom to Middle: Cyan (0, 240, 255) to Violet (123, 44, 191)
+                const t = factor * 2;
+                r = Math.round(0 * (1 - t) + 123 * t);
+                g = Math.round(240 * (1 - t) + 44 * t);
+                b = Math.round(255 * (1 - t) + 191 * t);
+            } else {
+                // Middle to Top: Violet (123, 44, 191) to Magenta (255, 0, 127)
+                const t = (factor - 0.5) * 2;
+                r = Math.round(123 * (1 - t) + 255 * t);
+                g = Math.round(44 * (1 - t) + 0 * t);
+                b = Math.round(191 * (1 - t) + 127 * t);
+            }
+            
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+
+        // Initialize animation loop
+        animate();
+    </script>
 </body>
 </html>
