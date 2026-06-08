@@ -33,9 +33,48 @@
     <!-- Hero Showcase Header -->
     <section class="store-hero">
         <div class="container">
-            <div class="badge">Asset & Plugin Store</div>
-            <h1>The Fold Marketplace</h1>
-            <p>Expand your workflow with the native 3ds Max deformation engine and premium parametric cloth alpha packs.</p>
+            <div class="badge">Autodesk 3ds Max Plugin & Assets</div>
+            <h1>Supercharge Your Cloth Modeling</h1>
+            <p>Generate hyper-realistic wrinkles, seams, and fabric details in real-time directly in the viewport with the FoldFlow procedural engine.</p>
+        </div>
+    </section>
+
+    <!-- Cinematic Video Showcase Section -->
+    <section class="video-showcase-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <video autoplay loop muted playsinline class="showcase-video">
+                    <source src="timeline1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-gradient-overlay"></div>
+                <div class="video-info-overlay">
+                    <div class="live-badge">
+                        <span class="pulse-dot"></span>
+                        <span>Plugin Demo: 100% Procedural Folds & Detailing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Quick-Bar (Clarifies what the product is) -->
+            <div class="features-bar">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Procedural Engine</h4>
+                    <p>Draw splines directly on your geometry to generate clean, non-destructive folds instantly.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">👁️</div>
+                    <h4>Real-time Viewport</h4>
+                    <p>Skip heavy Marvelous Designer simulations. Get instant visual feedback in 3ds Max.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Universal Alphas</h4>
+                    <p>Combine the modifier with our premium heightmap alphas for realistic leather and fabric wear.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -58,7 +97,32 @@
                 <div class="product-card" data-category="plugin">
                     <div class="product-badge featured">Plugin</div>
                     <div class="product-media">
-                        <img src="images/logo.png" alt="FoldFlow Engine" class="product-img logo-featured">
+                        <!-- Custom SVG for Plugin Engine -->
+                        <svg class="product-icon icon-plugin" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Isometric Grid -->
+                            <path d="M50 12 L88 34 L88 76 L50 98 L12 76 L12 34 Z" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5"/>
+                            <path d="M12 34 L50 56 L88 34 M50 56 L50 98" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5"/>
+                            <path d="M31 23 L69 45 M31 65 L69 87 M12 55 L50 77" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+                            
+                            <!-- Glowing Spline Curve (Deformation Path) -->
+                            <path d="M15 62 Q 35 25, 50 56 T 85 40" stroke="var(--accent-blue)" stroke-width="3" stroke-linecap="round" filter="url(#glow-blue)"/>
+                            
+                            <!-- Control Vertices -->
+                            <circle cx="31" cy="44" r="3" fill="#fff"/>
+                            <circle cx="50" cy="56" r="4.5" fill="var(--primary-color)" filter="url(#glow-green)"/>
+                            <circle cx="69" cy="46" r="3" fill="#fff"/>
+                            
+                            <defs>
+                                <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="3.5" result="blur"/>
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                                </filter>
+                                <filter id="glow-green" x="-30%" y="-30%" width="160%" height="160%">
+                                    <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                                </filter>
+                            </defs>
+                        </svg>
                     </div>
                     <div class="product-info">
                         <div class="product-meta">
@@ -78,7 +142,38 @@
                 <div class="product-card" data-category="alpha">
                     <div class="product-badge">Alpha Pack</div>
                     <div class="product-media">
-                        <img src="images/cloth_folds_alpha_1.png" alt="Leather Folds Alpha" class="product-img">
+                        <!-- Custom SVG for Organic / Leather folds -->
+                        <svg class="product-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Cushion Outer Rim -->
+                            <rect x="18" y="18" width="64" height="64" rx="16" stroke="rgba(255, 255, 255, 0.06)" stroke-width="2"/>
+                            
+                            <!-- Folds creases radiating from Capitone buttons -->
+                            <path d="M34 34 Q 50 42, 66 34" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M34 66 Q 50 58, 66 66" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M34 34 Q 42 50, 34 66" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M66 34 Q 58 50, 66 66" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
+                            
+                            <!-- Diagonal tension fold lines -->
+                            <path d="M34 34 L66 66" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+                            <path d="M66 34 L34 66" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+                            
+                            <!-- Main heavy fold crease in center -->
+                            <path d="M50 25 C 42 45, 58 55, 50 75" stroke="var(--accent-blue)" stroke-width="3" stroke-linecap="round" filter="url(#glow-cyan)"/>
+                            
+                            <!-- Capitoned buttons -->
+                            <circle cx="34" cy="34" r="3" fill="#fff"/>
+                            <circle cx="66" cy="34" r="3" fill="#fff"/>
+                            <circle cx="34" cy="66" r="3" fill="#fff"/>
+                            <circle cx="66" cy="66" r="3" fill="#fff"/>
+                            <circle cx="50" cy="50" r="1.5" fill="rgba(255, 255, 255, 0.5)"/>
+
+                            <defs>
+                                <filter id="glow-cyan" x="-25%" y="-25%" width="150%" height="150%">
+                                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                                </filter>
+                            </defs>
+                        </svg>
                     </div>
                     <div class="product-info">
                         <div class="product-meta">
@@ -98,7 +193,30 @@
                 <div class="product-card" data-category="seams">
                     <div class="product-badge">Stitches</div>
                     <div class="product-media">
-                        <img src="images/cloth_folds_zipper_1.png" alt="Zippers & Stitches" class="product-img">
+                        <!-- Custom SVG for Zippers & Stitches -->
+                        <svg class="product-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Center track -->
+                            <path d="M50 10 L50 90" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+                            
+                            <!-- Left and Right Stitch lines (Dashed) -->
+                            <path d="M38 12 L38 88" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 5" filter="url(#glow-green-stitch)"/>
+                            <path d="M62 12 L62 88" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 5" filter="url(#glow-green-stitch)"/>
+                            
+                            <!-- Zipper Teeth (alternating) -->
+                            <path d="M43 20 h7 M50 25 h7 M43 30 h7 M50 35 h7 M43 40 h7 M50 45 h7 M43 50 h7 M50 55 h7 M43 60 h7 M50 65 h7 M43 70 h7 M50 75 h7 M43 80 h7 M50 85 h7" stroke="rgba(255, 255, 255, 0.35)" stroke-width="2" stroke-linecap="round"/>
+                            
+                            <!-- Zipper slider body -->
+                            <rect x="43" y="32" width="14" height="20" rx="3" fill="#0c0d14" stroke="#fff" stroke-width="1.8"/>
+                            <rect x="47" y="44" width="6" height="18" rx="1.5" fill="#0c0d14" stroke="rgba(255, 255, 255, 0.7)" stroke-width="1.2"/>
+                            <circle cx="50" cy="38" r="2" fill="#fff"/>
+                            
+                            <defs>
+                                <filter id="glow-green-stitch" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="2.2" result="blur"/>
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                                </filter>
+                            </defs>
+                        </svg>
                     </div>
                     <div class="product-info">
                         <div class="product-meta">
@@ -118,7 +236,27 @@
                 <div class="product-card" data-category="alpha">
                     <div class="product-badge">Alpha Pack</div>
                     <div class="product-media">
-                        <img src="images/cloth_folds_alpha_2.png" alt="Silk & Satin Folds" class="product-img">
+                        <!-- Custom SVG for Silk & Thin Fabrics (Elegant curves) -->
+                        <svg class="product-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Flowing silk sine-waves -->
+                            <path d="M12 40 C 30 18, 40 62, 55 40 C 70 18, 78 52, 88 40" stroke="var(--accent-violet)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                            
+                            <!-- Main glowing white drape fold -->
+                            <path d="M10 52 C 28 30, 38 74, 53 52 C 68 30, 78 64, 90 52" stroke="#ffffff" stroke-width="3" stroke-linecap="round" filter="url(#glow-white-silk)"/>
+                            
+                            <path d="M12 64 C 30 42, 40 86, 55 64 C 70 42, 78 76, 88 64" stroke="var(--accent-blue)" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+                            
+                            <!-- Additional background details -->
+                            <path d="M25 48 C 30 43, 34 53, 38 48" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"/>
+                            <path d="M62 48 C 67 43, 71 53, 75 48" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"/>
+
+                            <defs>
+                                <filter id="glow-white-silk" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="3.2" result="blur"/>
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                                </filter>
+                            </defs>
+                        </svg>
                     </div>
                     <div class="product-info">
                         <div class="product-meta">

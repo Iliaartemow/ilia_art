@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoldFlow Cinematic Synth Generator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+        
+        body {
+            background-color: #050508;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Abstract glowing background grid */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 140%;
+            height: 140%;
+            background-image: 
+                radial-gradient(circle at center, rgba(123, 44, 191, 0.08) 0%, rgba(0,0,0,0) 60%),
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            background-position: center;
+            z-index: 0;
+        }
+
+        .synth-container {
+            background: #0c0d14;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            z-index: 10;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.8), 0 0 60px rgba(123, 44, 191, 0.1);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #00cc66;
+            background: rgba(0, 204, 102, 0.05);
+            border: 1px solid rgba(0, 204, 102, 0.15);
+            border-radius: 20px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            color: #8c92a0;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-record {
+            border-color: rgba(239, 71, 111, 0.2);
+            color: #ef476f;
+        }
+
+        .btn-record:hover {
+            background: #ef476f;
+            color: #fff;
+            border-color: #ef476f;
+            box-shadow: 0 10px 20px rgba(239, 71, 111, 0.2);
+        }
+
+        .btn.active {
+            background: #00cc66;
+            color: #000;
+            border-color: #00cc66;
+            box-shadow: 0 10px 25px rgba(0, 204, 102, 0.25);
+        }
+
+        .btn-record.recording {
+            background: #ef476f;
+            color: #fff;
+            border-color: #ef476f;
+            animation: pulse-btn 1.5s infinite;
+        }
+
+        @keyframes pulse-btn {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.98); box-shadow: 0 0 20px rgba(239, 71, 111, 0.6); }
+            100% { transform: scale(1); }
+        }
+
+        .status {
+            margin-top: 24px;
+            font-size: 12px;
+            color: #515663;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="synth-container">
+        <div class="badge">Web Audio synthesizer</div>
+        <h1>Cinematic Sound Generator</h1>
+        <p>A procedural ambient synthesizer designed for the FoldFlow trailer. It generates deep analog sub-bass, warm swelling chords (C minor) and a slow cutoff sweep matching the camera movement.</p>
+        
+        <div class="controls">
+            <button id="playBtn" class="btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>Play Sound Test</span>
+            </button>
+            
+            <button id="recordBtn" class="btn btn-record">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3" fill="currentColor"></circle></svg>
+                <span>Record & Download WAV</span>
+            </button>
+        </div>
+
+        <div id="statusText" class="status">Idle</div>
+    </div>
+
+    <script>
+        let audioCtx = null;
+        let isPlaying = false;
+        let isRecording = false;
+        let mediaRecorder = null;
+        let recordedChunks = [];
+        let recordDestNode = null;
+        
+        // Synth Nodes
+        let masterGain = null;
+        let delayNode = null;
+        let filterNode = null;
+        let lfoNode = null;
+        let chordInterval = null;
+        
+        const playBtn = document.getElementById('playBtn');
+        const recordBtn = document.getElementById('recordBtn');
+        const statusText = document.getElementById('statusText');
+
+        // Cinematic Chord Progression in C minor
+        // Frequencies for chords: Pad layers (detuned) + Sub bass
+        const chords = [
+            {
+                bass: 65.41, // C2
+                pad: [130.81, 155.56, 196.00, 233.08] // C3, Eb3, G3, Bb3 (Cm7)
+            },
+            {
+                bass: 51.91, // Ab1
+                pad: [103.83, 130.81, 155.56, 196.00] // Ab2, C3, Eb3, G3 (AbMaj7)
+            },
+            {
+                bass: 77.78, // Eb2
+                pad: [155.56, 196.00, 233.08, 293.66] // Eb3, G3, Bb3, D4 (EbMaj7)
+            },
+            {
+                bass: 49.00, // G1
+                pad: [98.00, 116.54, 146.83, 196.00] // G2, Bb2, D3, G3 (Gm)
+            }
+        ];
+
+        let currentChordIdx = 0;
+        let activeOscillators = [];
+
+        function initAudio() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // Master volume
+            masterGain = audioCtx.createGain();
+            masterGain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+
+            // High quality lowpass filter (warm analog feel)
+            filterNode = audioCtx.createBiquadFilter();
+            filterNode.type = 'lowpass';
+            filterNode.frequency.setValueAtTime(450, audioCtx.currentTime);
+            filterNode.Q.setValueAtTime(2.5, audioCtx.currentTime);
+
+            // Reverb/Delay unit for huge spatial depth
+            delayNode = audioCtx.createDelay();
+            delayNode.delayTime.setValueAtTime(0.48, audioCtx.currentTime); // 480ms echo
+
+            let delayFeedback = audioCtx.createGain();
+            delayFeedback.gain.setValueAtTime(0.55, audioCtx.currentTime); // Rich feedback loop
+
+            // Connect delay feedback loop
+            delayNode.connect(delayFeedback);
+            delayFeedback.connect(delayNode);
+
+            // Route audio: Source -> Filter -> Master Output & Delay Output
+            filterNode.connect(masterGain);
+            filterNode.connect(delayNode);
+            delayNode.connect(masterGain);
+
+            // LFO to slowly sweep filter cutoff (makes folds "breathe")
+            lfoNode = audioCtx.createOscillator();
+            lfoNode.frequency.setValueAtTime(0.06, audioCtx.currentTime); // Slow cycle (16 seconds)
+            
+            let lfoGain = audioCtx.createGain();
+            lfoGain.gain.setValueAtTime(280, audioCtx.currentTime); // Filter sweep depth +/- 280Hz
+            
+            lfoNode.connect(lfoGain);
+            lfoGain.connect(filterNode.frequency);
+            lfoNode.start();
+
+            // Destination setup for recording
+            recordDestNode = audioCtx.createMediaStreamDestination();
+            masterGain.connect(recordDestNode);
+            masterGain.connect(audioCtx.destination);
+        }
+
+        function playChord(chord) {
+            const now = audioCtx.currentTime;
+            
+            // Fade out previous oscillators
+            activeOscillators.forEach(osc => {
+                osc.gainNode.gain.setValueAtTime(osc.gainNode.gain.value, now);
+                osc.gainNode.gain.exponentialRampToValueAtTime(0.001, now + 1.8);
+                setTimeout(() => {
+                    try { osc.stop(); } catch(e) {}
+                }, 2000);
+            });
+            activeOscillators = [];
+
+            // 1. Play Deep Sub-Bass
+            let bassOsc = audioCtx.createOscillator();
+            let bassGain = audioCtx.createGain();
+            
+            bassOsc.type = 'triangle'; // Smooth sub bass
+            bassOsc.frequency.setValueAtTime(chord.bass, now);
+            
+            bassGain.gain.setValueAtTime(0.001, now);
+            bassGain.gain.exponentialRampToValueAtTime(0.65, now + 1.5); // Slow attack
+            
+            bassOsc.connect(bassGain);
+            bassGain.connect(filterNode);
+            bassOsc.start();
+            
+            activeOscillators.push({
+                stop: () => bassOsc.stop(),
+                gainNode: bassGain
+            });
+
+            // 2. Play Detuned Stereo Pad layer
+            chord.pad.forEach(freq => {
+                // Spawn two detuned oscillators per note for stereo chorus effect
+                [-4, 4].forEach(detune => {
+                    let osc = audioCtx.createOscillator();
+                    let gainNode = audioCtx.createGain();
+                    
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(freq, now);
+                    osc.detune.setValueAtTime(detune, now);
+                    
+                    gainNode.gain.setValueAtTime(0.001, now);
+                    gainNode.gain.exponentialRampToValueAtTime(0.07, now + 2.0); // Very soft pad attack
+                    
+                    osc.connect(gainNode);
+                    gainNode.connect(filterNode);
+                    osc.start();
+                    
+                    activeOscillators.push({
+                        stop: () => osc.stop(),
+                        gainNode: gainNode
+                    });
+                });
+            });
+        }
+
+        function startSynth() {
+            if (audioCtx === null) {
+                initAudio();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            isPlaying = true;
+            statusText.innerText = "Generating sound...";
+            playBtn.classList.add('active');
+            playBtn.querySelector('span').innerText = "Stop Sound Test";
+            playBtn.querySelector('svg').innerHTML = '<rect x="4" y="4" width="16" height="16" fill="currentColor"></rect>';
+
+            // Play first chord immediately
+            currentChordIdx = 0;
+            playChord(chords[currentChordIdx]);
+
+            // Cycle chords every 6 seconds
+            chordInterval = setInterval(() => {
+                currentChordIdx = (currentChordIdx + 1) % chords.length;
+                playChord(chords[currentChordIdx]);
+            }, 6000);
+        }
+
+        function stopSynth() {
+            isPlaying = false;
+            statusText.innerText = "Stopped";
+            playBtn.classList.remove('active');
+            playBtn.querySelector('span').innerText = "Play Sound Test";
+            playBtn.querySelector('svg').innerHTML = '<polygon points="5 3 19 12 5 21 5 3" fill="none"></polygon>';
+
+            clearInterval(chordInterval);
+            
+            // Fade out everything
+            const now = audioCtx ? audioCtx.currentTime : 0;
+            activeOscillators.forEach(osc => {
+                try {
+                    osc.gainNode.gain.setValueAtTime(osc.gainNode.gain.value, now);
+                    osc.gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+                    setTimeout(() => osc.stop(), 600);
+                } catch(e) {}
+            });
+            activeOscillators = [];
+        }
+
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                stopSynth();
+            } else {
+                startSynth();
+            }
+        });
+
+        // Recording feature
+        recordBtn.addEventListener('click', () => {
+            if (isRecording) {
+                // Stop recording
+                mediaRecorder.stop();
+                stopSynth();
+                isRecording = false;
+                recordBtn.classList.remove('recording');
+                recordBtn.querySelector('span').innerText = "Record & Download WAV";
+                statusText.innerText = "Recording saved!";
+            } else {
+                // Start recording
+                if (isPlaying) stopSynth();
+                startSynth();
+
+                recordedChunks = [];
+                const stream = recordDestNode.stream;
+                
+                // Supported MIME types check
+                let options = { mimeType: 'audio/webm;codecs=opus' };
+                if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+                    options = { mimeType: 'audio/ogg;codecs=opus' };
+                }
+
+                mediaRecorder = new MediaRecorder(stream, options);
+                
+                mediaRecorder.ondataavailable = (e) => {
+                    if (e.data.size > 0) {
+                        recordedChunks.push(e.data);
+                    }
+                };
+
+                mediaRecorder.onstop = () => {
+                    const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+                    const url = URL.createObjectURL(blob);
+                    
+                    // Create download link
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'foldflow_ambient_theme.wav';
+                    document.body.appendChild(a);
+                    a.click();
+                    
+                    // Cleanup
+                    setTimeout(() => {
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(url);
+                    }, 100);
+                };
+
+                mediaRecorder.start();
+                isRecording = true;
+                recordBtn.classList.add('recording');
+                recordBtn.querySelector('span').innerText = "Stop & Download";
+                statusText.innerText = "Recording audio stream...";
+            }
+        });
+    </script>
+</body>
+</html>
