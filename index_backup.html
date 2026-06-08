@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoldFlow — Coming Soon</title>
+    <meta name="description" content="Next-gen procedural cloth deformation engine for Autodesk 3ds Max. Real-time viewport performance, clean quad topology, and parametric spline folds.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Canvas for 3D Particle Sphere -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Centered Minimalist Text -->
+    <main class="content-wrapper">
+        <h1 class="title">Fold Flow</h1>
+        <p class="subtitle">Coming Soon</p>
+    </main>
+
+    <!-- Canvas Animation Script -->
+    <script>
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = 240; // High density for a rich white sphere
+
+        // Distribute particles evenly on sphere using golden ratio (Fibonacci sphere)
+        for (let i = 0; i < particleCount; i++) {
+            const theta = Math.acos(1 - 2 * (i + 0.5) / particleCount);
+            const phi = Math.PI * (1 + Math.sqrt(5)) * i;
+            
+            particles.push({
+                x: Math.sin(theta) * Math.cos(phi),
+                y: Math.sin(theta) * Math.sin(phi),
+                z: Math.cos(theta),
+                phase: Math.random() * Math.PI * 2,
+                speed: 0.5 + Math.random() * 1.5
+            });
+        }
+
+        let rx = 0.2; // Start with slight tilt
+        let ry = 0.0;
+        let rz = 0.1;
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Slow, organic rotations on all axes
+            ry += 0.0018;
+            rx += 0.0009;
+            rz += 0.0004;
+            
+            const time = Date.now() * 0.0007;
+            
+            // Breathing scale calculation (pulsates dynamically) - MADE LARGER
+            const minDim = Math.min(width, height);
+            const isMobile = width < 768;
+            const baseRadius = minDim * (isMobile ? 0.48 : 0.36); // Increased sphere size
+            const scale = baseRadius * (1 + 0.10 * Math.sin(time * 1.4));
+            
+            const projected = [];
+            
+            // Apply rotations and project coordinates
+            for (let i = 0; i < particleCount; i++) {
+                const p = particles[i];
+                
+                // Add soft wave deformation to make the sphere feel alive / breathing
+                const wave = Math.sin(time * p.speed + p.phase) * 0.03;
+                const px = p.x * (1 + wave);
+                const py = p.y * (1 + wave);
+                const pz = p.z * (1 + wave);
+                
+                // Rotate Y-axis
+                let x1 = px * Math.cos(ry) - pz * Math.sin(ry);
+                let z1 = px * Math.sin(ry) + pz * Math.cos(ry);
+                
+                // Rotate X-axis
+                let y2 = py * Math.cos(rx) - z1 * Math.sin(rx);
+                let z2 = py * Math.sin(rx) + z1 * Math.cos(rx);
+                
+                // Rotate Z-axis
+                let x3 = x1 * Math.cos(rz) - y2 * Math.sin(rz);
+                let y3 = x1 * Math.sin(rz) + y2 * Math.cos(rz);
+                
+                // Perspective projection (D is camera distance)
+                const D = 2.4;
+                const perspective = D / (D - z2);
+                
+                // Shift to screen center (perfectly centered on both desktop & mobile)
+                const centerY = height / 2;
+                const screenX = width / 2 + x3 * scale * perspective;
+                const screenY = centerY + y3 * scale * perspective;
+                
+                projected.push({
+                    x: screenX,
+                    y: screenY,
+                    z: z2,
+                    origX: p.x,
+                    origY: p.y,
+                    origZ: p.z
+                });
+            }
+            
+            // Sort by depth (draw back particles first, then front particles)
+            projected.sort((a, b) => a.z - b.z);
+            
+            // Render connecting wireframe lines (pure white, very thin/delicate)
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i < projected.length; i++) {
+                const p1 = projected[i];
+                if (p1.z < -0.3) continue; // Only connect front particles to keep it clean
+
+                for (let j = i + 1; j < projected.length; j++) {
+                    const p2 = projected[j];
+                    if (p2.z < -0.3) continue;
+                    
+                    // Distance in 3D unit space
+                    const dx = p1.origX - p2.origX;
+                    const dy = p1.origY - p2.origY;
+                    const dz = p1.origZ - p2.origZ;
+                    const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+                    
+                    // Connect close neighbors
+                    if (dist < 0.28) {
+                        const distanceFactor = 1 - (dist / 0.28);
+                        const depthFactor = ((p1.z + p2.z) / 4) + 0.5; // map to ~0-1
+                        // Delicate opacity for white lines
+                        const opacity = 0.08 * distanceFactor * depthFactor;
+                        
+                        if (opacity > 0.01) {
+                            ctx.beginPath();
+                            ctx.moveTo(p1.x, p1.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+            
+            // Render points (pure white with depth-based sizes)
+            for (let i = 0; i < projected.length; i++) {
+                const p = projected[i];
+                const depthFactor = (p.z + 1.2) / 2.4; // normalize depth
+                
+                // Point size based on depth
+                const baseSize = isMobile ? 1.4 : 2.2;
+                const size = Math.max(0.5, baseSize * (0.5 + depthFactor * 1.0));
+                const opacity = 0.12 + depthFactor * 0.78; // Pure white alpha
+                
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                ctx.fill();
+                
+                // Subtle glow ring for closest points
+                if (p.z > 0.6) {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, size * 2.5, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.15})`;
+                    ctx.fill();
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize animation loop
+        animate();
+    </script>
+</body>
+</html>
