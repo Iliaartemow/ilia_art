@@ -1,0 +1,41 @@
+[
+  {
+    "id": "organic_leather",
+    "category": "rectangular",
+    "badge": "Прямоугольные",
+    "title": "Organic & Leather Folds",
+    "description": "Набор органических и кожаных складок. Идеально для тяжелой драпировки, кожаных диванов, курток и подушек.",
+    "count": "24 Складки",
+    "format": ".FLD файлы",
+    "price": 15.0,
+    "image": "",
+    "svg_icon": "organic",
+    "fld_file": ""
+  },
+  {
+    "id": "zipper_seams",
+    "category": "linear",
+    "badge": "Линейные",
+    "title": "Zippers, Seams & Stitches",
+    "description": "Процедурные линии швов, двойные строчки и пресеты молний для соединения стыков ткани.",
+    "count": "12 Профилей",
+    "format": "Библиотека Max",
+    "price": 12.0,
+    "image": "",
+    "svg_icon": "zipper",
+    "fld_file": ""
+  },
+  {
+    "id": "silk_satin",
+    "category": "bed_folds",
+    "badge": "Для кровати",
+    "title": "Silk, Satin & Thin Fabrics",
+    "description": "Тонкие, нежные складки натяжения и легкие складки ткани. Отлично подходит для постельного белья, штор и рубашек.",
+    "count": "30 складок",
+    "format": ".FLD файлы",
+    "price": 15.0,
+    "image": "",
+    "svg_icon": "silk",
+    "fld_file": ""
+  }
+]

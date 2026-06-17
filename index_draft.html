@@ -9,309 +9,704 @@
 </head>
 <body>
 
+    <!-- Ambient Background Glows -->
+    <div class="glow-bg glow-top-left"></div>
+    <div class="glow-bg glow-mid-right"></div>
+    <div class="glow-bg glow-pricing"></div>
+
     <!-- Header Navigation -->
     <header>
         <div class="container nav-container">
-            <a href="#" class="logo">
-                <img src="images/logo.png" alt="FoldFlow Logo" class="logo-img">
+            <a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, null)" class="logo">
                 <span>Fold<span>Flow</span></span>
             </a>
-            <nav>
+            <nav class="nav-menu">
                 <ul class="nav-links">
-                    <li><a href="#" class="active">Store</a></li>
-                    <li><a href="#about">About Engine</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle active" id="nav-store">
+                            Store 
+                            <svg class="chevron" width="8" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, 'pricing')" class="dropdown-item">
+                                    <div class="item-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="2" width="6" height="6" rx="1"></rect><rect x="4" y="16" width="6" height="6" rx="1"></rect><path d="M14 5H10a2 2 0 0 0-2 2v9m0-5h6"></path></svg>
+                                    </div>
+                                    <div class="item-text">
+                                        <span class="item-title" id="item-title-plugin">Modifier Plugin</span>
+                                        <span class="item-desc" id="item-desc-plugin">Core C++ 3ds Max plugin</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" onclick="navigateToSection('fold-store', 'rectangular', 'assets')" class="dropdown-item">
+                                    <div class="item-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"></path></svg>
+                                    </div>
+                                    <div class="item-text">
+                                        <span class="item-title" id="item-title-alphas">Procedural Alphas</span>
+                                        <span class="item-desc" id="item-desc-alphas">16-bit heightmaps for detailing</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" onclick="navigateToSection('fold-store', 'linear', 'assets')" class="dropdown-item">
+                                    <div class="item-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-dasharray="3 3" d="M2 12h20"></path><path d="M2 8h20M2 16h20"></path></svg>
+                                    </div>
+                                    <div class="item-text">
+                                        <span class="item-title" id="item-title-seams">Seams & Presets</span>
+                                        <span class="item-desc" id="item-desc-seams">Procedural stitches & zippers</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, null)" class="nav-link" id="nav-about">About Engine</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, 'pricing')" class="nav-link" id="nav-faq">FAQ</a></li>
                 </ul>
             </nav>
-            <div class="cart-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                <span>Cart (0)</span>
+            <div class="header-right">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang-select="en">EN</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang-select="ru">RU</button>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Showcase Header -->
-    <section class="store-hero">
+    <!-- Main Navigation Tabs -->
+    <div class="main-tabs-bar">
         <div class="container">
-            <div class="badge">Autodesk 3ds Max Plugin & Assets</div>
-            <h1>Supercharge Your Cloth Modeling</h1>
-            <p>Generate hyper-realistic wrinkles, seams, and fabric details in real-time directly in the viewport with the FoldFlow procedural engine.</p>
+            <div class="main-navigation-tabs">
+                <button class="main-tab-btn active" data-tab="fold-flow" id="tab-fold-flow">Plugin</button>
+                <button class="main-tab-btn" data-tab="fold-store" id="tab-fold-store">Fold Store</button>
+                <button class="main-tab-btn" data-tab="tutorials" id="tab-tutorials">Tutorials</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fold Flow Page -->
+    <div id="fold-flow-page" class="tab-content">
+        <!-- Hero Showcase Header -->
+        <section class="store-hero">
+        <div class="container">
+            <div class="badge" id="hero-badge">Autodesk 3ds Max Plugin & Assets</div>
+            <h1 id="hero-title">Supercharge Your Cloth Modeling</h1>
+            <p id="hero-desc">Generate hyper-realistic wrinkles, seams, and fabric details in real-time directly in the viewport with the FoldFlow procedural engine.</p>
         </div>
     </section>
 
-    <!-- Cinematic Video Showcase Section -->
-    <section class="video-showcase-section">
+    <!-- Pricing / License Options -->
+    <section class="pricing-section" id="pricing">
         <div class="container">
-            <div class="video-wrapper">
-                <video autoplay loop muted playsinline class="showcase-video">
-                    <source src="timeline1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-gradient-overlay"></div>
-                <div class="video-info-overlay">
-                    <div class="live-badge">
-                        <span class="pulse-dot"></span>
-                        <span>Plugin Demo: 100% Procedural Folds & Detailing</span>
+            <div class="section-header">
+                <div class="badge">Flexible Licensing</div>
+                <h2>Choose Your License</h2>
+                <p>Get instant access to the FoldFlow procedural modifier. Select the tier that matches your workflow.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Core Card -->
+                <div class="pricing-card card-blue">
+                    <div class="card-header">
+                        <h3 id="license-title-core">Core License</h3>
+                        <p>Perfect for freelancers and indie 3D modelers.</p>
+                        <div class="price">$49<span id="price-desc-core">/ perpetual</span></div>
                     </div>
+                    <ul class="features-list">
+                        <li><span class="icon">✓</span> 3ds Max procedural modifier</li>
+                        <li><span class="icon">✓</span> Real-time viewport deformation</li>
+                        <li><span class="icon">✓</span> 50+ pre-installed fold profiles</li>
+                        <li id="feature-updates-core"><span class="icon">✓</span> 2 years of free updates</li>
+                        <li class="unsupported"><span class="icon">✗</span> <span class="disabled">FoldExporter (.fld) module</span></li>
+                        <li class="unsupported"><span class="icon">✗</span> <span class="disabled">Priority email support</span></li>
+                    </ul>
+                    <button class="pricing-btn" onclick="purchaseProduct('core_license')">Buy Core</button>
+                </div>
+
+                <!-- Pro Card (Featured) -->
+                <div class="pricing-card card-green featured">
+                    <div class="card-badge">Most Popular</div>
+                    <div class="card-header">
+                        <h3 id="license-title-pro">Pro License</h3>
+                        <p>For professional artists who need advanced pipeline tools.</p>
+                        <div class="price">$99<span id="price-desc-pro">/ perpetual</span></div>
+                    </div>
+                    <ul class="features-list">
+                        <li><span class="icon">✓</span> 3ds Max procedural modifier</li>
+                        <li><span class="icon">✓</span> Real-time viewport deformation</li>
+                        <li><span class="icon">✓</span> 50+ pre-installed fold profiles</li>
+                        <li><span class="icon">✓</span> <strong>FoldExporter (.fld) module</strong></li>
+                        <li><span class="icon">✓</span> <strong>Priority email support</strong></li>
+                        <li id="feature-updates-pro"><span class="icon">✓</span> 2 years of free updates</li>
+                    </ul>
+                    <button class="pricing-btn primary" onclick="purchaseProduct('pro_license')">Buy Pro</button>
+                </div>
+
+                <!-- Enterprise Card -->
+                <div class="pricing-card card-purple">
+                    <div class="card-header">
+                        <h3 id="license-title-enterprise">Studio / Enterprise</h3>
+                        <p>For design studios, game companies, and pipelines.</p>
+                        <div class="price">$499<span id="price-desc-enterprise">/ site license</span></div>
+                    </div>
+                    <ul class="features-list">
+                        <li><span class="icon">✓</span> Floating licenses (RLM support)</li>
+                        <li><span class="icon">✓</span> Full MAXScript / Python API access</li>
+                        <li><span class="icon">✓</span> Unlimited users (single site)</li>
+                        <li><span class="icon">✓</span> Dedicated Slack channel support</li>
+                        <li><span class="icon">✓</span> Custom builds & NDAs</li>
+                        <li id="feature-updates-enterprise"><span class="icon">✓</span> 2 years of free updates</li>
+                    </ul>
+                    <button class="pricing-btn" onclick="purchaseProduct('enterprise')">Contact Sales</button>
                 </div>
             </div>
-
-            <!-- Features Quick-Bar (Clarifies what the product is) -->
-            <div class="features-bar">
-                <div class="feature-item">
-                    <div class="feature-icon">⚡</div>
-                    <h4>Procedural Engine</h4>
-                    <p>Draw splines directly on your geometry to generate clean, non-destructive folds instantly.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">👁️</div>
-                    <h4>Real-time Viewport</h4>
-                    <p>Skip heavy Marvelous Designer simulations. Get instant visual feedback in 3ds Max.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🎨</div>
-                    <h4>Universal Alphas</h4>
-                    <p>Combine the modifier with our premium heightmap alphas for realistic leather and fabric wear.</p>
-                </div>
-            </div>
-
         </div>
     </section>
+    </div> <!-- Close fold-flow-page -->
 
-    <!-- Store Filter Tabs & Products Grid -->
-    <section class="store-section">
+    <!-- Fold Store Page -->
+    <div id="fold-store-page" class="tab-content" style="display: none;">
+        <!-- Store Add-ons & Assets -->
+        <section class="store-section" id="assets">
         <div class="container">
+            <div class="section-header">
+                <div class="badge">Fold Library</div>
+                <h2>Библиотека складок</h2>
+                <p>Выберите готовые процедурные складки для быстрого моделирования ткани в 3ds Max.</p>
+            </div>
             
             <!-- Filters -->
             <div class="store-filters">
-                <button class="filter-btn active" data-filter="all">All Items</button>
-                <button class="filter-btn" data-filter="plugin">Plugins</button>
-                <button class="filter-btn" data-filter="alpha">Alpha Brushes</button>
-                <button class="filter-btn" data-filter="seams">Seams & Presets</button>
+                <button class="filter-btn active" data-filter="all">Все складки</button>
+                <button class="filter-btn" data-filter="bed_folds">Складки для кровати</button>
+                <button class="filter-btn" data-filter="loop_folds">Loop складки</button>
+                <button class="filter-btn" data-filter="rectangular">Прямоугольные</button>
+                <button class="filter-btn" data-filter="linear">Линейные</button>
+                <button class="filter-btn" data-filter="shapes">Формы</button>
             </div>
 
             <!-- Products Grid -->
-            <div class="products-grid">
-                
-                <!-- Product 1: The Plugin -->
-                <div class="product-card" data-category="plugin">
-                    <div class="product-badge featured">Plugin</div>
-                    <div class="product-media">
-                        <!-- Custom SVG for Plugin Engine -->
-                        <svg class="product-icon icon-plugin" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Isometric Grid -->
-                            <path d="M50 12 L88 34 L88 76 L50 98 L12 76 L12 34 Z" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5"/>
-                            <path d="M12 34 L50 56 L88 34 M50 56 L50 98" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5"/>
-                            <path d="M31 23 L69 45 M31 65 L69 87 M12 55 L50 77" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
-                            
-                            <!-- Glowing Spline Curve (Deformation Path) -->
-                            <path d="M15 62 Q 35 25, 50 56 T 85 40" stroke="var(--accent-blue)" stroke-width="3" stroke-linecap="round" filter="url(#glow-blue)"/>
-                            
-                            <!-- Control Vertices -->
-                            <circle cx="31" cy="44" r="3" fill="#fff"/>
-                            <circle cx="50" cy="56" r="4.5" fill="var(--primary-color)" filter="url(#glow-green)"/>
-                            <circle cx="69" cy="46" r="3" fill="#fff"/>
-                            
-                            <defs>
-                                <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feGaussianBlur stdDeviation="3.5" result="blur"/>
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                                </filter>
-                                <filter id="glow-green" x="-30%" y="-30%" width="160%" height="160%">
-                                    <feGaussianBlur stdDeviation="2.5" result="blur"/>
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-meta">
-                            <span class="version">v1.0.0 PRO</span>
-                            <span class="compat">3ds Max 2024</span>
-                        </div>
-                        <h3>FoldFlow Deformation Engine</h3>
-                        <p>Core C++ modifier plugin. Generate folds along splines in real-time. Includes 10 basic alphas.</p>
-                        <div class="product-footer">
-                            <div class="price">$49.00</div>
-                            <button class="buy-btn">Get License</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2: Alpha Pack 1 -->
-                <div class="product-card" data-category="alpha">
-                    <div class="product-badge">Alpha Pack</div>
-                    <div class="product-media">
-                        <!-- Custom SVG for Organic / Leather folds -->
-                        <svg class="product-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Cushion Outer Rim -->
-                            <rect x="18" y="18" width="64" height="64" rx="16" stroke="rgba(255, 255, 255, 0.06)" stroke-width="2"/>
-                            
-                            <!-- Folds creases radiating from Capitone buttons -->
-                            <path d="M34 34 Q 50 42, 66 34" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M34 66 Q 50 58, 66 66" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M34 34 Q 42 50, 34 66" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M66 34 Q 58 50, 66 66" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
-                            
-                            <!-- Diagonal tension fold lines -->
-                            <path d="M34 34 L66 66" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
-                            <path d="M66 34 L34 66" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
-                            
-                            <!-- Main heavy fold crease in center -->
-                            <path d="M50 25 C 42 45, 58 55, 50 75" stroke="var(--accent-blue)" stroke-width="3" stroke-linecap="round" filter="url(#glow-cyan)"/>
-                            
-                            <!-- Capitoned buttons -->
-                            <circle cx="34" cy="34" r="3" fill="#fff"/>
-                            <circle cx="66" cy="34" r="3" fill="#fff"/>
-                            <circle cx="34" cy="66" r="3" fill="#fff"/>
-                            <circle cx="66" cy="66" r="3" fill="#fff"/>
-                            <circle cx="50" cy="50" r="1.5" fill="rgba(255, 255, 255, 0.5)"/>
-
-                            <defs>
-                                <filter id="glow-cyan" x="-25%" y="-25%" width="150%" height="150%">
-                                    <feGaussianBlur stdDeviation="3" result="blur"/>
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-meta">
-                            <span class="count">24 Alphas</span>
-                            <span class="format">PNG 16-bit</span>
-                        </div>
-                        <h3>Organic & Leather Folds</h3>
-                        <p>High-resolution heightmaps for heavy drapery, leather sofas, jackets, and realistic cushions.</p>
-                        <div class="product-footer">
-                            <div class="price">$15.00</div>
-                            <button class="buy-btn">Buy Pack</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3: Zipper Pack -->
-                <div class="product-card" data-category="seams">
-                    <div class="product-badge">Stitches</div>
-                    <div class="product-media">
-                        <!-- Custom SVG for Zippers & Stitches -->
-                        <svg class="product-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Center track -->
-                            <path d="M50 10 L50 90" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
-                            
-                            <!-- Left and Right Stitch lines (Dashed) -->
-                            <path d="M38 12 L38 88" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 5" filter="url(#glow-green-stitch)"/>
-                            <path d="M62 12 L62 88" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 5" filter="url(#glow-green-stitch)"/>
-                            
-                            <!-- Zipper Teeth (alternating) -->
-                            <path d="M43 20 h7 M50 25 h7 M43 30 h7 M50 35 h7 M43 40 h7 M50 45 h7 M43 50 h7 M50 55 h7 M43 60 h7 M50 65 h7 M43 70 h7 M50 75 h7 M43 80 h7 M50 85 h7" stroke="rgba(255, 255, 255, 0.35)" stroke-width="2" stroke-linecap="round"/>
-                            
-                            <!-- Zipper slider body -->
-                            <rect x="43" y="32" width="14" height="20" rx="3" fill="#0c0d14" stroke="#fff" stroke-width="1.8"/>
-                            <rect x="47" y="44" width="6" height="18" rx="1.5" fill="#0c0d14" stroke="rgba(255, 255, 255, 0.7)" stroke-width="1.2"/>
-                            <circle cx="50" cy="38" r="2" fill="#fff"/>
-                            
-                            <defs>
-                                <filter id="glow-green-stitch" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feGaussianBlur stdDeviation="2.2" result="blur"/>
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-meta">
-                            <span class="count">12 Profiles</span>
-                            <span class="format">Max Library</span>
-                        </div>
-                        <h3>Zippers, Seams & Stitches</h3>
-                        <p>Procedural stitch lines, double seams, and metallic/plastic zipper geometry presets for cloth junctions.</p>
-                        <div class="product-footer">
-                            <div class="price">$12.00</div>
-                            <button class="buy-btn">Buy Pack</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4: Alpha Pack 2 -->
-                <div class="product-card" data-category="alpha">
-                    <div class="product-badge">Alpha Pack</div>
-                    <div class="product-media">
-                        <!-- Custom SVG for Silk & Thin Fabrics (Elegant curves) -->
-                        <svg class="product-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Flowing silk sine-waves -->
-                            <path d="M12 40 C 30 18, 40 62, 55 40 C 70 18, 78 52, 88 40" stroke="var(--accent-violet)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-                            
-                            <!-- Main glowing white drape fold -->
-                            <path d="M10 52 C 28 30, 38 74, 53 52 C 68 30, 78 64, 90 52" stroke="#ffffff" stroke-width="3" stroke-linecap="round" filter="url(#glow-white-silk)"/>
-                            
-                            <path d="M12 64 C 30 42, 40 86, 55 64 C 70 42, 78 76, 88 64" stroke="var(--accent-blue)" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
-                            
-                            <!-- Additional background details -->
-                            <path d="M25 48 C 30 43, 34 53, 38 48" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"/>
-                            <path d="M62 48 C 67 43, 71 53, 75 48" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"/>
-
-                            <defs>
-                                <filter id="glow-white-silk" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feGaussianBlur stdDeviation="3.2" result="blur"/>
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-meta">
-                            <span class="count">30 Alphas</span>
-                            <span class="format">PNG 16-bit</span>
-                        </div>
-                        <h3>Silk, Satin & Thin Fabrics</h3>
-                        <p>Fine, delicate tension wrinkles and light fabric fold brushes. Perfect for bedding, curtains, and shirts.</p>
-                        <div class="product-footer">
-                            <div class="price">$15.00</div>
-                            <button class="buy-btn">Buy Pack</button>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="products-grid" id="products-grid">
+                <!-- Loaded dynamically via JavaScript -->
             </div>
 
         </div>
     </section>
+    </div> <!-- Close fold-store-page -->
+
+    <!-- Tutorials Page -->
+    <div id="tutorials-page" class="tab-content" style="display: none;">
+        <section class="tutorials-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge" id="tutorials-badge">Tutorials</div>
+                    <h2 id="tutorials-title">Video Tutorials</h2>
+                    <p id="tutorials-desc">Master cloth modeling in 3ds Max with our step-by-step guides and start scenes.</p>
+                </div>
+                
+                <div class="tutorials-grid">
+                    <!-- Tutorial 1 -->
+                    <div class="tutorial-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="tutorial-info">
+                            <h3 class="tutorial-card-title-1">Creating Realistic Bed Folds</h3>
+                            <p class="tutorial-card-desc-1">Learn how to draw splines and configure the FoldFlow modifier for natural bedding wrinkles.</p>
+                            <div class="downloads-list">
+                                <a href="folds/bed_folds_start.max" class="download-link" download>
+                                    <span>📁 bed_folds_start.max</span>
+                                    <span class="dl-size">4.2 MB</span>
+                                </a>
+                                <a href="folds/bed_folds_profile.fld" class="download-link" download>
+                                    <span>⚡ bed_folds_profile.fld</span>
+                                    <span class="dl-size">12 KB</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial 2 -->
+                    <div class="tutorial-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="tutorial-info">
+                            <h3 class="tutorial-card-title-2">Procedural Leather Seams & Stitches</h3>
+                            <p class="tutorial-card-desc-2">A step-by-step guide on creating complex leather embroidery and stitch details using the new independent fading controls.</p>
+                            <div class="downloads-list">
+                                <a href="folds/leather_seams.max" class="download-link" download>
+                                    <span>📁 leather_seams.max</span>
+                                    <span class="dl-size">5.8 MB</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial 3 -->
+                    <div class="tutorial-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="tutorial-info">
+                            <h3 class="tutorial-card-title-3">Looping Fold Animations</h3>
+                            <p class="tutorial-card-desc-3">Learn how to animate folds using the new Glob Tiling parameter to create breathing cloth or growing wrinkle effects.</p>
+                            <div class="downloads-list">
+                                <a href="folds/loop_animation.max" class="download-link" download>
+                                    <span>📁 loop_animation.max</span>
+                                    <span class="dl-size">3.5 MB</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
             <p>&copy; 2026 FoldFlow Marketplace. Draft version for local development.</p>
+            <div class="fk-banner" style="opacity: 0.4; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.4">
+                <a href="https://freekassa.net" target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn.freekassa.net/banners/big-dark-1.png" title="Прием платежей на сайте для физических лиц и т.д." style="height: 35px; width: auto; display: block;">
+                </a>
+            </div>
         </div>
     </footer>
 
-    <!-- Filter JS -->
+    <!-- Store Filters and Dynamic Loader -->
     <script>
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const productCards = document.querySelectorAll('.product-card');
+        const SVG_ICONS = {
+            organic: `<svg class="product-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="18" y="18" width="64" height="64" rx="16" stroke="rgba(255, 255, 255, 0.06)" stroke-width="2"/>
+                <path d="M34 34 Q 50 42, 66 34" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M34 66 Q 50 58, 66 66" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M34 34 Q 42 50, 34 66" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M66 34 Q 58 50, 66 66" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M34 34 L66 66" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+                <path d="M66 34 L34 66" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+                <path d="M50 25 C 42 45, 58 55, 50 75" stroke="var(--accent-blue)" stroke-width="3" stroke-linecap="round" filter="url(#glow-cyan)"/>
+                <circle cx="34" cy="34" r="3" fill="#fff"/>
+                <circle cx="66" cy="34" r="3" fill="#fff"/>
+                <circle cx="34" cy="66" r="3" fill="#fff"/>
+                <circle cx="66" cy="66" r="3" fill="#fff"/>
+                <circle cx="50" cy="50" r="1.5" fill="rgba(255, 255, 255, 0.5)"/>
+                <defs>
+                    <filter id="glow-cyan" x="-25%" y="-25%" width="150%" height="150%">
+                        <feGaussianBlur stdDeviation="3" result="blur"/>
+                        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                    </filter>
+                </defs>
+            </svg>`,
+            zipper: `<svg class="product-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10 L50 90" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+                <path d="M38 12 L38 88" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 5" filter="url(#glow-green-stitch)"/>
+                <path d="M62 12 L62 88" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 5" filter="url(#glow-green-stitch)"/>
+                <path d="M43 20 h7 M50 25 h7 M43 30 h7 M50 35 h7 M43 40 h7 M50 45 h7 M43 50 h7 M50 55 h7 M43 60 h7 M50 65 h7 M43 70 h7 M50 75 h7 M43 80 h7 M50 85 h7" stroke="rgba(255, 255, 255, 0.35)" stroke-width="2" stroke-linecap="round"/>
+                <rect x="43" y="32" width="14" height="20" rx="3" fill="#0c0d14" stroke="#fff" stroke-width="1.8"/>
+                <rect x="47" y="44" width="6" height="18" rx="1.5" fill="#0c0d14" stroke="rgba(255, 255, 255, 0.7)" stroke-width="1.2"/>
+                <circle cx="50" cy="38" r="2" fill="#fff"/>
+                <defs>
+                    <filter id="glow-green-stitch" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="2.2" result="blur"/>
+                        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                    </filter>
+                </defs>
+            </svg>`,
+            silk: `<svg class="product-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 40 C 30 18, 40 62, 55 40 C 70 18, 78 52, 88 40" stroke="var(--accent-violet)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                <path d="M10 52 C 28 30, 38 74, 53 52 C 68 30, 78 64, 90 52" stroke="#ffffff" stroke-width="3" stroke-linecap="round" filter="url(#glow-white-silk)"/>
+                <path d="M12 64 C 30 42, 40 86, 55 64 C 70 42, 78 76, 88 64" stroke="var(--accent-blue)" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+                <path d="M25 48 C 30 43, 34 53, 38 48" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"/>
+                <path d="M62 48 C 67 43, 71 53, 75 48" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"/>
+                <defs>
+                    <filter id="glow-white-silk" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="3.2" result="blur"/>
+                        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                    </filter>
+                </defs>
+            </svg>`
+        };
+        const TRANSLATIONS = {
+            en: {
+                store: "Store",
+                item_title_plugin: "Modifier Plugin",
+                item_desc_plugin: "Core C++ 3ds Max plugin",
+                item_title_alphas: "Procedural Alphas",
+                item_desc_alphas: "16-bit heightmaps for detailing",
+                item_title_seams: "Seams & Presets",
+                item_desc_seams: "Procedural stitches & zippers",
+                nav_about: "About Engine",
+                nav_faq: "FAQ",
+                cart_label: "Cart (0)",
+                hero_badge: "Autodesk 3ds Max Plugin & Assets",
+                hero_title: "Supercharge Your Cloth Modeling",
+                hero_desc: "Generate hyper-realistic wrinkles, seams, and fabric details in real-time directly in the viewport with the FoldFlow procedural engine.",
+                store_badge: "Fold Library",
+                store_title: "Procedural Fold Library",
+                store_desc: "Speed up your fabric modeling workflow in 3ds Max with our production-ready procedural fold assets.",
+                buy_pack: "Buy Pack",
+                error_cors_title: "⚠️ Database Load Error (CORS / Local File Restriction)",
+                error_cors_desc: "The browser blocked the request to products.json due to security restrictions.",
+                error_cors_action: "Please make sure you open the page via a local server:<br><strong>http://localhost:8080/index_draft.html</strong> instead of double-clicking the file.",
+                all_folds: "All Folds",
+                bed_folds: "Bedding & Drapery",
+                loop_folds: "Looping Folds",
+                rectangular: "Rectangular Creases",
+                linear: "Linear Tension Folds",
+                shapes: "Base Shapes",
+                tab_fold_flow: "Plugin",
+                tab_fold_store: "Fold Store",
+                tab_tutorials: "Tutorials",
+                tutorials_badge: "Tutorials",
+                tutorials_title: "Video Tutorials",
+                tutorials_desc: "Master cloth modeling in 3ds Max with our step-by-step guides and start scenes.",
+                t1_title: "Creating Realistic Bed Folds",
+                t1_desc: "Learn how to draw splines and configure the FoldFlow modifier for natural bedding wrinkles.",
+                t2_title: "Procedural Leather Seams & Stitches",
+                t2_desc: "A step-by-step guide on creating complex leather embroidery and stitch details using the new independent fading controls.",
+                t3_title: "Looping Fold Animations",
+                t3_desc: "Learn how to animate folds using the new Glob Tiling parameter to create breathing cloth or growing wrinkle effects.",
+                pack_soon: "Pack release is coming soon! You can buy it in a bundle with the plugin via mail: gggiantt@mail.ru",
+                license_core: "Core License",
+                license_pro: "Pro License",
+                license_enterprise: "Studio / Enterprise",
+                price_desc_core: "/ perpetual",
+                price_desc_pro: "/ perpetual",
+                price_desc_enterprise: "/ site license",
+                feature_updates: "2 years of free updates"
+            },
+            ru: {
+                store: "Магазин",
+                item_title_plugin: "Модификатор",
+                item_desc_plugin: "Основной плагин C++ под 3ds Max",
+                item_title_alphas: "Процедурные альфы",
+                item_desc_alphas: "16-битные карты высот деталей",
+                item_title_seams: "Швы и Пресеты",
+                item_desc_seams: "Процедурные швы и молнии",
+                nav_about: "О движке",
+                nav_faq: "FAQ",
+                cart_label: "Корзина (0)",
+                hero_badge: "Плагин и Ассеты Autodesk 3ds Max",
+                hero_title: "Ускорьте моделирование ткани",
+                hero_desc: "Генерируйте супер-реалистичные складки, швы и детали ткани в реальном времени прямо во вьюпорте с процедурным движком FoldFlow.",
+                store_badge: "Библиотека складок",
+                store_title: "Библиотека складок",
+                store_desc: "Ускорьте процесс моделирования ткани в 3ds Max с помощью готовых процедурных складок.",
+                buy_pack: "Купить пак",
+                error_cors_title: "⚠️ Ошибка загрузки базы данных (CORS / Local File Restriction)",
+                error_cors_desc: "Браузер заблокировал запрос к файлу products.json по соображениям безопасности.",
+                error_cors_action: "Пожалуйста, убедитесь, что вы открыли страницу через локальный сервер:<br><strong>http://localhost:8080/index_draft.html</strong>, а не двойным кликом по файлу.",
+                all_folds: "Все складки",
+                bed_folds: "Складки для кровати",
+                loop_folds: "Loop складки",
+                rectangular: "Прямоугольные",
+                linear: "Линейные",
+                shapes: "Формы",
+                tab_fold_flow: "Plugin",
+                tab_fold_store: "Fold Store",
+                tab_tutorials: "Tutorials",
+                tutorials_badge: "Обучение",
+                tutorials_title: "Видеоуроки",
+                tutorials_desc: "Изучите профессиональное моделирование ткани в 3ds Max с нашими пошаговыми уроками и сценами.",
+                t1_title: "Создание реалистичных складок кровати",
+                t1_desc: "Узнайте, как рисовать сплайны и настраивать модификатор FoldFlow для естественных складок постельного белья.",
+                t2_title: "Процедурные кожаные швы и строчки",
+                t2_desc: "Пошаговое руководство по созданию сложной вышивки на коже и деталей строчки с использованием новых независимых параметров затухания.",
+                t3_title: "Анимация зацикленных складок",
+                t3_desc: "Научитесь анимировать складки с помощью нового параметра Glob Tiling для создания эффектов дыхания ткани или растущих морщин.",
+                pack_soon: "Выход пакета ожидается в ближайшее время! Вы можете приобрести его в бандле с плагином напрямую через почту: gggiantt@mail.ru",
+                license_core: "Лицензия Core",
+                license_pro: "Pro License",
+                license_enterprise: "Studio / Enterprise",
+                price_desc_core: "/ навсегда",
+                price_desc_pro: "/ навсегда",
+                price_desc_enterprise: "/ лицензия на сайт",
+                feature_updates: "2 года поддержки обновлений"
+            }
+        };
 
-        filterButtons.forEach(btn => {
+        let currentLang = localStorage.getItem('foldflow_lang') || 'en';
+        let currentProducts = [];
+        let activeFilter = 'all';
+
+        // Apply translations to static elements
+        function applyLanguage() {
+            const lang = currentLang;
+            const trans = TRANSLATIONS[lang];
+
+            // Header & Menu
+            const navStore = document.getElementById('nav-store');
+            if (navStore) {
+                const chevronSvg = navStore.querySelector('svg');
+                navStore.innerHTML = trans.store + ' ' + (chevronSvg ? chevronSvg.outerHTML : '');
+            }
+            document.getElementById('item-title-plugin').textContent = trans.item_title_plugin;
+            document.getElementById('item-desc-plugin').textContent = trans.item_desc_plugin;
+            document.getElementById('item-title-alphas').textContent = trans.item_title_alphas;
+            document.getElementById('item-desc-alphas').textContent = trans.item_desc_alphas;
+            document.getElementById('item-title-seams').textContent = trans.item_title_seams;
+            document.getElementById('item-desc-seams').textContent = trans.item_desc_seams;
+            document.getElementById('nav-about').textContent = trans.nav_about;
+            document.getElementById('nav-faq').textContent = trans.nav_faq;
+
+            // Hero
+            document.getElementById('hero-badge').textContent = trans.hero_badge;
+            document.getElementById('hero-title').textContent = trans.hero_title;
+            document.getElementById('hero-desc').textContent = trans.hero_desc;
+
+            // Store section headers
+            const storeSection = document.getElementById('assets');
+            if (storeSection) {
+                storeSection.querySelector('.section-header .badge').textContent = trans.store_badge;
+                storeSection.querySelector('.section-header h2').textContent = trans.store_title;
+                storeSection.querySelector('.section-header p').textContent = trans.store_desc;
+            }
+
+            // Filter button texts
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                const filterVal = btn.getAttribute('data-filter');
+                if (filterVal === 'all') btn.textContent = trans.all_folds;
+                else if (filterVal === 'bed_folds') btn.textContent = trans.bed_folds;
+                else if (filterVal === 'loop_folds') btn.textContent = trans.loop_folds;
+                else if (filterVal === 'rectangular') btn.textContent = trans.rectangular;
+                else if (filterVal === 'linear') btn.textContent = trans.linear;
+                else if (filterVal === 'shapes') btn.textContent = trans.shapes;
+            });
+
+            // Toggle active lang buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                const btnLang = btn.getAttribute('data-lang-select');
+                if (btnLang === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+
+            // Main Navigation Tabs
+            document.getElementById('tab-fold-flow').textContent = trans.tab_fold_flow;
+            document.getElementById('tab-fold-store').textContent = trans.tab_fold_store;
+            document.getElementById('tab-tutorials').textContent = trans.tab_tutorials;
+
+            // License Titles
+            document.getElementById('license-title-core').textContent = trans.license_core;
+            document.getElementById('license-title-pro').textContent = trans.license_pro;
+            document.getElementById('license-title-enterprise').textContent = trans.license_enterprise;
+
+            // Price Descriptions
+            document.getElementById('price-desc-core').textContent = trans.price_desc_core;
+            document.getElementById('price-desc-pro').textContent = trans.price_desc_pro;
+            document.getElementById('price-desc-enterprise').textContent = trans.price_desc_enterprise;
+
+            // Feature Updates
+            document.getElementById('feature-updates-core').innerHTML = `<span class="icon">✓</span> ` + trans.feature_updates;
+            document.getElementById('feature-updates-pro').innerHTML = `<span class="icon">✓</span> ` + trans.feature_updates;
+            document.getElementById('feature-updates-enterprise').innerHTML = `<span class="icon">✓</span> ` + trans.feature_updates;
+
+            // Tutorials Section
+            document.getElementById('tutorials-badge').textContent = trans.tutorials_badge;
+            document.getElementById('tutorials-title').textContent = trans.tutorials_title;
+            document.getElementById('tutorials-desc').textContent = trans.tutorials_desc;
+
+            const t1t = document.querySelector('.tutorial-card-title-1');
+            if (t1t) t1t.textContent = trans.t1_title;
+            const t1d = document.querySelector('.tutorial-card-desc-1');
+            if (t1d) t1d.textContent = trans.t1_desc;
+
+            const t2t = document.querySelector('.tutorial-card-title-2');
+            if (t2t) t2t.textContent = trans.t2_title;
+            const t2d = document.querySelector('.tutorial-card-desc-2');
+            if (t2d) t2d.textContent = trans.t2_desc;
+
+            const t3t = document.querySelector('.tutorial-card-title-3');
+            if (t3t) t3t.textContent = trans.t3_title;
+            const t3d = document.querySelector('.tutorial-card-desc-3');
+            if (t3d) t3d.textContent = trans.t3_desc;
+        }
+
+        // Load products dynamically
+        async function loadProducts() {
+            try {
+                const response = await fetch('products.json?v=' + Date.now(), { cache: 'no-store' });
+                currentProducts = await response.json();
+                renderProducts(activeFilter);
+            } catch (err) {
+                console.error("Failed to load products:", err);
+                const grid = document.getElementById('products-grid');
+                const trans = TRANSLATIONS[currentLang];
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; background: rgba(255, 71, 87, 0.1); border: 1px solid #ff4757; color: #ff4757; padding: 20px; border-radius: 12px; text-align: center; backdrop-filter: blur(10px);">
+                        <h3 style="margin-top: 0; color: #fff;">${trans.error_cors_title}</h3>
+                        <p style="margin: 8px 0; color: #ff8787;">${trans.error_cors_desc}</p>
+                        <p style="margin: 0; font-size: 14px; color: #ccc;">${trans.error_cors_action}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Render products list based on filter
+        function renderProducts(filter) {
+            activeFilter = filter;
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+
+            const filtered = currentProducts.filter(p => filter === 'all' || p.category === filter);
+            const trans = TRANSLATIONS[currentLang];
+
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-category', p.category);
+
+                let mediaHTML = '';
+                if (p.image) {
+                    mediaHTML = `<img src="${p.image}" alt="${p.title_en || p.title}" class="product-image">`;
+                } else if (p.svg_icon && SVG_ICONS[p.svg_icon]) {
+                    mediaHTML = SVG_ICONS[p.svg_icon];
+                } else {
+                    mediaHTML = `<div class="product-fallback-icon">📦</div>`;
+                }
+
+                // Bilingual text selection
+                const title = currentLang === 'ru' ? (p.title_ru || p.title) : (p.title_en || p.title);
+                const description = currentLang === 'ru' ? (p.description_ru || p.description) : (p.description_en || p.description);
+                const badge = currentLang === 'ru' ? (p.badge_ru || p.badge) : (p.badge_en || p.badge);
+                const count = currentLang === 'ru' ? (p.count_ru || p.count) : (p.count_en || p.count);
+                const format = currentLang === 'ru' ? (p.format_ru || p.format) : (p.format_en || p.format);
+
+                card.innerHTML = `
+                    <div class="product-badge">${badge}</div>
+                    <div class="product-media">
+                        ${mediaHTML}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="count">${count}</span>
+                            <span class="format">${format}</span>
+                        </div>
+                        <h3>${title}</h3>
+                        <p>${description}</p>
+                        <div class="product-footer">
+                            <div class="price">$${p.price.toFixed(2)}</div>
+                            <button class="buy-btn" onclick="purchaseProduct('${p.id}')">${trans.buy_pack}</button>
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Real Digiseller checkout redirection handler
+        function purchaseProduct(id) {
+            if (id === 'core_license' || id === 'pro_license') {
+                const langParam = currentLang === 'ru' ? 'ru-RU' : 'en-US';
+                window.location.href = `https://oplata.info/asp2/pay_wm.asp?id_d=5943232&lang=${langParam}`;
+            } else if (id === 'enterprise') {
+                window.location.href = 'mailto:gggiantt@mail.ru?subject=FoldFlow Enterprise site license inquiry';
+            } else {
+                const trans = TRANSLATIONS[currentLang];
+                alert(trans.pack_soon);
+            }
+        }
+
+        // Main Navigation Tabs Switching logic
+        const tabButtons = document.querySelectorAll('.main-tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(b => b.classList.remove('active'));
-                // Add active to clicked button
+                const targetTab = btn.getAttribute('data-tab');
+
+                // Update active button classes
+                tabButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
-                const filterValue = btn.getAttribute('data-filter');
-
-                productCards.forEach(card => {
-                    if (filterValue === 'all') {
-                        card.style.display = 'flex';
+                // Toggle visibility of tab sections
+                tabContents.forEach(content => {
+                    if (content.id === `${targetTab}-page`) {
+                        content.style.display = 'block';
                     } else {
-                        const category = card.getAttribute('data-category');
-                        if (category === filterValue) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
+                        content.style.display = 'none';
                     }
                 });
             });
         });
+
+        // Programmatic navigation helper
+        function navigateToSection(tabId, filterValue, scrollElementId) {
+            // Switch main tab
+            const tabBtn = document.querySelector(`.main-tab-btn[data-tab="${tabId}"]`);
+            if (tabBtn) {
+                // Update active button classes
+                tabButtons.forEach(b => b.classList.remove('active'));
+                tabBtn.classList.add('active');
+
+                // Toggle visibility of tab sections
+                tabContents.forEach(content => {
+                    if (content.id === `${tabId}-page`) {
+                        content.style.display = 'block';
+                    } else {
+                        content.style.display = 'none';
+                    }
+                });
+            }
+
+            // Apply store filter if needed
+            if (tabId === 'fold-store' && filterValue) {
+                const filterBtn = document.querySelector(`.filter-btn[data-filter="${filterValue}"]`);
+                if (filterBtn) {
+                    const filterButtons = document.querySelectorAll('.filter-btn');
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    filterBtn.classList.add('active');
+                    renderProducts(filterValue);
+                }
+            }
+
+            // Scroll to the target element
+            if (scrollElementId) {
+                setTimeout(() => {
+                    const el = document.getElementById(scrollElementId);
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 100);
+            }
+        }
+
+        // Store Add-ons Filter logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+                renderProducts(filterValue);
+            });
+        });
+
+        // Language Switcher click handlers
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selectedLang = btn.getAttribute('data-lang-select');
+                if (selectedLang !== currentLang) {
+                    currentLang = selectedLang;
+                    localStorage.setItem('foldflow_lang', currentLang);
+                    applyLanguage();
+                    renderProducts(activeFilter);
+                }
+            });
+        });
+
+        // Initialize
+        applyLanguage();
+        loadProducts();
     </script>
 </body>
 </html>
