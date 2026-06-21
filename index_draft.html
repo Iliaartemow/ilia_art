@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoldFlow — Shop & Marketplace (Draft)</title>
     <meta name="description" content="Official store for FoldFlow 3ds Max plugin and custom fold alpha packs.">
-    <link rel="stylesheet" href="style_draft.css">
+    <link rel="stylesheet" href="style_draft.css?v=3">
 </head>
 <body>
 
@@ -63,8 +63,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, null)" class="nav-link" id="nav-about">About Engine</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, 'engine')" class="nav-link" id="nav-about">About Engine</a></li>
                     <li><a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, 'pricing')" class="nav-link" id="nav-faq">FAQ</a></li>
+                    <li><a href="javascript:void(0)" onclick="openLegalModal('contacts')" class="nav-link" id="nav-contacts">Support</a></li>
                 </ul>
             </nav>
             <div class="header-right">
@@ -92,20 +93,371 @@
     <div id="fold-flow-page" class="tab-content">
         <!-- Hero Showcase Header -->
         <section class="store-hero">
-        <div class="container">
-            <div class="badge" id="hero-badge">Autodesk 3ds Max Plugin & Assets</div>
-            <h1 id="hero-title">Supercharge Your Cloth Modeling</h1>
-            <p id="hero-desc">Generate hyper-realistic wrinkles, seams, and fabric details in real-time directly in the viewport with the FoldFlow procedural engine.</p>
-        </div>
-    </section>
+            <div class="container">
+                <div class="hero-banner-card">
+                    <!-- Left Column: Typography -->
+                    <div class="banner-typography">
+                        <h1 class="banner-title">
+                            <span class="word-fold">FOLD</span>
+                            <span class="word-flow">FLOW</span>
+                        </h1>
+                        <p class="banner-slogan" id="hero-slogan">Ультимативные возможности моделирования ткани</p>
+                    </div>
+                    
+                    <!-- Right Column: Interactive Particle Mesh -->
+                    <div class="banner-graphic-container">
+                        <svg id="iso-mesh-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+                            <defs>
+                                <filter id="glow-dots" x="-30%" y="-30%" width="160%" height="160%">
+                                    <feGaussianBlur stdDeviation="3.5" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Preview Section (Temporarily Hidden) -->
+        <section class="features-preview-section" style="display: none;">
+            <div class="container">
+                <div class="features-grid">
+                    <!-- Feature 1: Inflation -->
+                    <div class="feature-card">
+                        <div class="feature-graphic">
+                            <svg viewBox="0 0 200 140" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                <style>
+                                    .ridge-line {
+                                        fill: none;
+                                        stroke: var(--primary-color);
+                                        stroke-width: 1.5;
+                                        opacity: 0.85;
+                                        filter: drop-shadow(0 0 3px var(--primary-color));
+                                    }
+                                    .ridge-1 {
+                                        animation: ridge1 3s ease-in-out infinite;
+                                    }
+                                    .ridge-2 {
+                                        animation: ridge2 3s ease-in-out infinite;
+                                    }
+                                    .ring-1 {
+                                        animation: ring1 3s ease-in-out infinite;
+                                        fill: none;
+                                        stroke: var(--primary-color);
+                                        stroke-width: 1.2;
+                                        opacity: 0.5;
+                                    }
+                                    @keyframes ridge1 {
+                                        0%, 100% { d: path("M 68,79 L 84,64.5 L 100,73 L 116,80.5 L 132,111"); }
+                                        50% { d: path("M 68,79 L 84,37.5 L 100,23.5 L 116,53.5 L 132,111"); }
+                                    }
+                                    @keyframes ridge2 {
+                                        0%, 100% { d: path("M 68,111 L 84,80.5 L 100,73 L 116,64.5 L 132,79"); }
+                                        50% { d: path("M 68,111 L 84,53.5 L 100,23.5 L 116,37.5 L 132,79"); }
+                                    }
+                                    @keyframes ring1 {
+                                        0%, 100% { d: path("M 52,87 L 100,79 L 148,87 L 100,111 Z"); }
+                                        50% { d: path("M 52,78 L 100,69 L 148,78 L 100,101 Z"); }
+                                    }
+                                </style>
+                                
+                                <!-- Grid Floor (Faint) -->
+                                <path class="grid-floor-line" d="M 36,95 L 100,63 L 164,95 L 100,127 Z" />
+                                <path class="grid-floor-line" d="M 52,87 L 100,79 L 148,87 L 100,111 Z" />
+                                <path class="grid-floor-line" d="M 68,79 L 132,111" />
+                                <path class="grid-floor-line" d="M 68,111 L 132,79" />
+                                
+                                <!-- Projection Lines -->
+                                <line class="vert-line-peak vert-project-line" x1="100" y1="95" x2="100" y2="40" />
+                                <line class="vert-line-mid vert-project-line" x1="116" y1="87" x2="116" y2="42" style="transform-origin: 116px 87px;" />
+                                <line class="vert-line-mid vert-project-line" x1="84" y1="87" x2="84" y2="42" style="transform-origin: 84px 87px;" />
+                                <line class="vert-line-mid vert-project-line" x1="84" y1="103" x2="84" y2="58" style="transform-origin: 84px 103px;" />
+                                <line class="vert-line-mid vert-project-line" x1="116" y1="103" x2="116" y2="58" style="transform-origin: 116px 103px;" />
+                                
+                                <!-- Animated Grid Lines -->
+                                <path class="ring-1" d="M 52,87 L 100,79 L 148,87 L 100,111 Z" />
+                                <path class="ridge-line ridge-1" d="M 68,79 L 84,64.5 L 100,73 L 116,80.5 L 132,111" />
+                                <path class="ridge-line ridge-2" d="M 68,111 L 84,80.5 L 100,73 L 116,64.5 L 132,79" />
+                                
+                                <!-- Flat Floor Nodes -->
+                                <circle class="grid-node-flat" cx="36" cy="95" r="2.5" />
+                                <circle class="grid-node-flat" cx="164" cy="95" r="2.5" />
+                                <circle class="grid-node-flat" cx="100" cy="63" r="2.5" />
+                                <circle class="grid-node-flat" cx="100" cy="127" r="2.5" />
+                                <circle class="grid-node-flat" cx="52" cy="87" r="2" />
+                                <circle class="grid-node-flat" cx="148" cy="87" r="2" />
+                                <circle class="grid-node-flat" cx="100" cy="79" r="2" />
+                                <circle class="grid-node-flat" cx="100" cy="111" r="2" />
+
+                                <!-- Projected/Floating Nodes -->
+                                <circle class="grid-node-projected node-peak" cx="100" cy="40" r="4.5" />
+                                <circle class="grid-node-projected node-mid-1" cx="116" cy="42" r="3.5" />
+                                <circle class="grid-node-projected node-mid-2" cx="84" cy="42" r="3.5" />
+                                <circle class="grid-node-projected node-mid-3" cx="84" cy="58" r="3.5" />
+                                <circle class="grid-node-projected node-mid-4" cx="116" cy="58" r="3.5" />
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3 id="feat-inflate-title">Inflation Engine</h3>
+                            <p id="feat-inflate-desc">Inflate any shapes easily and control volume using customizable curve graphs.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2: Spline Control & Export -->
+                    <div class="feature-card">
+                        <div class="feature-graphic">
+                            <svg viewBox="0 0 200 140" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                <style>
+                                    .export-badge-rect {
+                                        fill: rgba(0, 204, 102, 0.1);
+                                        stroke: var(--primary-color);
+                                        stroke-width: 1.5;
+                                        filter: drop-shadow(0 0 4px rgba(0, 204, 102, 0.4));
+                                        animation: badge-pulse 2s ease-in-out infinite;
+                                    }
+                                    .export-badge-text {
+                                        fill: #fff;
+                                        font-family: 'Outfit', sans-serif;
+                                        font-size: 10px;
+                                        font-weight: 800;
+                                        letter-spacing: 0.5px;
+                                    }
+                                    @keyframes badge-pulse {
+                                        0%, 100% { opacity: 0.8; transform: scale(1); }
+                                        50% { opacity: 1; transform: scale(1.05); }
+                                    }
+                                </style>
+                                
+                                <!-- Faint background mesh grid -->
+                                <path class="grid-floor-line" d="M 20,95 L 60,75 L 100,55 L 140,55 L 180,75" />
+                                <path class="grid-floor-line" d="M 20,75 L 60,55 L 100,35 L 140,35 L 180,55" />
+                                <line class="grid-floor-line" x1="20" y1="75" x2="20" y2="95" />
+                                <line class="grid-floor-line" x1="60" y1="55" x2="60" y2="75" />
+                                <line class="grid-floor-line" x1="100" y1="35" x2="100" y2="55" />
+                                <line class="grid-floor-line" x1="140" y1="35" x2="140" y2="55" />
+                                <line class="grid-floor-line" x1="180" y1="55" x2="180" y2="75" />
+
+                                <!-- Deforming spline path -->
+                                <path class="control-mesh-line" d="M 20,75 Q 60,75 100,50 T 180,50" />
+                                
+                                <!-- Endpoints -->
+                                <circle class="grid-node-flat" cx="20" cy="75" r="3" />
+                                <circle class="grid-node-flat" cx="180" cy="50" r="3" />
+                                
+                                <!-- Gizmo & Control Node (translates together) -->
+                                <g>
+                                    <!-- Blue Z arrow -->
+                                    <line class="gizmo-axes" x1="100" y1="42" x2="100" y2="15" stroke="#3b82f6" />
+                                    <polygon class="gizmo-head" points="100,10 97,16 103,16" fill="#3b82f6" />
+                                    
+                                    <!-- Red X arrow -->
+                                    <line class="gizmo-axes" x1="100" y1="42" x2="120" y2="30" stroke="#ef4444" />
+                                    <polygon class="gizmo-head" points="122,29 115,31 118,35" fill="#ef4444" />
+                                    
+                                    <!-- Green Y arrow -->
+                                    <line class="gizmo-axes" x1="100" y1="42" x2="80" y2="30" stroke="#10b981" />
+                                    <polygon class="gizmo-head" points="78,29 85,35 82,31" fill="#10b981" />
+
+                                    <!-- Center control handle circle -->
+                                    <circle class="grid-node-projected control-node-moving" cx="100" cy="42" r="4.5" />
+                                </g>
+
+                                <!-- Exporter Badge -->
+                                <g transform="translate(145, 15)">
+                                    <rect class="export-badge-rect" x="0" y="0" width="38" height="16" rx="4" style="transform-origin: 19px 8px;" />
+                                    <text class="export-badge-text" x="19" y="11" text-anchor="middle">.FLD</text>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3 id="feat-control-title">Fold Export</h3>
+                            <p id="feat-control-desc">Tweak spline folds interactively and instantly export them to .FLD format.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3: Animated Folds -->
+                    <div class="feature-card">
+                        <div class="feature-graphic">
+                            <svg viewBox="0 0 200 140" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                <style>
+                                    .wave-surface-line {
+                                        stroke: rgba(255, 255, 255, 0.04);
+                                        stroke-width: 1;
+                                        fill: none;
+                                    }
+                                </style>
+                                
+                                <!-- Background surface grid lines (faint) -->
+                                <path class="wave-surface-line" d="M 20,40 L 180,40" />
+                                <path class="wave-surface-line" d="M 20,60 L 180,60" />
+                                <path class="wave-surface-line" d="M 20,80 L 180,80" />
+                                <path class="wave-surface-line" d="M 20,100 L 180,100" />
+                                
+                                <path class="wave-surface-line" d="M 40,30 L 40,110" />
+                                <path class="wave-surface-line" d="M 80,30 L 80,110" />
+                                <path class="wave-surface-line" d="M 120,30 L 120,110" />
+                                <path class="wave-surface-line" d="M 160,30 L 160,110" />
+
+                                <!-- Staggered Fold wave lines -->
+                                <!-- Wave 1 (Back) -->
+                                <path class="wave-line-fold" d="M 20,80 Q 50,80 80,60 T 140,60 T 180,80" style="animation-delay: -0.6s; opacity: 0.25; stroke: var(--primary-color); stroke-width: 1.2; fill: none; transform: translate(15px, -15px);" />
+                                
+                                <!-- Wave 2 (Middle/Main) -->
+                                <path class="wave-line-fold" d="M 20,80 Q 50,80 80,60 T 140,60 T 180,80" style="stroke: var(--primary-color); stroke-width: 1.8; fill: none; filter: drop-shadow(0 0 3px var(--primary-color));" />
+                                
+                                <!-- Wave 3 (Front) -->
+                                <path class="wave-line-fold" d="M 20,80 Q 50,80 80,60 T 140,60 T 180,80" style="animation-delay: -1.2s; opacity: 0.45; stroke: var(--primary-color); stroke-width: 1.2; fill: none; transform: translate(-15px, 15px);" />
+
+                                <!-- Staggered Floating Nodes on Waves -->
+                                <circle class="grid-node-projected wave-node-0" cx="40" cy="65" r="3.5" />
+                                <circle class="grid-node-projected wave-node-1" cx="75" cy="55" r="3.5" />
+                                <circle class="grid-node-projected wave-node-2" cx="110" cy="65" r="3.5" />
+                                <circle class="grid-node-projected wave-node-3" cx="145" cy="55" r="3.5" />
+                                <circle class="grid-node-projected wave-node-4" cx="175" cy="65" r="3.5" />
+                                
+                                <!-- Static nodes on the boundary -->
+                                <circle class="grid-node-flat" cx="20" cy="80" r="2" />
+                                <circle class="grid-node-flat" cx="185" cy="80" r="2" />
+                            </svg>
+                        </div>
+                        <div class="feature-info">
+                            <h3 id="feat-anim-title">Animated Folds</h3>
+                            <p id="feat-anim-desc">Create procedural cloth animations in real-time right inside the 3ds Max viewport.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Developer's C++ Showcase Section -->
+        <section class="tech-showcase-section" id="engine">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge" id="tech-badge">UNDER THE HOOD</div>
+                    <h2 id="tech-title">Engineered in Pure C++ for Speed</h2>
+                    <p id="tech-subtitle">How a custom-written modifier achieves raw viewport performance and real-time mesh deformation.</p>
+                </div>
+
+
+                <!-- 3-Column Technology Grid -->
+                <div class="tech-grid">
+                    <!-- Card 1: C++ Core -->
+                    <div class="tech-card">
+                        <div class="tech-card-graphic">
+                            <svg class="svg-tech-anim" id="svg-anim-cpu" viewBox="0 0 120 120" width="100" height="100">
+                                <!-- Silicon Chip Base -->
+                                <rect x="30" y="30" width="60" height="60" rx="6" fill="rgba(0, 255, 128, 0.03)" stroke="var(--primary-color)" stroke-width="1.5" />
+                                <rect x="42" y="42" width="36" height="36" rx="4" fill="rgba(0, 255, 128, 0.1)" stroke="var(--primary-color)" stroke-width="1" />
+                                <text x="60" y="64" font-family="'Outfit', sans-serif" font-size="10" font-weight="bold" fill="var(--primary-color)" text-anchor="middle">C++</text>
+                                
+                                <!-- Circuit traces (pins) -->
+                                <line x1="45" y1="30" x2="45" y2="15" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="60" y1="30" x2="60" y2="15" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="75" y1="30" x2="75" y2="15" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="45" y1="90" x2="45" y2="105" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="60" y1="90" x2="60" y2="105" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="75" y1="90" x2="75" y2="105" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="30" y1="45" x2="15" y2="45" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="30" y1="60" x2="15" y2="60" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="30" y1="75" x2="15" y2="75" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="90" y1="45" x2="105" y2="45" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="90" y1="60" x2="105" y2="60" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="90" y1="75" x2="105" y2="75" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+
+                                <!-- Glowing Pulses -->
+                                <circle class="pulse-dot pd-t1" r="2" fill="#00ff80" />
+                                <circle class="pulse-dot pd-t2" r="2" fill="#00ff80" />
+                                <circle class="pulse-dot pd-l1" r="2" fill="#00ff80" />
+                                <circle class="pulse-dot pd-r1" r="2" fill="#00ff80" />
+                            </svg>
+                        </div>
+                        <h3 id="tech-card-title-1">Direct MNMesh Access</h3>
+                        <p id="tech-card-desc-1">Bypasses high-level wrapper overhead. The plugin utilizes raw pointer arithmetic to communicate directly with 3ds Max's internal MNMesh structure, enabling microsecond memory operations.</p>
+                    </div>
+
+                    <!-- Card 2: Dijkstra Solver -->
+                    <div class="tech-card">
+                        <div class="tech-card-graphic">
+                            <svg class="svg-tech-anim" id="svg-anim-path" viewBox="0 0 120 120" width="100" height="100">
+                                <!-- Mesh Graph Nodes & Edges -->
+                                <g opacity="0.3" stroke="var(--text-secondary)" stroke-width="0.8">
+                                    <line x1="20" y1="60" x2="50" y2="30" />
+                                    <line x1="20" y1="60" x2="40" y2="90" />
+                                    <line x1="50" y1="30" x2="80" y2="30" />
+                                    <line x1="50" y1="30" x2="65" y2="60" />
+                                    <line x1="40" y1="90" x2="65" y2="60" />
+                                    <line x1="40" y1="90" x2="80" y2="90" />
+                                    <line x1="80" y1="30" x2="100" y2="60" />
+                                    <line x1="65" y1="60" x2="100" y2="60" />
+                                    <line x1="80" y1="90" x2="100" y2="60" />
+                                </g>
+                                
+                                <g fill="var(--text-secondary)" opacity="0.5">
+                                    <circle cx="20" cy="60" r="3" />
+                                    <circle cx="50" cy="30" r="3" />
+                                    <circle cx="40" cy="90" r="3" />
+                                    <circle cx="65" cy="60" r="3" />
+                                    <circle cx="80" cy="30" r="3" />
+                                    <circle cx="80" cy="90" r="3" />
+                                    <circle cx="100" cy="60" r="3" />
+                                </g>
+
+                                <!-- Dijkstra Path Animation Lines -->
+                                <g class="dijkstra-active-path" stroke="var(--primary-color)" stroke-width="1.5" stroke-linecap="round" fill="none">
+                                    <path d="M20,60 L50,30 L65,60 L80,90 L100,60" class="path-solved-line" />
+                                </g>
+
+                                <!-- Moving Solver Frontier Wave -->
+                                <circle class="path-solver-wave wave-1" cx="20" cy="60" r="0" stroke="var(--primary-color)" stroke-width="1" fill="none" />
+                                <circle class="path-solver-wave wave-2" cx="50" cy="30" r="0" stroke="var(--primary-color)" stroke-width="1" fill="none" />
+                                <circle class="path-solver-wave wave-3" cx="65" cy="60" r="0" stroke="var(--primary-color)" stroke-width="1" fill="none" />
+
+                                <!-- Glowing path nodes -->
+                                <circle class="glow-node gn-1" cx="20" cy="60" r="4" fill="var(--primary-color)" />
+                                <circle class="glow-node gn-2" cx="50" cy="30" r="4" fill="var(--primary-color)" />
+                                <circle class="glow-node gn-3" cx="65" cy="60" r="4" fill="var(--primary-color)" />
+                                <circle class="glow-node gn-4" cx="80" cy="90" r="4" fill="var(--primary-color)" />
+                                <circle class="glow-node gn-5" cx="100" cy="60" r="4" fill="var(--primary-color)" />
+                            </svg>
+                        </div>
+                        <h3 id="tech-card-title-2">Custom Dijkstra Solver</h3>
+                        <p id="tech-card-desc-2">Calculates topological geodetic distances along vertex rings in real-time. Instead of geometric raycasts, it traverses the mesh's graph, mapping natural wrinkle flow matching actual physical tension.</p>
+                    </div>
+
+                    <!-- Card 3: Multithreading & Performance -->
+                    <div class="tech-card">
+                        <div class="tech-card-graphic">
+                            <svg class="svg-tech-anim" id="svg-anim-perf" viewBox="0 0 120 120" width="100" height="100">
+                                <!-- Grid background -->
+                                <path d="M15,20 L15,100 L110,100 M15,40 L110,40 M15,60 L110,60 M15,80 L110,80" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+                                
+                                <!-- Thread Splitting lines -->
+                                <path d="M15,60 C30,60 35,30 50,30 L90,30" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
+                                <path d="M15,60 C30,60 35,50 50,50 L90,50" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
+                                <path d="M15,60 C30,60 35,70 50,70 L90,70" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
+                                <path d="M15,60 C30,60 35,90 50,90 L90,90" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
+                                
+                                <!-- Running Performance Graph Line -->
+                                <path class="perf-line" d="M15,90 L30,92 L40,88 L50,90 L60,30 L70,89 L80,90 L95,91 L110,90" stroke="#00ff80" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                                <circle class="perf-tracker" cx="60" cy="30" r="3.5" fill="#00ff80" />
+                                <text class="perf-text" x="65" y="24" font-family="'Outfit', sans-serif" font-size="8" font-weight="bold" fill="#00ff80">0.2ms</text>
+                            </svg>
+                        </div>
+                        <h3 id="tech-card-title-3">Multi-threaded Core</h3>
+                        <p id="tech-card-desc-3">Deformation vectors are parallelized via OpenMP and vectorized with SIMD (SSE/AVX) instructions. Calculations take less than 1ms, eliminating viewport lag even on high-poly models.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     <!-- Pricing / License Options -->
     <section class="pricing-section" id="pricing">
         <div class="container">
             <div class="section-header">
-                <div class="badge">Flexible Licensing</div>
-                <h2>Choose Your License</h2>
-                <p>Get instant access to the FoldFlow procedural modifier. Select the tier that matches your workflow.</p>
+                <div class="badge" id="pricing-badge">Flexible Licensing</div>
+                <h2 id="pricing-title">Choose Your License</h2>
+                <p id="pricing-desc">Get instant access to the FoldFlow procedural modifier. Select the tier that matches your workflow.</p>
             </div>
             
             <div class="pricing-grid">
@@ -113,55 +465,55 @@
                 <div class="pricing-card card-blue">
                     <div class="card-header">
                         <h3 id="license-title-core">Core License</h3>
-                        <p>Perfect for freelancers and indie 3D modelers.</p>
+                        <p id="license-desc-core">Perfect for freelancers and indie 3D modelers.</p>
                         <div class="price">$49<span id="price-desc-core">/ perpetual</span></div>
                     </div>
                     <ul class="features-list">
-                        <li><span class="icon">✓</span> 3ds Max procedural modifier</li>
-                        <li><span class="icon">✓</span> Real-time viewport deformation</li>
-                        <li><span class="icon">✓</span> 50+ pre-installed fold profiles</li>
+                        <li id="f-modifier-1"><span class="icon">✓</span> 3ds Max procedural modifier</li>
+                        <li id="f-viewport-1"><span class="icon">✓</span> Real-time viewport deformation</li>
+                        <li id="f-profiles-1"><span class="icon">✓</span> 50+ pre-installed fold profiles</li>
                         <li id="feature-updates-core"><span class="icon">✓</span> 2 years of free updates</li>
-                        <li class="unsupported"><span class="icon">✗</span> <span class="disabled">FoldExporter (.fld) module</span></li>
-                        <li class="unsupported"><span class="icon">✗</span> <span class="disabled">Priority email support</span></li>
+                        <li id="f-exporter-1" class="unsupported"><span class="icon">✗</span> <span class="disabled">FoldExporter (.fld) module</span></li>
+                        <li id="f-support-1" class="unsupported"><span class="icon">✗</span> <span class="disabled">Priority email support</span></li>
                     </ul>
-                    <button class="pricing-btn" onclick="purchaseProduct('core_license')">Buy Core</button>
+                    <button id="pricing-btn-core" class="pricing-btn" onclick="purchaseProduct('core_license')">Buy Core</button>
                 </div>
 
                 <!-- Pro Card (Featured) -->
                 <div class="pricing-card card-green featured">
-                    <div class="card-badge">Most Popular</div>
+                    <div class="card-badge" id="license-badge-pro">Most Popular</div>
                     <div class="card-header">
                         <h3 id="license-title-pro">Pro License</h3>
-                        <p>For professional artists who need advanced pipeline tools.</p>
+                        <p id="license-desc-pro">For professional artists who need advanced pipeline tools.</p>
                         <div class="price">$99<span id="price-desc-pro">/ perpetual</span></div>
                     </div>
                     <ul class="features-list">
-                        <li><span class="icon">✓</span> 3ds Max procedural modifier</li>
-                        <li><span class="icon">✓</span> Real-time viewport deformation</li>
-                        <li><span class="icon">✓</span> 50+ pre-installed fold profiles</li>
-                        <li><span class="icon">✓</span> <strong>FoldExporter (.fld) module</strong></li>
-                        <li><span class="icon">✓</span> <strong>Priority email support</strong></li>
+                        <li id="f-modifier-2"><span class="icon">✓</span> 3ds Max procedural modifier</li>
+                        <li id="f-viewport-2"><span class="icon">✓</span> Real-time viewport deformation</li>
+                        <li id="f-profiles-2"><span class="icon">✓</span> 50+ pre-installed fold profiles</li>
+                        <li id="f-exporter-2"><span class="icon">✓</span> <strong>FoldExporter (.fld) module</strong></li>
+                        <li id="f-support-2"><span class="icon">✓</span> <strong>Priority email support</strong></li>
                         <li id="feature-updates-pro"><span class="icon">✓</span> 2 years of free updates</li>
                     </ul>
-                    <button class="pricing-btn primary" onclick="purchaseProduct('pro_license')">Buy Pro</button>
+                    <button id="pricing-btn-pro" class="pricing-btn primary" onclick="purchaseProduct('pro_license')">Buy Pro</button>
                 </div>
 
                 <!-- Enterprise Card -->
                 <div class="pricing-card card-purple">
                     <div class="card-header">
                         <h3 id="license-title-enterprise">Studio / Enterprise</h3>
-                        <p>For design studios, game companies, and pipelines.</p>
+                        <p id="license-desc-enterprise">For design studios, game companies, and pipelines.</p>
                         <div class="price">$499<span id="price-desc-enterprise">/ site license</span></div>
                     </div>
                     <ul class="features-list">
-                        <li><span class="icon">✓</span> Floating licenses (RLM support)</li>
-                        <li><span class="icon">✓</span> Full MAXScript / Python API access</li>
-                        <li><span class="icon">✓</span> Unlimited users (single site)</li>
-                        <li><span class="icon">✓</span> Dedicated Slack channel support</li>
-                        <li><span class="icon">✓</span> Custom builds & NDAs</li>
+                        <li id="f-rlm"><span class="icon">✓</span> Floating licenses (RLM support)</li>
+                        <li id="f-api"><span class="icon">✓</span> Full MAXScript / Python API access</li>
+                        <li id="f-users"><span class="icon">✓</span> Unlimited users (single site)</li>
+                        <li id="f-slack"><span class="icon">✓</span> Dedicated Slack channel support</li>
+                        <li id="f-custom"><span class="icon">✓</span> Custom builds & NDAs</li>
                         <li id="feature-updates-enterprise"><span class="icon">✓</span> 2 years of free updates</li>
                     </ul>
-                    <button class="pricing-btn" onclick="purchaseProduct('enterprise')">Contact Sales</button>
+                    <button id="pricing-btn-enterprise" class="pricing-btn" onclick="purchaseProduct('enterprise')">Contact Sales</button>
                 </div>
             </div>
         </div>
@@ -171,12 +523,88 @@
     <!-- Fold Store Page -->
     <div id="fold-store-page" class="tab-content" style="display: none;">
         <!-- Store Add-ons & Assets -->
-        <section class="store-section" id="assets">
+        <section class="store-section" id="assets" style="padding-top: 60px;">
         <div class="container">
-            <div class="section-header">
-                <div class="badge">Fold Library</div>
-                <h2>Библиотека складок</h2>
-                <p>Выберите готовые процедурные складки для быстрого моделирования ткани в 3ds Max.</p>
+            <!-- Search Bar & Card Transition Styles (Self-contained to bypass cache) -->
+            <style>
+                .store-search-bar-container {
+                    position: relative;
+                    padding: 1.2px; /* Creates the border width */
+                    border-radius: 12px;
+                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(139, 92, 246, 0.5) 100%) !important;
+                    box-shadow: 0 0 16px rgba(255, 255, 255, 0.06), 0 0 24px rgba(139, 92, 246, 0.24) !important;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    box-sizing: border-box;
+                }
+                .store-search-bar-container:hover {
+                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(139, 92, 246, 0.6) 100%) !important;
+                    box-shadow: 0 0 20px rgba(255, 255, 255, 0.08), 0 0 28px rgba(139, 92, 246, 0.35) !important;
+                }
+                .store-search-bar-container:focus-within {
+                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(139, 92, 246, 0.7) 100%) !important;
+                    box-shadow: 0 0 24px rgba(255, 255, 255, 0.12), 0 0 32px rgba(139, 92, 246, 0.42) !important;
+                }
+                .store-search-bar-container.typing {
+                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(167, 139, 250, 0.9) 100%) !important;
+                    box-shadow: 0 0 28px rgba(255, 255, 255, 0.18), 0 0 40px rgba(139, 92, 246, 0.6) !important;
+                }
+                .store-search-bar-container input {
+                    position: relative !important;
+                    z-index: 2 !important;
+                    border: none !important;
+                    outline: none !important;
+                    background: #0b0c10 !important;
+                    border-radius: 11px !important;
+                }
+                .store-search-bar-container svg {
+                    z-index: 3 !important;
+                    transition: stroke 0.3s ease;
+                }
+                .store-search-bar-container:focus-within svg,
+                .store-search-bar-container.typing svg {
+                    stroke: rgba(167, 139, 250, 0.9) !important; /* soft violet stroke */
+                }
+
+                /* Product Card Transitions */
+                .product-card {
+                    cursor: pointer;
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                    transition: opacity 0.40s cubic-bezier(0.4, 0, 0.2, 1), 
+                                transform 0.40s cubic-bezier(0.4, 0, 0.2, 1),
+                                border-color 0.2s ease, 
+                                box-shadow 0.2s ease !important;
+                }
+                .product-image {
+                    width: 100% !important;
+                    height: 100% !important;
+                    object-fit: cover !important;
+                    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                }
+                .product-card:hover .product-image {
+                    transform: scale(1.05) !important;
+                }
+                .product-card.hidden-card {
+                    display: none !important;
+                }
+                .product-card.animating-out {
+                    opacity: 0;
+                    transform: translateY(-40px) scale(0.95);
+                    pointer-events: none;
+                }
+                .product-card.animating-in {
+                    opacity: 0;
+                    transform: translateY(40px) scale(0.95);
+                }
+            </style>
+
+            <!-- Search Bar -->
+            <div class="store-search-bar-container" style="margin: 0 auto 32px auto; max-width: 480px; width: 100%; position: relative;">
+                <input type="text" id="store-search-input" oninput="handleStoreSearch(this.value)" placeholder="Search folds..." style="width: 100%; padding: 12px 16px 12px 42px; border-radius: 11px; background: #0c0d14; color: var(--text-primary); font-family: 'Outfit', sans-serif; font-size: 14px; transition: all 0.25s ease; box-sizing: border-box; border: none; outline: none;">
+                <svg style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; fill: none; stroke: rgba(255, 255, 255, 0.4); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none;" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
             </div>
             
             <!-- Filters -->
@@ -270,12 +698,18 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-            <p>&copy; 2026 FoldFlow Marketplace. Draft version for local development.</p>
-            <div class="fk-banner" style="opacity: 0.8; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.8">
-                <a href="https://freekassa.net" target="_blank" rel="noopener noreferrer">
-                    <img src="https://cdn.freekassa.net/banners/big-dark-1.png" title="Прием платежей на сайте для физических лиц и т.д." style="height: 35px; width: auto; display: block;">
-                </a>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div class="footer-left" style="display: flex; flex-direction: column; gap: 8px;">
+                <p>&copy; 2026 FoldFlow. Draft version for local development.</p>
+                <div class="footer-legal-links" style="display: flex; gap: 15px; flex-wrap: wrap; font-size: 13px;">
+                    <a href="javascript:void(0)" onclick="openLegalModal('about')" id="link-about" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">О сервисе</a>
+                    <span style="color: var(--text-muted);">|</span>
+                    <a href="javascript:void(0)" onclick="openLegalModal('privacy')" id="link-privacy" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">Политика конфиденциальности</a>
+                    <span style="color: var(--text-muted);">|</span>
+                    <a href="javascript:void(0)" onclick="openLegalModal('terms')" id="link-terms" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">Пользовательское соглашение</a>
+                    <span style="color: var(--text-muted);">|</span>
+                    <a href="javascript:void(0)" onclick="openLegalModal('contacts')" id="link-contacts" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">Контакты</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -344,14 +778,40 @@
                 item_desc_seams: "Procedural stitches & zippers",
                 nav_about: "About Engine",
                 nav_faq: "FAQ",
+                nav_contacts: "Support",
+                search_placeholder: "Search folds by name or description...",
+                buy_free: "Download",
                 cart_label: "Cart (0)",
                 hero_badge: "Autodesk 3ds Max Plugin & Assets",
+                hero_slogan: "The Ultimate Feature for Cloth Modeling",
+                pricing_badge: "Flexible Licensing",
+                pricing_title: "Choose Your License",
+                pricing_desc: "Get instant access to the FoldFlow procedural modifier. Select the tier that matches your workflow.",
+                license_desc_core: "Perfect for freelancers and indie 3D modelers.",
+                license_desc_pro: "For professional artists who need advanced pipeline tools.",
+                license_desc_enterprise: "For design studios, game companies, and pipelines.",
+                license_badge_pro: "Most Popular",
+                feature_modifier: "3ds Max procedural modifier",
+                feature_viewport: "Real-time viewport deformation",
+                feature_profiles: "50+ pre-installed fold profiles",
+                feature_exporter: "FoldExporter (.fld) module",
+                feature_support: "Priority email support",
+                feature_rlm: "Floating licenses (RLM support)",
+                feature_api: "Full MAXScript / Python API access",
+                feature_users: "Unlimited users (single site)",
+                feature_slack: "Dedicated Slack channel support",
+                feature_custom: "Custom builds & NDAs",
+                btn_buy_core: "Buy Core",
+                btn_buy_pro: "Buy Pro",
+                btn_contact_sales: "Contact Sales",
                 hero_title: "Supercharge Your Cloth Modeling",
                 hero_desc: "Generate hyper-realistic wrinkles, seams, and fabric details in real-time directly in the viewport with the FoldFlow procedural engine.",
+                hero_btn_get: "Get Plugin",
+                hero_btn_tutorials: "Watch Tutorials",
                 store_badge: "Fold Library",
                 store_title: "Procedural Fold Library",
                 store_desc: "Speed up your fabric modeling workflow in 3ds Max with our production-ready procedural fold assets.",
-                buy_pack: "Buy Pack",
+                buy_pack: "Buy",
                 error_cors_title: "⚠️ Database Load Error (CORS / Local File Restriction)",
                 error_cors_desc: "The browser blocked the request to products.json due to security restrictions.",
                 error_cors_action: "Please make sure you open the page via a local server:<br><strong>http://localhost:8080/index_draft.html</strong> instead of double-clicking the file.",
@@ -380,7 +840,91 @@
                 price_desc_core: "/ perpetual",
                 price_desc_pro: "/ perpetual",
                 price_desc_enterprise: "/ site license",
-                feature_updates: "2 years of free updates"
+                feature_updates: "2 years of free updates",
+                
+                // Compliance Modal
+                modal_tab_about: "About Service",
+                modal_tab_privacy: "Privacy Policy",
+                modal_tab_terms: "User Agreement",
+                modal_tab_contacts: "Contacts",
+                modal_about_text: `<h3>About FoldFlow</h3>
+<p>FoldFlow (domain: <a href="https://fold-flow.com" target="_blank">fold-flow.com</a>) is a specialized online platform offering software and digital assets designed to optimize cloth modeling and detailing workflows in Autodesk 3ds Max.</p>
+<p>Our goal is to deliver professional-grade, high-performance C++ plugins and procedural presets that help 3D artists, game developers, and arch-viz professionals achieve hyper-realistic results in real-time directly within the 3ds Max viewport.</p>
+<p>The service, website administration, and plugin development are operated by Ilia Artemow (Telegram: <a href="https://t.me/Ilia_aw" target="_blank">@Ilia_aw</a>, Email: <a href="mailto:gggiantt1@gmail.com">gggiantt1@gmail.com</a>).</p>`,
+                modal_privacy_text: `<h3>Privacy Policy</h3>
+<p>This Privacy Policy explains how we collect, use, and protect your personal information on the website <strong>fold-flow.com</strong>.</p>
+<h3>1. Information We Collect</h3>
+<p>We collect only the minimal necessary data to deliver our products and services:</p>
+<ul>
+    <li>Your email address (used for sending license keys, invoices, download links, and providing technical support).</li>
+    <li>Transaction and billing information provided during checkout (handled securely by our payment processors).</li>
+    <li>Technical cookies and local storage parameters (used strictly to remember user-facing preferences such as UI language).</li>
+</ul>
+<h3>2. How We Use Your Data</h3>
+<p>Your data is used solely to:</p>
+<ul>
+    <li>Provide and deliver the software licenses and assets you purchase.</li>
+    <li>Provide technical support and resolve software licensing questions.</li>
+    <li>Send security updates and major release announcements (you may opt out at any time).</li>
+</ul>
+<p>We do not share, sell, or distribute your personal information to third parties, except for trusted payment processing services (Freekassa, Digiseller) required to complete your transactions.</p>
+<h3>3. Data Protection</h3>
+<p>We employ administrative and technical measures to protect your personal information against unauthorized access, loss, or modification. Transactions are fully encrypted by our payment processing partners.</p>`,
+                modal_terms_text: `<h3>User Agreement & End User License Agreement (EULA)</h3>
+<p>This User Agreement is a legal agreement between you and FoldFlow (represented by Ilia Artemow) governing the use of FoldFlow software and digital assets.</p>
+<h3>1. License Grant</h3>
+<p>Upon purchase, FoldFlow grants you a non-exclusive, non-transferable, perpetual license to use the FoldFlow plugin for Autodesk 3ds Max and/or the purchased preset packs. You may use them in personal and commercial 3D production pipelines.</p>
+<p><strong>Restrictions:</strong> You may not copy, redistribute, resell, lease, sublicense, decompile, decrypt, or reverse engineer any binary C++ files of the plugin.</p>
+<h3>2. Technical Requirements & Topology Constraints</h3>
+<p><strong>CRITICAL TOPOLOGY NOTICE:</strong> The FoldFlow modifier plugin is designed and optimized to work exclusively with polygonal meshes that have uniform, quad-dominant topology (quad-dominant, uniform mesh). Correct fold generation, calculation, and deformation on highly irregular, triangular, non-manifold, or broken geometries (e.g., raw triangulated CAD meshes) are not guaranteed. The user is solely responsible for preparing and cleaning the input mesh topology before applying the FoldFlow modifier.</p>
+<h3>3. Payment & Delivery</h3>
+<p>All software delivery is digital. License keys and download links are sent automatically to your email address after successful checkout via our payment partners (Freekassa, Digiseller / Oplata.info).</p>
+<h3>4. Refund Policy</h3>
+<p>Due to the digital nature of our products (instant software download and activation keys), all sales are final once the download links or license keys are generated and accessed. Refunds are not provided under normal circumstances, except in cases of verified, unfixable software defects that prevent basic execution, as confirmed by our technical support team.</p>
+<h3>5. Disclaimer of Warranties</h3>
+<p>FoldFlow products are provided "AS IS" without warranty of any kind. The developer shall not be liable for any direct, indirect, or consequential damages resulting from the use or inability to use our products.</p>`,
+                modal_contacts_text: `<h3>Support & Contacts</h3>
+<p>If you have any questions about the plugin operation, license activation, billing, or technical requirements, please reach out to us:</p>
+<ul>
+    <li><strong>Email Support:</strong> <a href="mailto:gggiantt1@gmail.com">gggiantt1@gmail.com</a></li>
+    <li><strong>Telegram Support:</strong> <a href="https://t.me/Ilia_aw" target="_blank">@Ilia_aw</a></li>
+</ul>
+<p>We aim to respond to all technical support and customer inquiries within 24 hours of receipt.</p>
+<div class="feedback-form-container">
+    <h4 style="margin-top: 20px; margin-bottom: 12px; color: var(--text-primary);">Send a Message</h4>
+    <form id="contact-feedback-form" onsubmit="handleFeedbackSubmit(event)">
+        <div class="form-group">
+            <input type="text" id="feedback-name" name="name" required placeholder="Your Name">
+        </div>
+        <div class="form-group">
+            <input type="email" id="feedback-email" name="email" required placeholder="Your Email">
+        </div>
+        <div class="form-group">
+            <textarea id="feedback-message" name="message" required placeholder="Your Message or Feedback" rows="4"></textarea>
+        </div>
+        <button type="submit" id="feedback-submit-btn" class="pricing-btn" style="padding: 10px 20px; font-size: 14px; margin-top: 10px;">Send Feedback</button>
+    </form>
+    <div id="feedback-status" class="feedback-status-message" style="display: none; margin-top: 12px; font-size: 13px;"></div>
+</div>`,
+
+                // Tech Showcase Section
+                tech_badge: "UNDER THE HOOD",
+                tech_title: "Engineered in Pure C++ for Speed",
+                tech_subtitle: "How a custom-written modifier achieves raw viewport performance and real-time mesh deformation.",
+                tech_quote_text: `"I engineered FoldFlow from scratch in pure C++ because I was tired of laggy viewports and heavy cloth simulation overhead. Direct mesh access and custom math solvers were the only way to make it run at 60/120 FPS in 3ds Max. Every line of code is written with performance and memory optimization in mind."`,
+                tech_quote_author: "— Ilia Artemow, Creator of FoldFlow",
+                tech_card_title_1: "Direct MNMesh Access",
+                tech_card_desc_1: "Bypasses high-level wrapper overhead. The plugin utilizes raw pointer arithmetic to communicate directly with 3ds Max's internal MNMesh structure, enabling microsecond memory operations.",
+                tech_card_title_2: "Custom Dijkstra Solver",
+                tech_card_desc_2: "Calculates topological geodetic distances along vertex rings in real-time. Instead of geometric raycasts, it traverses the mesh's graph, mapping natural wrinkle flow matching actual physical tension.",
+                tech_card_title_3: "Multi-threaded Core",
+                tech_card_desc_3: "Deformation vectors are parallelized via OpenMP and vectorized with SIMD (SSE/AVX) instructions. Calculations take less than 1ms, eliminating viewport lag even on high-poly models.",
+                feat_inflate_title: "Inflation Engine",
+                feat_inflate_desc: "Inflate any shapes easily and control volume using customizable curve graphs.",
+                feat_control_title: "Fold Control & Export",
+                feat_control_desc: "Tweak spline folds interactively and instantly export them to .FLD format.",
+                feat_anim_title: "Animated Folds",
+                feat_anim_desc: "Create procedural cloth animations in real-time right inside the 3ds Max viewport."
             },
             ru: {
                 store: "Магазин",
@@ -392,14 +936,40 @@
                 item_desc_seams: "Процедурные швы и молнии",
                 nav_about: "О движке",
                 nav_faq: "FAQ",
+                nav_contacts: "Поддержка",
+                search_placeholder: "Поиск складок по названию или описанию...",
+                buy_free: "Скачать",
                 cart_label: "Корзина (0)",
                 hero_badge: "Плагин и Ассеты Autodesk 3ds Max",
+                hero_slogan: "Ультимативные возможности моделирования ткани",
+                pricing_badge: "Гибкое лицензирование",
+                pricing_title: "Выберите вашу лицензию",
+                pricing_desc: "Получите мгновенный доступ к процедурному модификатору FoldFlow. Выберите подходящий уровень лицензии.",
+                license_desc_core: "Идеально для фрилансеров и инди-разработчиков.",
+                license_desc_pro: "Для профессиональных художников и студий.",
+                license_desc_enterprise: "Для крупных студий и игровых компаний.",
+                license_badge_pro: "Популярный выбор",
+                feature_modifier: "Процедурный модификатор для 3ds Max",
+                feature_viewport: "Деформация во вьюпорте в реальном времени",
+                feature_profiles: "Более 50 встроенных профилей складок",
+                feature_exporter: "Модуль экспорта складок (.fld)",
+                feature_support: "Приоритетная поддержка по почте",
+                feature_rlm: "Плавающие лицензии (поддержка RLM)",
+                feature_api: "Полный доступ к MAXScript / Python API",
+                feature_users: "Неограниченное число пользователей (на студию)",
+                feature_slack: "Выделенный канал поддержки в Slack",
+                feature_custom: "Индивидуальные сборки и NDA",
+                btn_buy_core: "Купить Core",
+                btn_buy_pro: "Купить Pro",
+                btn_contact_sales: "Связаться с нами",
                 hero_title: "Ускорьте моделирование ткани",
                 hero_desc: "Генерируйте супер-реалистичные складки, швы и детали ткани в реальном времени прямо во вьюпорте с процедурным движком FoldFlow.",
+                hero_btn_get: "Выбрать лицензию",
+                hero_btn_tutorials: "Смотреть уроки",
                 store_badge: "Библиотека складок",
                 store_title: "Библиотека складок",
                 store_desc: "Ускорьте процесс моделирования ткани в 3ds Max с помощью готовых процедурных складок.",
-                buy_pack: "Купить пак",
+                buy_pack: "Купить",
                 error_cors_title: "⚠️ Ошибка загрузки базы данных (CORS / Local File Restriction)",
                 error_cors_desc: "Браузер заблокировал запрос к файлу products.json по соображениям безопасности.",
                 error_cors_action: "Пожалуйста, убедитесь, что вы открыли страницу через локальный сервер:<br><strong>http://localhost:8080/index_draft.html</strong>, а не двойным кликом по файлу.",
@@ -428,7 +998,91 @@
                 price_desc_core: "/ навсегда",
                 price_desc_pro: "/ навсегда",
                 price_desc_enterprise: "/ лицензия на сайт",
-                feature_updates: "2 года поддержки обновлений"
+                feature_updates: "2 года поддержки обновлений",
+                
+                // Compliance Modal
+                modal_tab_about: "О сервисе",
+                modal_tab_privacy: "Конфиденциальность",
+                modal_tab_terms: "Соглашение",
+                modal_tab_contacts: "Контакты",
+                modal_about_text: `<h3>О сервисе FoldFlow</h3>
+<p>FoldFlow (домен: <a href="https://fold-flow.com" target="_blank">fold-flow.com</a>) — это специализированный интернет-ресурс, предлагающий программное обеспечение и вспомогательные цифровые активы (3D-модели, готовые пресеты, альфа-карты) для оптимизации и ускорения процесса трехмерного моделирования ткани в Autodesk 3ds Max.</p>
+<p>Наша цель — создавать высокопроизводительные плагины на C++ и процедурные ассеты, которые позволяют 3D-художникам, разработчикам игр и специалистам по архитектурной визуализации добиваться реалистичных складок в реальном времени прямо во вьюпорте 3ds Max.</p>
+<p>Администрирование ресурса, разработка плагина и техническая поддержка осуществляются разработчиком: Артемов Илья (Telegram: <a href="https://t.me/Ilia_aw" target="_blank">@Ilia_aw</a>, Email: <a href="mailto:gggiantt1@gmail.com">gggiantt1@gmail.com</a>).</p>`,
+                modal_privacy_text: `<h3>Политика конфиденциальности</h3>
+<p>Настоящая Политика конфиденциальности определяет правила сбора, хранения, защиты и обработки персональной информации пользователей на сайте <strong>fold-flow.com</strong>.</p>
+<h3>1. Сбор информации</h3>
+<p>Мы собираем только минимальные персональные данные, необходимые для доставки товаров и оказания поддержки:</p>
+<ul>
+    <li>Ваш адрес электронной почты (используется для автоматической отправки лицензионных ключей, ссылок на скачивание и ответов техподдержки).</li>
+    <li>Платежная информация, необходимая для проведения транзакций (обрабатывается исключительно на стороне защищенного шлюза платежных систем).</li>
+    <li>Технические параметры cookies и локального хранилища (localStorage) браузера, используемые исключительно для сохранения языковых настроек интерфейса.</li>
+</ul>
+<h3>2. Использование и передача данных</h3>
+<p>Ваши данные используются исключительно для:</p>
+<ul>
+    <li>Доставки приобретенных лицензионных ключей и цифровых товаров.</li>
+    <li>Предоставления своевременной технической поддержки.</li>
+    <li>Информирования о критических обновлениях безопасности и выпуске новых версий.</li>
+</ul>
+<p>Мы не передаем, не продаем и не распространяем ваши личные данные третьим лицам, за исключением платежных систем (Freekassa, Digiseller) для непосредственного проведения расчетов.</p>
+<h3>3. Безопасность</h3>
+<p>Мы используем надежные административные и технические инструменты для предотвращения утечки или несанкционированного изменения ваших персональных данных. Все платежи шифруются нашими сертифицированными партнерами.</p>`,
+                modal_terms_text: `<h3>Пользовательское соглашение (EULA)</h3>
+<p>Настоящее Пользовательское соглашение является юридическим соглашением между вами (пользователем) и разработчиком FoldFlow (Артемовым Ильей) касательно использования программного обеспечения FoldFlow и сопутствующих цифровых активов.</p>
+<h3>1. Предоставление лицензии</h3>
+<p>При покупке вам предоставляется неисключительная, непередаваемая, пожизненная лицензия на использование плагина FoldFlow для Autodesk 3ds Max и/или пакетов пресетов в коммерческих и личных 3D-проектах.</p>
+<p><strong>Ограничения:</strong> Строго запрещается копировать, распространять, перепродавать, сдавать в аренду, сублицензировать, декомпилировать или проводить обратную разработку (reverse engineering) исполняемых C++ файлов плагина.</p>
+<h3>2. Технические требования к топологии сетки</h3>
+<p><strong>ВАЖНОЕ ТРЕБОВАНИЕ К ГЕОМЕТРИИ:</strong> Модификатор FoldFlow спроектирован и оптимизирован для работы исключительно с полигональными сетками, обладающими равномерной топологией (quad-dominant, uniform mesh). Корректный расчет деформаций, генерация складок и стабильная работа плагина на сильно неравномерных, триангулированных сетках (triangulated mesh), не-манифолдной геометрии или сетках с ошибками топологии не гарантируются. Пользователь самостоятельно несет ответственность за правильную подготовку и очистку входной геометрии перед применением модификатора FoldFlow.</p>
+<h3>3. Оплата и доставка товара</h3>
+<p>Все товары поставляются исключительно в цифровом виде. Лицензионные ключи и ссылки на загрузку файлов отправляются автоматически на указанный вами Email сразу после успешной оплаты через интегрированные платежные шлюзы (Freekassa, Digiseller / Oplata.info).</p>
+<h3>4. Условия возврата средств</h3>
+<p>Поскольку наши продукты представляют собой цифровые товары (программное обеспечение, готовые 3D-сцены и профили), поставляемые в виде мгновенного доступа к скачиванию или ключей активации, все продажи являются окончательными. Возврат средств после отправки ключа или открытия доступа к скачиванию не производится, за исключением подтвержденных технической поддержкой неустранимых сбоев в коде плагина, делающих его запуск невозможным.</p>
+<h3>5. Ограничение ответственности</h3>
+<p>Продукты поставляются по принципу «как есть» (AS IS). Разработчик не несет ответственности за любые прямые или косвенные убытки, возникшие в результате использования или невозможности использования данного программного обеспечения.</p>`,
+                modal_contacts_text: `<h3>Техническая поддержка и контакты</h3>
+<p>По любым вопросам, связанным со стабильностью работы плагина, активацией ключей, покупкой лицензий или возвратами, вы можете обратиться напрямую по указанным контактам поддержки:</p>
+<ul>
+    <li><strong>Email-поддержка:</strong> <a href="mailto:gggiantt1@gmail.com">gggiantt1@gmail.com</a></li>
+    <li><strong>Telegram-поддержка:</strong> <a href="https://t.me/Ilia_aw" target="_blank">@Ilia_aw</a></li>
+</ul>
+<p>Мы стараемся реагировать на все запросы клиентов в течение 24 часов с момента получения обращения.</p>
+<div class="feedback-form-container">
+    <h4 style="margin-top: 20px; margin-bottom: 12px; color: var(--text-primary);">Отправить сообщение</h4>
+    <form id="contact-feedback-form" onsubmit="handleFeedbackSubmit(event)">
+        <div class="form-group">
+            <input type="text" id="feedback-name" name="name" required placeholder="Ваше имя">
+        </div>
+        <div class="form-group">
+            <input type="email" id="feedback-email" name="email" required placeholder="Ваш Email">
+        </div>
+        <div class="form-group">
+            <textarea id="feedback-message" name="message" required placeholder="Ваше сообщение или отзыв" rows="4"></textarea>
+        </div>
+        <button type="submit" id="feedback-submit-btn" class="pricing-btn" style="padding: 10px 20px; font-size: 14px; margin-top: 10px;">Отправить</button>
+    </form>
+    <div id="feedback-status" class="feedback-status-message" style="display: none; margin-top: 12px; font-size: 13px;"></div>
+</div>`,
+
+                // Tech Showcase Section
+                tech_badge: "ТЕХНОЛОГИИ ПОД КАПОТОМ",
+                tech_title: "Чистый C++ ради безумной скорости",
+                tech_subtitle: "Как кастомный модификатор достигает максимальной производительности вьюпорта и деформации сетки в реальном времени.",
+                tech_quote_text: `"Я написал FoldFlow с нуля на чистом C++, потому что меня бесили тормоза во вьюпорте и тяжеловесные симуляции ткани. Прямой доступ к сетке и кастомные математические решатели — единственный способ заставить это работать на 60/120 FPS в 3ds Max. Каждая строчка кода написана с маниакальным вниманием к памяти и вычислениям."`,
+                tech_quote_author: "— Илья Артемов, создатель FoldFlow",
+                tech_card_title_1: "Прямой доступ к MNMesh",
+                tech_card_desc_1: "В обход высокоуровневых оберток API. Плагин использует прямую адресную арифметику указателей для работы с внутренней структурой MNMesh в 3ds Max, обеспечивая микросекундное чтение и запись в память.",
+                tech_card_title_2: "Решатель Дейкстры",
+                tech_card_desc_2: "Вычисляет топологические геодезические расстояния по ребрам сетки в реальном времени. Вместо геометрических лучей он идет по графу сетки, строя естественные складки с учетом натяжения ткани.",
+                tech_card_title_3: "Многопоточное ядро",
+                tech_card_desc_3: "Расчет векторов деформации распараллелен с помощью OpenMP и векторизован инструкциями SIMD (SSE/AVX). Вычисления занимают меньше 1 мс, исключая любые задержки во вьюпорте даже на плотной геометрии.",
+                feat_inflate_title: "Раздувание форм",
+                feat_inflate_desc: "Легко надувайте любые формы и управляйте объемом с помощью точных графиков кривых.",
+                feat_control_title: "Контроль и экспорт",
+                feat_control_desc: "Интерактивно настраивайте сплайновые складки и мгновенно экспортируйте их в формат .FLD.",
+                feat_anim_title: "Анимация складок",
+                feat_anim_desc: "Создавайте процедурную анимацию ткани в реальном времени прямо во вьюпорте 3ds Max."
             }
         };
 
@@ -455,19 +1109,64 @@
             document.getElementById('item-desc-seams').textContent = trans.item_desc_seams;
             document.getElementById('nav-about').textContent = trans.nav_about;
             document.getElementById('nav-faq').textContent = trans.nav_faq;
+            const navContacts = document.getElementById('nav-contacts');
+            if (navContacts) navContacts.textContent = trans.nav_contacts;
+            const searchInput = document.getElementById('store-search-input');
+            if (searchInput) searchInput.placeholder = trans.search_placeholder;
 
             // Hero
-            document.getElementById('hero-badge').textContent = trans.hero_badge;
-            document.getElementById('hero-title').textContent = trans.hero_title;
-            document.getElementById('hero-desc').textContent = trans.hero_desc;
+            const heroBadge = document.getElementById('hero-badge');
+            if (heroBadge) heroBadge.textContent = trans.hero_badge;
+            const heroTitle = document.getElementById('hero-title');
+            if (heroTitle) heroTitle.textContent = trans.hero_title;
+            const heroDesc = document.getElementById('hero-desc');
+            if (heroDesc) heroDesc.textContent = trans.hero_desc;
+            const heroBtnGet = document.getElementById('hero-btn-get');
+            if (heroBtnGet) heroBtnGet.textContent = trans.hero_btn_get;
+            const heroBtnTut = document.getElementById('hero-btn-tutorials');
+            if (heroBtnTut) heroBtnTut.textContent = trans.hero_btn_tutorials;
+            const heroSlogan = document.getElementById('hero-slogan');
+            if (heroSlogan) heroSlogan.textContent = trans.hero_slogan;
 
-            // Store section headers
-            const storeSection = document.getElementById('assets');
-            if (storeSection) {
-                storeSection.querySelector('.section-header .badge').textContent = trans.store_badge;
-                storeSection.querySelector('.section-header h2').textContent = trans.store_title;
-                storeSection.querySelector('.section-header p').textContent = trans.store_desc;
-            }
+            // Features Preview Block
+            const featInflateTitle = document.getElementById('feat-inflate-title');
+            if (featInflateTitle) featInflateTitle.textContent = trans.feat_inflate_title;
+            const featInflateDesc = document.getElementById('feat-inflate-desc');
+            if (featInflateDesc) featInflateDesc.textContent = trans.feat_inflate_desc;
+            
+            const featControlTitle = document.getElementById('feat-control-title');
+            if (featControlTitle) featControlTitle.textContent = trans.feat_control_title;
+            const featControlDesc = document.getElementById('feat-control-desc');
+            if (featControlDesc) featControlDesc.textContent = trans.feat_control_desc;
+            
+            const featAnimTitle = document.getElementById('feat-anim-title');
+            if (featAnimTitle) featAnimTitle.textContent = trans.feat_anim_title;
+            const featAnimDesc = document.getElementById('feat-anim-desc');
+            if (featAnimDesc) featAnimDesc.textContent = trans.feat_anim_desc;
+
+            // Tech Showcase Section
+            const techBadge = document.getElementById('tech-badge');
+            if (techBadge) techBadge.textContent = trans.tech_badge;
+            const techTitle = document.getElementById('tech-title');
+            if (techTitle) techTitle.textContent = trans.tech_title;
+            const techSubtitle = document.getElementById('tech-subtitle');
+            if (techSubtitle) techSubtitle.textContent = trans.tech_subtitle;
+
+            const tc1Title = document.getElementById('tech-card-title-1');
+            if (tc1Title) tc1Title.textContent = trans.tech_card_title_1;
+            const tc1Desc = document.getElementById('tech-card-desc-1');
+            if (tc1Desc) tc1Desc.textContent = trans.tech_card_desc_1;
+
+            const tc2Title = document.getElementById('tech-card-title-2');
+            if (tc2Title) tc2Title.textContent = trans.tech_card_title_2;
+            const tc2Desc = document.getElementById('tech-card-desc-2');
+            if (tc2Desc) tc2Desc.textContent = trans.tech_card_desc_2;
+
+            const tc3Title = document.getElementById('tech-card-title-3');
+            if (tc3Title) tc3Title.textContent = trans.tech_card_title_3;
+            const tc3Desc = document.getElementById('tech-card-desc-3');
+            if (tc3Desc) tc3Desc.textContent = trans.tech_card_desc_3;
+
 
             // Filter button texts
             const filterBtns = document.querySelectorAll('.filter-btn');
@@ -493,15 +1192,78 @@
             document.getElementById('tab-fold-store').textContent = trans.tab_fold_store;
             document.getElementById('tab-tutorials').textContent = trans.tab_tutorials;
 
-            // License Titles
+            // Pricing Header
+            const pricingBadge = document.getElementById('pricing-badge');
+            if (pricingBadge) pricingBadge.textContent = trans.pricing_badge;
+            const pricingTitle = document.getElementById('pricing-title');
+            if (pricingTitle) pricingTitle.textContent = trans.pricing_title;
+            const pricingDesc = document.getElementById('pricing-desc');
+            if (pricingDesc) pricingDesc.textContent = trans.pricing_desc;
+
+            // License Titles & Subtitles
             document.getElementById('license-title-core').textContent = trans.license_core;
             document.getElementById('license-title-pro').textContent = trans.license_pro;
             document.getElementById('license-title-enterprise').textContent = trans.license_enterprise;
+
+            const licDescCore = document.getElementById('license-desc-core');
+            if (licDescCore) licDescCore.textContent = trans.license_desc_core;
+            const licDescPro = document.getElementById('license-desc-pro');
+            if (licDescPro) licDescPro.textContent = trans.license_desc_pro;
+            const licDescEnt = document.getElementById('license-desc-enterprise');
+            if (licDescEnt) licDescEnt.textContent = trans.license_desc_enterprise;
+
+            const licBadgePro = document.getElementById('license-badge-pro');
+            if (licBadgePro) licBadgePro.textContent = trans.license_badge_pro;
 
             // Price Descriptions
             document.getElementById('price-desc-core').textContent = trans.price_desc_core;
             document.getElementById('price-desc-pro').textContent = trans.price_desc_pro;
             document.getElementById('price-desc-enterprise').textContent = trans.price_desc_enterprise;
+
+            // Features translation
+            const fMod1 = document.getElementById('f-modifier-1');
+            if (fMod1) fMod1.innerHTML = `<span class="icon">✓</span> ` + trans.feature_modifier;
+            const fMod2 = document.getElementById('f-modifier-2');
+            if (fMod2) fMod2.innerHTML = `<span class="icon">✓</span> ` + trans.feature_modifier;
+
+            const fView1 = document.getElementById('f-viewport-1');
+            if (fView1) fView1.innerHTML = `<span class="icon">✓</span> ` + trans.feature_viewport;
+            const fView2 = document.getElementById('f-viewport-2');
+            if (fView2) fView2.innerHTML = `<span class="icon">✓</span> ` + trans.feature_viewport;
+
+            const fProf1 = document.getElementById('f-profiles-1');
+            if (fProf1) fProf1.innerHTML = `<span class="icon">✓</span> ` + trans.feature_profiles;
+            const fProf2 = document.getElementById('f-profiles-2');
+            if (fProf2) fProf2.innerHTML = `<span class="icon">✓</span> ` + trans.feature_profiles;
+
+            const fExp1 = document.getElementById('f-exporter-1');
+            if (fExp1) fExp1.innerHTML = `<span class="icon">✗</span> <span class="disabled">${trans.feature_exporter}</span>`;
+            const fExp2 = document.getElementById('f-exporter-2');
+            if (fExp2) fExp2.innerHTML = `<span class="icon">✓</span> <strong>${trans.feature_exporter}</strong>`;
+
+            const fSup1 = document.getElementById('f-support-1');
+            if (fSup1) fSup1.innerHTML = `<span class="icon">✗</span> <span class="disabled">${trans.feature_support}</span>`;
+            const fSup2 = document.getElementById('f-support-2');
+            if (fSup2) fSup2.innerHTML = `<span class="icon">✓</span> <strong>${trans.feature_support}</strong>`;
+
+            const fRlm = document.getElementById('f-rlm');
+            if (fRlm) fRlm.innerHTML = `<span class="icon">✓</span> ` + trans.feature_rlm;
+            const fApi = document.getElementById('f-api');
+            if (fApi) fApi.innerHTML = `<span class="icon">✓</span> ` + trans.feature_api;
+            const fUsers = document.getElementById('f-users');
+            if (fUsers) fUsers.innerHTML = `<span class="icon">✓</span> ` + trans.feature_users;
+            const fSlack = document.getElementById('f-slack');
+            if (fSlack) fSlack.innerHTML = `<span class="icon">✓</span> ` + trans.feature_slack;
+            const fCustom = document.getElementById('f-custom');
+            if (fCustom) fCustom.innerHTML = `<span class="icon">✓</span> ` + trans.feature_custom;
+
+            // Buttons
+            const btnBuyCore = document.getElementById('pricing-btn-core');
+            if (btnBuyCore) btnBuyCore.textContent = trans.btn_buy_core;
+            const btnBuyPro = document.getElementById('pricing-btn-pro');
+            if (btnBuyPro) btnBuyPro.textContent = trans.btn_buy_pro;
+            const btnContactSales = document.getElementById('pricing-btn-enterprise');
+            if (btnContactSales) btnContactSales.textContent = trans.btn_contact_sales;
 
             // Feature Updates
             document.getElementById('feature-updates-core').innerHTML = `<span class="icon">✓</span> ` + trans.feature_updates;
@@ -527,6 +1289,37 @@
             if (t3t) t3t.textContent = trans.t3_title;
             const t3d = document.querySelector('.tutorial-card-desc-3');
             if (t3d) t3d.textContent = trans.t3_desc;
+
+            // Translate modal tab buttons
+            const tabAbout = document.querySelector('[data-modal-tab="about"]');
+            if (tabAbout) tabAbout.textContent = trans.modal_tab_about;
+            const tabPrivacy = document.querySelector('[data-modal-tab="privacy"]');
+            if (tabPrivacy) tabPrivacy.textContent = trans.modal_tab_privacy;
+            const tabTerms = document.querySelector('[data-modal-tab="terms"]');
+            if (tabTerms) tabTerms.textContent = trans.modal_tab_terms;
+            const tabContacts = document.querySelector('[data-modal-tab="contacts"]');
+            if (tabContacts) tabContacts.textContent = trans.modal_tab_contacts;
+
+            // Translate footer links
+            const linkAbout = document.getElementById('link-about');
+            if (linkAbout) linkAbout.textContent = trans.modal_tab_about;
+            const linkPrivacy = document.getElementById('link-privacy');
+            if (linkPrivacy) linkPrivacy.textContent = trans.modal_tab_privacy;
+            const linkTerms = document.getElementById('link-terms');
+            if (linkTerms) linkTerms.textContent = trans.modal_tab_terms;
+            const linkContacts = document.getElementById('link-contacts');
+            if (linkContacts) linkContacts.textContent = trans.modal_tab_contacts;
+
+            // Refresh modal contents if it is open
+            const modal = document.getElementById('legal-modal');
+            if (modal && modal.style.display === 'flex') {
+                switchModalTab(currentModalTab);
+            }
+
+            // Rebuild product cards for current language (if products are loaded)
+            if (currentProducts && currentProducts.length > 0) {
+                buildProductCards();
+            }
         }
 
         // Load products dynamically
@@ -534,6 +1327,7 @@
             try {
                 const response = await fetch('products.json?v=' + Date.now(), { cache: 'no-store' });
                 currentProducts = await response.json();
+                buildProductCards();
                 renderProducts(activeFilter);
             } catch (err) {
                 console.error("Failed to load products:", err);
@@ -549,19 +1343,46 @@
             }
         }
 
-        // Render products list based on filter
-        function renderProducts(filter) {
-            activeFilter = filter;
+        let storeSearchQuery = '';
+
+        function handleStoreSearch(val) {
+            storeSearchQuery = val;
+            const container = document.querySelector('.store-search-bar-container');
+            if (container) {
+                if (val.trim().length > 0) {
+                    container.classList.add('typing');
+                } else {
+                    container.classList.remove('typing');
+                }
+            }
+            renderProducts(activeFilter);
+        }
+
+        // Build product card elements once
+        function buildProductCards() {
             const grid = document.getElementById('products-grid');
+            if (!grid) return;
+            
+            // Clear but keep placeholder structure
             grid.innerHTML = '';
 
-            const filtered = currentProducts.filter(p => filter === 'all' || p.category === filter);
-            const trans = TRANSLATIONS[currentLang];
+            // Add placeholder element for "No folds found"
+            const noFolds = document.createElement('div');
+            noFolds.id = 'no-products-found';
+            noFolds.className = 'hidden-card';
+            noFolds.style.cssText = 'grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-secondary); background: rgba(255, 255, 255, 0.01); border-radius: 12px; border: 1px dashed rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); transition: opacity 0.3s ease; opacity: 0;';
+            noFolds.innerHTML = `<p style="margin: 0; font-size: 16px;" id="no-products-found-text"></p>`;
+            grid.appendChild(noFolds);
 
-            filtered.forEach(p => {
+            const trans = TRANSLATIONS[currentLang];
+            document.getElementById('no-products-found-text').innerText = currentLang === 'ru' ? 'Складки не найдены' : 'No folds found';
+
+            currentProducts.forEach(p => {
                 const card = document.createElement('div');
-                card.className = 'product-card';
+                card.className = 'product-card hidden-card';
+                card.setAttribute('data-id', p.id);
                 card.setAttribute('data-category', p.category);
+                card.setAttribute('onclick', `openProductModal('${p.id}')`);
 
                 let mediaHTML = '';
                 if (p.image) {
@@ -572,12 +1393,19 @@
                     mediaHTML = `<div class="product-fallback-icon">📦</div>`;
                 }
 
-                // Bilingual text selection
                 const title = currentLang === 'ru' ? (p.title_ru || p.title) : (p.title_en || p.title);
                 const description = currentLang === 'ru' ? (p.description_ru || p.description) : (p.description_en || p.description);
                 const badge = currentLang === 'ru' ? (p.badge_ru || p.badge) : (p.badge_en || p.badge);
                 const count = currentLang === 'ru' ? (p.count_ru || p.count) : (p.count_en || p.count);
                 const format = currentLang === 'ru' ? (p.format_ru || p.format) : (p.format_en || p.format);
+
+                const priceDisplay = p.price === 0
+                    ? (currentLang === 'ru' ? 'Бесплатно' : 'Free')
+                    : `$${p.price.toFixed(2)}`;
+
+                const btnLabel = p.price === 0
+                    ? trans.buy_free
+                    : trans.buy_pack;
 
                 card.innerHTML = `
                     <div class="product-badge">${badge}</div>
@@ -592,8 +1420,8 @@
                         <h3>${title}</h3>
                         <p>${description}</p>
                         <div class="product-footer">
-                            <div class="price">$${p.price.toFixed(2)}</div>
-                            <button class="buy-btn" onclick="purchaseProduct('${p.id}')">${trans.buy_pack}</button>
+                            <div class="price">${priceDisplay}</div>
+                            <button class="buy-btn">${btnLabel}</button>
                         </div>
                     </div>
                 `;
@@ -602,18 +1430,276 @@
             });
         }
 
-        // Real Digiseller checkout redirection handler
+        // Update the "No folds found" state
+        function updateNoProductsPlaceholder(immediateVisibleCount) {
+            const placeholder = document.getElementById('no-products-found');
+            if (!placeholder) return;
+
+            if (immediateVisibleCount > 0) {
+                placeholder.style.opacity = '0';
+                placeholder.classList.add('hidden-card');
+            } else {
+                const grid = document.getElementById('products-grid');
+                let activeCards = 0;
+                if (grid) {
+                    grid.querySelectorAll('.product-card').forEach(c => {
+                        if (!c.classList.contains('hidden-card')) {
+                            activeCards++;
+                        }
+                    });
+                }
+
+                if (activeCards === 0) {
+                    placeholder.classList.remove('hidden-card');
+                    placeholder.offsetHeight; // force reflow
+                    placeholder.style.opacity = '1';
+                } else {
+                    placeholder.style.opacity = '0';
+                    placeholder.classList.add('hidden-card');
+                }
+            }
+        }
+
+        // Render products list based on filter (using smooth transitions)
+        function renderProducts(filter) {
+            activeFilter = filter;
+            const grid = document.getElementById('products-grid');
+            if (!grid) return;
+
+            let visibleCount = 0;
+            const cards = grid.querySelectorAll('.product-card');
+
+            cards.forEach(card => {
+                const productId = card.getAttribute('data-id');
+                const p = currentProducts.find(prod => prod.id === productId);
+                if (!p) return;
+
+                const matchesCategory = (filter === 'all' || p.category === filter);
+                
+                const title = currentLang === 'ru' ? (p.title_ru || p.title) : (p.title_en || p.title);
+                const description = currentLang === 'ru' ? (p.description_ru || p.description) : (p.description_en || p.description);
+                const query = storeSearchQuery.toLowerCase().trim();
+                const matchesSearch = !query || 
+                    title.toLowerCase().includes(query) || 
+                    description.toLowerCase().includes(query);
+
+                const matches = matchesCategory && matchesSearch;
+
+                if (matches) {
+                    visibleCount++;
+                    // Cancel exit animation timeout if any
+                    if (card._timeoutId) {
+                        clearTimeout(card._timeoutId);
+                        card._timeoutId = null;
+                    }
+
+                    if (card.classList.contains('hidden-card')) {
+                        card.classList.remove('hidden-card');
+                        card.classList.add('animating-in');
+                        card.offsetHeight; // force reflow
+                        card.classList.remove('animating-in');
+                    } else if (card.classList.contains('animating-out')) {
+                        card.classList.remove('animating-out');
+                    }
+                } else {
+                    if (!card.classList.contains('hidden-card') && !card.classList.contains('animating-out')) {
+                        card.classList.add('animating-out');
+                        card._timeoutId = setTimeout(() => {
+                            card.classList.add('hidden-card');
+                            card.classList.remove('animating-out');
+                            card._timeoutId = null;
+                            updateNoProductsPlaceholder(0); // re-check after animation completes
+                        }, 400);
+                    }
+                }
+            });
+
+            // Update placeholder state
+            updateNoProductsPlaceholder(visibleCount);
+        }
+
+        // Real Digiseller checkout redirection or download handler
         function purchaseProduct(id) {
+            const product = currentProducts.find(p => p.id === id);
+            
+            // Handle free product download
+            if (product && product.price === 0) {
+                if (product.fld_file) {
+                    const link = document.createElement('a');
+                    link.href = product.fld_file;
+                    link.download = product.fld_file.split('/').pop();
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    alert(currentLang === 'ru' ? 'Файл скоро будет добавлен!' : 'File will be added soon!');
+                }
+                return;
+            }
+
             if (id === 'core_license' || id === 'pro_license') {
                 const langParam = currentLang === 'ru' ? 'ru-RU' : 'en-US';
                 window.location.href = `https://oplata.info/asp2/pay_wm.asp?id_d=5943232&lang=${langParam}`;
             } else if (id === 'enterprise') {
                 window.location.href = 'mailto:gggiantt@mail.ru?subject=FoldFlow Enterprise site license inquiry';
             } else {
-                const trans = TRANSLATIONS[currentLang];
-                alert(trans.pack_soon);
+                if (product && product.digiseller_link) {
+                    window.location.href = product.digiseller_link;
+                } else {
+                    const trans = TRANSLATIONS[currentLang];
+                    alert(trans.pack_soon);
+                }
             }
         }
+
+        let activeProduct = null;
+        let activeProductImageIndex = 0;
+
+        function openProductModal(productId) {
+            const product = currentProducts.find(p => p.id === productId);
+            if (!product) return;
+
+            activeProduct = product;
+            activeProductImageIndex = 0;
+
+            const modal = document.getElementById('product-modal');
+            if (!modal) return;
+
+            // Populate static translated texts
+            const trans = TRANSLATIONS[currentLang];
+            document.getElementById('modal-stat-label-files').textContent = trans.files || (currentLang === 'ru' ? 'Файлы' : 'Files');
+            document.getElementById('modal-stat-label-format').textContent = trans.format || (currentLang === 'ru' ? 'Формат' : 'Format');
+
+            // Populate product details
+            const title = currentLang === 'ru' ? (product.title_ru || product.title) : (product.title_en || product.title);
+            const description = currentLang === 'ru' ? (product.description_ru || product.description) : (product.description_en || product.description);
+            const badge = currentLang === 'ru' ? (product.badge_ru || product.badge) : (product.badge_en || product.badge);
+            const count = currentLang === 'ru' ? (product.count_ru || product.count) : (product.count_en || product.count);
+            const format = currentLang === 'ru' ? (product.format_ru || product.format) : (product.format_en || product.format);
+
+            document.getElementById('product-modal-title').textContent = title;
+            document.getElementById('product-modal-desc').textContent = description;
+            document.getElementById('product-modal-cat-badge').textContent = badge;
+            document.getElementById('product-modal-files-count').textContent = count;
+            document.getElementById('product-modal-format').textContent = format;
+
+            const priceDisplay = product.price === 0
+                ? (currentLang === 'ru' ? 'Бесплатно' : 'Free')
+                : `$${product.price.toFixed(2)}`;
+            document.getElementById('product-modal-price').textContent = priceDisplay;
+
+            const btnLabel = product.price === 0
+                ? (trans.buy_free || (currentLang === 'ru' ? 'Скачать' : 'Download'))
+                : (trans.buy_pack || (currentLang === 'ru' ? 'Купить' : 'Buy'));
+            document.getElementById('product-modal-action-btn').textContent = btnLabel;
+
+            // Initialize gallery
+            updateProductModalGallery();
+
+            // Show modal
+            modal.style.display = 'flex';
+            modal.offsetHeight; // force reflow
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Lock background scrolling
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('product-modal');
+            if (!modal) return;
+
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = ''; // Unlock background scrolling
+            }, 300);
+            activeProduct = null;
+        }
+
+        function updateProductModalGallery() {
+            if (!activeProduct) return;
+
+            const mainImg = document.getElementById('product-modal-main-img');
+            const prevBtn = document.getElementById('product-modal-prev-btn');
+            const nextBtn = document.getElementById('product-modal-next-btn');
+            const dotsContainer = document.getElementById('product-modal-dots');
+
+            // Gather images
+            let images = [];
+            if (activeProduct.images && activeProduct.images.length > 0) {
+                images = activeProduct.images;
+            } else if (activeProduct.image) {
+                images = [activeProduct.image];
+            }
+
+            if (images.length === 0) {
+                mainImg.style.display = 'none';
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+                dotsContainer.style.display = 'none';
+            } else {
+                mainImg.style.display = 'block';
+                mainImg.src = images[activeProductImageIndex];
+                mainImg.alt = activeProduct.title;
+
+                // Toggle navigation arrows
+                if (images.length > 1) {
+                    prevBtn.style.display = 'flex';
+                    nextBtn.style.display = 'flex';
+                    dotsContainer.style.display = 'flex';
+
+                    // Rebuild dots
+                    dotsContainer.innerHTML = '';
+                    images.forEach((img, idx) => {
+                        const dot = document.createElement('span');
+                        dot.className = 'gallery-dot' + (idx === activeProductImageIndex ? ' active' : '');
+                        dot.onclick = () => {
+                            activeProductImageIndex = idx;
+                            updateProductModalGallery();
+                        };
+                        dotsContainer.appendChild(dot);
+                    });
+                } else {
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                    dotsContainer.style.display = 'none';
+                }
+            }
+        }
+
+        function prevProductImage() {
+            if (!activeProduct) return;
+            let images = activeProduct.images || (activeProduct.image ? [activeProduct.image] : []);
+            if (images.length <= 1) return;
+
+            activeProductImageIndex = (activeProductImageIndex - 1 + images.length) % images.length;
+            updateProductModalGallery();
+        }
+
+        function nextProductImage() {
+            if (!activeProduct) return;
+            let images = activeProduct.images || (activeProduct.image ? [activeProduct.image] : []);
+            if (images.length <= 1) return;
+
+            activeProductImageIndex = (activeProductImageIndex + 1) % images.length;
+            updateProductModalGallery();
+        }
+
+        function executeProductModalPurchase() {
+            if (!activeProduct) return;
+            purchaseProduct(activeProduct.id);
+        }
+
+        // Close modals when clicking outside the card
+        window.addEventListener('click', function(event) {
+            const productModal = document.getElementById('product-modal');
+            if (event.target === productModal) {
+                closeProductModal();
+            }
+            const legalModal = document.getElementById('legal-modal');
+            if (event.target === legalModal) {
+                closeLegalModal();
+            }
+        });
 
         // Main Navigation Tabs Switching logic
         const tabButtons = document.querySelectorAll('.main-tab-btn');
@@ -704,9 +1790,458 @@
             });
         });
 
+        // Compliance Modal functions
+        let currentModalTab = 'about';
+        function openLegalModal(tabName) {
+            currentModalTab = tabName || 'about';
+            const modal = document.getElementById('legal-modal');
+            if (modal) {
+                modal.style.display = 'flex';
+                // Force a reflow to trigger animation
+                modal.offsetHeight;
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+                switchModalTab(currentModalTab);
+            }
+        }
+
+        function closeLegalModal() {
+            const modal = document.getElementById('legal-modal');
+            if (modal) {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+        }
+
+        function switchModalTab(tabName) {
+            currentModalTab = tabName;
+            document.querySelectorAll('.modal-tab-btn').forEach(btn => {
+                if (btn.getAttribute('data-modal-tab') === tabName) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            const trans = TRANSLATIONS[currentLang];
+            const contentDiv = document.getElementById('modal-text-content');
+            if (contentDiv && trans) {
+                if (tabName === 'about') {
+                    contentDiv.innerHTML = trans.modal_about_text;
+                } else if (tabName === 'privacy') {
+                    contentDiv.innerHTML = trans.modal_privacy_text;
+                } else if (tabName === 'terms') {
+                    contentDiv.innerHTML = trans.modal_terms_text;
+                } else if (tabName === 'contacts') {
+                    contentDiv.innerHTML = trans.modal_contacts_text;
+                }
+                // Scroll to top of content container
+                contentDiv.scrollTop = 0;
+            }
+        }
+
+        // Close modal when clicking outside the card
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('legal-modal');
+            if (e.target === modal) {
+                closeLegalModal();
+            }
+        });
+
+        // Static feedback form submission handler using Web3Forms
+        function handleFeedbackSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const statusDiv = document.getElementById('feedback-status');
+            const submitBtn = document.getElementById('feedback-submit-btn');
+            
+            if (!statusDiv || !submitBtn) return;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = currentLang === 'ru' ? 'Отправка...' : 'Sending...';
+            
+            const formData = new FormData(form);
+            
+            // NOTE: Replace this access_key with your Web3Forms access key (register at web3forms.com)
+            // Currently using a placeholder key.
+            formData.append("access_key", "YOUR_WEB3FORMS_ACCESS_KEY_HERE");
+            formData.append("subject", "FoldFlow Website - New Feedback/Message");
+            formData.append("from_name", "FoldFlow Contact Form");
+            
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+            
+            statusDiv.style.display = "block";
+            statusDiv.style.color = "var(--primary-color)";
+            statusDiv.innerText = currentLang === 'ru' ? 'Отправка...' : 'Sending...';
+            
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let jsonRes = await response.json();
+                if (response.status === 200) {
+                    statusDiv.style.color = "var(--primary-color)";
+                    statusDiv.innerText = currentLang === 'ru' 
+                        ? 'Спасибо! Ваше сообщение успешно отправлено.' 
+                        : 'Thank you! Your message has been sent successfully.';
+                    form.reset();
+                } else {
+                    statusDiv.style.color = "#ff4d4d";
+                    statusDiv.innerText = jsonRes.message || (currentLang === 'ru' 
+                        ? 'Произошла ошибка при отправке.' 
+                        : 'Something went wrong while sending.');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                statusDiv.style.color = "#ff4d4d";
+                statusDiv.innerText = currentLang === 'ru' 
+                    ? 'Ошибка сети при отправке.' 
+                    : 'Network error occurred while sending.';
+            })
+            .then(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = currentLang === 'ru' ? 'Отправить' : 'Send Message';
+                setTimeout(() => {
+                    statusDiv.style.display = "none";
+                }, 6000);
+            });
+        }
+
+        // Hash-based tab switching
+        function handleHashTab() {
+            const hash = window.location.hash;
+            if (hash === '#store' || hash === '#fold-store') {
+                const storeBtn = document.querySelector('.main-tab-btn[data-tab="fold-store"]');
+                if (storeBtn) storeBtn.click();
+            } else if (hash === '#tutorials') {
+                const tutBtn = document.querySelector('.main-tab-btn[data-tab="tutorials"]');
+                if (tutBtn) tutBtn.click();
+            } else {
+                const homeBtn = document.querySelector('.main-tab-btn[data-tab="fold-flow"]');
+                if (homeBtn) homeBtn.click();
+            }
+        }
+        window.addEventListener('hashchange', handleHashTab);
+
         // Initialize
         applyLanguage();
         loadProducts();
+        handleHashTab();
+
+        // --- Viewport Isometric Grid Particle Animation ---
+        (function() {
+            const svg = document.getElementById('iso-mesh-svg');
+            if (!svg) return;
+            
+            const numRows = 8;
+            const numCols = 8;
+            const particles = [];
+            const lines = [];
+
+            // Create particles (circles)
+            for (let r = 0; r < numRows; r++) {
+                for (let c = 0; c < numCols; c++) {
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    circle.setAttribute('r', '3');
+                    circle.setAttribute('fill', '#ffffff');
+                    circle.setAttribute('filter', 'url(#glow-dots)');
+                    circle.setAttribute('style', 'transition: fill 0.1s ease, r 0.1s ease;');
+                    svg.appendChild(circle);
+                    
+                    const r_src = 7;
+                    const c_src = 0;
+                    const dist = Math.sqrt((r - r_src) * (r - r_src) + (c - c_src) * (c - c_src));
+                    
+                    particles.push({
+                        r: r,
+                        c: c,
+                        element: circle,
+                        x: 0,
+                        y: 0,
+                        dist: dist
+                    });
+                }
+            }
+
+            // Create horizontal connection lines
+            for (let r = 0; r < numRows; r++) {
+                for (let c = 0; c < numCols - 1; c++) {
+                    const idx1 = r * numCols + c;
+                    const idx2 = r * numCols + (c + 1);
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line.setAttribute('stroke', 'rgba(255, 255, 255, 0.05)');
+                    line.setAttribute('stroke-width', '1');
+                    line.setAttribute('stroke-dasharray', '3 3');
+                    svg.insertBefore(line, svg.firstChild);
+                    
+                    lines.push({
+                        from: idx1,
+                        to: idx2,
+                        element: line
+                    });
+                }
+            }
+
+            // Create vertical connection lines
+            for (let r = 0; r < numRows - 1; r++) {
+                for (let c = 0; c < numCols; c++) {
+                    const idx1 = r * numCols + c;
+                    const idx2 = (r + 1) * numCols + c;
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line.setAttribute('stroke', 'rgba(255, 255, 255, 0.05)');
+                    line.setAttribute('stroke-width', '1');
+                    line.setAttribute('stroke-dasharray', '3 3');
+                    svg.insertBefore(line, svg.firstChild);
+                    
+                    lines.push({
+                        from: idx1,
+                        to: idx2,
+                        element: line
+                    });
+                }
+            }
+
+            let startTime = null;
+
+            function animateIsoMesh(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = (timestamp - startTime) / 1000;
+                
+                // Cycle length: 12 seconds
+                // 0s to 5s: Wave
+                // 5s to 7s: Assemble Transition
+                // 7s to 10s: Assembled Fold Shape
+                // 10s to 12s: Dissolve Transition
+                const cycleTime = elapsed % 12;
+                let state = 'wave';
+                let t = 0; // interpolation factor: 0 = wave, 1 = fold shape
+                
+                if (cycleTime < 5) {
+                    state = 'wave';
+                    t = 0;
+                } else if (cycleTime < 7) {
+                    state = 'transition-to-shape';
+                    const progress = (cycleTime - 5) / 2;
+                    // Smooth cubic ease-in-out
+                    t = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                } else if (cycleTime < 10) {
+                    state = 'shape';
+                    t = 1;
+                } else {
+                    state = 'transition-to-wave';
+                    const progress = (cycleTime - 10) / 2;
+                    // Smooth cubic ease-in-out
+                    const ease = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                    t = 1 - ease;
+                }
+
+                // Dijkstra-like wavefront pulse propagation cycle (runs every 4 seconds)
+                const pulseCycle = 4.0;
+                const pulseProgress = (elapsed % pulseCycle) / pulseCycle;
+                const waveFront = pulseProgress * 13.0; // max distance visually is approx 10
+                
+                // Update particle positions
+                particles.forEach(p => {
+                    // Base isometric positioning centered in the SVG viewport (500x500)
+                    const base_x = 250 + (p.c - p.r) * 35;
+                    const base_y = 155 + (p.c + p.r) * 17.5;
+                    
+                    // Wave motion: fluid floating fabric simulation
+                    const wave_z = Math.sin(elapsed * 1.5 + p.r * 0.8) * 18 + Math.cos(elapsed * 1.1 + p.c * 0.8) * 14;
+                    const wave_x = base_x + Math.sin(elapsed * 1.0 + p.r * 0.8) * 10;
+                    const wave_y = base_y + wave_z;
+                    
+                    // Assembled Fold Shape: 3D dynamic Gaussian fold crease along column 3.5
+                    // Includes a slight ripple animation running along the crease
+                    const peak_ripple = Math.sin(elapsed * 3.5 + p.r * 1.0) * 8;
+                    const height_offset = (75 + peak_ripple) * Math.exp(-Math.pow(p.c - 3.5, 2) / 1.4);
+                    const shape_x = base_x;
+                    const shape_y = base_y - height_offset;
+                    
+                    // Interpolate position
+                    p.x = wave_x * (1 - t) + shape_x * t;
+                    p.y = wave_y * (1 - t) + shape_y * t;
+                    
+                    p.element.setAttribute('cx', p.x);
+                    p.element.setAttribute('cy', p.y);
+                    
+                    // Shading calculations based on displacement height
+                    const dy = base_y - p.y; // height displacement
+                    const h_frac = Math.min(Math.max((dy + 15) / 85, 0), 1); // clamped 0..1
+                    
+                    // Calculate wave front envelope (Dijkstra simulation) - fades out as mesh transitions to fold shape (1 - t)
+                    const distanceToFront = Math.abs(p.dist - waveFront);
+                    const pulseFactor = Math.exp(-Math.pow(distanceToFront / 0.75, 2)) * (1 - t); // Gaussian curve width
+                    
+                    // Size shader: dots at peaks are larger, boosted further by Dijkstra wavefront
+                    const dot_size = (2.8 + h_frac * 2.2) + pulseFactor * 3.2;
+                    p.element.setAttribute('r', dot_size);
+                    
+                    // Color shader: valleys are dimmer white/grey, peaks are glowing bright white
+                    const base_val = Math.floor(130 + h_frac * 125);
+                    
+                    // Blend colors towards pure white on wave front
+                    const final_r = Math.floor(base_val * (1 - pulseFactor) + 255 * pulseFactor);
+                    const final_g = Math.floor(base_val * (1 - pulseFactor) + 255 * pulseFactor);
+                    const final_b = Math.floor(base_val * (1 - pulseFactor) + 255 * pulseFactor);
+                    
+                    p.element.setAttribute('fill', `rgb(${final_r}, ${final_g}, ${final_b})`);
+                    
+                    // Boost opacity on wave front
+                    const base_opacity = 0.55 + h_frac * 0.45;
+                    const final_opacity = base_opacity * (1 - pulseFactor) + 1.0 * pulseFactor;
+                    p.element.setAttribute('opacity', final_opacity);
+                    
+                    // Save height fraction for lines shading
+                    p.h_frac = h_frac;
+                });
+                
+                // Update connections visibility, coordinates and shading
+                const baseLineOpacity = 0.03 * (1 - t) + 0.16 * t;
+                lines.forEach(l => {
+                    const p1 = particles[l.from];
+                    const p2 = particles[l.to];
+                    l.element.setAttribute('x1', p1.x);
+                    l.element.setAttribute('y1', p1.y);
+                    l.element.setAttribute('x2', p2.x);
+                    l.element.setAttribute('y2', p2.y);
+                    
+                    // Dijkstra line pulse based on average distance from start node - fades out as mesh transitions to fold shape (1 - t)
+                    const avg_dist = (p1.dist + p2.dist) / 2;
+                    const lineDistanceToFront = Math.abs(avg_dist - waveFront);
+                    const linePulseFactor = Math.exp(-Math.pow(lineDistanceToFront / 0.75, 2)) * (1 - t);
+                    
+                    // Shade connection line opacity based on heights of connected nodes
+                    const avg_h = (p1.h_frac + p2.h_frac) / 2;
+                    const opacity = baseLineOpacity * (0.6 + avg_h * 0.4);
+                    
+                    // Boost opacity and color towards cyan during pulse, otherwise return to default green/cyan
+                    const finalLineOpacity = opacity * (1 - linePulseFactor) + 0.65 * linePulseFactor;
+                    const line_r = Math.floor(80 * linePulseFactor);
+                    const line_g = 255;
+                    const line_b = Math.floor(136 * (1 - linePulseFactor) + 245 * linePulseFactor);
+                    
+                    l.element.setAttribute('stroke', `rgba(${line_r}, ${line_g}, ${line_b}, ${finalLineOpacity})`);
+                    l.element.setAttribute('stroke-dasharray', state === 'shape' ? 'none' : '3 3');
+                });
+                
+                requestAnimationFrame(animateIsoMesh);
+            }
+            
+            requestAnimationFrame(animateIsoMesh);
+        })();
+
+        // Interactive Hover Zoom for Product Modal Gallery (Wrapped in DOMContentLoaded to ensure elements exist)
+        window.addEventListener('DOMContentLoaded', function() {
+            const wrap = document.querySelector('.product-modal-main-img-wrap');
+            const img = document.getElementById('product-modal-main-img');
+            if (wrap && img) {
+                wrap.addEventListener('mousemove', function(e) {
+                    if (img.style.display !== 'none' && img.src) {
+                        const rect = wrap.getBoundingClientRect();
+                        const x = ((e.clientX - rect.left) / rect.width) * 100;
+                        const y = ((e.clientY - rect.top) / rect.height) * 100;
+                        img.style.transformOrigin = `${x}% ${y}%`;
+                    }
+                });
+                wrap.addEventListener('mouseenter', function() {
+                    if (img.style.display !== 'none' && img.src) {
+                        img.style.transform = 'scale(2.2)';
+                    }
+                });
+                wrap.addEventListener('mouseleave', function() {
+                    img.style.transform = 'scale(1)';
+                    img.style.transformOrigin = 'center center';
+                });
+                
+                // Reset zoom when switching images
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.attributeName === 'src') {
+                            img.style.transform = 'scale(1)';
+                            img.style.transformOrigin = 'center center';
+                        }
+                    });
+                });
+                observer.observe(img, { attributes: true });
+            }
+        });
+    </script>
+    <!-- Modern Glassmorphic Legal Modal -->
+    <div id="legal-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeLegalModal()" aria-label="Close modal">&times;</button>
+            <div class="modal-tabs">
+                <button class="modal-tab-btn active" data-modal-tab="about" onclick="switchModalTab('about')">О сервисе</button>
+                <button class="modal-tab-btn" data-modal-tab="privacy" onclick="switchModalTab('privacy')">Политика конфиденциальности</button>
+                <button class="modal-tab-btn" data-modal-tab="terms" onclick="switchModalTab('terms')">Пользовательское соглашение</button>
+                <button class="modal-tab-btn" data-modal-tab="contacts" onclick="switchModalTab('contacts')">Контакты</button>
+            </div>
+            <div class="modal-body-content" id="modal-text-content"></div>
+        </div>
+    </div>
+
+    <!-- Glassmorphic Product Detail Modal -->
+    <div id="product-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-card product-modal-card">
+            <button class="modal-close" onclick="closeProductModal()" aria-label="Close modal">&times;</button>
+            <div class="product-modal-body" id="product-modal-content">
+                <div class="product-modal-grid">
+                    <!-- Left Column: Gallery -->
+                    <div class="product-modal-gallery">
+                        <div class="product-modal-main-img-wrap">
+                            <img id="product-modal-main-img" src="" alt="" class="product-modal-main-img">
+                            <button id="product-modal-prev-btn" class="gallery-nav-btn prev" onclick="prevProductImage()">&lt;</button>
+                            <button id="product-modal-next-btn" class="gallery-nav-btn next" onclick="nextProductImage()">&gt;</button>
+                        </div>
+                        <div id="product-modal-dots" class="gallery-dots"></div>
+                    </div>
+                    <!-- Right Column: Info -->
+                    <div class="product-modal-info">
+                        <div class="product-modal-badge-row">
+                            <span id="product-modal-cat-badge" class="product-cat-badge"></span>
+                        </div>
+                        <h2 id="product-modal-title"></h2>
+                        <p id="product-modal-desc"></p>
+                        <div class="product-modal-stats">
+                            <div class="modal-stat-item">
+                                <span class="modal-stat-label" id="modal-stat-label-files"></span>
+                                <span class="modal-stat-value" id="product-modal-files-count"></span>
+                            </div>
+                            <div class="modal-stat-item">
+                                <span class="modal-stat-label" id="modal-stat-label-format"></span>
+                                <span class="modal-stat-value" id="product-modal-format"></span>
+                            </div>
+                        </div>
+                        <div class="product-modal-footer">
+                            <div class="product-modal-price" id="product-modal-price"></div>
+                            <button class="product-modal-buy-btn" id="product-modal-action-btn" onclick="executeProductModalPurchase()"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Local Analytics Tracking Script -->
+    <script>
+        (function() {
+            try {
+                const path = window.location.pathname;
+                const ref = document.referrer || "";
+                const res = `${window.screen.width}x${window.screen.height}`;
+                const url = `http://localhost:8081/api/track?path=${encodeURIComponent(path)}&ref=${encodeURIComponent(ref)}&res=${encodeURIComponent(res)}`;
+                fetch(url, { mode: 'no-cors' }).catch(() => {});
+            } catch(e) {}
+        })();
     </script>
 </body>
 </html>

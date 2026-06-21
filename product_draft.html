@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - FoldFlow Store</title>
+    <!-- Outfit Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2">
+    <!-- Embed specific styles -->
+    <style>
+        body {
+            background-color: #050508 !important;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .product-page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 24px 60px 24px;
+        }
+
+        .back-link-container {
+            margin-bottom: 32px;
+        }
+
+        .back-link-btn {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-link-btn:hover {
+            color: #00cc66;
+            transform: translateX(-4px);
+        }
+
+        /* Two column layout */
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 991px) {
+            .product-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* Gallery container */
+        .product-gallery {
+            background: rgba(12, 13, 20, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            aspect-ratio: 16/11;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Don't crop product page images, let them fit fully */
+            background: #020205;
+        }
+
+        .product-gallery-icon-wrap {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 50%;
+            border: 1px dashed rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Info container */
+        .product-details-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-cat-badge {
+            display: inline-block;
+            align-self: flex-start;
+            background: rgba(0, 204, 102, 0.08);
+            border: 1px solid rgba(0, 204, 102, 0.2);
+            color: #00cc66;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .product-detail-title {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        .product-detail-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        /* Stats Grid */
+        .product-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 24px 0;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* Purchase actions */
+        .purchase-action-container {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .product-detail-price {
+            font-size: 32px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .product-detail-buy-btn {
+            flex-grow: 1;
+            background: #00cc66;
+            color: #050508;
+            border: none;
+            padding: 16px 32px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 204, 102, 0.2);
+            text-decoration: none;
+        }
+
+        .product-detail-buy-btn:hover {
+            background: #00e676;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 204, 102, 0.4);
+        }
+
+        /* Related section */
+        .related-section {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 60px;
+        }
+
+        .related-header {
+            margin-bottom: 40px;
+        }
+
+        .related-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .related-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Error layout */
+        .error-layout {
+            text-align: center;
+            padding: 100px 24px;
+        }
+
+        .error-layout h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ff4757;
+            margin-bottom: 16px;
+        }
+
+        .error-layout p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 16px;
+        }
+
+        /* Language switch button overrides to fit theme */
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .lang-btn.active {
+            background: rgba(0, 204, 102, 0.1);
+            border-color: rgba(0, 204, 102, 0.3);
+            color: #00cc66;
+        }
+
+        /* Override stylesheet image stretch issues */
+        .product-image {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.05) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header (matching index.html) -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                Fold<span style="color: #00cc66;">Flow</span>
+            </a>
+            <nav class="nav">
+                <a href="index.html#fold-flow" id="nav-home">Home</a>
+                <a href="index.html#fold-store" id="nav-store" class="active">Store</a>
+                <a href="index.html#engine" id="nav-about">About Engine</a>
+                <a href="index.html#faq" id="nav-faq">FAQ</a>
+                <a href="mailto:gggiantt@mail.ru" id="nav-support">Support</a>
+            </nav>
+            <div class="lang-selector">
+                <button class="lang-btn" id="lang-btn-en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" id="lang-btn-ru" onclick="setLanguage('ru')">RU</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="product-page-container">
+        <!-- Back Link -->
+        <div class="back-link-container">
+            <a href="index.html#fold-store" class="back-link-btn" id="back-store-btn">← Back to Store</a>
+        </div>
+
+        <!-- Product details content (dynamically filled) -->
+        <div id="product-content-wrapper">
+            <!-- Spinner / Loading state initially -->
+            <div style="text-align: center; padding: 100px 0; color: var(--text-secondary);">
+                Loading...
+            </div>
+        </div>
+
+        <!-- Related Items Section -->
+        <section class="related-section" id="related-products-section" style="display: none;">
+            <div class="related-header">
+                <h2 id="related-title-text">Related Folds & Assets</h2>
+                <p id="related-desc-text">Expand your procedural library with other high-quality folds.</p>
+            </div>
+            <div class="products-grid" id="related-products-grid">
+                <!-- Related product cards will be injected here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <div class="logo" style="margin-bottom: 12px; display: inline-block;">
+                    Fold<span style="color: #00cc66;">Flow</span>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 14px; max-width: 320px;">
+                    Low-level C++ core geometry engineering for maximum viewport performance in 3ds Max.
+                </p>
+            </div>
+            <div class="footer-right">
+                <p style="color: var(--text-muted); font-size: 13px;">
+                    © 2026 FoldFlow. All rights reserved. Developed by Ilia Artemov.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script>
+        let currentLang = localStorage.getItem('foldflow_lang') || 'en';
+        let currentProducts = [];
+        let product = null;
+
+        const TRANSLATIONS = {
+            en: {
+                back_store: "← Back to Store",
+                related_title: "Related Folds & Assets",
+                related_desc: "Expand your procedural library with other high-quality folds.",
+                buy_pack: "Get Fold Pack",
+                buy_free: "Download Free",
+                pack_soon: "Pack will be available soon!",
+                download_soon: "File will be added soon!",
+                files: "Files",
+                format: "Format",
+                category: "Category",
+                price: "Price",
+                nav_home: "Home",
+                nav_store: "Store",
+                nav_about: "About Engine",
+                nav_faq: "FAQ",
+                nav_support: "Support",
+                error_title: "Product Not Found",
+                error_desc: "The product you are looking for does not exist or has been removed.",
+                free_price: "Free",
+                categories: {
+                    all: "All Folds",
+                    bed_folds: "Bed Folds",
+                    loop_folds: "Loop Folds",
+                    rectangular: "Rectangular Folds",
+                    linear: "Linear Folds",
+                    shapes: "Shapes"
+                }
+            },
+            ru: {
+                back_store: "← Вернуться в магазин",
+                related_title: "Похожие складки и ассеты",
+                related_desc: "Расширьте свою библиотеку другими качественными складками.",
+                buy_pack: "Купить набор",
+                buy_free: "Скачать бесплатно",
+                pack_soon: "Набор скоро будет доступен!",
+                download_soon: "Файл скоро будет добавлен!",
+                files: "Файлов",
+                format: "Формат",
+                category: "Категория",
+                price: "Цена",
+                nav_home: "Главная",
+                nav_store: "Магазин",
+                nav_about: "О движке",
+                nav_faq: "FAQ",
+                nav_support: "Поддержка",
+                error_title: "Товар не найден",
+                error_desc: "Запрашиваемый товар не существует или был удален.",
+                free_price: "Бесплатно",
+                categories: {
+                    all: "Все складки",
+                    bed_folds: "Складки для кровати",
+                    loop_folds: "Loop складки",
+                    rectangular: "Прямоугольные",
+                    linear: "Линейные",
+                    shapes: "Формы"
+                }
+            }
+        };
+
+        const SVG_ICONS = {
+            organic: `<svg viewBox="0 0 100 100" class="product-icon icon-plugin" style="width: 100px; height: 100px; fill: none; stroke: #00cc66; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;"><path d="M20,50 C20,30 40,30 50,50 C60,70 80,70 80,50"></path><path d="M20,60 C20,40 40,40 50,60 C60,80 80,80 80,60" opacity="0.6"></path><path d="M20,40 C20,20 40,20 50,40 C60,60 80,60 80,40" opacity="0.4"></path></svg>`,
+            zipper: `<svg viewBox="0 0 100 100" class="product-icon" style="width: 100px; height: 100px; fill: none; stroke: #00cc66; stroke-width: 2.5; stroke-linecap: round;"><path d="M50,10 L50,90" stroke-dasharray="4,4"></path><path d="M40,20 L50,25 L60,20 M40,40 L50,45 L60,40 M40,60 L50,65 L60,60 M40,80 L50,85 L60,80" stroke-width="3"></path></svg>`,
+            silk: `<svg viewBox="0 0 100 100" class="product-icon" style="width: 100px; height: 100px; fill: none; stroke: #00cc66; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;"><path d="M15,30 C30,10 50,50 60,30 C70,10 85,50 85,50 L85,75 C85,75 70,35 60,55 C50,75 30,35 15,55 Z" fill="rgba(0, 204, 102, 0.05)"></path></svg>`
+        };
+
+        // Fetch products and populate details
+        async function initPage() {
+            updateLanguageUI();
+            
+            try {
+                const response = await fetch('products.json?v=' + Date.now(), { cache: 'no-store' });
+                currentProducts = await response.json();
+                
+                // Get product ID from URL
+                const params = new URLSearchParams(window.location.search);
+                const productId = params.get('id');
+                
+                product = currentProducts.find(p => p.id === productId);
+                
+                if (product) {
+                    renderProductDetails();
+                    renderRelatedProducts();
+                } else {
+                    renderErrorPage();
+                }
+            } catch (err) {
+                console.error("Failed to load product page details:", err);
+                renderErrorPage();
+            }
+        }
+
+        function setLanguage(lang) {
+            if (lang !== currentLang) {
+                currentLang = lang;
+                localStorage.setItem('foldflow_lang', currentLang);
+                updateLanguageUI();
+                if (product) {
+                    renderProductDetails();
+                    renderRelatedProducts();
+                }
+            }
+        }
+
+        function updateLanguageUI() {
+            // Update active buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.id === `lang-btn-${currentLang}`) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            const trans = TRANSLATIONS[currentLang];
+            
+            // Translate navigation & static buttons
+            document.getElementById('nav-home').textContent = trans.nav_home;
+            document.getElementById('nav-store').textContent = trans.nav_store;
+            document.getElementById('nav-about').textContent = trans.nav_about;
+            document.getElementById('nav-faq').textContent = trans.nav_faq;
+            document.getElementById('nav-support').textContent = trans.nav_support;
+            document.getElementById('back-store-btn').textContent = trans.back_store;
+            
+            document.getElementById('related-title-text').textContent = trans.related_title;
+            document.getElementById('related-desc-text').textContent = trans.related_desc;
+        }
+
+        function renderProductDetails() {
+            const wrapper = document.getElementById('product-content-wrapper');
+            if (!wrapper || !product) return;
+
+            const trans = TRANSLATIONS[currentLang];
+
+            // Bilingual fields
+            const title = currentLang === 'ru' ? (product.title_ru || product.title) : (product.title_en || product.title);
+            const description = currentLang === 'ru' ? (product.description_ru || product.description) : (product.description_en || product.description);
+            const badge = currentLang === 'ru' ? (product.badge_ru || product.badge) : (product.badge_en || product.badge);
+            const count = currentLang === 'ru' ? (product.count_ru || product.count) : (product.count_en || product.count);
+            const format = currentLang === 'ru' ? (product.format_ru || product.format) : (product.format_en || product.format);
+
+            const priceDisplay = product.price === 0
+                ? trans.free_price
+                : `$${product.price.toFixed(2)}`;
+
+            const btnLabel = product.price === 0
+                ? trans.buy_free
+                : trans.buy_pack;
+
+            // Generate media preview
+            let mediaHTML = '';
+            if (product.image) {
+                mediaHTML = `<img src="${product.image}" alt="${product.title_en || product.title}" class="product-gallery-image">`;
+            } else if (product.svg_icon && SVG_ICONS[product.svg_icon]) {
+                mediaHTML = `<div class="product-gallery-icon-wrap">${SVG_ICONS[product.svg_icon]}</div>`;
+            } else {
+                mediaHTML = `<div class="product-gallery-icon-wrap" style="font-size: 80px;">📦</div>`;
+            }
+
+            wrapper.innerHTML = `
+                <div class="product-detail-grid">
+                    <!-- Left Gallery -->
+                    <div class="product-gallery">
+                        ${mediaHTML}
+                    </div>
+
+                    <!-- Right Info -->
+                    <div class="product-details-info">
+                        <div class="product-cat-badge">${badge}</div>
+                        <h1 class="product-detail-title">${title}</h1>
+                        <p class="product-detail-description">${description}</p>
+                        
+                        <div class="product-stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-label">${trans.files}</span>
+                                <span class="stat-value">${count}</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">${trans.format}</span>
+                                <span class="stat-value">${format}</span>
+                            </div>
+                        </div>
+
+                        <div class="purchase-action-container">
+                            <div class="product-detail-price">${priceDisplay}</div>
+                            <button class="product-detail-buy-btn" onclick="executePurchase()">${btnLabel}</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function executePurchase() {
+            if (!product) return;
+            const trans = TRANSLATIONS[currentLang];
+
+            // Free product handling
+            if (product.price === 0) {
+                if (product.fld_file) {
+                    const link = document.createElement('a');
+                    link.href = product.fld_file;
+                    link.download = product.fld_file.split('/').pop();
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    alert(trans.download_soon);
+                }
+                return;
+            }
+
+            // Paid product handling
+            if (product.digiseller_link) {
+                window.location.href = product.digiseller_link;
+            } else {
+                alert(trans.pack_soon);
+            }
+        }
+
+        function renderRelatedProducts() {
+            const grid = document.getElementById('related-products-grid');
+            const section = document.getElementById('related-products-section');
+            if (!grid || !section || !product) return;
+
+            // Find up to 3 related items, excluding the current one
+            const related = currentProducts
+                .filter(p => p.id !== product.id)
+                .slice(0, 3);
+
+            if (related.length === 0) {
+                section.style.display = 'none';
+                return;
+            }
+
+            section.style.display = 'block';
+            grid.innerHTML = '';
+
+            const trans = TRANSLATIONS[currentLang];
+
+            related.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('onclick', `window.location.href = 'product.html?id=${p.id}'`);
+
+                let mediaHTML = '';
+                if (p.image) {
+                    mediaHTML = `<img src="${p.image}" alt="${p.title_en || p.title}" class="product-image">`;
+                } else if (p.svg_icon && SVG_ICONS[p.svg_icon]) {
+                    // Reduce width/height for related card preview
+                    mediaHTML = SVG_ICONS[p.svg_icon].replace('width: 100px; height: 100px;', '');
+                } else {
+                    mediaHTML = `<div class="product-fallback-icon">📦</div>`;
+                }
+
+                const title = currentLang === 'ru' ? (p.title_ru || p.title) : (p.title_en || p.title);
+                const description = currentLang === 'ru' ? (p.description_ru || p.description) : (p.description_en || p.description);
+                const badge = currentLang === 'ru' ? (p.badge_ru || p.badge) : (p.badge_en || p.badge);
+                const count = currentLang === 'ru' ? (p.count_ru || p.count) : (p.count_en || p.count);
+                const format = currentLang === 'ru' ? (p.format_ru || p.format) : (p.format_en || p.format);
+
+                const priceDisplay = p.price === 0
+                    ? (currentLang === 'ru' ? 'Бесплатно' : 'Free')
+                    : `$${p.price.toFixed(2)}`;
+
+                const btnLabel = p.price === 0
+                    ? trans.buy_free
+                    : trans.buy_pack;
+
+                card.innerHTML = `
+                    <div class="product-badge">${badge}</div>
+                    <div class="product-media">
+                        ${mediaHTML}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="count">${count}</span>
+                            <span class="format">${format}</span>
+                        </div>
+                        <h3>${title}</h3>
+                        <p>${description}</p>
+                        <div class="product-footer">
+                            <div class="price">${priceDisplay}</div>
+                            <button class="buy-btn">${btnLabel}</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function renderErrorPage() {
+            const wrapper = document.getElementById('product-content-wrapper');
+            const section = document.getElementById('related-products-section');
+            if (section) section.style.display = 'none';
+            if (!wrapper) return;
+
+            const trans = TRANSLATIONS[currentLang];
+            wrapper.innerHTML = `
+                <div class="error-layout">
+                    <h1>${trans.error_title}</h1>
+                    <p>${trans.error_desc}</p>
+                    <a href="index.html#fold-store" class="product-detail-buy-btn" style="display: inline-block; text-decoration: none;">${trans.back_store}</a>
+                </div>
+            `;
+        }
+
+        // Run
+        initPage();
+    </script>
+    <!-- Local Analytics Tracking Script -->
+    <script>
+        (function() {
+            try {
+                const path = window.location.pathname;
+                const ref = document.referrer || "";
+                const res = `${window.screen.width}x${window.screen.height}`;
+                const url = `http://localhost:8081/api/track?path=${encodeURIComponent(path)}&ref=${encodeURIComponent(ref)}&res=${encodeURIComponent(res)}`;
+                fetch(url, { mode: 'no-cors' }).catch(() => {});
+            } catch(e) {}
+        })();
+    </script>
+</body>
+</html>
