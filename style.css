@@ -15,6 +15,9 @@
     --accent-violet: #7b2cbf; /* Violet */
     
     --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    --showcase-slide-width: 20%;
+    --showcase-slide-margin: 1.5%;
 }
 
 * {
@@ -1507,10 +1510,24 @@ footer {
    Developer's C++ Showcase Section
    ========================================================================== */
 .tech-showcase-section {
-    padding: 80px 0;
+    padding: 60px 0;
     position: relative;
     border-bottom: 1px solid var(--card-border);
     background: linear-gradient(180deg, rgba(15, 16, 22, 0.2) 0%, rgba(10, 10, 14, 0.8) 100%);
+}
+
+#showcase {
+    position: relative;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 255, 128, 0.03) 0%, transparent 65%),
+                radial-gradient(circle at 1.5px 1.5px, rgba(255, 255, 255, 0.02) 1.5px, transparent 0) !important;
+    background-size: 100% 100%, 44px 44px !important;
+    background-position: center center, center top !important;
+}
+
+#gallery-title {
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .developer-quote {
@@ -1631,15 +1648,16 @@ footer {
    ========================================================================== */
 .showcase-carousel-container {
     position: relative;
-    max-width: 1000px;
-    margin: 40px auto 0 auto;
+    max-width: 100%;
+    width: 100%;
+    margin: 10px auto 0 auto;
     overflow: hidden;
-    padding: 20px 0;
+    padding: 30px 0 65px 0;
 }
 
 .showcase-track-wrapper {
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .showcase-track {
@@ -1648,14 +1666,54 @@ footer {
     will-change: transform;
 }
 
+.showcase-track.dragging {
+    transition: none !important;
+}
+
+.showcase-track.dragging .showcase-slide {
+    transition: none !important;
+}
+
 .showcase-slide {
-    min-width: 100%;
+    flex: 0 0 var(--showcase-slide-width);
+    margin: 0 var(--showcase-slide-margin);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 0 50px;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    cursor: pointer;
+}
+
+.showcase-slide.active {
+    opacity: 1;
+    z-index: 5;
+    cursor: default;
+}
+
+.showcase-slide.adjacent-1 {
+    opacity: 0.45;
+    z-index: 3;
+}
+
+.showcase-slide.adjacent-2 {
+    opacity: 0.15;
+    z-index: 2;
+}
+
+.showcase-slide.adjacent-far {
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.showcase-slide:not(.active) .showcase-title,
+.showcase-slide:not(.active) .showcase-actions {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .showcase-image-container {
@@ -1666,6 +1724,34 @@ footer {
     justify-content: center;
     position: relative;
     margin-bottom: 25px;
+    background: none;
+    transition: background 0.4s ease;
+}
+
+/* Three background colors matching the licenses */
+.showcase-image-container.bg-glow-blue {
+    background: radial-gradient(circle at center, rgba(0, 180, 216, 0.12) 0%, transparent 65%);
+}
+
+.showcase-image-container.bg-glow-green {
+    background: radial-gradient(circle at center, rgba(0, 204, 102, 0.12) 0%, transparent 65%);
+}
+
+.showcase-image-container.bg-glow-purple {
+    background: radial-gradient(circle at center, rgba(157, 78, 221, 0.12) 0%, transparent 65%);
+}
+
+/* Hover effects for active slide image containers */
+.showcase-slide.active:hover .showcase-image-container.bg-glow-blue {
+    background: radial-gradient(circle at center, rgba(0, 180, 216, 0.18) 0%, transparent 65%);
+}
+
+.showcase-slide.active:hover .showcase-image-container.bg-glow-green {
+    background: radial-gradient(circle at center, rgba(0, 204, 102, 0.18) 0%, transparent 65%);
+}
+
+.showcase-slide.active:hover .showcase-image-container.bg-glow-purple {
+    background: radial-gradient(circle at center, rgba(157, 78, 221, 0.18) 0%, transparent 65%);
 }
 
 .showcase-image {
@@ -1676,8 +1762,8 @@ footer {
     transition: transform 0.4s ease;
 }
 
-.showcase-slide:hover .showcase-image {
-    transform: scale(1.02);
+.showcase-slide.active:hover .showcase-image {
+    transform: scale(1.05);
 }
 
 .showcase-title {
@@ -2614,6 +2700,13 @@ footer {
     background: #00e676;
     transform: translateY(-2px);
     box-shadow: 0 10px 24px rgba(0, 204, 102, 0.35);
+}
+
+@media (max-width: 768px) {
+    :root {
+        --showcase-slide-width: 75%;
+        --showcase-slide-margin: 2.5%;
+    }
 }
 
 

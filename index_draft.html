@@ -91,33 +91,6 @@
 
     <!-- Fold Flow Page -->
     <div id="fold-flow-page" class="tab-content">
-        <!-- Hero Showcase Header -->
-        <section class="store-hero">
-            <div class="container">
-                <div class="hero-banner-card">
-                    <!-- Left Column: Typography -->
-                    <div class="banner-typography">
-                        <h1 class="banner-title">
-                            <span class="word-fold">FOLD</span>
-                            <span class="word-flow">FLOW</span>
-                        </h1>
-                        <p class="banner-slogan" id="hero-slogan">Ультимативные возможности моделирования ткани</p>
-                    </div>
-                    
-                    <!-- Right Column: Interactive Particle Mesh -->
-                    <div class="banner-graphic-container">
-                        <svg id="iso-mesh-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
-                            <defs>
-                                <filter id="glow-dots" x="-30%" y="-30%" width="160%" height="160%">
-                                    <feGaussianBlur stdDeviation="3.5" result="blur" />
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Features Preview Section (Temporarily Hidden) -->
         <section class="features-preview-section" style="display: none;">
@@ -330,29 +303,141 @@
             </div>
         </section>
 
-        <!-- Interactive Showcase Section -->
-        <section class="tech-showcase-section" id="engine">
+        <!-- Interactive Showcase Section (Sofa Renders) -->
+        <section class="tech-showcase-section" id="showcase" style="padding: 20px 0 40px 0;">
             <div class="container">
-                <div class="section-header">
-                    <div class="badge" id="tech-badge">SHOWCASE</div>
-                    <h2 id="tech-title">Made with FoldFlow</h2>
-                    <p id="tech-subtitle">Explore high-fidelity renders, detailed tutorials, and base geometry created using the FoldFlow modifier.</p>
+                <div class="section-header" style="margin-bottom: 5px;">
+                    <h2 id="gallery-title">Created with Fold  Flow</h2>
+                </div>
+            </div>
+
+            <!-- Showcase Carousel (breakout full viewport width) -->
+            <div class="showcase-carousel-container">
+                <div class="showcase-track-wrapper">
+                    <div class="showcase-track" id="showcase-track">
+                        <!-- Slides are rendered dynamically by JavaScript -->
+                    </div>
                 </div>
 
-                <!-- Showcase Carousel -->
-                <div class="showcase-carousel-container">
-                    <button class="showcase-nav-btn showcase-prev" onclick="moveShowcase(-1)">&lt;</button>
-                    <button class="showcase-nav-btn showcase-next" onclick="moveShowcase(1)">&gt;</button>
-                    
-                    <div class="showcase-track-wrapper">
-                        <div class="showcase-track" id="showcase-track">
-                            <!-- Slides are rendered dynamically by JavaScript -->
+
+            </div>
+        </section>
+
+        <!-- Developer's C++ Showcase Section -->
+        <section class="tech-showcase-section" id="engine" style="padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge" id="tech-badge">UNDER THE HOOD</div>
+                    <h2 id="tech-title">Engineered in Pure C++ for Speed</h2>
+                    <p id="tech-subtitle">How a custom-written modifier achieves raw viewport performance and real-time mesh deformation.</p>
+                </div>
+
+                <!-- 3-Column Technology Grid -->
+                <div class="tech-grid">
+                    <!-- Card 1: C++ Core -->
+                    <div class="tech-card">
+                        <div class="tech-card-graphic">
+                            <svg class="svg-tech-anim" id="svg-anim-cpu" viewBox="0 0 120 120" width="100" height="100">
+                                <!-- Silicon Chip Base -->
+                                <rect x="30" y="30" width="60" height="60" rx="6" fill="rgba(0, 255, 128, 0.03)" stroke="var(--primary-color)" stroke-width="1.5" />
+                                <rect x="42" y="42" width="36" height="36" rx="4" fill="rgba(0, 255, 128, 0.1)" stroke="var(--primary-color)" stroke-width="1" />
+                                <text x="60" y="64" font-family="'Outfit', sans-serif" font-size="10" font-weight="bold" fill="var(--primary-color)" text-anchor="middle">C++</text>
+                                
+                                <!-- Circuit traces (pins) -->
+                                <line x1="45" y1="30" x2="45" y2="15" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="60" y1="30" x2="60" y2="15" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="75" y1="30" x2="75" y2="15" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="45" y1="90" x2="45" y2="105" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="60" y1="90" x2="60" y2="105" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="75" y1="90" x2="75" y2="105" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="30" y1="45" x2="15" y2="45" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="30" y1="60" x2="15" y2="60" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="30" y1="75" x2="15" y2="75" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="90" y1="45" x2="105" y2="45" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="90" y1="60" x2="105" y2="60" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+                                <line x1="90" y1="75" x2="105" y2="75" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
+
+                                <!-- Glowing Pulses -->
+                                <circle class="pulse-dot pd-t1" r="2" fill="#00ff80" />
+                                <circle class="pulse-dot pd-t2" r="2" fill="#00ff80" />
+                                <circle class="pulse-dot pd-l1" r="2" fill="#00ff80" />
+                                <circle class="pulse-dot pd-r1" r="2" fill="#00ff80" />
+                            </svg>
                         </div>
+                        <h3 id="tech-card-title-1">Direct MNMesh Access</h3>
+                        <p id="tech-card-desc-1">Bypasses high-level wrapper overhead. The plugin utilizes raw pointer arithmetic to communicate directly with 3ds Max's internal MNMesh structure, enabling microsecond memory operations.</p>
                     </div>
 
-                    <!-- Dots indicator -->
-                    <div class="showcase-dots" id="showcase-dots">
-                        <!-- Dots are rendered dynamically by JavaScript -->
+                    <!-- Card 2: Dijkstra Solver -->
+                    <div class="tech-card">
+                        <div class="tech-card-graphic">
+                            <svg class="svg-tech-anim" id="svg-anim-path" viewBox="0 0 120 120" width="100" height="100">
+                                <!-- Mesh Graph Nodes & Edges -->
+                                <g opacity="0.3" stroke="var(--text-secondary)" stroke-width="0.8">
+                                    <line x1="20" y1="60" x2="50" y2="30" />
+                                    <line x1="20" y1="60" x2="40" y2="90" />
+                                    <line x1="50" y1="30" x2="80" y2="30" />
+                                    <line x1="50" y1="30" x2="65" y2="60" />
+                                    <line x1="40" y1="90" x2="65" y2="60" />
+                                    <line x1="40" y1="90" x2="80" y2="90" />
+                                    <line x1="80" y1="30" x2="100" y2="60" />
+                                    <line x1="65" y1="60" x2="100" y2="60" />
+                                    <line x1="80" y1="90" x2="100" y2="60" />
+                                </g>
+                                
+                                <g fill="var(--text-secondary)" opacity="0.5">
+                                    <circle cx="20" cy="60" r="3" />
+                                    <circle cx="50" cy="30" r="3" />
+                                    <circle cx="40" cy="90" r="3" />
+                                    <circle cx="65" cy="60" r="3" />
+                                    <circle cx="80" cy="30" r="3" />
+                                    <circle cx="80" cy="90" r="3" />
+                                    <circle cx="100" cy="60" r="3" />
+                                </g>
+
+                                <!-- Dijkstra Path Animation Lines -->
+                                <g class="dijkstra-active-path" stroke="var(--primary-color)" stroke-width="1.5" stroke-linecap="round" fill="none">
+                                    <path d="M20,60 L50,30 L65,60 L80,90 L100,60" class="path-solved-line" />
+                                </g>
+
+                                <!-- Moving Solver Frontier Wave -->
+                                <circle class="path-solver-wave wave-1" cx="20" cy="60" r="0" stroke="var(--primary-color)" stroke-width="1" fill="none" />
+                                <circle class="path-solver-wave wave-2" cx="50" cy="30" r="0" stroke="var(--primary-color)" stroke-width="1" fill="none" />
+                                <circle class="path-solver-wave wave-3" cx="65" cy="60" r="0" stroke="var(--primary-color)" stroke-width="1" fill="none" />
+
+                                <!-- Glowing path nodes -->
+                                <circle class="glow-node gn-1" cx="20" cy="60" r="4" fill="var(--primary-color)" />
+                                <circle class="glow-node gn-2" cx="50" cy="30" r="4" fill="var(--primary-color)" />
+                                <circle class="glow-node gn-3" cx="65" cy="60" r="4" fill="var(--primary-color)" />
+                                <circle class="glow-node gn-4" cx="80" cy="90" r="4" fill="var(--primary-color)" />
+                                <circle class="glow-node gn-5" cx="100" cy="60" r="4" fill="var(--primary-color)" />
+                            </svg>
+                        </div>
+                        <h3 id="tech-card-title-2">Custom Dijkstra Solver</h3>
+                        <p id="tech-card-desc-2">Calculates topological geodetic distances along vertex rings in real-time. Instead of geometric raycasts, it traverses the mesh's graph, mapping natural wrinkle flow matching actual physical tension.</p>
+                    </div>
+
+                    <!-- Card 3: Multithreading & Performance -->
+                    <div class="tech-card">
+                        <div class="tech-card-graphic">
+                            <svg class="svg-tech-anim" id="svg-anim-perf" viewBox="0 0 120 120" width="100" height="100">
+                                <!-- Grid background -->
+                                <path d="M15,20 L15,100 L110,100 M15,40 L110,40 M15,60 L110,60 M15,80 L110,80" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+                                
+                                <!-- Thread Splitting lines -->
+                                <path d="M15,60 C30,60 35,30 50,30 L90,30" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
+                                <path d="M15,60 C30,60 35,50 50,50 L90,50" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
+                                <path d="M15,60 C30,60 35,70 50,70 L90,70" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
+                                <path d="M15,60 C30,60 35,90 50,90 L90,90" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
+                                
+                                <!-- Running Performance Graph Line -->
+                                <path class="perf-line" d="M15,90 L30,92 L40,88 L50,90 L60,30 L70,89 L80,90 L95,91 L110,90" stroke="#00ff80" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                                <circle class="perf-tracker" cx="60" cy="30" r="3.5" fill="#00ff80" />
+                                <text class="perf-text" x="65" y="24" font-family="'Outfit', sans-serif" font-size="8" font-weight="bold" fill="#00ff80">0.2ms</text>
+                            </svg>
+                        </div>
+                        <h3 id="tech-card-title-3">Multi-threaded Core</h3>
+                        <p id="tech-card-desc-3">Deformation vectors are parallelized via OpenMP and vectorized with SIMD (SSE/AVX) instructions. Calculations take less than 1ms, eliminating viewport lag even on high-poly models.</p>
                     </div>
                 </div>
             </div>
@@ -421,6 +506,34 @@
                         <li id="feature-updates-enterprise"><span class="icon">✓</span> 2 years of free updates</li>
                     </ul>
                     <button id="pricing-btn-enterprise" class="pricing-btn" onclick="purchaseProduct('enterprise')">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Showcase Header -->
+    <section class="store-hero">
+        <div class="container">
+            <div class="hero-banner-card">
+                <!-- Left Column: Typography -->
+                <div class="banner-typography">
+                    <h1 class="banner-title">
+                        <span class="word-fold">FOLD</span>
+                        <span class="word-flow">FLOW</span>
+                    </h1>
+                    <p class="banner-slogan" id="hero-slogan">Ультимативные возможности моделирования ткани</p>
+                </div>
+                
+                <!-- Right Column: Interactive Particle Mesh -->
+                <div class="banner-graphic-container">
+                    <svg id="iso-mesh-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+                        <defs>
+                            <filter id="glow-dots" x="-30%" y="-30%" width="160%" height="160%">
+                                <feGaussianBlur stdDeviation="3.5" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                        </defs>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -815,17 +928,17 @@
 </div>`,
 
                 // Tech Showcase Section
-                tech_badge: "SHOWCASE",
-                tech_title: "Made with FoldFlow",
-                tech_subtitle: "Explore high-fidelity renders, detailed tutorials, and base geometry created using the FoldFlow modifier.",
-                tech_quote_text: `""`,
-                tech_quote_author: "",
-                tech_card_title_1: "",
-                tech_card_desc_1: "",
-                tech_card_title_2: "",
-                tech_card_desc_2: "",
-                tech_card_title_3: "",
-                tech_card_desc_3: "",
+                tech_badge: "UNDER THE HOOD",
+                tech_title: "Engineered in Pure C++ for Speed",
+                tech_subtitle: "How a custom-written modifier achieves raw viewport performance and real-time mesh deformation.",
+                tech_quote_text: `"I engineered FoldFlow from scratch in pure C++ because I was tired of laggy viewports and heavy cloth simulation overhead. Direct mesh access and custom math solvers were the only way to make it run at 60/120 FPS in 3ds Max. Every line of code is written with performance and memory optimization in mind."`,
+                tech_quote_author: "— Ilia Artemow, Creator of FoldFlow",
+                tech_card_title_1: "Direct MNMesh Access",
+                tech_card_desc_1: "Bypasses high-level wrapper overhead. The plugin utilizes raw pointer arithmetic to communicate directly with 3ds Max's internal MNMesh structure, enabling microsecond memory operations.",
+                tech_card_title_2: "Custom Dijkstra Solver",
+                tech_card_desc_2: "Calculates topological geodetic distances along vertex rings in real-time. Instead of geometric raycasts, it traverses the mesh's graph, mapping natural wrinkle flow matching actual physical tension.",
+                tech_card_title_3: "Multi-threaded Core",
+                tech_card_desc_3: "Deformation vectors are parallelized via OpenMP and vectorized with SIMD (SSE/AVX) instructions. Calculations take less than 1ms, eliminating viewport lag even on high-poly models.",
                 feat_inflate_title: "Inflation Engine",
                 feat_inflate_desc: "Inflate any shapes easily and control volume using customizable curve graphs.",
                 feat_control_title: "Fold Control & Export",
@@ -973,17 +1086,17 @@
 </div>`,
 
                 // Tech Showcase Section
-                tech_badge: "ГАЛЕРЕЯ РАБОТ",
-                tech_title: "Создано в FoldFlow",
-                tech_subtitle: "Исследуйте высокодетализированные рендеры, видеоуроки и базовые меши для практики.",
-                tech_quote_text: `""`,
-                tech_quote_author: "",
-                tech_card_title_1: "",
-                tech_card_desc_1: "",
-                tech_card_title_2: "",
-                tech_card_desc_2: "",
-                tech_card_title_3: "",
-                tech_card_desc_3: "",
+                tech_badge: "ТЕХНОЛОГИИ ПОД КАПОТОМ",
+                tech_title: "Чистый C++ ради безумной скорости",
+                tech_subtitle: "Как кастомный модификатор достигает максимальной производительности вьюпорта и деформации сетки в реальном времени.",
+                tech_quote_text: `"Я написал FoldFlow с нуля на чистом C++, потому что меня бесили тормоза во вьюпорте и тяжеловесные симуляции ткани. Прямой доступ к сетке и кастомные математические решатели — единственный способ заставить это работать на 60/120 FPS в 3ds Max. Каждая строчка кода написана с маниакальным вниманием к памяти и вычислениям."`,
+                tech_quote_author: "— Илья Артемов, создатель FoldFlow",
+                tech_card_title_1: "Прямой доступ к MNMesh",
+                tech_card_desc_1: "В обход высокоуровневых оберток API. Плагин использует прямую адресную арифметику указателей для работы с внутренней структурой MNMesh в 3ds Max, обеспечивая микросекундное чтение и запись в память.",
+                tech_card_title_2: "Решатель Дейкстры",
+                tech_card_desc_2: "Вычисляет топологические геодезические расстояния по ребрам сетки в реальном времени. Вместо геометрических лучей он идет по графу сетки, строя естественные складки с учетом натяжения ткани.",
+                tech_card_title_3: "Многопоточное ядро",
+                tech_card_desc_3: "Расчет векторов деформации распараллелен с помощью OpenMP и векторизован инструкциями SIMD (SSE/AVX). Вычисления занимают меньше 1 мс, исключая любые задержки во вьюпорте даже на плотной геометрии.",
                 feat_inflate_title: "Раздувание форм",
                 feat_inflate_desc: "Легко надувайте любые формы и управляйте объемом с помощью точных графиков кривых.",
                 feat_control_title: "Контроль и экспорт",
@@ -1058,6 +1171,26 @@
             if (techTitle) techTitle.textContent = trans.tech_title;
             const techSubtitle = document.getElementById('tech-subtitle');
             if (techSubtitle) techSubtitle.textContent = trans.tech_subtitle;
+
+            const tc1Title = document.getElementById('tech-card-title-1');
+            if (tc1Title) tc1Title.textContent = trans.tech_card_title_1;
+            const tc1Desc = document.getElementById('tech-card-desc-1');
+            if (tc1Desc) tc1Desc.textContent = trans.tech_card_desc_1;
+
+            const tc2Title = document.getElementById('tech-card-title-2');
+            if (tc2Title) tc2Title.textContent = trans.tech_card_title_2;
+            const tc2Desc = document.getElementById('tech-card-desc-2');
+            if (tc2Desc) tc2Desc.textContent = trans.tech_card_desc_2;
+
+            const tc3Title = document.getElementById('tech-card-title-3');
+            if (tc3Title) tc3Title.textContent = trans.tech_card_title_3;
+            const tc3Desc = document.getElementById('tech-card-desc-3');
+            if (tc3Desc) tc3Desc.textContent = trans.tech_card_desc_3;
+
+            const galleryTitle = document.getElementById('gallery-title');
+            if (galleryTitle) {
+                galleryTitle.textContent = currentLang === 'ru' ? 'Создано в Fold  Flow' : 'Created with Fold  Flow';
+            }
 
             if (typeof updateShowcaseCarousel === 'function') {
                 updateShowcaseCarousel();
@@ -1691,84 +1824,112 @@
             {
                 img: "images/showcase/1.png",
                 title_en: "Burgundy Velvet Sofa - Front Angle",
-                title_ru: "Бордовый вельветовый диван — ракурс спереди",
-                desc_en: "Procedural folds flowing smoothly along custom paths on a modular cushion.",
-                desc_ru: "Процедурные складки, плавно расходящиеся по заданной траектории модульной подушки."
+                title_ru: "Бордовый вельветовый диван — ракурс спереди"
             },
             {
                 img: "images/showcase/2.png",
                 title_en: "Armrest Folds Closeup",
-                title_ru: "Детали подлокотника крупным планом",
-                desc_en: "Highly organic fabric creases flowing along the quad topology paths.",
-                desc_ru: "Органичные складки ткани, следующие направлению ребер полигональной сетки."
+                title_ru: "Детали подлокотника крупным планом"
             },
             {
                 img: "images/showcase/3.png",
                 title_en: "Grey Velvet Sofa - Modular View",
-                title_ru: "Серый велюровый диван — модульный вид",
-                desc_en: "Neutral studio render showcasing the realistic shading of procedural wrinkles.",
-                desc_ru: "Студийный рендер, подчеркивающий реалистичную игру света и тени на замятиях ткани."
+                title_ru: "Серый велюровый диван — модульный вид"
             },
             {
                 img: "images/showcase/4.png",
                 title_en: "Cushion Corner details",
-                title_ru: "Детали угловых швов",
-                desc_en: "Exquisite details demonstrating fabric compression and seam tension.",
-                desc_ru: "Тончайшие детали, демонстрирующие сжатие ткани и натяжение швов."
+                title_ru: "Детали угловых швов"
             },
             {
                 img: "images/showcase/5.png",
                 title_en: "Lounge Seat Side Profile",
-                title_ru: "Боковой профиль шезлонга",
-                desc_en: "Soft, organic folds running down the sides of modular lounge cushion.",
-                desc_ru: "Мягкие органические складки по бокам модульной подушки шезлонга."
+                title_ru: "Боковой профиль шезлонга"
             },
             {
                 img: "images/showcase/6.png",
                 title_en: "Armrest Folds & Cushion Puffs",
-                title_ru: "Складки подлокотника и объем подушек",
-                desc_en: "Demonstration of customized inflation and volume settings.",
-                desc_ru: "Демонстрация работы настраиваемых параметров объема и надува."
+                title_ru: "Складки подлокотника и объем подушек"
             },
             {
                 img: "images/showcase/7.png",
                 title_en: "Full Modular Assembly - Isometric View",
-                title_ru: "Полная модульная сборка — изометрический вид",
-                desc_en: "Aesthetic modular couch highlighting smooth S-curve fold transition falloffs.",
-                desc_ru: "Модульный диван, демонстрирующий плавность переходов S-образного сглаживания."
+                title_ru: "Полная модульная сборка — изометрический вид"
             }
         ];
 
         let showcaseIndex = 0;
+        let showcaseTimer = null;
+        let dragThresholdPassed = false;
 
         window.moveShowcase = function(direction) {
             showcaseIndex += direction;
-            if (showcaseIndex < 0) showcaseIndex = SHOWCASE_SLIDES.length - 1;
-            if (showcaseIndex >= SHOWCASE_SLIDES.length) showcaseIndex = 0;
             updateShowcaseDisplay();
+            resetShowcaseTimer();
         };
 
         window.currentShowcase = function(index) {
-            showcaseIndex = index;
+            if (dragThresholdPassed) return;
+            const N = SHOWCASE_SLIDES.length;
+            let currentActual = (showcaseIndex % N + N) % N;
+            let diff = index - currentActual;
+            while (diff < -N/2) diff += N;
+            while (diff > N/2) diff -= N;
+            showcaseIndex += diff;
             updateShowcaseDisplay();
+            resetShowcaseTimer();
         };
 
         function updateShowcaseDisplay() {
             const track = document.getElementById('showcase-track');
+            const N = SHOWCASE_SLIDES.length;
+            const style = getComputedStyle(document.documentElement);
+            const widthPercent = parseFloat(style.getPropertyValue('--showcase-slide-width')) || 20;
+            const marginPercent = parseFloat(style.getPropertyValue('--showcase-slide-margin')) || 1.5;
+            const totalSpace = widthPercent + marginPercent * 2;
+            const halfSpace = totalSpace / 2;
+            
             if (track) {
-                track.style.transform = `translateX(-${showcaseIndex * 100}%)`;
+                if (!track.classList.contains('dragging')) {
+                    track.style.transform = `translateX(calc(50% - ${showcaseIndex * totalSpace + halfSpace}%))`;
+                }
             }
             
-            // Update dots
-            const dotsContainer = document.getElementById('showcase-dots');
-            if (dotsContainer) {
-                let dotsHtml = "";
-                SHOWCASE_SLIDES.forEach((_, idx) => {
-                    const activeClass = idx === showcaseIndex ? "active" : "";
-                    dotsHtml += `<span class="showcase-dot ${activeClass}" onclick="currentShowcase(${idx})"></span>`;
-                });
-                dotsContainer.innerHTML = dotsHtml;
-            }
+            // Update active/adjacent classes and inline translations on slides
+            const slides = document.querySelectorAll('.showcase-slide');
+            slides.forEach((slide, idx) => {
+                const currentActual = (showcaseIndex % N + N) % N;
+                let diff = idx - currentActual;
+                let offset = diff;
+                while (offset < -N/2) offset += N;
+                while (offset > N/2) offset -= N;
+                const absDiff = Math.abs(offset);
+
+                slide.className = 'showcase-slide';
+                
+                let scaleVal = 0.6;
+                if (absDiff < 0.1) {
+                    slide.classList.add('active');
+                    scaleVal = 1.2;
+                } else if (absDiff < 1.1) {
+                    slide.classList.add('adjacent-1');
+                    scaleVal = 0.85;
+                } else if (absDiff < 2.1) {
+                    slide.classList.add('adjacent-2');
+                    scaleVal = 0.7;
+                } else {
+                    slide.classList.add('adjacent-far');
+                }
+                
+                // Calculate shift value to make the carousel infinite
+                const shiftVal = offset - (idx - showcaseIndex);
+                const shiftViewportPercent = shiftVal * totalSpace;
+                const shiftSlidePercent = (shiftViewportPercent / widthPercent) * 100;
+                
+                slide.style.transform = `translateX(${shiftSlidePercent}%) scale(${scaleVal})`;
+            });
+            
+
         }
 
         window.updateShowcaseCarousel = function() {
@@ -1776,22 +1937,24 @@
             if (!track) return;
 
             let html = "";
-            SHOWCASE_SLIDES.forEach(slide => {
+            SHOWCASE_SLIDES.forEach((slide, idx) => {
                 const title = currentLang === 'ru' ? slide.title_ru : slide.title_en;
-                const desc = currentLang === 'ru' ? slide.desc_ru : slide.desc_en;
                 const tutBtnText = currentLang === 'ru' ? 'Смотреть урок' : 'View Tutorial';
                 const packBtnText = currentLang === 'ru' ? 'Скачать модель' : 'Get Folds Pack';
                 
+                // Determine glow class: alternating blue, green, purple
+                const glowClasses = ['bg-glow-blue', 'bg-glow-green', 'bg-glow-purple'];
+                const glowClass = glowClasses[idx % 3];
+                
                 html += `
-                    <div class="showcase-slide">
-                        <div class="showcase-image-container">
+                    <div class="showcase-slide" onclick="currentShowcase(${idx})">
+                        <div class="showcase-image-container ${glowClass}">
                             <img src="${slide.img}" alt="${title}" class="showcase-image">
                         </div>
                         <h3 class="showcase-title">${title}</h3>
-                        <p class="showcase-subtitle">${desc}</p>
                         <div class="showcase-actions">
-                            <a href="javascript:void(0)" onclick="navigateToSection('tutorials', null, null)" class="showcase-btn showcase-btn-primary">${tutBtnText}</a>
-                            <a href="javascript:void(0)" onclick="navigateToSection('fold-store', null, null)" class="showcase-btn showcase-btn-secondary">${packBtnText}</a>
+                            <a href="javascript:void(0)" onclick="event.stopPropagation(); navigateToSection('tutorials', null, null)" class="showcase-btn showcase-btn-primary">${tutBtnText}</a>
+                            <a href="javascript:void(0)" onclick="event.stopPropagation(); navigateToSection('fold-store', null, null)" class="showcase-btn showcase-btn-secondary">${packBtnText}</a>
                         </div>
                     </div>
                 `;
@@ -1800,9 +1963,139 @@
             updateShowcaseDisplay();
         };
 
+        function startShowcaseTimer() {
+            if (showcaseTimer) clearInterval(showcaseTimer);
+            showcaseTimer = setInterval(() => {
+                showcaseIndex++;
+                updateShowcaseDisplay();
+            }, 4000);
+        }
+
+        function resetShowcaseTimer() {
+            startShowcaseTimer();
+        }
+
         // Initialize on DOM load
         window.addEventListener('DOMContentLoaded', () => {
             updateShowcaseCarousel();
+            startShowcaseTimer();
+            
+            const container = document.querySelector('.showcase-carousel-container');
+            const track = document.getElementById('showcase-track');
+            
+            let isMouseOver = false;
+            let isDragging = false;
+            let startX = 0;
+            let currentX = 0;
+            let dragDelta = 0;
+            
+            // Pause auto-play on hover
+            if (container) {
+                container.addEventListener('mouseenter', () => {
+                    isMouseOver = true;
+                    if (showcaseTimer) clearInterval(showcaseTimer);
+                });
+                container.addEventListener('mouseleave', () => {
+                    isMouseOver = false;
+                    if (!isDragging) {
+                        startShowcaseTimer();
+                    }
+                });
+            }
+            
+            function getX(e) {
+                return e.touches ? e.touches[0].clientX : e.clientX;
+            }
+            
+            function handleDragStart(e) {
+                if (e.target.closest('.showcase-btn') || e.target.closest('.showcase-dot')) {
+                    return;
+                }
+                
+                isDragging = true;
+                dragThresholdPassed = false;
+                startX = getX(e);
+                currentX = startX;
+                dragDelta = 0;
+                
+                if (track) {
+                    track.classList.add('dragging');
+                }
+                if (showcaseTimer) clearInterval(showcaseTimer);
+            }
+            
+            function handleDragMove(e) {
+                if (!isDragging) return;
+                
+                currentX = getX(e);
+                dragDelta = currentX - startX;
+                
+                if (Math.abs(dragDelta) > 10) {
+                    dragThresholdPassed = true;
+                }
+                
+                if (track && container) {
+                    const style = getComputedStyle(document.documentElement);
+                    const widthPercent = parseFloat(style.getPropertyValue('--showcase-slide-width')) || 20;
+                    const marginPercent = parseFloat(style.getPropertyValue('--showcase-slide-margin')) || 1.5;
+                    const totalSpace = widthPercent + marginPercent * 2;
+                    const halfSpace = totalSpace / 2;
+                    
+                    const baseTrackTranslation = 50 - halfSpace - showcaseIndex * totalSpace;
+                    const containerWidth = container.clientWidth || window.innerWidth;
+                    const dragDeltaPercent = (dragDelta / containerWidth) * 100;
+                    
+                    track.style.transform = `translateX(calc(${baseTrackTranslation}% + ${dragDeltaPercent}%))`;
+                }
+                
+                // Prevent vertical scroll on mobile while dragging horizontally
+                if (e.cancelable && Math.abs(dragDelta) > 5) {
+                    e.preventDefault();
+                }
+            }
+            
+            function handleDragEnd() {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                if (track) {
+                    track.classList.remove('dragging');
+                }
+                
+                const containerWidth = (container && container.clientWidth) || window.innerWidth;
+                const threshold = containerWidth * 0.1; // 10% width threshold
+                
+                if (dragDelta < -threshold) {
+                    // Dragged left, next slide
+                    showcaseIndex++;
+                } else if (dragDelta > threshold) {
+                    // Dragged right, prev slide
+                    showcaseIndex--;
+                }
+                
+                updateShowcaseDisplay();
+                
+                // Set brief timeout to clear dragThresholdPassed so clicks work again
+                setTimeout(() => {
+                    dragThresholdPassed = false;
+                }, 50);
+                
+                // Resume autoplay if mouse is not hovering container
+                if (!isMouseOver) {
+                    startShowcaseTimer();
+                }
+            }
+            
+            if (container) {
+                container.addEventListener('mousedown', handleDragStart);
+                container.addEventListener('touchstart', handleDragStart, { passive: true });
+            }
+            
+            window.addEventListener('mousemove', handleDragMove);
+            window.addEventListener('touchmove', handleDragMove, { passive: false });
+            
+            window.addEventListener('mouseup', handleDragEnd);
+            window.addEventListener('touchend', handleDragEnd);
         });
 
         // Compliance Modal functions
