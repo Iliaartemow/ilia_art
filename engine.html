@@ -267,13 +267,13 @@
                 tech_title: "Engineered in Pure C++ for Speed",
                 tech_subtitle: "How a custom-written modifier achieves raw viewport performance and real-time mesh deformation.",
                 tech_quote_text: `"I engineered FoldFlow from scratch in pure C++ because I was tired of laggy viewports and heavy cloth simulation overhead. Direct mesh access and custom math solvers were the only way to make it run at 60/120 FPS in 3ds Max. Every line of code is written with performance and memory optimization in mind."`,
-                tech_quote_author: "— Ilia Artemow, Creator of FoldFlow",
+                tech_quote_author: "— Ilia Artemov, Creator of FoldFlow",
                 tech_card_title_1: "Direct MNMesh Access",
                 tech_card_desc_1: "Bypasses high-level wrapper overhead. The plugin utilizes raw pointer arithmetic to communicate directly with 3ds Max's internal MNMesh structure, enabling microsecond memory operations.",
                 tech_card_title_2: "Custom Dijkstra Solver",
-                tech_card_desc_2: "Calculates topological geodetic distances along vertex rings in real-time. Instead of geometric raycasts, it traverses the mesh's graph, mapping natural wrinkle flow matching actual physical tension.",
+                tech_card_desc_2: "Calculates topological geodesic distances along vertex rings in real-time. Instead of geometric raycasts, it traverses the mesh graph, mapping natural wrinkle flow matching actual physical tension.",
                 tech_card_title_3: "Multi-threaded Core",
-                tech_card_desc_3: "Deformation vectors are parallelized via OpenMP and vectorized with SIMD (SSE/AVX) instructions. Calculations take less than 1ms, eliminating viewport lag even on high-poly models."
+                tech_card_desc_3: "Deformation vectors are parallelized via OpenMP and vectorized with SIMD (SSE/AVX) instructions. Calculations take less than 1ms, eliminating viewport lag even on high-poly meshes."
             },
             ru: {
                 nav_home: "Главная",
@@ -286,7 +286,7 @@
                 tech_title: "Чистый C++ ради безумной скорости",
                 tech_subtitle: "Как кастомный модификатор достигает максимальной производительности вьюпорта и деформации сетки в реальном времени.",
                 tech_quote_text: `"Я написал FoldFlow с нуля на чистом C++, потому что меня бесили тормоза во вьюпорте и тяжеловесные симуляции ткани. Прямой доступ к сетке и кастомные математические решатели — единственный способ заставить это работать на 60/120 FPS в 3ds Max. Каждая строчка кода написана с маниакальным вниманием к памяти и вычислениям."`,
-                tech_quote_author: "— Илья Артемов, создатель FoldFlow",
+                tech_quote_author: "— Илья Артёмов, создатель FoldFlow",
                 tech_card_title_1: "Прямой доступ к MNMesh",
                 tech_card_desc_1: "В обход высокоуровневых оберток API. Плагин использует прямую адресную арифметику указателей для работы с внутренней структурой MNMesh в 3ds Max, обеспечивая микросекундное чтение и запись в память.",
                 tech_card_title_2: "Решатель Дейкстры",
