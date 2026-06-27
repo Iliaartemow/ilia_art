@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /*_draft.html
+Disallow: /index_backup.html
+
+Sitemap: https://fold-flow.com/sitemap.xml
