@@ -56,8 +56,8 @@
   {
     "id": "ff_r_01_ebi_1781876530",
     "category": "rectangular",
-    "badge_en": "Rectangluar",
-    "badge_ru": "Rectangluar",
+    "badge_en": "Rectangular",
+    "badge_ru": "Прямоугольные",
     "title_en": "FF R01  EBI",
     "title_ru": "FF R01  EBI",
     "description_en": "Супере реалистчинач складка",
@@ -71,5 +71,171 @@
     ],
     "image": "images/products/ff_r_01_ebi_1781876530_img_0_FF_R_01_EBI.jpg",
     "fld_file": "folds/ff_r_01_ebi_1781876530_FF_R_01_EBI.fld"
+  },
+  {
+    "id": "ff_r_02",
+    "category": "rectangular",
+    "badge_en": "Rectangular",
+    "badge_ru": "Прямоугольные",
+    "title_en": "FF R 02",
+    "title_ru": "FF R 02",
+    "description_en": "Realistic template for cloth modeling: FF R 02",
+    "description_ru": "Реалистичный шаблон складки для моделирования: FF R 02",
+    "count": "1 Folds",
+    "format": ".fld",
+    "price": 0.0,
+    "images": [
+      "images/products/FF_R_02_EB_SI.jpg"
+    ],
+    "image": "images/products/FF_R_02_EB_SI.jpg",
+    "fld_file": ""
+  },
+  {
+    "id": "ff_r_04",
+    "category": "rectangular",
+    "badge_en": "Rectangular",
+    "badge_ru": "Прямоугольные",
+    "title_en": "FF R 04",
+    "title_ru": "FF R 04",
+    "description_en": "Realistic template for cloth modeling: FF R 04",
+    "description_ru": "Реалистичный шаблон складки для моделирования: FF R 04",
+    "count": "1 Folds",
+    "format": ".fld",
+    "price": 0.0,
+    "images": [
+      "images/products/FF_R_04_EBI_MINI_S.jpg"
+    ],
+    "image": "images/products/FF_R_04_EBI_MINI_S.jpg",
+    "fld_file": ""
+  },
+  {
+    "id": "ff_r_05",
+    "category": "rectangular",
+    "badge_en": "Rectangular",
+    "badge_ru": "Прямоугольные",
+    "title_en": "FF R 05",
+    "title_ru": "FF R 05",
+    "description_en": "Realistic template for cloth modeling: FF R 05",
+    "description_ru": "Реалистичный шаблон складки для моделирования: FF R 05",
+    "count": "1 Folds",
+    "format": ".fld",
+    "price": 0.0,
+    "images": [
+      "images/products/FF_R_05.jpg",
+      "images/products/FF_R_05_EBI_F_300.jpg"
+    ],
+    "image": "images/products/FF_R_05.jpg",
+    "fld_file": ""
+  },
+  {
+    "id": "ff_r_06",
+    "category": "rectangular",
+    "badge_en": "Rectangular",
+    "badge_ru": "Прямоугольные",
+    "title_en": "FF R 06",
+    "title_ru": "FF R 06",
+    "description_en": "Realistic template for cloth modeling: FF R 06",
+    "description_ru": "Реалистичный шаблон складки для моделирования: FF R 06",
+    "count": "1 Folds",
+    "format": ".fld",
+    "price": 0.0,
+    "images": [
+      "images/products/FF_R_06.jpg"
+    ],
+    "image": "images/products/FF_R_06.jpg",
+    "fld_file": ""
+  },
+  {
+    "id": "ff_r_07",
+    "category": "rectangular",
+    "badge_en": "Rectangular",
+    "badge_ru": "Прямоугольные",
+    "title_en": "FF R 07",
+    "title_ru": "FF R 07",
+    "description_en": "Realistic template for cloth modeling: FF R 07",
+    "description_ru": "Реалистичный шаблон складки для моделирования: FF R 07",
+    "count": "1 Folds",
+    "format": ".fld",
+    "price": 0.0,
+    "images": [
+      "images/products/FF_R_07.jpg",
+      "images/products/FF_R_07_Loop.jpg",
+      "images/products/FF_R_07_Shape.jpg"
+    ],
+    "image": "images/products/FF_R_07.jpg",
+    "fld_file": ""
+  },
+  {
+    "id": "ff_r_08",
+    "category": "rectangular",
+    "badge_en": "Rectangular",
+    "badge_ru": "Прямоугольные",
+    "title_en": "FF R 08",
+    "title_ru": "FF R 08",
+    "description_en": "Realistic template for cloth modeling: FF R 08",
+    "description_ru": "Реалистичный шаблон складки для моделирования: FF R 08",
+    "count": "1 Folds",
+    "format": ".fld",
+    "price": 0.0,
+    "images": [
+      "images/products/FF_R_08.jpg"
+    ],
+    "image": "images/products/FF_R_08.jpg",
+    "fld_file": ""
+  },
+  {
+    "id": "ff_r_09",
+    "category": "rectangular",
+    "badge_en": "Rectangular",
+    "badge_ru": "Прямоугольные",
+    "title_en": "FF R 09",
+    "title_ru": "FF R 09",
+    "description_en": "Realistic template for cloth modeling: FF R 09",
+    "description_ru": "Реалистичный шаблон складки для моделирования: FF R 09",
+    "count": "1 Folds",
+    "format": ".fld",
+    "price": 0.0,
+    "images": [
+      "images/products/FF_R_09.jpg"
+    ],
+    "image": "images/products/FF_R_09.jpg",
+    "fld_file": ""
+  },
+  {
+    "id": "ff_r_10",
+    "category": "rectangular",
+    "badge_en": "Rectangular",
+    "badge_ru": "Прямоугольные",
+    "title_en": "FF R 10",
+    "title_ru": "FF R 10",
+    "description_en": "Realistic template for cloth modeling: FF R 10",
+    "description_ru": "Реалистичный шаблон складки для моделирования: FF R 10",
+    "count": "1 Folds",
+    "format": ".fld",
+    "price": 0.0,
+    "images": [
+      "images/products/FF_R_10.jpg",
+      "images/products/FF_R_10_Shape.jpg"
+    ],
+    "image": "images/products/FF_R_10.jpg",
+    "fld_file": ""
+  },
+  {
+    "id": "ff_r_11",
+    "category": "rectangular",
+    "badge_en": "Rectangular",
+    "badge_ru": "Прямоугольные",
+    "title_en": "FF R 11",
+    "title_ru": "FF R 11",
+    "description_en": "Realistic template for cloth modeling: FF R 11",
+    "description_ru": "Реалистичный шаблон складки для моделирования: FF R 11",
+    "count": "1 Folds",
+    "format": ".fld",
+    "price": 0.0,
+    "images": [
+      "images/products/FF_R_11_Shape.jpg"
+    ],
+    "image": "images/products/FF_R_11_Shape.jpg",
+    "fld_file": ""
   }
 ]

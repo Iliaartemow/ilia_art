@@ -63,7 +63,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, 'engine')" class="nav-link" id="nav-about">About Engine</a></li>
+                    <li><a href="engine.html" class="nav-link" id="nav-about">About Engine</a></li>
                     <li><a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, 'pricing')" class="nav-link" id="nav-faq">FAQ</a></li>
                     <li><a href="javascript:void(0)" onclick="openLegalModal('contacts')" class="nav-link" id="nav-contacts">Support</a></li>
                 </ul>
@@ -323,121 +323,171 @@
             </div>
         </section>
 
-        <!-- Developer's C++ Showcase Section -->
-        <section class="tech-showcase-section" id="engine" style="padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <!-- Features Gallery Section -->
+        <section class="features-gallery-section" id="features" style="padding: 60px 0; border-top: 1px solid rgba(255, 255, 255, 0.05);">
             <div class="container">
                 <div class="section-header">
-                    <div class="badge" id="tech-badge">UNDER THE HOOD</div>
-                    <h2 id="tech-title">Engineered in Pure C++ for Speed</h2>
-                    <p id="tech-subtitle">How a custom-written modifier achieves raw viewport performance and real-time mesh deformation.</p>
+                    <div class="badge" id="features-badge">CORE CAPABILITIES</div>
+                    <h2 id="features-title">Designed for Fast & Realistic Results</h2>
+                    <p id="features-subtitle">Speed up your workflow with direct viewport tools built for 3D modeling pipelines.</p>
                 </div>
 
-                <!-- 3-Column Technology Grid -->
-                <div class="tech-grid">
-                    <!-- Card 1: C++ Core -->
+                <div class="features-gallery-grid">
+                    <!-- Card 1: Drape & Fold -->
                     <div class="tech-card">
                         <div class="tech-card-graphic">
-                            <svg class="svg-tech-anim" id="svg-anim-cpu" viewBox="0 0 120 120" width="100" height="100">
-                                <!-- Silicon Chip Base -->
-                                <rect x="30" y="30" width="60" height="60" rx="6" fill="rgba(0, 255, 128, 0.03)" stroke="var(--primary-color)" stroke-width="1.5" />
-                                <rect x="42" y="42" width="36" height="36" rx="4" fill="rgba(0, 255, 128, 0.1)" stroke="var(--primary-color)" stroke-width="1" />
-                                <text x="60" y="64" font-family="'Outfit', sans-serif" font-size="10" font-weight="bold" fill="var(--primary-color)" text-anchor="middle">C++</text>
-                                
-                                <!-- Circuit traces (pins) -->
-                                <line x1="45" y1="30" x2="45" y2="15" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-                                <line x1="60" y1="30" x2="60" y2="15" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-                                <line x1="75" y1="30" x2="75" y2="15" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-                                <line x1="45" y1="90" x2="45" y2="105" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-                                <line x1="60" y1="90" x2="60" y2="105" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-                                <line x1="75" y1="90" x2="75" y2="105" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-                                <line x1="30" y1="45" x2="15" y2="45" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-                                <line x1="30" y1="60" x2="15" y2="60" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-                                <line x1="30" y1="75" x2="15" y2="75" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-                                <line x1="90" y1="45" x2="105" y2="45" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-                                <line x1="90" y1="60" x2="105" y2="60" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-                                <line x1="90" y1="75" x2="105" y2="75" stroke="var(--primary-color)" stroke-width="1" stroke-linecap="round" />
-
-                                <!-- Glowing Pulses -->
-                                <circle class="pulse-dot pd-t1" r="2" fill="#00ff80" />
-                                <circle class="pulse-dot pd-t2" r="2" fill="#00ff80" />
-                                <circle class="pulse-dot pd-l1" r="2" fill="#00ff80" />
-                                <circle class="pulse-dot pd-r1" r="2" fill="#00ff80" />
+                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
+                                <style>
+                                    .wave-surface-line {
+                                        stroke: rgba(255, 255, 255, 0.04);
+                                        stroke-width: 1;
+                                        fill: none;
+                                    }
+                                </style>
+                                <path class="wave-surface-line" d="M 20,40 L 180,40" />
+                                <path class="wave-surface-line" d="M 20,60 L 180,60" />
+                                <path class="wave-surface-line" d="M 20,80 L 180,80" />
+                                <path class="wave-surface-line" d="M 20,100 L 180,100" />
+                                <path class="wave-surface-line" d="M 40,30 L 40,110" />
+                                <path class="wave-surface-line" d="M 80,30 L 80,110" />
+                                <path class="wave-surface-line" d="M 120,30 L 120,110" />
+                                <path class="wave-surface-line" d="M 160,30 L 160,110" />
+                                <path class="wave-line-fold" d="M 20,80 Q 50,80 80,60 T 140,60 T 180,80" style="animation-delay: -0.6s; opacity: 0.25; stroke: var(--primary-color); stroke-width: 1.2; fill: none; transform: translate(15px, -15px);" />
+                                <path class="wave-line-fold" d="M 20,80 Q 50,80 80,60 T 140,60 T 180,80" style="stroke: var(--primary-color); stroke-width: 1.8; fill: none; filter: drop-shadow(0 0 3px var(--primary-color));" />
+                                <path class="wave-line-fold" d="M 20,80 Q 50,80 80,60 T 140,60 T 180,80" style="animation-delay: -1.2s; opacity: 0.45; stroke: var(--primary-color); stroke-width: 1.2; fill: none; transform: translate(-15px, 15px);" />
+                                <circle class="grid-node-projected wave-node-0" cx="40" cy="65" r="3.5" />
+                                <circle class="grid-node-projected wave-node-1" cx="75" cy="55" r="3.5" />
+                                <circle class="grid-node-projected wave-node-2" cx="110" cy="65" r="3.5" />
+                                <circle class="grid-node-projected wave-node-3" cx="145" cy="55" r="3.5" />
+                                <circle class="grid-node-projected wave-node-4" cx="175" cy="65" r="3.5" />
+                                <circle class="grid-node-flat" cx="20" cy="80" r="2" />
+                                <circle class="grid-node-flat" cx="185" cy="80" r="2" />
                             </svg>
                         </div>
-                        <h3 id="tech-card-title-1">Direct MNMesh Access</h3>
-                        <p id="tech-card-desc-1">Bypasses high-level wrapper overhead. The plugin utilizes raw pointer arithmetic to communicate directly with 3ds Max's internal MNMesh structure, enabling microsecond memory operations.</p>
+                        <h3 id="feat-card-title-1">Drape & Fold</h3>
+                        <p id="feat-card-desc-1">Draw folds interactively. Instantly propagate cloth tension, gravity, and wrinkles along your geometry without slow simulations.</p>
                     </div>
 
-                    <!-- Card 2: Dijkstra Solver -->
+                    <!-- Card 2: Inflation -->
                     <div class="tech-card">
                         <div class="tech-card-graphic">
-                            <svg class="svg-tech-anim" id="svg-anim-path" viewBox="0 0 120 120" width="100" height="100">
-                                <!-- Mesh Graph Nodes & Edges -->
-                                <g opacity="0.3" stroke="var(--text-secondary)" stroke-width="0.8">
-                                    <line x1="20" y1="60" x2="50" y2="30" />
-                                    <line x1="20" y1="60" x2="40" y2="90" />
-                                    <line x1="50" y1="30" x2="80" y2="30" />
-                                    <line x1="50" y1="30" x2="65" y2="60" />
-                                    <line x1="40" y1="90" x2="65" y2="60" />
-                                    <line x1="40" y1="90" x2="80" y2="90" />
-                                    <line x1="80" y1="30" x2="100" y2="60" />
-                                    <line x1="65" y1="60" x2="100" y2="60" />
-                                    <line x1="80" y1="90" x2="100" y2="60" />
-                                </g>
-                                
-                                <g fill="var(--text-secondary)" opacity="0.5">
-                                    <circle cx="20" cy="60" r="3" />
-                                    <circle cx="50" cy="30" r="3" />
-                                    <circle cx="40" cy="90" r="3" />
-                                    <circle cx="65" cy="60" r="3" />
-                                    <circle cx="80" cy="30" r="3" />
-                                    <circle cx="80" cy="90" r="3" />
-                                    <circle cx="100" cy="60" r="3" />
-                                </g>
-
-                                <!-- Dijkstra Path Animation Lines -->
-                                <g class="dijkstra-active-path" stroke="var(--primary-color)" stroke-width="1.5" stroke-linecap="round" fill="none">
-                                    <path d="M20,60 L50,30 L65,60 L80,90 L100,60" class="path-solved-line" />
-                                </g>
-
-                                <!-- Moving Solver Frontier Wave -->
-                                <circle class="path-solver-wave wave-1" cx="20" cy="60" r="0" stroke="var(--primary-color)" stroke-width="1" fill="none" />
-                                <circle class="path-solver-wave wave-2" cx="50" cy="30" r="0" stroke="var(--primary-color)" stroke-width="1" fill="none" />
-                                <circle class="path-solver-wave wave-3" cx="65" cy="60" r="0" stroke="var(--primary-color)" stroke-width="1" fill="none" />
-
-                                <!-- Glowing path nodes -->
-                                <circle class="glow-node gn-1" cx="20" cy="60" r="4" fill="var(--primary-color)" />
-                                <circle class="glow-node gn-2" cx="50" cy="30" r="4" fill="var(--primary-color)" />
-                                <circle class="glow-node gn-3" cx="65" cy="60" r="4" fill="var(--primary-color)" />
-                                <circle class="glow-node gn-4" cx="80" cy="90" r="4" fill="var(--primary-color)" />
-                                <circle class="glow-node gn-5" cx="100" cy="60" r="4" fill="var(--primary-color)" />
+                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
+                                <style>
+                                    .ridge-line {
+                                        fill: none;
+                                        stroke: var(--primary-color);
+                                        stroke-width: 1.5;
+                                        opacity: 0.85;
+                                        filter: drop-shadow(0 0 3px var(--primary-color));
+                                    }
+                                    .ridge-1 {
+                                        animation: ridge1 3s ease-in-out infinite;
+                                    }
+                                    .ridge-2 {
+                                        animation: ridge2 3s ease-in-out infinite;
+                                    }
+                                    .ring-1 {
+                                        animation: ring1 3s ease-in-out infinite;
+                                        fill: none;
+                                        stroke: var(--primary-color);
+                                        stroke-width: 1.2;
+                                        opacity: 0.5;
+                                    }
+                                    @keyframes ridge1 {
+                                        0%, 100% { d: path("M 68,79 L 84,64.5 L 100,73 L 116,80.5 L 132,111"); }
+                                        50% { d: path("M 68,79 L 84,37.5 L 100,23.5 L 116,53.5 L 132,111"); }
+                                    }
+                                    @keyframes ridge2 {
+                                        0%, 100% { d: path("M 68,111 L 84,80.5 L 100,73 L 116,64.5 L 132,79"); }
+                                        50% { d: path("M 68,111 L 84,53.5 L 100,23.5 L 116,37.5 L 132,79"); }
+                                    }
+                                    @keyframes ring1 {
+                                        0%, 100% { d: path("M 52,87 L 100,79 L 148,87 L 100,111 Z"); }
+                                        50% { d: path("M 52,78 L 100,69 L 148,78 L 100,101 Z"); }
+                                    }
+                                </style>
+                                <path class="grid-floor-line" d="M 36,95 L 100,63 L 164,95 L 100,127 Z" />
+                                <path class="grid-floor-line" d="M 52,87 L 100,79 L 148,87 L 100,111 Z" />
+                                <path class="grid-floor-line" d="M 68,79 L 132,111" />
+                                <path class="grid-floor-line" d="M 68,111 L 132,79" />
+                                <line class="vert-line-peak vert-project-line" x1="100" y1="95" x2="100" y2="40" />
+                                <line class="vert-line-mid vert-project-line" x1="116" y1="87" x2="116" y2="42" style="transform-origin: 116px 87px;" />
+                                <line class="vert-line-mid vert-project-line" x1="84" y1="87" x2="84" y2="42" style="transform-origin: 84px 87px;" />
+                                <line class="vert-line-mid vert-project-line" x1="84" y1="103" x2="84" y2="58" style="transform-origin: 84px 103px;" />
+                                <line class="vert-line-mid vert-project-line" x1="116" y1="103" x2="116" y2="58" style="transform-origin: 116px 103px;" />
+                                <path class="ring-1" d="M 52,87 L 100,79 L 148,87 L 100,111 Z" />
+                                <path class="ridge-line ridge-1" d="M 68,79 L 84,64.5 L 100,73 L 116,80.5 L 132,111" />
+                                <path class="ridge-line ridge-2" d="M 68,111 L 84,80.5 L 100,73 L 116,64.5 L 132,79" />
+                                <circle class="grid-node-flat" cx="36" cy="95" r="2.5" />
+                                <circle class="grid-node-flat" cx="164" cy="95" r="2.5" />
+                                <circle class="grid-node-flat" cx="100" cy="63" r="2.5" />
+                                <circle class="grid-node-flat" cx="100" cy="127" r="2.5" />
+                                <circle class="grid-node-flat" cx="52" cy="87" r="2" />
+                                <circle class="grid-node-flat" cx="148" cy="87" r="2" />
+                                <circle class="grid-node-flat" cx="100" cy="79" r="2" />
+                                <circle class="grid-node-flat" cx="100" cy="111" r="2" />
+                                <circle class="grid-node-projected node-peak" cx="100" cy="40" r="4.5" />
+                                <circle class="grid-node-projected node-mid-1" cx="116" cy="42" r="3.5" />
+                                <circle class="grid-node-projected node-mid-2" cx="84" cy="42" r="3.5" />
+                                <circle class="grid-node-projected node-mid-3" cx="84" cy="58" r="3.5" />
+                                <circle class="grid-node-projected node-mid-4" cx="116" cy="58" r="3.5" />
                             </svg>
                         </div>
-                        <h3 id="tech-card-title-2">Custom Dijkstra Solver</h3>
-                        <p id="tech-card-desc-2">Calculates topological geodetic distances along vertex rings in real-time. Instead of geometric raycasts, it traverses the mesh's graph, mapping natural wrinkle flow matching actual physical tension.</p>
+                        <h3 id="feat-card-title-2">Inflation Engine</h3>
+                        <p id="feat-card-desc-2">Add volume to cushions, pillows, and mattresses. Tweak pressure and expansion properties dynamically using curve graphs.</p>
                     </div>
 
-                    <!-- Card 3: Multithreading & Performance -->
+                    <!-- Card 3: Export -->
                     <div class="tech-card">
                         <div class="tech-card-graphic">
-                            <svg class="svg-tech-anim" id="svg-anim-perf" viewBox="0 0 120 120" width="100" height="100">
-                                <!-- Grid background -->
-                                <path d="M15,20 L15,100 L110,100 M15,40 L110,40 M15,60 L110,60 M15,80 L110,80" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-                                
-                                <!-- Thread Splitting lines -->
-                                <path d="M15,60 C30,60 35,30 50,30 L90,30" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
-                                <path d="M15,60 C30,60 35,50 50,50 L90,50" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
-                                <path d="M15,60 C30,60 35,70 50,70 L90,70" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
-                                <path d="M15,60 C30,60 35,90 50,90 L90,90" stroke="rgba(0, 255, 128, 0.2)" stroke-width="1" fill="none" />
-                                
-                                <!-- Running Performance Graph Line -->
-                                <path class="perf-line" d="M15,90 L30,92 L40,88 L50,90 L60,30 L70,89 L80,90 L95,91 L110,90" stroke="#00ff80" stroke-width="1.8" fill="none" stroke-linecap="round" />
-                                <circle class="perf-tracker" cx="60" cy="30" r="3.5" fill="#00ff80" />
-                                <text class="perf-text" x="65" y="24" font-family="'Outfit', sans-serif" font-size="8" font-weight="bold" fill="#00ff80">0.2ms</text>
+                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
+                                <style>
+                                    .export-badge-rect {
+                                        fill: rgba(0, 204, 102, 0.1);
+                                        stroke: var(--primary-color);
+                                        stroke-width: 1.5;
+                                        filter: drop-shadow(0 0 4px rgba(0, 204, 102, 0.4));
+                                        animation: badge-pulse 2s ease-in-out infinite;
+                                    }
+                                    .export-badge-text {
+                                        fill: #fff;
+                                        font-family: 'Outfit', sans-serif;
+                                        font-size: 10px;
+                                        font-weight: 800;
+                                        letter-spacing: 0.5px;
+                                    }
+                                    @keyframes badge-pulse {
+                                        0%, 100% { opacity: 0.8; transform: scale(1); }
+                                        50% { opacity: 1; transform: scale(1.05); }
+                                    }
+                                </style>
+                                <path class="grid-floor-line" d="M 20,95 L 60,75 L 100,55 L 140,55 L 180,75" />
+                                <path class="grid-floor-line" d="M 20,75 L 60,55 L 100,35 L 140,35 L 180,55" />
+                                <line class="grid-floor-line" x1="20" y1="75" x2="20" y2="95" />
+                                <line class="grid-floor-line" x1="60" y1="55" x2="60" y2="75" />
+                                <line class="grid-floor-line" x1="100" y1="35" x2="100" y2="55" />
+                                <line class="grid-floor-line" x1="140" y1="35" x2="140" y2="55" />
+                                <line class="grid-floor-line" x1="180" y1="55" x2="180" y2="75" />
+                                <path class="control-mesh-line" d="M 20,75 Q 60,75 100,50 T 180,50" />
+                                <circle class="grid-node-flat" cx="20" cy="75" r="3" />
+                                <circle class="grid-node-flat" cx="180" cy="50" r="3" />
+                                <g>
+                                    <line class="gizmo-axes" x1="100" y1="42" x2="100" y2="15" stroke="#3b82f6" />
+                                    <polygon class="gizmo-head" points="100,10 97,16 103,16" fill="#3b82f6" />
+                                    <line class="gizmo-axes" x1="100" y1="42" x2="120" y2="30" stroke="#ef4444" />
+                                    <polygon class="gizmo-head" points="122,29 115,31 118,35" fill="#ef4444" />
+                                    <line class="gizmo-axes" x1="100" y1="42" x2="80" y2="30" stroke="#10b981" />
+                                    <polygon class="gizmo-head" points="78,29 85,35 82,31" fill="#10b981" />
+                                    <circle class="grid-node-projected control-node-moving" cx="100" cy="42" r="4.5" />
+                                </g>
+                                <g transform="translate(145, 15)">
+                                    <rect class="export-badge-rect" x="0" y="0" width="38" height="16" rx="4" style="transform-origin: 19px 8px;" />
+                                    <text class="export-badge-text" x="19" y="11" text-anchor="middle">.FLD</text>
+                                </g>
                             </svg>
                         </div>
-                        <h3 id="tech-card-title-3">Multi-threaded Core</h3>
-                        <p id="tech-card-desc-3">Deformation vectors are parallelized via OpenMP and vectorized with SIMD (SSE/AVX) instructions. Calculations take less than 1ms, eliminating viewport lag even on high-poly models.</p>
+                        <h3 id="feat-card-title-3">Fold Export</h3>
+                        <p id="feat-card-desc-3">Save your wrinkles and seams into clean .FLD files. Import and apply them instantly to speed up detailing on other models.</p>
                     </div>
                 </div>
             </div>
@@ -660,7 +710,7 @@
                     <!-- Tutorial 1 -->
                     <div class="tutorial-card">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/6slHt_hF2GI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <div class="tutorial-info">
                             <h3 class="tutorial-card-title-1">Creating Realistic Bed Folds</h3>
@@ -681,7 +731,7 @@
                     <!-- Tutorial 2 -->
                     <div class="tutorial-card">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/8ycypp4GaO4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <div class="tutorial-info">
                             <h3 class="tutorial-card-title-2">Procedural Leather Seams & Stitches</h3>
@@ -847,10 +897,10 @@
                 tutorials_badge: "Tutorials",
                 tutorials_title: "Video Tutorials",
                 tutorials_desc: "Master cloth modeling in 3ds Max with our step-by-step guides and start scenes.",
-                t1_title: "Creating Realistic Bed Folds",
-                t1_desc: "Learn how to draw splines and configure the FoldFlow modifier for natural bedding wrinkles.",
-                t2_title: "Procedural Leather Seams & Stitches",
-                t2_desc: "A step-by-step guide on creating complex leather embroidery and stitch details using the new independent fading controls.",
+                t1_title: "Lesson 1: Creating Realistic Folds & Seams",
+                t1_desc: "Learn the fundamentals of creating realistic folds and procedural seams in 3ds Max using FoldFlow.",
+                t2_title: "Lesson 2: Sofa Modeling & Cushion Inflation",
+                t2_desc: "Master modular sofa modeling and learn how to inflate fabric for puffy cushions and natural wrinkles.",
                 t3_title: "Looping Fold Animations",
                 t3_desc: "Learn how to animate folds using the new Glob Tiling parameter to create breathing cloth or growing wrinkle effects.",
                 pack_soon: "Pack release is coming soon! You can buy it in a bundle with the plugin via mail: gggiantt@mail.ru",
@@ -927,18 +977,16 @@
     <div id="feedback-status" class="feedback-status-message" style="display: none; margin-top: 12px; font-size: 13px;"></div>
 </div>`,
 
-                // Tech Showcase Section
-                tech_badge: "UNDER THE HOOD",
-                tech_title: "Engineered in Pure C++ for Speed",
-                tech_subtitle: "How a custom-written modifier achieves raw viewport performance and real-time mesh deformation.",
-                tech_quote_text: `"I engineered FoldFlow from scratch in pure C++ because I was tired of laggy viewports and heavy cloth simulation overhead. Direct mesh access and custom math solvers were the only way to make it run at 60/120 FPS in 3ds Max. Every line of code is written with performance and memory optimization in mind."`,
-                tech_quote_author: "— Ilia Artemow, Creator of FoldFlow",
-                tech_card_title_1: "Direct MNMesh Access",
-                tech_card_desc_1: "Bypasses high-level wrapper overhead. The plugin utilizes raw pointer arithmetic to communicate directly with 3ds Max's internal MNMesh structure, enabling microsecond memory operations.",
-                tech_card_title_2: "Custom Dijkstra Solver",
-                tech_card_desc_2: "Calculates topological geodetic distances along vertex rings in real-time. Instead of geometric raycasts, it traverses the mesh's graph, mapping natural wrinkle flow matching actual physical tension.",
-                tech_card_title_3: "Multi-threaded Core",
-                tech_card_desc_3: "Deformation vectors are parallelized via OpenMP and vectorized with SIMD (SSE/AVX) instructions. Calculations take less than 1ms, eliminating viewport lag even on high-poly models.",
+                // Features Gallery Section
+                features_badge: "CORE CAPABILITIES",
+                features_title: "Designed for Fast & Realistic Results",
+                features_subtitle: "Speed up your workflow with direct viewport tools built for 3D modeling pipelines.",
+                feat_card_title_1: "Drape & Fold",
+                feat_card_desc_1: "Draw folds interactively. Instantly propagate cloth tension, gravity, and wrinkles along your geometry without slow simulations.",
+                feat_card_title_2: "Inflation Engine",
+                feat_card_desc_2: "Add volume to cushions, pillows, and mattresses. Tweak pressure and expansion properties dynamically using curve graphs.",
+                feat_card_title_3: "Fold Export",
+                feat_card_desc_3: "Save your wrinkles and seams into clean .FLD files. Import and apply them instantly to speed up detailing on other models.",
                 feat_inflate_title: "Inflation Engine",
                 feat_inflate_desc: "Inflate any shapes easily and control volume using customizable curve graphs.",
                 feat_control_title: "Fold Control & Export",
@@ -1005,10 +1053,10 @@
                 tutorials_badge: "Обучение",
                 tutorials_title: "Видеоуроки",
                 tutorials_desc: "Изучите профессиональное моделирование ткани в 3ds Max с нашими пошаговыми уроками и сценами.",
-                t1_title: "Создание реалистичных складок кровати",
-                t1_desc: "Узнайте, как рисовать сплайны и настраивать модификатор FoldFlow для естественных складок постельного белья.",
-                t2_title: "Процедурные кожаные швы и строчки",
-                t2_desc: "Пошаговое руководство по созданию сложной вышивки на коже и деталей строчки с использованием новых независимых параметров затухания.",
+                t1_title: "Урок 1: Создание реалистичных складок и швов",
+                t1_desc: "Изучите основы создания реалистичных складок и процедурных швов в 3ds Max с помощью FoldFlow.",
+                t2_title: "Урок 2: Моделирование дивана и надувание подушек",
+                t2_desc: "Освойте моделирование модульного дивана и научитесь надувать ткань для создания объемных подушек и естественных складок.",
                 t3_title: "Анимация зацикленных складок",
                 t3_desc: "Научитесь анимировать складки с помощью нового параметра Glob Tiling для создания эффектов дыхания ткани или растущих морщин.",
                 pack_soon: "Выход пакета ожидается в ближайшее время! Вы можете приобрести его в бандле с плагином напрямую через почту: gggiantt@mail.ru",
@@ -1085,18 +1133,16 @@
     <div id="feedback-status" class="feedback-status-message" style="display: none; margin-top: 12px; font-size: 13px;"></div>
 </div>`,
 
-                // Tech Showcase Section
-                tech_badge: "ТЕХНОЛОГИИ ПОД КАПОТОМ",
-                tech_title: "Чистый C++ ради безумной скорости",
-                tech_subtitle: "Как кастомный модификатор достигает максимальной производительности вьюпорта и деформации сетки в реальном времени.",
-                tech_quote_text: `"Я написал FoldFlow с нуля на чистом C++, потому что меня бесили тормоза во вьюпорте и тяжеловесные симуляции ткани. Прямой доступ к сетке и кастомные математические решатели — единственный способ заставить это работать на 60/120 FPS в 3ds Max. Каждая строчка кода написана с маниакальным вниманием к памяти и вычислениям."`,
-                tech_quote_author: "— Илья Артемов, создатель FoldFlow",
-                tech_card_title_1: "Прямой доступ к MNMesh",
-                tech_card_desc_1: "В обход высокоуровневых оберток API. Плагин использует прямую адресную арифметику указателей для работы с внутренней структурой MNMesh в 3ds Max, обеспечивая микросекундное чтение и запись в память.",
-                tech_card_title_2: "Решатель Дейкстры",
-                tech_card_desc_2: "Вычисляет топологические геодезические расстояния по ребрам сетки в реальном времени. Вместо геометрических лучей он идет по графу сетки, строя естественные складки с учетом натяжения ткани.",
-                tech_card_title_3: "Многопоточное ядро",
-                tech_card_desc_3: "Расчет векторов деформации распараллелен с помощью OpenMP и векторизован инструкциями SIMD (SSE/AVX). Вычисления занимают меньше 1 мс, исключая любые задержки во вьюпорте даже на плотной геометрии.",
+                // Features Gallery Section
+                features_badge: "КЛЮЧЕВЫЕ ФУНКЦИИ",
+                features_title: "Создано для быстрой и реалистичной работы",
+                features_subtitle: "Ускоряйте рабочий процесс с помощью инструментов прямого моделирования во вьюпорте.",
+                feat_card_title_1: "Наложение складок",
+                feat_card_desc_1: "Рисуйте складки интерактивно. Моментально распределяйте натяжение ткани, гравитацию и заломы по геометрии без долгих симуляций.",
+                feat_card_title_2: "Раздувание форм",
+                feat_card_desc_2: "Добавляйте объем подушкам, матрасам и мебели. Регулируйте давление и параметры расширения на лету с помощью графиков кривых.",
+                feat_card_title_3: "Экспорт складок",
+                feat_card_desc_3: "Сохраняйте созданные складки и швы в легкие файлы .FLD. Импортируйте и применяйте их мгновенно для ускорения детализации других моделей.",
                 feat_inflate_title: "Раздувание форм",
                 feat_inflate_desc: "Легко надувайте любые формы и управляйте объемом с помощью точных графиков кривых.",
                 feat_control_title: "Контроль и экспорт",
@@ -1164,28 +1210,28 @@
             const featAnimDesc = document.getElementById('feat-anim-desc');
             if (featAnimDesc) featAnimDesc.textContent = trans.feat_anim_desc;
 
-            // Tech Showcase Section
-            const techBadge = document.getElementById('tech-badge');
-            if (techBadge) techBadge.textContent = trans.tech_badge;
-            const techTitle = document.getElementById('tech-title');
-            if (techTitle) techTitle.textContent = trans.tech_title;
-            const techSubtitle = document.getElementById('tech-subtitle');
-            if (techSubtitle) techSubtitle.textContent = trans.tech_subtitle;
+            // Features Gallery Section
+            const featuresBadge = document.getElementById('features-badge');
+            if (featuresBadge) featuresBadge.textContent = trans.features_badge;
+            const featuresTitle = document.getElementById('features-title');
+            if (featuresTitle) featuresTitle.textContent = trans.features_title;
+            const featuresSubtitle = document.getElementById('features-subtitle');
+            if (featuresSubtitle) featuresSubtitle.textContent = trans.features_subtitle;
 
-            const tc1Title = document.getElementById('tech-card-title-1');
-            if (tc1Title) tc1Title.textContent = trans.tech_card_title_1;
-            const tc1Desc = document.getElementById('tech-card-desc-1');
-            if (tc1Desc) tc1Desc.textContent = trans.tech_card_desc_1;
+            const fc1Title = document.getElementById('feat-card-title-1');
+            if (fc1Title) fc1Title.textContent = trans.feat_card_title_1;
+            const fc1Desc = document.getElementById('feat-card-desc-1');
+            if (fc1Desc) fc1Desc.textContent = trans.feat_card_desc_1;
 
-            const tc2Title = document.getElementById('tech-card-title-2');
-            if (tc2Title) tc2Title.textContent = trans.tech_card_title_2;
-            const tc2Desc = document.getElementById('tech-card-desc-2');
-            if (tc2Desc) tc2Desc.textContent = trans.tech_card_desc_2;
+            const fc2Title = document.getElementById('feat-card-title-2');
+            if (fc2Title) fc2Title.textContent = trans.feat_card_title_2;
+            const fc2Desc = document.getElementById('feat-card-desc-2');
+            if (fc2Desc) fc2Desc.textContent = trans.feat_card_desc_2;
 
-            const tc3Title = document.getElementById('tech-card-title-3');
-            if (tc3Title) tc3Title.textContent = trans.tech_card_title_3;
-            const tc3Desc = document.getElementById('tech-card-desc-3');
-            if (tc3Desc) tc3Desc.textContent = trans.tech_card_desc_3;
+            const fc3Title = document.getElementById('feat-card-title-3');
+            if (fc3Title) fc3Title.textContent = trans.feat_card_title_3;
+            const fc3Desc = document.getElementById('feat-card-desc-3');
+            if (fc3Desc) fc3Desc.textContent = trans.feat_card_desc_3;
 
             const galleryTitle = document.getElementById('gallery-title');
             if (galleryTitle) {
