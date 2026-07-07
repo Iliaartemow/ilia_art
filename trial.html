@@ -208,15 +208,71 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+        .back-link:hover {
+            color: var(--text-main);
+            transform: translateX(-3px);
+        }
+        .back-link svg {
+            margin-right: 8px;
+        }
+
+        .instruction-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+        .instruction-box ol {
+            padding-left: 18px;
+            margin-top: 8px;
+        }
+        .instruction-box li {
+            margin-bottom: 6px;
+        }
+        .instruction-box strong {
+            color: var(--text-main);
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="card">
+        <a href="index.html" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Назад на сайт
+        </a>
+
         <div class="logo-area">
             <div class="logo-title">FoldFlow</div>
             <div class="logo-subtitle">Активация бесплатного тестового периода на 14 дней</div>
+        </div>
+
+        <div class="instruction-box">
+            <strong>Как активировать триал:</strong>
+            <ol>
+                <li>Запустите 3ds Max и примените модификатор <strong>FoldFlow</strong> к любому объекту.</li>
+                <li>У вас появится окно ошибки, а ваш HWID <strong>автоматически скопируется в буфер обмена</strong>.</li>
+                <li>Вставьте скопированный HWID в поле ниже (нажмите <strong>Ctrl+V</strong>).</li>
+                <li>После активации вернитесь в 3ds Max и нажмите кнопку <strong>Update</strong> в свитке About/Licensing.</li>
+            </ol>
         </div>
 
         <form id="activationForm">
