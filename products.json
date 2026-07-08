@@ -88,7 +88,7 @@
       "images/products/FF_R_02_EB_SI.jpg"
     ],
     "image": "images/products/FF_R_02_EB_SI.jpg",
-    "fld_file": ""
+    "fld_file": "folds/ff_r_02_FF_R_02_EB_SI.fld"
   },
   {
     "id": "ff_r_04",
@@ -106,7 +106,7 @@
       "images/products/FF_R_04_EBI_MINI_S.jpg"
     ],
     "image": "images/products/FF_R_04_EBI_MINI_S.jpg",
-    "fld_file": ""
+    "fld_file": "folds/ff_r_04_FF_R_04_EBI_MINI_S.fld"
   },
   {
     "id": "ff_r_05",
@@ -125,7 +125,7 @@
       "images/products/FF_R_05_EBI_F_300.jpg"
     ],
     "image": "images/products/FF_R_05.jpg",
-    "fld_file": ""
+    "fld_file": "folds/ff_r_05_FF_R_05.fld"
   },
   {
     "id": "ff_r_06",
@@ -143,7 +143,7 @@
       "images/products/FF_R_06.jpg"
     ],
     "image": "images/products/FF_R_06.jpg",
-    "fld_file": ""
+    "fld_file": "folds/ff_r_06_FF_R_06.fld"
   },
   {
     "id": "ff_r_07",
@@ -163,7 +163,7 @@
       "images/products/FF_R_07_Shape.jpg"
     ],
     "image": "images/products/FF_R_07.jpg",
-    "fld_file": ""
+    "fld_file": "folds/ff_r_07_FF_R_07_Loop.fld"
   },
   {
     "id": "ff_r_08",
@@ -181,7 +181,7 @@
       "images/products/FF_R_08.jpg"
     ],
     "image": "images/products/FF_R_08.jpg",
-    "fld_file": ""
+    "fld_file": "folds/ff_r_08_FF_R_08.fld"
   },
   {
     "id": "ff_r_09",
@@ -199,7 +199,7 @@
       "images/products/FF_R_09.jpg"
     ],
     "image": "images/products/FF_R_09.jpg",
-    "fld_file": ""
+    "fld_file": "folds/ff_r_09_FF_R_09.fld"
   },
   {
     "id": "ff_r_10",
@@ -218,7 +218,7 @@
       "images/products/FF_R_10_Shape.jpg"
     ],
     "image": "images/products/FF_R_10.jpg",
-    "fld_file": ""
+    "fld_file": "folds/ff_r_10_FF_R_10_Shape.fld"
   },
   {
     "id": "ff_r_11",
@@ -236,6 +236,6 @@
       "images/products/FF_R_11_Shape.jpg"
     ],
     "image": "images/products/FF_R_11_Shape.jpg",
-    "fld_file": ""
+    "fld_file": "folds/ff_r_11_FF_R_11_Shape.fld"
   }
 ]
