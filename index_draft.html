@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoldFlow — Shop & Marketplace (Draft)</title>
-    <meta name="description" content="Official store for FoldFlow 3ds Max plugin and custom fold alpha packs.">
+    <title>FoldFlow — The Ultimate Future of Cloth Modeling</title>
+    <meta name="description" content="Official website for the FoldFlow 3ds Max modifier plugin and procedural fold library.">
     <meta name="google-site-verification" content="9x3kDl9SQ_DwjraFJr9hL-wHkQ8fcvDtwQzerYhT5aY" />
     <link rel="stylesheet" href="style_draft.css?v=4">
+    <link rel="icon" type="image/png" href="images/logo_icon.png">
 </head>
-<body>
+<body onload="window.scrollTo(0, 0)">
 
     <!-- Ambient Background Glows -->
     <div class="glow-bg glow-top-left"></div>
@@ -46,8 +47,8 @@
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"></path></svg>
                                     </div>
                                     <div class="item-text">
-                                        <span class="item-title" id="item-title-alphas">Procedural Alphas</span>
-                                        <span class="item-desc" id="item-desc-alphas">16-bit heightmaps for detailing</span>
+                                        <span class="item-title" id="item-title-alphas">Fold Library</span>
+                                        <span class="item-desc" id="item-desc-alphas">Procedural fold profiles</span>
                                     </div>
                                 </a>
                             </li>
@@ -70,6 +71,43 @@
                 </ul>
             </nav>
             <div class="header-right">
+                <button class="buy-pro-floating" onclick="purchaseProduct('pro_license')" id="header-buy-text">Buy Pro</button>
+                <!-- Download Dropdown -->
+                <div class="download-dropdown" id="download-dropdown">
+                    <button class="download-trigger-btn" id="download-trigger-btn">
+                        <span id="download-btn-text">Download</span>
+                        <svg class="chevron-down" width="8" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <ul class="download-dropdown-menu">
+                        <li class="menu-item-has-submenu">
+                            <button class="dropdown-menu-item-btn" data-submenu="free">
+                                <span id="download-menu-free">Free (Trial)</span>
+                                <svg class="chevron-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" style="pointer-events: none;"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <ul class="download-submenu" id="submenu-free">
+                                <li><a href="downloads/FoldFlow_Free_2021.zip" class="submenu-item" download>3ds Max 2021</a></li>
+                                <li><a href="downloads/FoldFlow_Free_2022.zip" class="submenu-item" download>3ds Max 2022</a></li>
+                                <li><a href="downloads/FoldFlow_Free_2023.zip" class="submenu-item" download>3ds Max 2023</a></li>
+                                <li><a href="downloads/FoldFlow_Free_2024.zip" class="submenu-item" download>3ds Max 2024</a></li>
+                                <li><a href="downloads/FoldFlow_Free_2025.zip" class="submenu-item" download>3ds Max 2025</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-submenu">
+                            <button class="dropdown-menu-item-btn" data-submenu="pro">
+                                <span id="download-menu-pro">Pro License</span>
+                                <svg class="chevron-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" style="pointer-events: none;"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <ul class="download-submenu" id="submenu-pro">
+                                <li><a href="downloads/FoldFlow_Pro_2021.zip" class="submenu-item" download>3ds Max 2021</a></li>
+                                <li><a href="downloads/FoldFlow_Pro_2022.zip" class="submenu-item" download>3ds Max 2022</a></li>
+                                <li><a href="downloads/FoldFlow_Pro_2023.zip" class="submenu-item" download>3ds Max 2023</a></li>
+                                <li><a href="downloads/FoldFlow_Pro_2024.zip" class="submenu-item" download>3ds Max 2024</a></li>
+                                <li><a href="downloads/FoldFlow_Pro_2025.zip" class="submenu-item" download>3ds Max 2025</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
                 <div class="lang-switcher">
                     <button class="lang-btn active" data-lang-select="en">EN</button>
                     <span class="lang-divider">|</span>
@@ -507,9 +545,9 @@
                 <!-- Core Card -->
                 <div class="pricing-card card-blue">
                     <div class="card-header">
-                        <h3 id="license-title-core">Core License</h3>
-                        <p id="license-desc-core">Perfect for freelancers and indie 3D modelers.</p>
-                        <div class="price">$49<span id="price-desc-core">/ perpetual</span></div>
+                        <h3 id="license-title-core">Demo License</h3>
+                        <p id="license-desc-core">Try all features free of charge for 14 days.</p>
+                        <div class="price">Free<span id="price-desc-core">/ 14-day trial</span></div>
                     </div>
                     <ul class="features-list">
                         <li id="f-modifier-1"><span class="icon">✓</span> 3ds Max procedural modifier</li>
@@ -519,7 +557,7 @@
                         <li id="f-exporter-1" class="unsupported"><span class="icon">✗</span> <span class="disabled">FoldExporter (.fld) module</span></li>
                         <li id="f-support-1" class="unsupported"><span class="icon">✗</span> <span class="disabled">Priority email support</span></li>
                     </ul>
-                    <button id="pricing-btn-core" class="pricing-btn" onclick="purchaseProduct('core_license')">Buy Core</button>
+                    <button id="pricing-btn-core" class="pricing-btn" onclick="window.location.href='trial.html'">Get Trial</button>
                 </div>
 
                 <!-- Pro Card (Featured) -->
@@ -528,7 +566,7 @@
                     <div class="card-header">
                         <h3 id="license-title-pro">Pro License</h3>
                         <p id="license-desc-pro">For professional artists who need advanced pipeline tools.</p>
-                        <div class="price">$99<span id="price-desc-pro">/ perpetual</span></div>
+                        <div class="price">$49<span id="price-desc-pro">/ perpetual</span></div>
                     </div>
                     <ul class="features-list">
                         <li id="f-modifier-2"><span class="icon">✓</span> 3ds Max procedural modifier</li>
@@ -566,13 +604,16 @@
     <section class="store-hero">
         <div class="container">
             <div class="hero-banner-card">
-                <!-- Left Column: Typography -->
+                <!-- Left Column: Typography with Logo -->
                 <div class="banner-typography">
-                    <h1 class="banner-title">
-                        <span class="word-fold">FOLD</span>
-                        <span class="word-flow">FLOW</span>
-                    </h1>
-                    <p class="banner-slogan" id="hero-slogan">Ультимативные возможности моделирования ткани</p>
+                    <img src="images/logo_icon.png" alt="FoldFlow Icon" class="banner-logo-img">
+                    <div>
+                        <h1 class="banner-title">
+                            <span class="word-fold">FOLD</span>
+                            <span class="word-flow">FLOW</span>
+                        </h1>
+                        <p class="banner-slogan" id="hero-slogan">Ультимативные возможности моделирования ткани</p>
+                    </div>
                 </div>
                 
                 <!-- Right Column: Interactive Particle Mesh -->
@@ -767,12 +808,11 @@
         </section>
     </div>
 
-    <!-- Footer -->
     <footer>
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-            <div class="footer-left" style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="container" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 20px; text-align: center;">
+            <div class="footer-left" style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%;">
                 <p>&copy; 2026 FoldFlow. Draft version for local development.</p>
-                <div class="footer-legal-links" style="display: flex; gap: 15px; flex-wrap: wrap; font-size: 13px;">
+                <div class="footer-legal-links" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px; width: 100%;">
                     <a href="javascript:void(0)" onclick="openLegalModal('about')" id="link-about" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">О сервисе</a>
                     <span style="color: var(--text-muted);">|</span>
                     <a href="javascript:void(0)" onclick="openLegalModal('privacy')" id="link-privacy" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">Политика конфиденциальности</a>
@@ -843,10 +883,12 @@
                 store: "Store",
                 item_title_plugin: "Modifier Plugin",
                 item_desc_plugin: "Core C++ plugin for 3ds Max",
-                item_title_alphas: "Fold Alpha Packs",
-                item_desc_alphas: "16-bit displacement maps for high-poly detailing",
                 item_title_seams: "Seams & Stitching Presets",
                 item_desc_seams: "Procedural seam lines and zippers",
+                floating_buy: "Buy Pro",
+                download: "Download",
+                download_free: "Free (Trial)",
+                download_pro: "Pro License",
                 nav_about: "About Engine",
                 nav_faq: "FAQ",
                 nav_contacts: "Support",
@@ -999,10 +1041,12 @@
                 store: "Магазин",
                 item_title_plugin: "Плагин-модификатор",
                 item_desc_plugin: "Основной C++ плагин для 3ds Max",
-                item_title_alphas: "Процедурные альфы",
-                item_desc_alphas: "16-битные альфа-карты высот для детализации",
                 item_title_seams: "Швы и Пресеты",
                 item_desc_seams: "Процедурные молнии и линии швов",
+                floating_buy: "Купить Pro",
+                download: "Скачать",
+                download_free: "Бесплатно (Триал)",
+                download_pro: "Pro Лицензия",
                 nav_about: "О движке",
                 nav_faq: "FAQ",
                 nav_contacts: "Поддержка",
@@ -1171,6 +1215,16 @@
             document.getElementById('item-desc-plugin').textContent = trans.item_desc_plugin;
             document.getElementById('item-title-alphas').textContent = trans.item_title_alphas;
             document.getElementById('item-desc-alphas').textContent = trans.item_desc_alphas;
+            const headerBuy = document.getElementById('header-buy-text');
+            if (headerBuy) headerBuy.textContent = trans.floating_buy;
+            const floatBuyText = document.getElementById('floating-buy-text');
+            if (floatBuyText) floatBuyText.textContent = trans.floating_buy;
+            const downloadBtnText = document.getElementById('download-btn-text');
+            if (downloadBtnText) downloadBtnText.textContent = trans.download;
+            const downloadMenuFree = document.getElementById('download-menu-free');
+            if (downloadMenuFree) downloadMenuFree.textContent = trans.download_free;
+            const downloadMenuPro = document.getElementById('download-menu-pro');
+            if (downloadMenuPro) downloadMenuPro.textContent = trans.download_pro;
             document.getElementById('item-title-seams').textContent = trans.item_title_seams;
             document.getElementById('item-desc-seams').textContent = trans.item_desc_seams;
             document.getElementById('nav-about').textContent = trans.nav_about;
@@ -1401,7 +1455,7 @@
         async function loadProducts() {
             try {
                 const response = await fetch('products.json?v=' + Date.now(), { cache: 'no-store' });
-                currentProducts = await response.json();
+                currentProducts = (await response.json()).filter(p => p.price === 0);
                 buildProductCards();
                 renderProducts(activeFilter);
             } catch (err) {
@@ -2585,6 +2639,76 @@
                 </div>
             </div>
         </div>
+    <!-- Floating Buy Button -->
+    <a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, 'pricing')" class="floating-buy-btn" id="floating-buy-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span id="floating-buy-text">Buy Pro</span>
+    </a>
+
+    <!-- Scroll and ScrollRestoration scripts -->
+    <script>
+        // Force scroll to top on load and prevent browser scroll restoration
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.addEventListener('load', () => {
+            // If there's no hash, scroll to top
+            if (!window.location.hash) {
+                window.scrollTo(0, 0);
+            }
+        });
+
+        // Floating Buy Button scroll listener
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('floating-buy-btn');
+            if (!btn) return;
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        // Download dropdown toggle logic
+        const downloadTrigger = document.getElementById('download-trigger-btn');
+        const downloadDropdown = document.getElementById('download-dropdown');
+        if (downloadTrigger && downloadDropdown) {
+            downloadTrigger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                downloadDropdown.classList.toggle('active');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!downloadDropdown.contains(e.target)) {
+                    downloadDropdown.classList.remove('active');
+                    // Reset submenus to closed when closing dropdown
+                    downloadDropdown.querySelectorAll('.menu-item-has-submenu').forEach(item => {
+                        item.classList.remove('open');
+                    });
+                }
+            });
+
+            // Accordion submenu toggle logic
+            downloadDropdown.querySelectorAll('.dropdown-menu-item-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const parent = btn.parentElement;
+                    const isOpen = parent.classList.contains('open');
+                    
+                    // Close other submenus first for a clean accordion effect
+                    downloadDropdown.querySelectorAll('.menu-item-has-submenu').forEach(item => {
+                        item.classList.remove('open');
+                    });
+
+                    if (!isOpen) {
+                        parent.classList.add('open');
+                    }
+                });
+            });
+        }
+    </script>
+
     <!-- Local Analytics Tracking Script -->
     <script>
         (function() {

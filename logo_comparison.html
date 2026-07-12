@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoldFlow Logo Vectorization Comparison</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #12131a;
+            color: #fff;
+            margin: 40px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #1c1e29;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            width: 450px;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #8ab4f8;
+        }
+        img, svg {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            background: #ffffff; /* Use white background to see the shapes clearly */
+            border-radius: 8px;
+            border: 1px solid #2d303f;
+        }
+        .card.original img {
+            background: #ffffff;
+        }
+        .info {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #9aa0a6;
+        }
+    </style>
+</head>
+<body>
+    <h1>FoldFlow Logo Vectorization</h1>
+    <p>Comparing the original image with different generated smoothed vector (SVG) options.</p>
+    
+    <div style="margin-bottom: 20px;">
+        <label for="svg-select" style="font-size: 16px; margin-right: 10px;">Select SVG Variation:</label>
+        <select id="svg-select" style="background: #2d303f; color: #fff; padding: 8px 12px; border-radius: 6px; border: 1px solid #4a4f66; font-size: 16px;">
+            <!-- Options will be populated by JS -->
+        </select>
+    </div>
+    
+    <div class="container">
+        <!-- Original Image -->
+        <div class="card original">
+            <h3>Original Raster Image (PNG)</h3>
+            <img id="orig-img" src="logo_ref.png" alt="Original Logo">
+        </div>
+        
+        <!-- Vector Image -->
+        <div class="card vector">
+            <h3>Vector Image (SVG)</h3>
+            <div id="svg-container"></div>
+        </div>
+    </div>
+    
+    <div class="info">
+        Open this page in your browser to inspect the curve fidelity and choose the best version.
+    </div>
+
+    <script>
+        const select = document.getElementById('svg-select');
+        
+        // Premium variants
+        const variants = [
+            { value: 'logo_perfect_styled.svg', text: '⭐ CONCEPT 5: Hand-Tuned Purple Velvet Fabric F' },
+            { value: 'logo_eps2_tens2_blue.svg', text: 'Concept 1: Classic Blue Flow (Eps 2, Tens 2)' },
+            { value: 'logo_eps2_tens2_purple.svg', text: 'Concept 2: Purple Velvet Flow (Eps 2, Tens 2)' },
+            { value: 'logo_eps2_tens2_chrome_purple.svg', text: 'Concept 3: Chrome & Purple Velvet Hybrid (Eps 2, Tens 2)' },
+            { value: 'logo_eps2_tens2_chrome_blue.svg', text: 'Concept 4: Chrome & Blue Flow Hybrid (Eps 2, Tens 2)' },
+            { value: 'logo_eps3_tens2_blue.svg', text: 'Classic Blue Flow (Eps 3, Tens 2 - Tighter Curves)' },
+            { value: 'logo_eps3_tens2_purple.svg', text: 'Purple Velvet Flow (Eps 3, Tens 2 - Tighter Curves)' },
+            { value: 'logo_eps3_tens2_chrome_purple.svg', text: 'Chrome & Purple Velvet Hybrid (Eps 3, Tens 2)' },
+            { value: 'logo_eps3_tens2_chrome_blue.svg', text: 'Chrome & Blue Flow Hybrid (Eps 3, Tens 2)' },
+        ];
+        
+        variants.forEach(v => {
+            const opt = document.createElement('option');
+            opt.value = v.value;
+            opt.textContent = v.text;
+            select.appendChild(opt);
+        });
+        
+        // Add draft option
+        const optDraft = document.createElement('option');
+        optDraft.value = 'logo_draft.svg';
+        optDraft.textContent = 'Draft (Unsmoothed Polygons)';
+        select.appendChild(optDraft);
+        
+        function loadSVG(filename) {
+            fetch(filename)
+                .then(r => r.text())
+                .then(data => {
+                    document.getElementById('svg-container').innerHTML = data;
+                });
+        }
+        
+        select.addEventListener('change', (e) => {
+            loadSVG(e.target.value);
+        });
+        
+        // Load default (Concept 5: Hand-Tuned Purple Velvet)
+        select.value = 'logo_perfect_styled.svg';
+        loadSVG('logo_perfect_styled.svg');
+    </script>
+</body>
+</html>

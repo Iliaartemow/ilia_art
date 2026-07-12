@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=4">
+    <link rel="icon" type="image/png" href="images/logo_icon.png">
     <!-- Embed specific styles -->
     <style>
         body {
@@ -415,7 +416,7 @@
             
             try {
                 const response = await fetch('products.json?v=' + Date.now(), { cache: 'no-store' });
-                currentProducts = await response.json();
+                currentProducts = (await response.json()).filter(p => p.price === 0);
                 
                 // Get product ID from URL
                 const params = new URLSearchParams(window.location.search);
