@@ -74,7 +74,7 @@
                 <!-- Download Dropdown -->
                 <div class="download-dropdown" id="download-dropdown">
                     <button class="download-trigger-btn" id="download-trigger-btn">
-                        <span id="download-btn-text">Download</span>
+                        <span id="download-btn-text">Get Trial</span>
                         <svg class="chevron-down" width="8" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                     <ul class="download-dropdown-menu">
@@ -129,6 +129,82 @@
 
     <!-- Fold Flow Page -->
     <div id="fold-flow-page" class="tab-content">
+
+        <!-- New Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-container">
+                <!-- Left Column: Copy & CTA -->
+                <div class="hero-content">
+                    <h1 class="hero-headline" id="hero-headline">Real-Time Procedural Cloth & Cushion Folds</h1>
+                    <div class="hero-bullets">
+                        <div class="bullet-item">
+                            <span class="bullet-check">✓</span>
+                            <span id="hero-bullet-1">No Simulation</span>
+                        </div>
+                        <div class="bullet-item">
+                            <span class="bullet-check">✓</span>
+                            <span id="hero-bullet-2">No Sculpting</span>
+                        </div>
+                        <div class="bullet-item">
+                            <span class="bullet-check">✓</span>
+                            <span id="hero-bullet-3">Instant Viewport Feedback</span>
+                        </div>
+                    </div>
+                    <div class="hero-cta-buttons">
+                        <a href="trial.html" class="cta-btn cta-trial-btn" id="hero-trial-btn">Попробуй новое измерение</a>
+                        <button class="cta-btn cta-pro-btn" id="hero-pro-btn" onclick="navigateToSection('fold-flow', null, 'pricing')">Buy Pro ($49)</button>
+                    </div>
+                </div>
+                <!-- Right Column: Interactive Video Preview -->
+                <div class="hero-visual">
+                    <div class="video-container-wrapper">
+                        <video class="hero-preview-video" autoplay muted loop playsinline>
+                            <source src="timeline1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Efficiency Comparison Section -->
+        <section class="comparison-section" style="padding: 40px 0 60px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255, 255, 255, 0.01);">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 30px;">
+                    <div class="badge" id="comp-badge">Efficiency Compare</div>
+                    <h2 id="comp-title">Traditional Workflow vs FoldFlow</h2>
+                </div>
+                <div class="comparison-table-wrapper">
+                    <div class="comparison-grid-table">
+                        <div class="comp-header-row">
+                            <div class="comp-col-title" id="comp-h-step">Step</div>
+                            <div class="comp-col-trad" id="comp-h-trad">Traditional Workflow</div>
+                            <div class="comp-col-ff" id="comp-h-ff">FoldFlow Modifier</div>
+                        </div>
+                        <div class="comp-row">
+                            <div class="comp-cell-title" id="comp-r1-title">Cloth Physics</div>
+                            <div class="comp-cell-trad" id="comp-r1-trad">Marvelous Designer (Simulation)</div>
+                            <div class="comp-cell-ff" id="comp-r1-ff">✔ 100% Inside 3ds Max</div>
+                        </div>
+                        <div class="comp-row">
+                            <div class="comp-cell-title" id="comp-r2-title">File Export / Import</div>
+                            <div class="comp-cell-trad" id="comp-r2-trad">Export OBJ/FBX & Import back</div>
+                            <div class="comp-cell-ff" id="comp-r2-ff">✔ None (No file transfers)</div>
+                        </div>
+                        <div class="comp-row">
+                            <div class="comp-cell-title" id="comp-r3-title">Mesh Cleanups</div>
+                            <div class="comp-cell-trad" id="comp-r3-trad">Sculpting in ZBrush (Weld/Retopo)</div>
+                            <div class="comp-cell-ff" id="comp-r3-ff">✔ None (Procedural stack)</div>
+                        </div>
+                        <div class="comp-row highlighted-comp-row">
+                            <div class="comp-cell-title" id="comp-r4-title">Time Spent</div>
+                            <div class="comp-cell-trad" id="comp-r4-trad">20 - 30 minutes</div>
+                            <div class="comp-cell-ff" id="comp-r4-ff">✔ 30 seconds (Procedural)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Features Preview Section (Temporarily Hidden) -->
         <section class="features-preview-section" style="display: none;">
@@ -885,9 +961,32 @@
                 item_title_alphas: "Fold Library",
                 item_desc_alphas: "Procedural fold profiles",
                 floating_buy: "Buy Pro",
-                download: "Download",
+                download: "Get Trial",
                 download_free: "Free (Trial)",
                 download_pro: "Pro License",
+                hero_headline: "Real-Time Procedural Cloth & Cushion Folds",
+                hero_bullet_1: "No Simulation",
+                hero_bullet_2: "No Sculpting",
+                hero_bullet_3: "Instant Viewport Feedback",
+                hero_trial_btn: "Try Free 7 Days",
+                hero_pro_btn: "Buy Pro ($49)",
+                comp_badge: "Efficiency Compare",
+                comp_title: "Traditional Workflow vs FoldFlow",
+                comp_h_step: "Step",
+                comp_h_trad: "Traditional Workflow",
+                comp_h_ff: "FoldFlow Modifier",
+                comp_r1_title: "Cloth Physics",
+                comp_r1_trad: "Marvelous Designer (Simulation)",
+                comp_r1_ff: "✔ 100% Inside 3ds Max",
+                comp_r2_title: "File Export / Import",
+                comp_r2_trad: "Export OBJ/FBX & Import back",
+                comp_r2_ff: "✔ None (No file transfers)",
+                comp_r3_title: "Mesh Cleanups",
+                comp_r3_trad: "Sculpting in ZBrush (Weld/Retopo)",
+                comp_r3_ff: "✔ None (Procedural stack)",
+                comp_r4_title: "Time Spent",
+                comp_r4_trad: "20 - 30 minutes",
+                comp_r4_ff: "✔ 30 seconds (Procedural)",
                 item_title_seams: "Seams & Stitching Presets",
                 item_desc_seams: "Procedural seam lines and zippers",
                 nav_about: "About Engine",
@@ -1045,9 +1144,32 @@
                 item_title_alphas: "Библиотека складок",
                 item_desc_alphas: "Процедурные профили складок",
                 floating_buy: "Купить Pro",
-                download: "Скачать",
+                download: "Попробуй триал",
                 download_free: "Бесплатно (Триал)",
                 download_pro: "Pro Лицензия",
+                hero_headline: "Процедурные складки ткани и подушек в реальном времени",
+                hero_bullet_1: "Без симуляции",
+                hero_bullet_2: "Без скульпта",
+                hero_bullet_3: "Мгновенный отклик в viewport",
+                hero_trial_btn: "Попробуй новое измерение",
+                hero_pro_btn: "Купить Pro ($49)",
+                comp_badge: "Сравнение эффективности",
+                comp_title: "Традиционный пайплайн vs FoldFlow",
+                comp_h_step: "Этап",
+                comp_h_trad: "Традиционный пайплайн",
+                comp_h_ff: "Модификатор FoldFlow",
+                comp_r1_title: "Физика ткани",
+                comp_r1_trad: "Marvelous Designer (Симуляция)",
+                comp_r1_ff: "✔ 100% Внутри 3ds Max",
+                comp_r2_title: "Импорт / Экспорт",
+                comp_r2_trad: "Экспорт OBJ/FBX и импорт назад",
+                comp_r2_ff: "✔ Не требуется (Без трансфера)",
+                comp_r3_title: "Доработка сетки",
+                comp_r3_trad: "Скульптинг в ZBrush (Сшивание/Ретопо)",
+                comp_r3_ff: "✔ Не требуется (Процедурный стек)",
+                comp_r4_title: "Затраты времени",
+                comp_r4_trad: "20 - 30 минут",
+                comp_r4_ff: "✔ 30 секунд (Процедурно)",
                 item_title_seams: "Швы и Пресеты",
                 item_desc_seams: "Процедурные молнии и линии швов",
                 nav_about: "О движке",
@@ -1235,17 +1357,56 @@
             const searchInput = document.getElementById('store-search-input');
             if (searchInput) searchInput.placeholder = trans.search_placeholder;
 
-            // Hero
-            const heroBadge = document.getElementById('hero-badge');
-            if (heroBadge) heroBadge.textContent = trans.hero_badge;
-            const heroTitle = document.getElementById('hero-title');
-            if (heroTitle) heroTitle.textContent = trans.hero_title;
-            const heroDesc = document.getElementById('hero-desc');
-            if (heroDesc) heroDesc.textContent = trans.hero_desc;
-            const heroBtnGet = document.getElementById('hero-btn-get');
-            if (heroBtnGet) heroBtnGet.textContent = trans.hero_btn_get;
-            const heroBtnTut = document.getElementById('hero-btn-tutorials');
-            if (heroBtnTut) heroBtnTut.textContent = trans.hero_btn_tutorials;
+            // New Hero Section Translations
+            const heroHeadline = document.getElementById('hero-headline');
+            if (heroHeadline) heroHeadline.textContent = trans.hero_headline;
+            const heroBullet1 = document.getElementById('hero-bullet-1');
+            if (heroBullet1) heroBullet1.textContent = trans.hero_bullet_1;
+            const heroBullet2 = document.getElementById('hero-bullet-2');
+            if (heroBullet2) heroBullet2.textContent = trans.hero_bullet_2;
+            const heroBullet3 = document.getElementById('hero-bullet-3');
+            if (heroBullet3) heroBullet3.textContent = trans.hero_bullet_3;
+            const heroTrialBtn = document.getElementById('hero-trial-btn');
+            if (heroTrialBtn) heroTrialBtn.textContent = trans.hero_trial_btn;
+            const heroProBtn = document.getElementById('hero-pro-btn');
+            if (heroProBtn) heroProBtn.textContent = trans.hero_pro_btn;
+
+            // Comparison Section Translations
+            const compBadge = document.getElementById('comp-badge');
+            if (compBadge) compBadge.textContent = trans.comp_badge;
+            const compTitle = document.getElementById('comp-title');
+            if (compTitle) compTitle.textContent = trans.comp_title;
+            const compHStep = document.getElementById('comp-h-step');
+            if (compHStep) compHStep.textContent = trans.comp_h_step;
+            const compHTrad = document.getElementById('comp-h-trad');
+            if (compHTrad) compHTrad.textContent = trans.comp_h_trad;
+            const compHFf = document.getElementById('comp-h-ff');
+            if (compHFf) compHFf.textContent = trans.comp_h_ff;
+            const compR1Title = document.getElementById('comp-r1-title');
+            if (compR1Title) compR1Title.textContent = trans.comp_r1_title;
+            const compR1Trad = document.getElementById('comp-r1-trad');
+            if (compR1Trad) compR1Trad.textContent = trans.comp_r1_trad;
+            const compR1Ff = document.getElementById('comp-r1-ff');
+            if (compR1Ff) compR1Ff.textContent = trans.comp_r1_ff;
+            const compR2Title = document.getElementById('comp-r2-title');
+            if (compR2Title) compR2Title.textContent = trans.comp_r2_title;
+            const compR2Trad = document.getElementById('comp-r2-trad');
+            if (compR2Trad) compR2Trad.textContent = trans.comp_r2_trad;
+            const compR2Ff = document.getElementById('comp-r2-ff');
+            if (compR2Ff) compR2Ff.textContent = trans.comp_r2_ff;
+            const compR3Title = document.getElementById('comp-r3-title');
+            if (compR3Title) compR3Title.textContent = trans.comp_r3_title;
+            const compR3Trad = document.getElementById('comp-r3-trad');
+            if (compR3Trad) compR3Trad.textContent = trans.comp_r3_trad;
+            const compR3Ff = document.getElementById('comp-r3-ff');
+            if (compR3Ff) compR3Ff.textContent = trans.comp_r3_ff;
+            const compR4Title = document.getElementById('comp-r4-title');
+            if (compR4Title) compR4Title.textContent = trans.comp_r4_title;
+            const compR4Trad = document.getElementById('comp-r4-trad');
+            if (compR4Trad) compR4Trad.textContent = trans.comp_r4_trad;
+            const compR4Ff = document.getElementById('comp-r4-ff');
+            if (compR4Ff) compR4Ff.textContent = trans.comp_r4_ff;
+
             const heroSlogan = document.getElementById('hero-slogan');
             if (heroSlogan) heroSlogan.textContent = trans.hero_slogan;
 
