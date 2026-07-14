@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="notranslate" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>FoldFlow — Procedural Folds & Wrinkles Plugin for 3ds Max</title>
     <meta name="description" content="Generate realistic cloth folds and leather wrinkles in 3ds Max with FoldFlow modifier. Save hours of manual sculpting. Get your 14-day free trial now!">
     <meta name="google-site-verification" content="9x3kDl9SQ_DwjraFJr9hL-wHkQ8fcvDtwQzerYhT5aY" />
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
     <link rel="icon" type="image/png" href="images/logo_icon.png">
 </head>
 <body>
@@ -66,45 +67,14 @@
                         </ul>
                     </li>
                     <li><a href="engine.html" class="nav-link" id="nav-about">About Engine</a></li>
-                    <li><a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, 'pricing')" class="nav-link" id="nav-faq">FAQ</a></li>
                     <li><a href="javascript:void(0)" onclick="openLegalModal('contacts')" class="nav-link" id="nav-contacts">Support</a></li>
                 </ul>
             </nav>
             <div class="header-right">
-                <!-- Download Dropdown -->
-                <div class="download-dropdown" id="download-dropdown">
-                    <button class="download-trigger-btn" id="download-trigger-btn">
-                        <span id="download-btn-text">Get Trial</span>
-                        <svg class="chevron-down" width="8" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </button>
-                    <ul class="download-dropdown-menu">
-                        <li class="menu-item-has-submenu">
-                            <button class="dropdown-menu-item-btn" data-submenu="free">
-                                <span id="download-menu-free">Free (Trial)</span>
-                                <svg class="chevron-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" style="pointer-events: none;"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </button>
-                            <ul class="download-submenu" id="submenu-free">
-                                <li><a href="downloads/FoldFlow_Free_2021.zip" class="submenu-item" download>3ds Max 2021</a></li>
-                                <li><a href="downloads/FoldFlow_Free_2022.zip" class="submenu-item" download>3ds Max 2022</a></li>
-                                <li><a href="downloads/FoldFlow_Free_2023.zip" class="submenu-item" download>3ds Max 2023</a></li>
-                                <li><a href="downloads/FoldFlow_Free_2024.zip" class="submenu-item" download>3ds Max 2024</a></li>
-                                <li><a href="downloads/FoldFlow_Free_2025.zip" class="submenu-item" download>3ds Max 2025</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-submenu">
-                            <button class="dropdown-menu-item-btn" data-submenu="pro">
-                                <span id="download-menu-pro">Pro License</span>
-                                <svg class="chevron-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" style="pointer-events: none;"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </button>
-                            <ul class="download-submenu" id="submenu-pro">
-                                <li><a href="downloads/FoldFlow_Pro_2021.zip" class="submenu-item" download>3ds Max 2021</a></li>
-                                <li><a href="downloads/FoldFlow_Pro_2022.zip" class="submenu-item" download>3ds Max 2022</a></li>
-                                <li><a href="downloads/FoldFlow_Pro_2023.zip" class="submenu-item" download>3ds Max 2023</a></li>
-                                <li><a href="downloads/FoldFlow_Pro_2024.zip" class="submenu-item" download>3ds Max 2024</a></li>
-                                <li><a href="downloads/FoldFlow_Pro_2025.zip" class="submenu-item" download>3ds Max 2025</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                <!-- Header CTA Buttons -->
+                <div class="header-cta-buttons">
+                    <a href="trial.html" class="header-cta-btn header-btn-trial" id="nav-btn-trial">Get Trial</a>
+                    <button class="header-cta-btn header-btn-pro" id="nav-btn-pro" onclick="navigateToSection('fold-flow', null, 'pricing')">Buy Pro</button>
                 </div>
 
                 <div class="lang-switcher">
@@ -129,83 +99,6 @@
 
     <!-- Fold Flow Page -->
     <div id="fold-flow-page" class="tab-content">
-
-        <!-- New Hero Section -->
-        <section class="hero-section">
-            <div class="container hero-container">
-                <!-- Left Column: Copy & CTA -->
-                <div class="hero-content">
-                    <h1 class="hero-headline" id="hero-headline">Real-Time Procedural Cloth & Cushion Folds</h1>
-                    <div class="hero-bullets">
-                        <div class="bullet-item">
-                            <span class="bullet-check">✓</span>
-                            <span id="hero-bullet-1">No Simulation</span>
-                        </div>
-                        <div class="bullet-item">
-                            <span class="bullet-check">✓</span>
-                            <span id="hero-bullet-2">No Sculpting</span>
-                        </div>
-                        <div class="bullet-item">
-                            <span class="bullet-check">✓</span>
-                            <span id="hero-bullet-3">Instant Viewport Feedback</span>
-                        </div>
-                    </div>
-                    <div class="hero-cta-buttons">
-                        <a href="trial.html" class="cta-btn cta-trial-btn" id="hero-trial-btn">Попробуй новое измерение</a>
-                        <button class="cta-btn cta-pro-btn" id="hero-pro-btn" onclick="navigateToSection('fold-flow', null, 'pricing')">Buy Pro ($49)</button>
-                    </div>
-                </div>
-                <!-- Right Column: Interactive Video Preview -->
-                <div class="hero-visual">
-                    <div class="video-container-wrapper">
-                        <video class="hero-preview-video" autoplay muted loop playsinline>
-                            <source src="timeline1.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Efficiency Comparison Section -->
-        <section class="comparison-section" style="padding: 40px 0 60px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255, 255, 255, 0.01);">
-            <div class="container">
-                <div class="section-header" style="margin-bottom: 30px;">
-                    <div class="badge" id="comp-badge">Efficiency Compare</div>
-                    <h2 id="comp-title">Traditional Workflow vs FoldFlow</h2>
-                </div>
-                <div class="comparison-table-wrapper">
-                    <div class="comparison-grid-table">
-                        <div class="comp-header-row">
-                            <div class="comp-col-title" id="comp-h-step">Step</div>
-                            <div class="comp-col-trad" id="comp-h-trad">Traditional Workflow</div>
-                            <div class="comp-col-ff" id="comp-h-ff">FoldFlow Modifier</div>
-                        </div>
-                        <div class="comp-row">
-                            <div class="comp-cell-title" id="comp-r1-title">Cloth Physics</div>
-                            <div class="comp-cell-trad" id="comp-r1-trad">Marvelous Designer (Simulation)</div>
-                            <div class="comp-cell-ff" id="comp-r1-ff">✔ 100% Inside 3ds Max</div>
-                        </div>
-                        <div class="comp-row">
-                            <div class="comp-cell-title" id="comp-r2-title">File Export / Import</div>
-                            <div class="comp-cell-trad" id="comp-r2-trad">Export OBJ/FBX & Import back</div>
-                            <div class="comp-cell-ff" id="comp-r2-ff">✔ None (No file transfers)</div>
-                        </div>
-                        <div class="comp-row">
-                            <div class="comp-cell-title" id="comp-r3-title">Mesh Cleanups</div>
-                            <div class="comp-cell-trad" id="comp-r3-trad">Sculpting in ZBrush (Weld/Retopo)</div>
-                            <div class="comp-cell-ff" id="comp-r3-ff">✔ None (Procedural stack)</div>
-                        </div>
-                        <div class="comp-row highlighted-comp-row">
-                            <div class="comp-cell-title" id="comp-r4-title">Time Spent</div>
-                            <div class="comp-cell-trad" id="comp-r4-trad">20 - 30 minutes</div>
-                            <div class="comp-cell-ff" id="comp-r4-ff">✔ 30 seconds (Procedural)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Features Preview Section (Temporarily Hidden) -->
         <section class="features-preview-section" style="display: none;">
             <div class="container">
@@ -419,9 +312,11 @@
 
         <!-- Interactive Showcase Section (Sofa Renders) -->
         <section class="tech-showcase-section" id="showcase" style="padding: 20px 0 40px 0;">
-            <div class="container">
-                <div class="section-header" style="margin-bottom: 5px;">
+            <div class="container" style="margin-bottom: 5px;">
+                <div class="section-header" style="margin-bottom: 0;">
                     <h2 id="gallery-title">Created with Fold  Flow</h2>
+                    <h3 id="gallery-feature-title" class="showcase-feature-title" style="display: none;">Real-Time Procedural Cloth</h3>
+                    <p id="gallery-feature-bullets" class="showcase-feature-bullets">No Simulation. No Sculpting. Instant viewport feedback.</p>
                 </div>
             </div>
 
@@ -432,18 +327,13 @@
                         <!-- Slides are rendered dynamically by JavaScript -->
                     </div>
                 </div>
-
-
             </div>
         </section>
 
-        <!-- Features Gallery Section -->
         <section class="features-gallery-section" id="features" style="padding: 60px 0; border-top: 1px solid rgba(255, 255, 255, 0.05);">
             <div class="container">
-                <div class="section-header">
-                    <div class="badge" id="features-badge">CORE CAPABILITIES</div>
+                <div class="section-header" style="margin-bottom: 35px;">
                     <h2 id="features-title">Designed for Fast & Realistic Results</h2>
-                    <p id="features-subtitle">Speed up your workflow with direct viewport tools built for 3D modeling pipelines.</p>
                 </div>
 
                 <div class="features-gallery-grid">
@@ -615,6 +505,7 @@
                 <h2 id="pricing-title">Choose Your License</h2>
                 <p id="pricing-desc">Get instant access to the FoldFlow procedural modifier. Select the tier that matches your workflow.</p>
             </div>
+
             
             <div class="pricing-grid">
                 <!-- Core Card -->
@@ -670,6 +561,78 @@
                         <li id="feature-updates-enterprise"><span class="icon">✓</span> 2 years of free updates</li>
                     </ul>
                     <button id="pricing-btn-enterprise" class="pricing-btn" onclick="purchaseProduct('enterprise')">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Efficiency Comparison Section -->
+    <section class="comparison-section" id="comparison" style="padding: 60px 0; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                <div class="badge" id="comp-badge">Workflow Comparison</div>
+                <h2 id="comp-title">How FoldFlow Speeds Up Your Pipeline</h2>
+                <p id="comp-subtitle">Compare traditional cloth modeling steps with the procedural modifier stack workflow.</p>
+            </div>
+            <div class="comparison-table-wrapper">
+                <div class="comparison-grid-table">
+                    <div class="comp-header-row">
+                        <div class="comp-col-feat" id="comp-h-feat">Feature</div>
+                        <div class="comp-col-trad" id="comp-h-trad">Traditional Workflow</div>
+                        <div class="comp-col-ff" id="comp-h-ff">FoldFlow Modifier</div>
+                    </div>
+                    
+                    <!-- Row 1 -->
+                    <div class="comp-row">
+                        <div class="comp-cell-title" id="comp-r1-title">Work Environment</div>
+                        <div class="comp-cell-trad">
+                            <span class="comp-mobile-label" id="lbl-trad-1">Traditional:</span>
+                            <span id="comp-r1-trad">Marvelous Designer</span>
+                        </div>
+                        <div class="comp-cell-ff">
+                            <span class="comp-mobile-label" id="lbl-ff-1">FoldFlow:</span>
+                            <span id="comp-r1-ff">✔ Inside Max</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 2 -->
+                    <div class="comp-row">
+                        <div class="comp-cell-title" id="comp-r2-title">File Export</div>
+                        <div class="comp-cell-trad">
+                            <span class="comp-mobile-label" id="lbl-trad-2">Traditional:</span>
+                            <span id="comp-r2-trad">Export OBJ</span>
+                        </div>
+                        <div class="comp-cell-ff">
+                            <span class="comp-mobile-label" id="lbl-ff-2">FoldFlow:</span>
+                            <span id="comp-r2-ff">✔ None</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 3 -->
+                    <div class="comp-row">
+                        <div class="comp-cell-title" id="comp-r3-title">ZBrush cleanup</div>
+                        <div class="comp-cell-trad">
+                            <span class="comp-mobile-label" id="lbl-trad-3">Traditional:</span>
+                            <span id="comp-r3-trad">ZBrush cleanup</span>
+                        </div>
+                        <div class="comp-cell-ff">
+                            <span class="comp-mobile-label" id="lbl-ff-3">FoldFlow:</span>
+                            <span id="comp-r3-ff">✔ None</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 4 (Highlighted) -->
+                    <div class="comp-row highlighted-comp-row">
+                        <div class="comp-cell-title" id="comp-r4-title">Iteration Time</div>
+                        <div class="comp-cell-trad">
+                            <span class="comp-mobile-label" id="lbl-trad-4">Traditional:</span>
+                            <span id="comp-r4-trad">20 minutes</span>
+                        </div>
+                        <div class="comp-cell-ff">
+                            <span class="comp-mobile-label" id="lbl-ff-4">FoldFlow:</span>
+                            <span id="comp-r4-ff">✔ 30 seconds</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -964,29 +927,28 @@
                 download: "Get Trial",
                 download_free: "Free (Trial)",
                 download_pro: "Pro License",
-                hero_headline: "Real-Time Procedural Cloth & Cushion Folds",
-                hero_bullet_1: "No Simulation",
-                hero_bullet_2: "No Sculpting",
-                hero_bullet_3: "Instant Viewport Feedback",
-                hero_trial_btn: "Try Free 7 Days",
-                hero_pro_btn: "Buy Pro ($49)",
-                comp_badge: "Efficiency Compare",
-                comp_title: "Traditional Workflow vs FoldFlow",
-                comp_h_step: "Step",
+                gallery_feature_title: "Real-Time Procedural Cloth",
+                gallery_feature_bullets: "No Simulation. No Sculpting. Instant viewport feedback.",
+                comp_badge: "Workflow Comparison",
+                comp_title: "How FoldFlow Speeds Up Your Pipeline",
+                comp_subtitle: "Compare traditional cloth modeling steps with the procedural modifier stack workflow.",
+                comp_h_feat: "Feature",
                 comp_h_trad: "Traditional Workflow",
                 comp_h_ff: "FoldFlow Modifier",
-                comp_r1_title: "Cloth Physics",
-                comp_r1_trad: "Marvelous Designer (Simulation)",
-                comp_r1_ff: "✔ 100% Inside 3ds Max",
-                comp_r2_title: "File Export / Import",
-                comp_r2_trad: "Export OBJ/FBX & Import back",
-                comp_r2_ff: "✔ None (No file transfers)",
-                comp_r3_title: "Mesh Cleanups",
-                comp_r3_trad: "Sculpting in ZBrush (Weld/Retopo)",
-                comp_r3_ff: "✔ None (Procedural stack)",
-                comp_r4_title: "Time Spent",
-                comp_r4_trad: "20 - 30 minutes",
-                comp_r4_ff: "✔ 30 seconds (Procedural)",
+                comp_r1_title: "Work Environment",
+                comp_r1_trad: "Marvelous Designer (external software)",
+                comp_r1_ff: "✔ Inside 3ds Max (native modifier)",
+                comp_r2_title: "File Export/Import",
+                comp_r2_trad: "Export & Import OBJ/FBX loops",
+                comp_r2_ff: "✔ None (parametric geometry stack)",
+                comp_r3_title: "Cleanup & Sculpting",
+                comp_r3_trad: "Manual seams and fold cleanup in ZBrush",
+                comp_r3_ff: "✔ None (fully procedural spline curves)",
+                comp_r4_title: "Iteration Time",
+                comp_r4_trad: "~20 minutes per detail tweak",
+                comp_r4_ff: "✔ ~30 seconds (real-time viewport feedback)",
+                lbl_traditional: "Traditional:",
+                lbl_foldflow: "FoldFlow:",
                 item_title_seams: "Seams & Stitching Presets",
                 item_desc_seams: "Procedural seam lines and zippers",
                 nav_about: "About Engine",
@@ -1144,32 +1106,31 @@
                 item_title_alphas: "Библиотека складок",
                 item_desc_alphas: "Процедурные профили складок",
                 floating_buy: "Купить Pro",
-                download: "Попробуй триал",
+                download: "Получить демо",
                 download_free: "Бесплатно (Триал)",
                 download_pro: "Pro Лицензия",
-                hero_headline: "Процедурные складки ткани и подушек в реальном времени",
-                hero_bullet_1: "Без симуляции",
-                hero_bullet_2: "Без скульпта",
-                hero_bullet_3: "Мгновенный отклик в viewport",
-                hero_trial_btn: "Попробуй новое измерение",
-                hero_pro_btn: "Купить Pro ($49)",
-                comp_badge: "Сравнение эффективности",
-                comp_title: "Традиционный пайплайн vs FoldFlow",
-                comp_h_step: "Этап",
+                gallery_feature_title: "Процедурные складки ткани в реальном времени",
+                gallery_feature_bullets: "Без симуляции. Без скульпта. Мгновенный отклик во вьюпорте.",
+                comp_badge: "Сравнение процессов",
+                comp_title: "Как FoldFlow ускоряет ваш пайплайн",
+                comp_subtitle: "Сравните классические этапы моделирования ткани с параметрическим стеком модификаторов.",
+                comp_h_feat: "Параметр",
                 comp_h_trad: "Традиционный пайплайн",
-                comp_h_ff: "Модификатор FoldFlow",
-                comp_r1_title: "Физика ткани",
-                comp_r1_trad: "Marvelous Designer (Симуляция)",
-                comp_r1_ff: "✔ 100% Внутри 3ds Max",
-                comp_r2_title: "Импорт / Экспорт",
-                comp_r2_trad: "Экспорт OBJ/FBX и импорт назад",
-                comp_r2_ff: "✔ Не требуется (Без трансфера)",
-                comp_r3_title: "Доработка сетки",
-                comp_r3_trad: "Скульптинг в ZBrush (Сшивание/Ретопо)",
-                comp_r3_ff: "✔ Не требуется (Процедурный стек)",
-                comp_r4_title: "Затраты времени",
-                comp_r4_trad: "20 - 30 минут",
-                comp_r4_ff: "✔ 30 секунд (Процедурно)",
+                comp_h_ff: "FoldFlow",
+                comp_r1_title: "Среда работы",
+                comp_r1_trad: "Marvelous Designer (отдельный софт)",
+                comp_r1_ff: "✔ Внутри 3ds Max (родной модификатор)",
+                comp_r2_title: "Импорт/Экспорт файлов",
+                comp_r2_trad: "Постоянный экспорт/импорт OBJ/FBX",
+                comp_r2_ff: "✔ Не требуется (параметрическая геометрия)",
+                comp_r3_title: "Скульптинг и чистка",
+                comp_r3_trad: "Ручной скульптинг швов и складок в ZBrush",
+                comp_r3_ff: "✔ Не требуется (полностью процедурно)",
+                comp_r4_title: "Время на итерацию",
+                comp_r4_trad: "~20 минут на правку деталей",
+                comp_r4_ff: "✔ ~30 секунд (моментально во вьюпорте)",
+                lbl_traditional: "Традиционный:",
+                lbl_foldflow: "FoldFlow:",
                 item_title_seams: "Швы и Пресеты",
                 item_desc_seams: "Процедурные молнии и линии швов",
                 nav_about: "О движке",
@@ -1351,55 +1312,61 @@
             document.getElementById('item-title-seams').textContent = trans.item_title_seams;
             document.getElementById('item-desc-seams').textContent = trans.item_desc_seams;
             document.getElementById('nav-about').textContent = trans.nav_about;
-            document.getElementById('nav-faq').textContent = trans.nav_faq;
+            const navFaq = document.getElementById('nav-faq');
+            if (navFaq) navFaq.textContent = trans.nav_faq;
             const navContacts = document.getElementById('nav-contacts');
             if (navContacts) navContacts.textContent = trans.nav_contacts;
             const searchInput = document.getElementById('store-search-input');
             if (searchInput) searchInput.placeholder = trans.search_placeholder;
 
-            // New Hero Section Translations
-            const heroHeadline = document.getElementById('hero-headline');
-            if (heroHeadline) heroHeadline.textContent = trans.hero_headline;
-            const heroBullet1 = document.getElementById('hero-bullet-1');
-            if (heroBullet1) heroBullet1.textContent = trans.hero_bullet_1;
-            const heroBullet2 = document.getElementById('hero-bullet-2');
-            if (heroBullet2) heroBullet2.textContent = trans.hero_bullet_2;
-            const heroBullet3 = document.getElementById('hero-bullet-3');
-            if (heroBullet3) heroBullet3.textContent = trans.hero_bullet_3;
-            const heroTrialBtn = document.getElementById('hero-trial-btn');
-            if (heroTrialBtn) heroTrialBtn.textContent = trans.hero_trial_btn;
-            const heroProBtn = document.getElementById('hero-pro-btn');
-            if (heroProBtn) heroProBtn.textContent = trans.hero_pro_btn;
+            // Header buttons translation
+            const navBtnTrial = document.getElementById('nav-btn-trial');
+            if (navBtnTrial) navBtnTrial.textContent = trans.download;
+            const navBtnPro = document.getElementById('nav-btn-pro');
+            if (navBtnPro) navBtnPro.textContent = trans.floating_buy;
 
-            // Comparison Section Translations
+            // Gallery / Showcase Subheaders
+            const galleryFeatureTitle = document.getElementById('gallery-feature-title');
+            if (galleryFeatureTitle) galleryFeatureTitle.textContent = trans.gallery_feature_title;
+            const galleryFeatureBullets = document.getElementById('gallery-feature-bullets');
+            if (galleryFeatureBullets) galleryFeatureBullets.textContent = trans.gallery_feature_bullets;
+
+            // 3-Column Comparison Table
             const compBadge = document.getElementById('comp-badge');
             if (compBadge) compBadge.textContent = trans.comp_badge;
             const compTitle = document.getElementById('comp-title');
             if (compTitle) compTitle.textContent = trans.comp_title;
-            const compHStep = document.getElementById('comp-h-step');
-            if (compHStep) compHStep.textContent = trans.comp_h_step;
+            const compSubtitle = document.getElementById('comp-subtitle');
+            if (compSubtitle) compSubtitle.textContent = trans.comp_subtitle;
+
+            const compHFeat = document.getElementById('comp-h-feat');
+            if (compHFeat) compHFeat.textContent = trans.comp_h_feat;
             const compHTrad = document.getElementById('comp-h-trad');
             if (compHTrad) compHTrad.textContent = trans.comp_h_trad;
             const compHFf = document.getElementById('comp-h-ff');
             if (compHFf) compHFf.textContent = trans.comp_h_ff;
+
             const compR1Title = document.getElementById('comp-r1-title');
             if (compR1Title) compR1Title.textContent = trans.comp_r1_title;
             const compR1Trad = document.getElementById('comp-r1-trad');
             if (compR1Trad) compR1Trad.textContent = trans.comp_r1_trad;
             const compR1Ff = document.getElementById('comp-r1-ff');
             if (compR1Ff) compR1Ff.textContent = trans.comp_r1_ff;
+
             const compR2Title = document.getElementById('comp-r2-title');
             if (compR2Title) compR2Title.textContent = trans.comp_r2_title;
             const compR2Trad = document.getElementById('comp-r2-trad');
             if (compR2Trad) compR2Trad.textContent = trans.comp_r2_trad;
             const compR2Ff = document.getElementById('comp-r2-ff');
             if (compR2Ff) compR2Ff.textContent = trans.comp_r2_ff;
+
             const compR3Title = document.getElementById('comp-r3-title');
             if (compR3Title) compR3Title.textContent = trans.comp_r3_title;
             const compR3Trad = document.getElementById('comp-r3-trad');
             if (compR3Trad) compR3Trad.textContent = trans.comp_r3_trad;
             const compR3Ff = document.getElementById('comp-r3-ff');
             if (compR3Ff) compR3Ff.textContent = trans.comp_r3_ff;
+
             const compR4Title = document.getElementById('comp-r4-title');
             if (compR4Title) compR4Title.textContent = trans.comp_r4_title;
             const compR4Trad = document.getElementById('comp-r4-trad');
@@ -1407,8 +1374,21 @@
             const compR4Ff = document.getElementById('comp-r4-ff');
             if (compR4Ff) compR4Ff.textContent = trans.comp_r4_ff;
 
+            // Mobile labels translations
+            for (let i = 1; i <= 4; i++) {
+                const lblTrad = document.getElementById(`lbl-trad-${i}`);
+                if (lblTrad) lblTrad.textContent = trans.lbl_traditional;
+                const lblFf = document.getElementById(`lbl-ff-${i}`);
+                if (lblFf) lblFf.textContent = trans.lbl_foldflow;
+            }
+
             const heroSlogan = document.getElementById('hero-slogan');
             if (heroSlogan) heroSlogan.textContent = trans.hero_slogan;
+
+            const bannerBtnTrial = document.getElementById('banner-btn-trial');
+            if (bannerBtnTrial) bannerBtnTrial.textContent = trans.download;
+            const bannerBtnPro = document.getElementById('banner-btn-pro');
+            if (bannerBtnPro) bannerBtnPro.textContent = trans.floating_buy;
 
             // Features Preview Block
             const featInflateTitle = document.getElementById('feat-inflate-title');
@@ -2117,6 +2097,16 @@
                 img: "images/showcase/7.png",
                 title_en: "Full Modular Assembly - Isometric View",
                 title_ru: "Полная модульная сборка — изометрический вид"
+            },
+            {
+                img: "images/showcase/8.png",
+                title_en: "FoldFlow Work Progress - Wireframe",
+                title_ru: "Процесс работы в FoldFlow — сетка"
+            },
+            {
+                img: "images/showcase/9.png",
+                title_en: "FoldFlow Work Progress - Shaded",
+                title_ru: "Процесс работы в FoldFlow — шейдинг"
             }
         ];
 

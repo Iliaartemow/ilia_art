@@ -27,7 +27,14 @@
             margin: 0;
             padding: 0;
             font-family: 'Outfit', sans-serif;
-            transition: all 0.3s ease;
+        }
+
+        input, button, a, .accordion-item, .accordion-header, .accordion-arrow, .accordion-content {
+            transition: all 0.25s ease;
+        }
+
+        html {
+            scrollbar-gutter: stable;
         }
 
         body {
@@ -39,8 +46,8 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
+            align-items: flex-start;
+            padding: 60px 20px;
             overflow-x: hidden;
         }
 
@@ -248,6 +255,94 @@
         .instruction-box strong {
             color: var(--text-main);
         }
+        
+        .trial-dl-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+            color: var(--text-main);
+            font-size: 13.5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        .trial-dl-btn:hover {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--accent);
+            color: #34d399;
+            transform: translateY(-1.5px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+        }
+
+        /* Accordion Collapsible Styles */
+        .accordion-item {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .accordion-item.active {
+            border-color: rgba(0, 204, 102, 0.2);
+            background: rgba(0, 204, 102, 0.01);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .accordion-header span {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header span {
+            color: #fff;
+        }
+
+        .accordion-header .accordion-arrow {
+            color: var(--text-muted);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header .accordion-arrow {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0 20px;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 350px;
+            padding: 0 20px 20px 20px;
+        }
     </style>
 </head>
 <body>
@@ -268,14 +363,40 @@
             <div class="logo-subtitle">Активация бесплатного тестового периода на 14 дней</div>
         </div>
 
-        <div class="instruction-box">
-            <strong>Как активировать триал:</strong>
-            <ol>
-                <li>Запустите 3ds Max и примените модификатор <strong>FoldFlow</strong> к любому объекту.</li>
-                <li>У вас появится окно ошибки, а ваш HWID <strong>автоматически скопируется в буфер обмена</strong>.</li>
-                <li>Вставьте скопированный HWID в поле ниже (нажмите <strong>Ctrl+V</strong>).</li>
-                <li>После активации вернитесь в 3ds Max и нажмите кнопку <strong>Update</strong> в свитке About/Licensing.</li>
-            </ol>
+        <!-- Accordion 1: Download -->
+        <div class="accordion-item active" id="accordion-dl">
+            <div class="accordion-header" onclick="toggleAccordion('accordion-dl')">
+                <span>1. Скачать плагин / Download Plugin:</span>
+                <svg class="accordion-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="accordion-content">
+                <div class="download-links-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding-top: 10px;">
+                    <a href="downloads/FoldFlow_Free_2021.zip" class="trial-dl-btn" download>3ds Max 2021</a>
+                    <a href="downloads/FoldFlow_Free_2022.zip" class="trial-dl-btn" download>3ds Max 2022</a>
+                    <a href="downloads/FoldFlow_Free_2023.zip" class="trial-dl-btn" download>3ds Max 2023</a>
+                    <a href="downloads/FoldFlow_Free_2024.zip" class="trial-dl-btn" download>3ds Max 2024</a>
+                    <a href="downloads/FoldFlow_Free_2025.zip" class="trial-dl-btn" download>3ds Max 2025</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accordion 2: Activation Instructions -->
+        <div class="accordion-item" id="accordion-act">
+            <div class="accordion-header" onclick="toggleAccordion('accordion-act')">
+                <span>2. Активация / Activation:</span>
+                <svg class="accordion-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="accordion-content">
+                <div class="instruction-box" style="margin-bottom: 0; margin-top: 10px;">
+                    <strong>Как активировать триал:</strong>
+                    <ol>
+                        <li>Запустите 3ds Max и примените модификатор <strong>FoldFlow</strong> к любому объекту.</li>
+                        <li>У вас появится окно ошибки, а ваш HWID <strong>автоматически скопируется в буфер обмена</strong>.</li>
+                        <li>Вставьте скопированный HWID в поле ниже (нажмите <strong>Ctrl+V</strong>).</li>
+                        <li>После активации вернитесь в 3ds Max и нажмите кнопку <strong>Update</strong> в свитке About/Licensing.</li>
+                    </ol>
+                </div>
+            </div>
         </div>
 
         <form id="activationForm">
@@ -341,11 +462,16 @@
         } catch (error) {
             btn.classList.remove('loading');
             alertBox.style.display = 'block';
-            alertBox.textContent = 'Ошибка сети. Убедитесь, что вы опубликовали веб-приложение в Google Apps Script с доступом "Для всех" (Anyone).';
+            alertBox.textContent = 'Ошибка сети. Пожалуйста, попробуйте еще раз или обратитесь в поддержку.';
             alertBox.classList.add('error');
             console.error('Network error:', error);
         }
     });
+
+    function toggleAccordion(id) {
+        const item = document.getElementById(id);
+        item.classList.toggle('active');
+    }
 </script>
 
 </body>
