@@ -1795,16 +1795,7 @@
             
             // Handle free product download
             if (product && product.price === 0) {
-                if (product.fld_file) {
-                    const link = document.createElement('a');
-                    link.href = product.fld_file;
-                    link.download = product.fld_file.split('/').pop();
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                } else {
-                    alert(currentLang === 'ru' ? 'Файл скоро будет добавлен!' : 'File will be added soon!');
-                }
+                alert(currentLang === 'ru' ? 'Скачивание пресетов с сайта временно отключено. Вы можете использовать их напрямую в плагине!' : 'Downloading presets from the site is temporarily disabled. You can use them directly in the plugin!');
                 return;
             }
 
