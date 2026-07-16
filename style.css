@@ -3441,3 +3441,66 @@ footer {
     font-weight: 500;
     margin-top: 6px;
 }
+
+/* Glassmorphism themed colors for features gallery cards */
+.tech-card.card-blue {
+    border-color: rgba(0, 180, 216, 0.15);
+    background: linear-gradient(180deg, rgba(0, 180, 216, 0.03) 0%, rgba(24, 26, 36, 0.65) 100%);
+    box-shadow: 0 10px 30px rgba(0, 180, 216, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+.tech-card.card-blue:hover {
+    border-color: #00b4d8;
+    box-shadow: 0 20px 40px rgba(0, 180, 216, 0.25);
+    background: linear-gradient(180deg, rgba(0, 180, 216, 0.06) 0%, rgba(24, 26, 36, 0.75) 100%);
+}
+
+.tech-card.card-green {
+    border-color: rgba(0, 204, 102, 0.15);
+    background: linear-gradient(180deg, rgba(0, 204, 102, 0.03) 0%, rgba(24, 26, 36, 0.65) 100%);
+    box-shadow: 0 10px 30px rgba(0, 204, 102, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+.tech-card.card-green:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 40px rgba(0, 204, 102, 0.25);
+    background: linear-gradient(180deg, rgba(0, 204, 102, 0.06) 0%, rgba(24, 26, 36, 0.75) 100%);
+}
+
+.tech-card.card-purple {
+    border-color: rgba(157, 78, 221, 0.15);
+    background: linear-gradient(180deg, rgba(157, 78, 221, 0.03) 0%, rgba(24, 26, 36, 0.65) 100%);
+    box-shadow: 0 10px 30px rgba(157, 78, 221, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+.tech-card.card-purple:hover {
+    border-color: #9d4edd;
+    box-shadow: 0 20px 40px rgba(157, 78, 221, 0.25);
+    background: linear-gradient(180deg, rgba(157, 78, 221, 0.06) 0%, rgba(24, 26, 36, 0.75) 100%);
+}
+
+/* Big hero number styling */
+.tech-card-number {
+    font-size: 3.2rem;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    line-height: 1;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+.card-blue .tech-card-number {
+    color: #00b4d8;
+    text-shadow: 0 0 15px rgba(0, 180, 216, 0.35);
+}
+.card-green .tech-card-number {
+    color: var(--primary-color);
+    text-shadow: 0 0 15px rgba(0, 204, 102, 0.35);
+}
+.card-purple .tech-card-number {
+    color: #9d4edd;
+    text-shadow: 0 0 15px rgba(157, 78, 221, 0.35);
+}
