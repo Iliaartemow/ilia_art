@@ -3444,44 +3444,22 @@ footer {
     margin-top: 6px;
 }
 
-/* Glassmorphism themed colors for features gallery cards */
-.tech-card.card-blue {
-    border-color: rgba(0, 180, 216, 0.15);
-    background: linear-gradient(180deg, rgba(0, 180, 216, 0.03) 0%, rgba(24, 26, 36, 0.65) 100%);
-    box-shadow: 0 10px 30px rgba(0, 180, 216, 0.03);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-.tech-card.card-blue:hover {
-    border-color: #00b4d8;
-    box-shadow: 0 20px 40px rgba(0, 180, 216, 0.25);
-    background: linear-gradient(180deg, rgba(0, 180, 216, 0.06) 0%, rgba(24, 26, 36, 0.75) 100%);
-}
-
-.tech-card.card-green {
-    border-color: rgba(0, 204, 102, 0.15);
-    background: linear-gradient(180deg, rgba(0, 204, 102, 0.03) 0%, rgba(24, 26, 36, 0.65) 100%);
-    box-shadow: 0 10px 30px rgba(0, 204, 102, 0.03);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-.tech-card.card-green:hover {
-    border-color: var(--primary-color);
-    box-shadow: 0 20px 40px rgba(0, 204, 102, 0.25);
-    background: linear-gradient(180deg, rgba(0, 204, 102, 0.06) 0%, rgba(24, 26, 36, 0.75) 100%);
-}
-
+.tech-card.card-blue,
+.tech-card.card-green,
 .tech-card.card-purple {
-    border-color: rgba(157, 78, 221, 0.15);
-    background: linear-gradient(180deg, rgba(157, 78, 221, 0.03) 0%, rgba(24, 26, 36, 0.65) 100%);
-    box-shadow: 0 10px 30px rgba(157, 78, 221, 0.03);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
+.tech-card.card-blue:hover,
+.tech-card.card-green:hover,
 .tech-card.card-purple:hover {
-    border-color: #9d4edd;
-    box-shadow: 0 20px 40px rgba(157, 78, 221, 0.25);
-    background: linear-gradient(180deg, rgba(157, 78, 221, 0.06) 0%, rgba(24, 26, 36, 0.75) 100%);
+    border-color: transparent;
+    box-shadow: none;
+    background: transparent;
+    transform: translateY(-5px);
 }
 
 /* Big hero number styling */
@@ -3503,4 +3481,26 @@ footer {
 }
 .card-purple .tech-card-number {
     text-shadow: 0 0 15px rgba(157, 78, 221, 0.45);
+}
+
+#features-title {
+    font-family: 'Montserrat', sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 5px !important;
+    font-weight: 500 !important;
+}
+
+.banner-typography {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 20px !important;
+}
+
+.banner-title {
+    align-items: center !important;
+}
+
+.banner-slogan {
+    text-align: center !important;
 }
