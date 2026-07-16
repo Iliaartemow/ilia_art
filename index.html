@@ -493,6 +493,133 @@
                         <h3 id="feat-card-title-3">Fold Export</h3>
                         <p id="feat-card-desc-3">Save your wrinkles and seams into clean .FLD files. Import and apply them instantly to speed up detailing on other models.</p>
                     </div>
+
+                    <!-- Card 4: Real-time Render -->
+                    <div class="tech-card">
+                        <div class="tech-card-graphic">
+                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
+                                <style>
+                                    .rt-glow {
+                                        stroke: var(--primary-color);
+                                        stroke-width: 1.5;
+                                        fill: none;
+                                        filter: drop-shadow(0 0 4px var(--primary-color));
+                                    }
+                                    .rt-arrow {
+                                        fill: none;
+                                        stroke: var(--primary-color);
+                                        stroke-width: 2;
+                                        stroke-linecap: round;
+                                        stroke-linejoin: round;
+                                        animation: rt-rotate 4s linear infinite;
+                                        transform-origin: 100px 70px;
+                                    }
+                                    @keyframes rt-rotate {
+                                        from { transform: rotate(0deg); }
+                                        to { transform: rotate(360deg); }
+                                    }
+                                </style>
+                                <circle cx="100" cy="70" r="45" stroke="rgba(255,255,255,0.05)" stroke-width="2" fill="none" />
+                                <path class="rt-arrow" d="M 100,25 A 45,45 0 0,1 145,70" />
+                                <path class="rt-arrow" d="M 100,115 A 45,45 0 0,1 55,70" />
+                                <line x1="100" y1="20" x2="100" y2="120" stroke="rgba(255,255,255,0.02)" />
+                                <line x1="50" y1="70" x2="150" y2="70" stroke="rgba(255,255,255,0.02)" />
+                                <text x="100" y="76" text-anchor="middle" fill="#fff" font-family="'Outfit', sans-serif" font-size="18" font-weight="900">RT</text>
+                            </svg>
+                        </div>
+                        <h3 id="feat-card-title-4">100% Real-Time Viewport</h3>
+                        <p id="feat-card-desc-4">Folds are deformed and calculated in real-time right inside 3ds Max viewport as you draw them.</p>
+                    </div>
+
+                    <!-- Card 5: 50+ Presets -->
+                    <div class="tech-card">
+                        <div class="tech-card-graphic">
+                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
+                                <style>
+                                    .preset-card-border {
+                                        fill: rgba(0, 204, 102, 0.05);
+                                        stroke: rgba(255,255,255,0.05);
+                                        stroke-width: 1;
+                                        transition: all 0.3s;
+                                    }
+                                    .preset-active {
+                                        stroke: var(--primary-color);
+                                        fill: rgba(0, 204, 102, 0.1);
+                                        filter: drop-shadow(0 0 3px rgba(0, 204, 102, 0.2));
+                                    }
+                                    .preset-wave {
+                                        fill: none;
+                                        stroke: var(--primary-color);
+                                        stroke-width: 1.2;
+                                        opacity: 0.8;
+                                    }
+                                </style>
+                                <rect class="preset-card-border" x="35" y="25" width="35" height="35" rx="5" />
+                                <rect class="preset-card-border" x="82" y="25" width="35" height="35" rx="5" />
+                                <rect class="preset-card-border" x="130" y="25" width="35" height="35" rx="5" />
+                                
+                                <rect class="preset-card-border preset-active" x="35" y="75" width="35" height="35" rx="5" />
+                                <rect class="preset-card-border" x="82" y="75" width="35" height="35" rx="5" />
+                                <rect class="preset-card-border preset-active" x="130" y="75" width="35" height="35" rx="5" />
+                                
+                                <path class="preset-wave" d="M 40,95 Q 48,82 53,92 T 65,85" />
+                                <path class="preset-wave" d="M 135,92 Q 142,80 148,95 T 160,88" />
+                                <line x1="88" y1="42" x2="111" y2="42" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
+                                <line x1="42" y1="42" x2="63" y2="42" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
+                                <line x1="137" y1="42" x2="158" y2="42" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
+                                <line x1="90" y1="92" x2="109" y2="92" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
+                            </svg>
+                        </div>
+                        <h3 id="feat-card-title-5">50+ Preset Folds (.FLD)</h3>
+                        <p id="feat-card-desc-5">Access a rich library of ready-to-use wrinkles, draperies, and cushion shapes to speed up your work.</p>
+                    </div>
+
+                    <!-- Card 6: 500% Speedup -->
+                    <div class="tech-card">
+                        <div class="tech-card-graphic">
+                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
+                                <style>
+                                    .speed-gauge {
+                                        fill: none;
+                                        stroke: rgba(255,255,255,0.05);
+                                        stroke-width: 4;
+                                        stroke-linecap: round;
+                                    }
+                                    .speed-fill {
+                                        fill: none;
+                                        stroke: var(--primary-color);
+                                        stroke-width: 5;
+                                        stroke-linecap: round;
+                                        stroke-dasharray: 220;
+                                        stroke-dashoffset: 60;
+                                        filter: drop-shadow(0 0 4px var(--primary-color));
+                                        animation: speed-pulse 2s ease-in-out infinite;
+                                    }
+                                    .speed-needle {
+                                        fill: var(--primary-color);
+                                        transform-origin: 100px 90px;
+                                        transform: rotate(60deg);
+                                        animation: needle-shake 3s ease-in-out infinite;
+                                    }
+                                    @keyframes speed-pulse {
+                                        0%, 100% { stroke-dashoffset: 60; }
+                                        50% { stroke-dashoffset: 30; }
+                                    }
+                                    @keyframes needle-shake {
+                                        0%, 100% { transform: rotate(50deg); }
+                                        50% { transform: rotate(80deg); }
+                                    }
+                                </style>
+                                <path class="speed-gauge" d="M 50,90 A 50,50 0 1,1 150,90" />
+                                <path class="speed-fill" d="M 50,90 A 50,50 0 1,1 150,90" />
+                                <circle cx="100" cy="90" r="6" fill="#fff" />
+                                <polygon class="speed-needle" points="98,90 102,90 100,50" />
+                                <text x="100" y="115" text-anchor="middle" fill="#fff" font-family="'Outfit', sans-serif" font-size="14" font-weight="900">5x FASTER</text>
+                            </svg>
+                        </div>
+                        <h3 id="feat-card-title-6">500% Faster Modeling Speed</h3>
+                        <p id="feat-card-desc-6">Avoid Marvelous Designer export loops and tedious manual sculpting, boosting your productivity.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1084,7 +1211,7 @@
 
                 // Features Gallery Section
                 features_badge: "CORE CAPABILITIES",
-                features_title: "Designed for Fast & Realistic Results",
+                features_title: "Here are some features you can use",
                 features_subtitle: "Speed up your workflow with direct viewport tools built for 3D modeling pipelines.",
                 feat_card_title_1: "Drape & Fold",
                 feat_card_desc_1: "Draw folds interactively. Instantly propagate cloth tension, gravity, and wrinkles along your geometry without slow simulations.",
@@ -1092,6 +1219,12 @@
                 feat_card_desc_2: "Add volume to cushions, pillows, and mattresses. Tweak pressure and expansion properties dynamically using curve graphs.",
                 feat_card_title_3: "Fold Export",
                 feat_card_desc_3: "Save your wrinkles and seams into clean .FLD files. Import and apply them instantly to speed up detailing on other models.",
+                feat_card_title_4: "100% Real-Time Viewport",
+                feat_card_desc_4: "Folds are deformed and calculated in real-time right inside 3ds Max viewport as you draw them.",
+                feat_card_title_5: "50+ Preset Folds (.FLD)",
+                feat_card_desc_5: "Access a rich library of ready-to-use wrinkles, draperies, and cushion shapes to speed up your work.",
+                feat_card_title_6: "500% Faster Modeling Speed",
+                feat_card_desc_6: "Avoid Marvelous Designer export loops and tedious manual sculpting, boosting your productivity.",
                 feat_inflate_title: "Inflation Engine",
                 feat_inflate_desc: "Inflate any shapes easily and control volume using customizable curve graphs.",
                 feat_control_title: "Fold Control & Export",
@@ -1266,7 +1399,7 @@
 
                 // Features Gallery Section
                 features_badge: "КЛЮЧЕВЫЕ ФУНКЦИИ",
-                features_title: "Создано для быстрой и реалистичной работы",
+                features_title: "Вот некоторые функции, которыми вы можете воспользоваться",
                 features_subtitle: "Ускоряйте рабочий процесс с помощью инструментов прямого моделирования во вьюпорте.",
                 feat_card_title_1: "Наложение складок",
                 feat_card_desc_1: "Рисуйте складки интерактивно. Моментально распределяйте натяжение ткани, гравитацию и заломы по геометрии без долгих симуляций.",
@@ -1274,6 +1407,12 @@
                 feat_card_desc_2: "Добавляйте объем подушкам, матрасам и мебели. Регулируйте давление и параметры расширения на лету с помощью графиков кривых.",
                 feat_card_title_3: "Экспорт складок",
                 feat_card_desc_3: "Сохраняйте созданные складки и швы в легкие файлы .FLD. Импортируйте и применяйте их мгновенно для ускорения детализации других моделей.",
+                feat_card_title_4: "100% Реал-тайм вьюпорт",
+                feat_card_desc_4: "Складки деформируются и просчитываются мгновенно во вьюпорте 3ds Max прямо в процессе рисования.",
+                feat_card_title_5: "50+ Готовых пресетов (.FLD)",
+                feat_card_desc_5: "Используйте обширную библиотеку готовых заломов, складок и мебельных форм для быстрого старта.",
+                feat_card_title_6: "500% Ускорение моделирования",
+                feat_card_desc_6: "Забудьте про импорт/экспорт в Marvelous Designer и долгое ручное скульптурирование, повышая производительность.",
                 feat_inflate_title: "Раздувание форм",
                 feat_inflate_desc: "Легко надувайте любые формы и управляйте объемом с помощью точных графиков кривых.",
                 feat_control_title: "Контроль и экспорт",
@@ -1428,6 +1567,21 @@
             if (fc3Title) fc3Title.textContent = trans.feat_card_title_3;
             const fc3Desc = document.getElementById('feat-card-desc-3');
             if (fc3Desc) fc3Desc.textContent = trans.feat_card_desc_3;
+
+            const fc4Title = document.getElementById('feat-card-title-4');
+            if (fc4Title) fc4Title.textContent = trans.feat_card_title_4;
+            const fc4Desc = document.getElementById('feat-card-desc-4');
+            if (fc4Desc) fc4Desc.textContent = trans.feat_card_desc_4;
+
+            const fc5Title = document.getElementById('feat-card-title-5');
+            if (fc5Title) fc5Title.textContent = trans.feat_card_title_5;
+            const fc5Desc = document.getElementById('feat-card-desc-5');
+            if (fc5Desc) fc5Desc.textContent = trans.feat_card_desc_5;
+
+            const fc6Title = document.getElementById('feat-card-title-6');
+            if (fc6Title) fc6Title.textContent = trans.feat_card_title_6;
+            const fc6Desc = document.getElementById('feat-card-desc-6');
+            if (fc6Desc) fc6Desc.textContent = trans.feat_card_desc_6;
 
             const galleryTitle = document.getElementById('gallery-title');
             if (galleryTitle) {
