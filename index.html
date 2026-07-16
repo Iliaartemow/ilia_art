@@ -337,7 +337,137 @@
                 </div>
 
                 <div class="features-gallery-grid">
-                    <!-- Card 1: Drape & Fold -->
+                    <!-- Card 1: Real-time Render (Now First) -->
+                    <div class="tech-card card-blue">
+                        <div class="tech-card-graphic">
+                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
+                                <style>
+                                    .rt-glow {
+                                        stroke: #00b4d8;
+                                        stroke-width: 1.5;
+                                        fill: none;
+                                        filter: drop-shadow(0 0 4px #00b4d8);
+                                    }
+                                    .rt-arrow {
+                                        fill: none;
+                                        stroke: #00b4d8;
+                                        stroke-width: 2;
+                                        stroke-linecap: round;
+                                        stroke-linejoin: round;
+                                        animation: rt-rotate 4s linear infinite;
+                                        transform-origin: 100px 70px;
+                                    }
+                                    @keyframes rt-rotate {
+                                        from { transform: rotate(0deg); }
+                                        to { transform: rotate(360deg); }
+                                    }
+                                </style>
+                                <circle cx="100" cy="70" r="45" stroke="rgba(255,255,255,0.05)" stroke-width="2" fill="none" />
+                                <path class="rt-arrow" d="M 100,25 A 45,45 0 0,1 145,70" />
+                                <path class="rt-arrow" d="M 100,115 A 45,45 0 0,1 55,70" />
+                                <line x1="100" y1="20" x2="100" y2="120" stroke="rgba(255,255,255,0.02)" />
+                                <line x1="50" y1="70" x2="150" y2="70" stroke="rgba(255,255,255,0.02)" />
+                                <text x="100" y="76" text-anchor="middle" fill="#fff" font-family="'Outfit', sans-serif" font-size="18" font-weight="900">RT</text>
+                            </svg>
+                        </div>
+                        <div class="tech-card-number" data-target="100" data-suffix="%">0%</div>
+                        <h3 id="feat-card-title-4">Real-Time Viewport</h3>
+                        <p id="feat-card-desc-4">Folds are deformed and calculated in real-time right inside 3ds Max viewport as you draw them.</p>
+                    </div>
+
+                    <!-- Card 2: 50+ Presets (Now Second) -->
+                    <div class="tech-card card-green">
+                        <div class="tech-card-graphic">
+                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
+                                <style>
+                                    .preset-card-border {
+                                        fill: rgba(0, 204, 102, 0.05);
+                                        stroke: rgba(255,255,255,0.05);
+                                        stroke-width: 1;
+                                        transition: all 0.3s;
+                                    }
+                                    .preset-active {
+                                        stroke: var(--primary-color);
+                                        fill: rgba(0, 204, 102, 0.1);
+                                        filter: drop-shadow(0 0 3px rgba(0, 204, 102, 0.2));
+                                    }
+                                    .preset-wave {
+                                        fill: none;
+                                        stroke: var(--primary-color);
+                                        stroke-width: 1.2;
+                                        opacity: 0.8;
+                                    }
+                                </style>
+                                <rect class="preset-card-border" x="35" y="25" width="35" height="35" rx="5" />
+                                <rect class="preset-card-border" x="82" y="25" width="35" height="35" rx="5" />
+                                <rect class="preset-card-border" x="130" y="25" width="35" height="35" rx="5" />
+                                
+                                <rect class="preset-card-border preset-active" x="35" y="75" width="35" height="35" rx="5" />
+                                <rect class="preset-card-border" x="82" y="75" width="35" height="35" rx="5" />
+                                <rect class="preset-card-border preset-active" x="130" y="75" width="35" height="35" rx="5" />
+                                
+                                <path class="preset-wave" d="M 40,95 Q 48,82 53,92 T 65,85" />
+                                <path class="preset-wave" d="M 135,92 Q 142,80 148,95 T 160,88" />
+                                <line x1="88" y1="42" x2="111" y2="42" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
+                                <line x1="42" y1="42" x2="63" y2="42" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
+                                <line x1="137" y1="42" x2="158" y2="42" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
+                                <line x1="90" y1="92" x2="109" y2="92" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
+                            </svg>
+                        </div>
+                        <div class="tech-card-number" data-target="50" data-suffix="+">0+</div>
+                        <h3 id="feat-card-title-5">Preset Folds (.FLD)</h3>
+                        <p id="feat-card-desc-5">Access a rich library of ready-to-use wrinkles, draperies, and cushion shapes to speed up your work.</p>
+                    </div>
+
+                    <!-- Card 3: 500% Speedup (Now Third) -->
+                    <div class="tech-card card-purple">
+                        <div class="tech-card-graphic">
+                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
+                                <style>
+                                    .speed-gauge {
+                                        fill: none;
+                                        stroke: rgba(255,255,255,0.05);
+                                        stroke-width: 4;
+                                        stroke-linecap: round;
+                                    }
+                                    .speed-fill {
+                                        fill: none;
+                                        stroke: #9d4edd;
+                                        stroke-width: 5;
+                                        stroke-linecap: round;
+                                        stroke-dasharray: 220;
+                                        stroke-dashoffset: 60;
+                                        filter: drop-shadow(0 0 4px #9d4edd);
+                                        animation: speed-pulse 2s ease-in-out infinite;
+                                    }
+                                    .speed-needle {
+                                        fill: #9d4edd;
+                                        transform-origin: 100px 90px;
+                                        transform: rotate(60deg);
+                                        animation: needle-shake 3s ease-in-out infinite;
+                                    }
+                                    @keyframes speed-pulse {
+                                        0%, 100% { stroke-dashoffset: 60; }
+                                        50% { stroke-dashoffset: 30; }
+                                    }
+                                    @keyframes needle-shake {
+                                        0%, 100% { transform: rotate(50deg); }
+                                        50% { transform: rotate(80deg); }
+                                    }
+                                </style>
+                                <path class="speed-gauge" d="M 50,90 A 50,50 0 1,1 150,90" />
+                                <path class="speed-fill" d="M 50,90 A 50,50 0 1,1 150,90" />
+                                <circle cx="100" cy="90" r="6" fill="#fff" />
+                                <polygon class="speed-needle" points="98,90 102,90 100,50" />
+                                <text x="100" y="115" text-anchor="middle" fill="#fff" font-family="'Outfit', sans-serif" font-size="14" font-weight="900">5x FASTER</text>
+                            </svg>
+                        </div>
+                        <div class="tech-card-number" data-target="500" data-suffix="%">0%</div>
+                        <h3 id="feat-card-title-6">Faster Modeling Speed</h3>
+                        <p id="feat-card-desc-6">Avoid Marvelous Designer export loops and tedious manual sculpting, boosting your productivity.</p>
+                    </div>
+
+                    <!-- Card 4: Drape & Fold (Now Fourth) -->
                     <div class="tech-card">
                         <div class="tech-card-graphic">
                             <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
@@ -372,7 +502,7 @@
                         <p id="feat-card-desc-1">Draw folds interactively. Instantly propagate cloth tension, gravity, and wrinkles along your geometry without slow simulations.</p>
                     </div>
 
-                    <!-- Card 2: Inflation -->
+                    <!-- Card 5: Inflation (Now Fifth) -->
                     <div class="tech-card">
                         <div class="tech-card-graphic">
                             <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
@@ -441,7 +571,7 @@
                         <p id="feat-card-desc-2">Add volume to cushions, pillows, and mattresses. Tweak pressure and expansion properties dynamically using curve graphs.</p>
                     </div>
 
-                    <!-- Card 3: Export -->
+                    <!-- Card 6: Export (Now Sixth) -->
                     <div class="tech-card">
                         <div class="tech-card-graphic">
                             <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
@@ -492,136 +622,6 @@
                         </div>
                         <h3 id="feat-card-title-3">Fold Export</h3>
                         <p id="feat-card-desc-3">Save your wrinkles and seams into clean .FLD files. Import and apply them instantly to speed up detailing on other models.</p>
-                    </div>
-
-                    <!-- Card 4: Real-time Render -->
-                    <div class="tech-card card-blue">
-                        <div class="tech-card-graphic">
-                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
-                                <style>
-                                    .rt-glow {
-                                        stroke: #00b4d8;
-                                        stroke-width: 1.5;
-                                        fill: none;
-                                        filter: drop-shadow(0 0 4px #00b4d8);
-                                    }
-                                    .rt-arrow {
-                                        fill: none;
-                                        stroke: #00b4d8;
-                                        stroke-width: 2;
-                                        stroke-linecap: round;
-                                        stroke-linejoin: round;
-                                        animation: rt-rotate 4s linear infinite;
-                                        transform-origin: 100px 70px;
-                                    }
-                                    @keyframes rt-rotate {
-                                        from { transform: rotate(0deg); }
-                                        to { transform: rotate(360deg); }
-                                    }
-                                </style>
-                                <circle cx="100" cy="70" r="45" stroke="rgba(255,255,255,0.05)" stroke-width="2" fill="none" />
-                                <path class="rt-arrow" d="M 100,25 A 45,45 0 0,1 145,70" />
-                                <path class="rt-arrow" d="M 100,115 A 45,45 0 0,1 55,70" />
-                                <line x1="100" y1="20" x2="100" y2="120" stroke="rgba(255,255,255,0.02)" />
-                                <line x1="50" y1="70" x2="150" y2="70" stroke="rgba(255,255,255,0.02)" />
-                                <text x="100" y="76" text-anchor="middle" fill="#fff" font-family="'Outfit', sans-serif" font-size="18" font-weight="900">RT</text>
-                            </svg>
-                        </div>
-                        <div class="tech-card-number">100%</div>
-                        <h3 id="feat-card-title-4">Real-Time Viewport</h3>
-                        <p id="feat-card-desc-4">Folds are deformed and calculated in real-time right inside 3ds Max viewport as you draw them.</p>
-                    </div>
-
-                    <!-- Card 5: 50+ Presets -->
-                    <div class="tech-card card-green">
-                        <div class="tech-card-graphic">
-                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
-                                <style>
-                                    .preset-card-border {
-                                        fill: rgba(0, 204, 102, 0.05);
-                                        stroke: rgba(255,255,255,0.05);
-                                        stroke-width: 1;
-                                        transition: all 0.3s;
-                                    }
-                                    .preset-active {
-                                        stroke: var(--primary-color);
-                                        fill: rgba(0, 204, 102, 0.1);
-                                        filter: drop-shadow(0 0 3px rgba(0, 204, 102, 0.2));
-                                    }
-                                    .preset-wave {
-                                        fill: none;
-                                        stroke: var(--primary-color);
-                                        stroke-width: 1.2;
-                                        opacity: 0.8;
-                                    }
-                                </style>
-                                <rect class="preset-card-border" x="35" y="25" width="35" height="35" rx="5" />
-                                <rect class="preset-card-border" x="82" y="25" width="35" height="35" rx="5" />
-                                <rect class="preset-card-border" x="130" y="25" width="35" height="35" rx="5" />
-                                
-                                <rect class="preset-card-border preset-active" x="35" y="75" width="35" height="35" rx="5" />
-                                <rect class="preset-card-border" x="82" y="75" width="35" height="35" rx="5" />
-                                <rect class="preset-card-border preset-active" x="130" y="75" width="35" height="35" rx="5" />
-                                
-                                <path class="preset-wave" d="M 40,95 Q 48,82 53,92 T 65,85" />
-                                <path class="preset-wave" d="M 135,92 Q 142,80 148,95 T 160,88" />
-                                <line x1="88" y1="42" x2="111" y2="42" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
-                                <line x1="42" y1="42" x2="63" y2="42" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
-                                <line x1="137" y1="42" x2="158" y2="42" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
-                                <line x1="90" y1="92" x2="109" y2="92" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2" />
-                            </svg>
-                        </div>
-                        <div class="tech-card-number">50+</div>
-                        <h3 id="feat-card-title-5">Preset Folds (.FLD)</h3>
-                        <p id="feat-card-desc-5">Access a rich library of ready-to-use wrinkles, draperies, and cushion shapes to speed up your work.</p>
-                    </div>
-
-                    <!-- Card 6: 500% Speedup -->
-                    <div class="tech-card card-purple">
-                        <div class="tech-card-graphic">
-                            <svg viewBox="0 0 200 140" width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="feature-svg-media">
-                                <style>
-                                    .speed-gauge {
-                                        fill: none;
-                                        stroke: rgba(255,255,255,0.05);
-                                        stroke-width: 4;
-                                        stroke-linecap: round;
-                                    }
-                                    .speed-fill {
-                                        fill: none;
-                                        stroke: #9d4edd;
-                                        stroke-width: 5;
-                                        stroke-linecap: round;
-                                        stroke-dasharray: 220;
-                                        stroke-dashoffset: 60;
-                                        filter: drop-shadow(0 0 4px #9d4edd);
-                                        animation: speed-pulse 2s ease-in-out infinite;
-                                    }
-                                    .speed-needle {
-                                        fill: #9d4edd;
-                                        transform-origin: 100px 90px;
-                                        transform: rotate(60deg);
-                                        animation: needle-shake 3s ease-in-out infinite;
-                                    }
-                                    @keyframes speed-pulse {
-                                        0%, 100% { stroke-dashoffset: 60; }
-                                        50% { stroke-dashoffset: 30; }
-                                    }
-                                    @keyframes needle-shake {
-                                        0%, 100% { transform: rotate(50deg); }
-                                        50% { transform: rotate(80deg); }
-                                    }
-                                </style>
-                                <path class="speed-gauge" d="M 50,90 A 50,50 0 1,1 150,90" />
-                                <path class="speed-fill" d="M 50,90 A 50,50 0 1,1 150,90" />
-                                <circle cx="100" cy="90" r="6" fill="#fff" />
-                                <polygon class="speed-needle" points="98,90 102,90 100,50" />
-                                <text x="100" y="115" text-anchor="middle" fill="#fff" font-family="'Outfit', sans-serif" font-size="14" font-weight="900">5x FASTER</text>
-                            </svg>
-                        </div>
-                        <div class="tech-card-number">500%</div>
-                        <h3 id="feat-card-title-6">Faster Modeling Speed</h3>
-                        <p id="feat-card-desc-6">Avoid Marvelous Designer export loops and tedious manual sculpting, boosting your productivity.</p>
                     </div>
                 </div>
             </div>
@@ -2987,6 +2987,51 @@
                 });
             });
         }
+    </script>
+
+    <!-- Scroll-triggered Counter Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.15
+            };
+
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const numEl = entry.target;
+                        const targetVal = parseInt(numEl.getAttribute('data-target'), 10);
+                        const suffix = numEl.getAttribute('data-suffix') || '';
+                        const duration = 1800; // 1.8 seconds duration
+                        const startTime = performance.now();
+
+                        function updateCounter(currentTime) {
+                            const elapsedTime = currentTime - startTime;
+                            const progress = Math.min(elapsedTime / duration, 1);
+                            
+                            // Cubic ease-out
+                            const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+                            const currentVal = Math.floor(easeOutCubic * targetVal);
+                            
+                            numEl.textContent = currentVal + suffix;
+
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                numEl.textContent = targetVal + suffix;
+                            }
+                        }
+
+                        requestAnimationFrame(updateCounter);
+                        observer.unobserve(numEl); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.tech-card-number').forEach(numEl => {
+                counterObserver.observe(numEl);
+            });
+        });
     </script>
 
     <!-- Local Analytics Tracking Script -->

@@ -1869,6 +1869,8 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .tech-card:hover {
@@ -3491,16 +3493,14 @@ footer {
     margin-top: 5px;
     margin-bottom: 15px;
     letter-spacing: -1px;
+    color: #ffffff !important; /* Pure white-white */
 }
 .card-blue .tech-card-number {
-    color: #00b4d8;
-    text-shadow: 0 0 15px rgba(0, 180, 216, 0.35);
+    text-shadow: 0 0 15px rgba(0, 180, 216, 0.45);
 }
 .card-green .tech-card-number {
-    color: var(--primary-color);
-    text-shadow: 0 0 15px rgba(0, 204, 102, 0.35);
+    text-shadow: 0 0 15px rgba(0, 204, 102, 0.45);
 }
 .card-purple .tech-card-number {
-    color: #9d4edd;
-    text-shadow: 0 0 15px rgba(157, 78, 221, 0.35);
+    text-shadow: 0 0 15px rgba(157, 78, 221, 0.45);
 }
