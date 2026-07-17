@@ -921,55 +921,95 @@
                     <!-- Tutorial 1 -->
                     <div class="tutorial-card">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/6slHt_hF2GI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="video-placeholder">
+                                <div class="video-placeholder-glow"></div>
+                                <div class="play-icon-box">
+                                    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                                <span class="video-coming-soon">COMING SOON</span>
+                            </div>
                         </div>
                         <div class="tutorial-info">
                             <h3 class="tutorial-card-title-1">Creating Realistic Bed Folds</h3>
                             <p class="tutorial-card-desc-1">Learn how to draw splines and configure the FoldFlow modifier for natural bedding wrinkles.</p>
-                            <div class="downloads-list">
-                                <a href="folds/bed_folds_start.max" class="download-link" download>
-                                    <span>📁 bed_folds_start.max</span>
-                                    <span class="dl-size">4.2 MB</span>
-                                </a>
-                                <a href="folds/bed_folds_profile.fld" class="download-link" download>
-                                    <span>⚡ bed_folds_profile.fld</span>
-                                    <span class="dl-size">12 KB</span>
-                                </a>
-                            </div>
                         </div>
                     </div>
 
                     <!-- Tutorial 2 -->
                     <div class="tutorial-card">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/8ycypp4GaO4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="video-placeholder">
+                                <div class="video-placeholder-glow"></div>
+                                <div class="play-icon-box">
+                                    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                                <span class="video-coming-soon">COMING SOON</span>
+                            </div>
                         </div>
                         <div class="tutorial-info">
                             <h3 class="tutorial-card-title-2">Procedural Leather Seams & Stitches</h3>
                             <p class="tutorial-card-desc-2">A step-by-step guide on creating complex leather embroidery and stitch details using the new independent fading controls.</p>
-                            <div class="downloads-list">
-                                <a href="folds/leather_seams.max" class="download-link" download>
-                                    <span>📁 leather_seams.max</span>
-                                    <span class="dl-size">5.8 MB</span>
-                                </a>
-                            </div>
                         </div>
                     </div>
 
                     <!-- Tutorial 3 -->
                     <div class="tutorial-card">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/f4nkSUiO6iY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="video-placeholder">
+                                <div class="video-placeholder-glow"></div>
+                                <div class="play-icon-box">
+                                    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                                <span class="video-coming-soon">COMING SOON</span>
+                            </div>
                         </div>
                         <div class="tutorial-info">
                             <h3 class="tutorial-card-title-3">Looping Fold Animations</h3>
                             <p class="tutorial-card-desc-3">Learn how to animate folds using the new Glob Tiling parameter to create breathing cloth or growing wrinkle effects.</p>
-                            <div class="downloads-list">
-                                <a href="folds/loop_animation.max" class="download-link" download>
-                                    <span>📁 loop_animation.max</span>
-                                    <span class="dl-size">3.5 MB</span>
-                                </a>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial 4 -->
+                    <div class="tutorial-card">
+                        <div class="video-container">
+                            <div class="video-placeholder">
+                                <div class="video-placeholder-glow"></div>
+                                <div class="play-icon-box">
+                                    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                                <span class="video-coming-soon">COMING SOON</span>
                             </div>
+                        </div>
+                        <div class="tutorial-info">
+                            <h3 class="tutorial-card-title-4">Parametric Curtains & Drapery</h3>
+                            <p class="tutorial-card-desc-4">Learn how to create hanging curtains, calculate cloth weight, and adjust gravity tension without any physics solver.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial 5 -->
+                    <div class="tutorial-card">
+                        <div class="video-container">
+                            <div class="video-placeholder">
+                                <div class="video-placeholder-glow"></div>
+                                <div class="play-icon-box">
+                                    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                                <span class="video-coming-soon">COMING SOON</span>
+                            </div>
+                        </div>
+                        <div class="tutorial-info">
+                            <h3 class="tutorial-card-title-5">Optimizing Topology for FoldFlow</h3>
+                            <p class="tutorial-card-desc-5">A guide on preparing quad mesh topology, uniform subdivisions, and cleaning up imported assets to ensure artifact-free modifier results.</p>
                         </div>
                     </div>
                 </div>
@@ -1133,12 +1173,16 @@
                 tutorials_badge: "Tutorials",
                 tutorials_title: "Video Tutorials",
                 tutorials_desc: "Master cloth modeling in 3ds Max with our step-by-step guides and start scenes.",
-                t1_title: "Instant Folds & Seams: Fast Start Guide",
+                t1_title: "Masterclass 1 — Coming Soon",
                 t1_desc: "Stop sculpting wrinkles manually. Learn how to generate realistic cloth folds and seams in 3ds Max in seconds.",
-                t2_title: "Puffy Cushions: Modeling Soft Sofas Without ZBrush",
+                t2_title: "Masterclass 2 — Coming Soon",
                 t2_desc: "Master modular sofa creation and learn how to simulate fabric inflation for soft, realistic furniture wrinkles.",
-                t3_title: "Breathing Cloth: Loopable Procedural Animations",
+                t3_title: "Masterclass 3 — Coming Soon",
                 t3_desc: "Learn how to animate organic cloth movement and growing folds using Glob Tiling parameters.",
+                t4_title: "Masterclass 4 — Coming Soon",
+                t4_desc: "Learn how to create hanging curtains, calculate cloth weight, and adjust gravity tension without any physics solver.",
+                t5_title: "Masterclass 5 — Coming Soon",
+                t5_desc: "A guide on preparing quad mesh topology, uniform subdivisions, and cleaning up imported assets to ensure artifact-free modifier results.",
                 pack_soon: "Pack release is coming soon! You can buy it in a bundle with the plugin via mail: gggiantt@mail.ru",
                 license_core: "Demo License",
                 license_pro: "Pro License",
@@ -1321,12 +1365,16 @@
                 tutorials_badge: "Обучение",
                 tutorials_title: "Видеоуроки",
                 tutorials_desc: "Изучите профессиональное моделирование ткани в 3ds Max с нашими пошаговыми уроками и сценами.",
-                t1_title: "Складки и швы за 1 секунду: Быстрый старт",
+                t1_title: "Мастер-класс 1 — Скоро",
                 t1_desc: "Хватит вырисовывать складки вручную. Научитесь создавать реалистичные замятия ткани в 3ds Max мгновенно.",
-                t2_title: "Пышные подушки: Секрет идеального надувания ткани",
+                t2_title: "Мастер-класс 2 — Скоро",
                 t2_desc: "Освойте моделирование мягких диванов без ZBrush и научитесь надувать объемные подушки с естественными складками.",
-                t3_title: "Живая ткань: Анимация дыхания и роста складок",
+                t3_title: "Мастер-класс 3 — Скоро",
                 t3_desc: "Изучите процедурную анимацию замятий ткани с помощью параметров Glob Tiling для создания живой органики.",
+                t4_title: "Мастер-класс 4 — Скоро",
+                t4_desc: "Научитесь создавать реалистичные висящие шторы, рассчитывать вес ткани и регулировать натяжение под действием гравитации без симуляции физики.",
+                t5_title: "Мастер-класс 5 — Скоро",
+                t5_desc: "Руководство по подготовке четырехугольной сетки, равномерному разбиению полигонов и чистке импортированных моделей для идеальной работы модификатора.",
                 pack_soon: "Выход пакета ожидается в ближайшее время! Вы можете приобрести его в бандле с плагином напрямую через почту: gggiantt@mail.ru",
                 license_core: "Демо-лицензия",
                 license_pro: "Pro License",
@@ -1718,6 +1766,16 @@
             if (t3t) t3t.textContent = trans.t3_title;
             const t3d = document.querySelector('.tutorial-card-desc-3');
             if (t3d) t3d.textContent = trans.t3_desc;
+
+            const t4t = document.querySelector('.tutorial-card-title-4');
+            if (t4t) t4t.textContent = trans.t4_title;
+            const t4d = document.querySelector('.tutorial-card-desc-4');
+            if (t4d) t4d.textContent = trans.t4_desc;
+
+            const t5t = document.querySelector('.tutorial-card-title-5');
+            if (t5t) t5t.textContent = trans.t5_title;
+            const t5d = document.querySelector('.tutorial-card-desc-5');
+            if (t5d) t5d.textContent = trans.t5_desc;
 
             // Translate modal tab buttons
             const tabAbout = document.querySelector('[data-modal-tab="about"]');

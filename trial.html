@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoldFlow — Активация демо-версии (14-day Free Trial)</title>
-    <meta name="description" content="Активируйте бесплатный 14-дневный тестовый период плагина FoldFlow для 3ds Max. Введите ваш HWID для мгновенной регистрации.">
+    <title>FoldFlow — Demo License Activation (14-day Free Trial)</title>
+    <meta name="description" content="Activate your free 14-day trial period for the FoldFlow plugin for 3ds Max. Enter your HWID for instant registration.">
     <link rel="icon" type="image/png" href="images/logo_icon.png">
-    <!-- Подключаем премиум шрифт Outfit -->
+    <!-- Outfit Font -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -105,6 +105,7 @@
             font-size: 14px;
             color: var(--text-muted);
             font-weight: 300;
+            line-height: 1.4;
         }
 
         .form-group {
@@ -265,7 +266,7 @@
             border-radius: 10px;
             padding: 12px;
             color: var(--text-main);
-            font-size: 13.5px;
+            font-size: 13px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s ease;
@@ -340,7 +341,7 @@
         }
 
         .accordion-item.active .accordion-content {
-            max-height: 350px;
+            max-height: 450px;
             padding: 0 20px 20px 20px;
         }
     </style>
@@ -354,28 +355,33 @@
                 <line x1="19" y1="12" x2="5" y2="12"></line>
                 <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
-            Назад на сайт
+            Back to website
         </a>
 
         <div class="logo-area" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
             <img src="images/logo_transparent.png" alt="FoldFlow Logo" style="height: 128px; width: auto; margin-bottom: 12px; filter: drop-shadow(0 0 15px rgba(0, 204, 102, 0.4));">
             <div class="logo-title">FoldFlow</div>
-            <div class="logo-subtitle">Активация бесплатного тестового периода на 14 дней</div>
+            <div class="logo-subtitle">Activate your free 14-day trial period</div>
         </div>
 
         <!-- Accordion 1: Download -->
         <div class="accordion-item active" id="accordion-dl">
             <div class="accordion-header" onclick="toggleAccordion('accordion-dl')">
-                <span>1. Скачать плагин / Download Plugin:</span>
+                <span>1. Download Plugin:</span>
                 <svg class="accordion-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div class="accordion-content">
-                <div class="download-links-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding-top: 10px;">
+                <div class="download-links-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding-top: 10px; padding-bottom: 5px;">
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2017</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2018</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2019</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2020</a>
                     <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2021</a>
                     <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2022</a>
                     <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2023</a>
                     <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2024</a>
                     <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2025</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2026</a>
                 </div>
             </div>
         </div>
@@ -383,17 +389,17 @@
         <!-- Accordion 2: Activation Instructions -->
         <div class="accordion-item" id="accordion-act">
             <div class="accordion-header" onclick="toggleAccordion('accordion-act')">
-                <span>2. Активация / Activation:</span>
+                <span>2. Activation Instructions:</span>
                 <svg class="accordion-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div class="accordion-content">
                 <div class="instruction-box" style="margin-bottom: 0; margin-top: 10px;">
-                    <strong>Как активировать триал:</strong>
+                    <strong>How to activate your trial:</strong>
                     <ol>
-                        <li>Запустите 3ds Max и примените модификатор <strong>FoldFlow</strong> к любому объекту.</li>
-                        <li>У вас появится окно ошибки, а ваш HWID <strong>автоматически скопируется в буфер обмена</strong>.</li>
-                        <li>Вставьте скопированный HWID в поле ниже (нажмите <strong>Ctrl+V</strong>).</li>
-                        <li>После активации вернитесь в 3ds Max и нажмите кнопку <strong>Update</strong> в свитке About/Licensing.</li>
+                        <li>Start 3ds Max and apply the <strong>FoldFlow</strong> modifier to any object.</li>
+                        <li>An error dialog will appear, and your HWID will be <strong>automatically copied to your clipboard</strong>.</li>
+                        <li>Paste the copied HWID into the form below (press <strong>Ctrl+V</strong>).</li>
+                        <li>After activation, return to 3ds Max and click the <strong>Update</strong> button in the About/Licensing rollout.</li>
                     </ol>
                 </div>
             </div>
@@ -401,21 +407,21 @@
 
         <form id="activationForm">
             <div class="form-group">
-                <label for="userName">Ваше имя</label>
-                <input type="text" id="userName" placeholder="Например, Иван" required>
+                <label for="userName">Your Name</label>
+                <input type="text" id="userName" placeholder="e.g., John" required>
             </div>
 
             <div class="form-group">
-                <label for="userEmail">Ваш E-mail</label>
+                <label for="userEmail">Your Email</label>
                 <input type="email" id="userEmail" placeholder="example@domain.com" required>
             </div>
 
             <div class="form-group">
-                <label for="userHwid">Ваш уникальный HWID</label>
-                <input type="text" id="userHwid" placeholder="Вставьте HWID из плагина 3ds Max" required>
+                <label for="userHwid">Your Unique HWID</label>
+                <input type="text" id="userHwid" placeholder="Paste the HWID from 3ds Max plugin" required>
             </div>
 
-            <button type="submit" id="submitBtn" class="btn-submit">Активировать демо-период</button>
+            <button type="submit" id="submitBtn" class="btn-submit">Activate Demo Period</button>
         </form>
 
         <div id="alertBox" class="alert"></div>
@@ -423,7 +429,7 @@
 </div>
 
 <script>
-    // URL твоего Google Web App
+    // URL of Google Web App
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw9TxORPDqcQENSHCir_Sm8NvvcjgTgDrg8Ki8s3ADqfy-OpmidU29XVqBf6VvzZsvf/exec";
 
     document.getElementById('activationForm').addEventListener('submit', async function(e) {
@@ -436,16 +442,16 @@
         const email = document.getElementById('userEmail').value.trim();
         const hwid = document.getElementById('userHwid').value.trim();
 
-        // Скрываем прошлые сообщения и включаем спиннер
+        // Clear previous messages and activate loading state
         alertBox.className = 'alert';
         alertBox.style.display = 'none';
         btn.classList.add('loading');
 
         try {
-            // Формируем URL с параметрами регистрации
+            // Form registration URL
             const url = `${WEB_APP_URL}?action=register&hwid=${encodeURIComponent(hwid)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`;
             
-            // Выполняем GET-запрос к Google Apps Script
+            // Execute request
             const response = await fetch(url);
             const result = await response.json();
 
@@ -453,16 +459,16 @@
 
             alertBox.style.display = 'block';
             if (result.status === 'success') {
-                alertBox.textContent = `Успех! ${result.message}`;
+                alertBox.textContent = `Success! ${result.message}`;
                 alertBox.classList.add('success');
             } else {
-                alertBox.textContent = `Ошибка: ${result.message}`;
+                alertBox.textContent = `Error: ${result.message}`;
                 alertBox.classList.add('error');
             }
         } catch (error) {
             btn.classList.remove('loading');
             alertBox.style.display = 'block';
-            alertBox.textContent = 'Ошибка сети. Пожалуйста, попробуйте еще раз или обратитесь в поддержку.';
+            alertBox.textContent = 'Network error. Please try again or contact support.';
             alertBox.classList.add('error');
             console.error('Network error:', error);
         }
@@ -474,7 +480,7 @@
     }
 
     function alertDownloadDisabled() {
-        alert("Скачивание плагина временно отключено. Релиз состоится в ближайшие дни!");
+        alert("Plugin download is temporarily disabled. The release is coming in the next few days!");
     }
 </script>
 
