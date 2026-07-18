@@ -1462,6 +1462,33 @@ footer {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
+.tut-dl-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tut-dl-btn:hover {
+    background: rgba(0, 204, 102, 0.1);
+    border-color: rgba(0, 204, 102, 0.35);
+    color: #34d399;
+    transform: translateY(-1.5px);
+    box-shadow: 0 4px 12px rgba(0, 204, 102, 0.12);
+}
+
+
 .video-container {
     position: relative;
     width: 100%;

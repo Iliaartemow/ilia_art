@@ -672,7 +672,7 @@
                         <li id="f-support-2"><span class="icon">✓</span> <strong>Priority email support</strong></li>
                         <li id="feature-updates-pro"><span class="icon">✓</span> 2 years of free updates</li>
                     </ul>
-                    <button id="pricing-btn-pro" class="pricing-btn primary" onclick="purchaseProduct('pro_license')">Buy Pro</button>
+                    <button id="pricing-btn-pro" class="pricing-btn primary" onclick="window.location.href='pro.html'">Buy Pro</button>
                 </div>
 
                 <!-- Enterprise Card -->
@@ -921,19 +921,35 @@
                     <!-- Tutorial 1 -->
                     <div class="tutorial-card">
                         <div class="video-container">
-                            <div class="video-placeholder">
-                                <div class="video-placeholder-glow"></div>
-                                <div class="play-icon-box">
-                                    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
-                                <span class="video-coming-soon">COMING SOON</span>
-                            </div>
+                            <iframe
+                                src="https://www.youtube.com/embed/e1U_ajoXvPM"
+                                title="FoldFlow Tutorial 1 — Creating Realistic Bed Folds"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                            ></iframe>
                         </div>
                         <div class="tutorial-info">
                             <h3 class="tutorial-card-title-1">Creating Realistic Bed Folds</h3>
                             <p class="tutorial-card-desc-1">Learn how to draw splines and configure the FoldFlow modifier for natural bedding wrinkles.</p>
+                        </div>
+                        <div class="tutorial-downloads" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 12px 0 4px;">
+                            <a href="downloads/FoldFlow-Lesson-1-3dsmax.rar" download class="tut-dl-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                3ds Max File
+                            </a>
+                            <a href="downloads/FoldFlow-Lesson-1-fbx.rar" download class="tut-dl-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                FBX File
+                            </a>
+                            <a href="downloads/FoldFlow-Lesson-1-obj.rar" download class="tut-dl-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                OBJ File
+                            </a>
+                            <a href="downloads/FoldFlow-Lesson-1-textures.rar" download class="tut-dl-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Textures
+                            </a>
                         </div>
                     </div>
 
@@ -1022,13 +1038,13 @@
             <div class="footer-left" style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%;">
                 <p>&copy; 2026 FoldFlow. Draft version for local development.</p>
                 <div class="footer-legal-links" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px; width: 100%;">
-                    <a href="javascript:void(0)" onclick="openLegalModal('about')" id="link-about" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">О сервисе</a>
+                    <a href="javascript:void(0)" onclick="openLegalModal('about')" id="link-about" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">About</a>
                     <span style="color: var(--text-muted);">|</span>
-                    <a href="javascript:void(0)" onclick="openLegalModal('privacy')" id="link-privacy" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">Политика конфиденциальности</a>
+                    <a href="javascript:void(0)" onclick="openLegalModal('privacy')" id="link-privacy" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">Privacy Policy</a>
                     <span style="color: var(--text-muted);">|</span>
-                    <a href="javascript:void(0)" onclick="openLegalModal('terms')" id="link-terms" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">Пользовательское соглашение</a>
+                    <a href="javascript:void(0)" onclick="openLegalModal('terms')" id="link-terms" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">Terms of Use</a>
                     <span style="color: var(--text-muted);">|</span>
-                    <a href="javascript:void(0)" onclick="openLegalModal('contacts')" id="link-contacts" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">Контакты</a>
+                    <a href="javascript:void(0)" onclick="openLegalModal('contacts')" id="link-contacts" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;">Contacts</a>
                 </div>
             </div>
         </div>
@@ -2929,10 +2945,10 @@
         <div class="modal-card">
             <button class="modal-close" onclick="closeLegalModal()" aria-label="Close modal">&times;</button>
             <div class="modal-tabs">
-                <button class="modal-tab-btn active" data-modal-tab="about" onclick="switchModalTab('about')">О сервисе</button>
-                <button class="modal-tab-btn" data-modal-tab="privacy" onclick="switchModalTab('privacy')">Политика конфиденциальности</button>
-                <button class="modal-tab-btn" data-modal-tab="terms" onclick="switchModalTab('terms')">Пользовательское соглашение</button>
-                <button class="modal-tab-btn" data-modal-tab="contacts" onclick="switchModalTab('contacts')">Контакты</button>
+                <button class="modal-tab-btn active" data-modal-tab="about" id="modal-tab-about" onclick="switchModalTab('about')">О сервисе</button>
+                <button class="modal-tab-btn" data-modal-tab="privacy" id="modal-tab-privacy" onclick="switchModalTab('privacy')">Политика конфиденциальности</button>
+                <button class="modal-tab-btn" data-modal-tab="terms" id="modal-tab-terms" onclick="switchModalTab('terms')">Пользовательское соглашение</button>
+                <button class="modal-tab-btn" data-modal-tab="contacts" id="modal-tab-contacts" onclick="switchModalTab('contacts')">Контакты</button>
             </div>
             <div class="modal-body-content" id="modal-text-content"></div>
         </div>

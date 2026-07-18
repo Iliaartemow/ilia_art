@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoldFlow — PRO License Purchase</title>
+    <meta name="description" content="Purchase your PRO license for the FoldFlow plugin for 3ds Max.">
+    <link rel="icon" type="image/png" href="images/logo_icon.png">
+    <!-- Outfit Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0d19;
+            --card-bg: rgba(20, 24, 46, 0.6);
+            --primary: #8b5cf6; /* Purple for PRO */
+            --primary-hover: #a78bfa;
+            --primary-glow: rgba(139, 92, 246, 0.4);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #f59e0b; /* Gold/Amber for PRO */
+            --error: #ef4444;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        input, button, a, .accordion-item, .accordion-header, .accordion-arrow, .accordion-content {
+            transition: all 0.25s ease;
+        }
+
+        html {
+            scrollbar-gutter: stable;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 40%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 60px 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            perspective: 1000px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
+            animation: borderGlow 6s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(25%); }
+        }
+
+        .logo-area {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-title {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #fff 30%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .logo-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, #c084fc 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--primary-glow);
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px var(--primary-glow);
+            background: linear-gradient(135deg, var(--primary-hover) 0%, #d8b4fe 100%);
+        }
+
+        .btn-submit:active {
+            transform: translateY(1px);
+        }
+
+        .btn-submit.loading {
+            color: transparent;
+            pointer-events: none;
+        }
+
+        .btn-submit.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-top: -10px;
+            margin-left: -10px;
+            border: 2px solid transparent;
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .alert {
+            margin-top: 20px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.4;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .alert.success {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid #10b981;
+            color: #34d399;
+            display: block;
+        }
+
+        .alert.error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid var(--error);
+            color: #f87171;
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+        .back-link:hover {
+            color: var(--text-main);
+            transform: translateX(-3px);
+        }
+        .back-link svg {
+            margin-right: 8px;
+        }
+
+        .instruction-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+        .instruction-box ol {
+            padding-left: 18px;
+            margin-top: 8px;
+        }
+        .instruction-box li {
+            margin-bottom: 6px;
+        }
+        .instruction-box strong {
+            color: var(--text-main);
+        }
+        
+        .trial-dl-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+            color: var(--text-main);
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        .trial-dl-btn:hover {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: var(--accent);
+            color: #fbbf24;
+            transform: translateY(-1.5px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+        }
+
+        /* Accordion Collapsible Styles */
+        .accordion-item {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .accordion-item.active {
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(139, 92, 246, 0.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .accordion-header span {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header span {
+            color: #fff;
+        }
+
+        .accordion-header .accordion-arrow {
+            color: var(--text-muted);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header .accordion-arrow {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0 20px;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 450px;
+            padding: 0 20px 20px 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <a href="index.html" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to website
+        </a>
+
+        <div class="logo-area" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <img src="images/logo_transparent.png" alt="FoldFlow Logo" style="height: 128px; width: auto; margin-bottom: 12px; filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.4));">
+            <div class="logo-title">FoldFlow PRO</div>
+            <div class="logo-subtitle">Purchase your full unlimited license</div>
+        </div>
+
+        <!-- Accordion 1: Download -->
+        <div class="accordion-item" id="accordion-dl">
+            <div class="accordion-header" onclick="toggleAccordion('accordion-dl')">
+                <span>1. Download Plugin:</span>
+                <svg class="accordion-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="accordion-content">
+                <div class="download-links-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding-top: 10px; padding-bottom: 5px;">
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2017</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2018</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2019</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2020</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2021</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2022</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2023</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2024</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2025</a>
+                    <a href="javascript:void(0)" onclick="alertDownloadDisabled()" class="trial-dl-btn">3ds Max 2026</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accordion 2: Purchase Instructions -->
+        <div class="accordion-item active" id="accordion-act">
+            <div class="accordion-header" onclick="toggleAccordion('accordion-act')">
+                <span>2. Purchase Instructions:</span>
+                <svg class="accordion-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="accordion-content">
+                <div class="instruction-box" style="margin-bottom: 0; margin-top: 10px;">
+                    <strong>How to buy your PRO license:</strong>
+                    <ol>
+                        <li>Start 3ds Max and apply the <strong>FoldFlow</strong> modifier to any object.</li>
+                        <li>Your HWID will be <strong>automatically copied to your clipboard</strong> from the License window.</li>
+                        <li>Paste the copied HWID into the form below along with your details.</li>
+                        <li>Click <strong>Buy PRO</strong> to proceed to checkout. After payment, click <strong>Update</strong> in 3ds Max.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <form id="purchaseForm">
+            <div class="form-group">
+                <label for="userName">Your Name</label>
+                <input type="text" id="userName" placeholder="e.g., John" required>
+            </div>
+
+            <div class="form-group">
+                <label for="userEmail">Your Email</label>
+                <input type="email" id="userEmail" placeholder="example@domain.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="userHwid">Your Unique HWID</label>
+                <input type="text" id="userHwid" placeholder="Paste the HWID from 3ds Max plugin" required>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn-submit">Buy PRO License</button>
+        </form>
+
+        <div id="alertBox" class="alert"></div>
+    </div>
+</div>
+
+<script>
+    // URL of Google Web App or Payment Gateway
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw9TxORPDqcQENSHCir_Sm8NvvcjgTgDrg8Ki8s3ADqfy-OpmidU29XVqBf6VvzZsvf/exec";
+
+    document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const btn = document.getElementById('submitBtn');
+        const alertBox = document.getElementById('alertBox');
+        
+        const name = document.getElementById('userName').value.trim();
+        const email = document.getElementById('userEmail').value.trim();
+        const hwid = document.getElementById('userHwid').value.trim();
+
+        // Clear previous messages and activate loading state
+        alertBox.className = 'alert';
+        alertBox.style.display = 'none';
+        btn.classList.add('loading');
+
+        try {
+            // For now, simulate sending to the same script but with action=buy
+            const url = `${WEB_APP_URL}?action=buy&hwid=${encodeURIComponent(hwid)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`;
+            
+            // In a real scenario, this might redirect to Stripe/PayPal checkout
+            // e.g., window.location.href = "https://checkout.stripe.com/pay/..."
+            
+            const response = await fetch(url);
+            const result = await response.json();
+
+            btn.classList.remove('loading');
+
+            alertBox.style.display = 'block';
+            if (result.status === 'success') {
+                alertBox.textContent = `Redirecting to payment... ${result.message}`;
+                alertBox.classList.add('success');
+            } else {
+                // Temporary mock success if action=buy is not supported on the backend yet
+                alertBox.textContent = `Request received. (Payment gateway integration pending)`;
+                alertBox.classList.add('success');
+            }
+        } catch (error) {
+            btn.classList.remove('loading');
+            alertBox.style.display = 'block';
+            alertBox.textContent = 'Redirecting to payment gateway... (Mocked)';
+            alertBox.classList.add('success');
+            console.error('Network error or missing action:', error);
+        }
+    });
+
+    function toggleAccordion(id) {
+        const item = document.getElementById(id);
+        item.classList.toggle('active');
+    }
+
+    function alertDownloadDisabled() {
+        alert("Plugin download is temporarily disabled. The release is coming in the next few days!");
+    }
+</script>
+
+</body>
+</html>
