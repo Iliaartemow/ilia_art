@@ -237,5 +237,23 @@
     ],
     "image": "images/products/FF_R_11_Shape.jpg",
     "fld_file": "folds/ff_r_11_FF_R_11_Shape.fld"
+  },
+  {
+    "id": "ff_loop_01",
+    "category": "rectangular",
+    "badge_en": "Rectangular",
+    "badge_ru": "Прямоугольные",
+    "title_en": "FF Loop 01",
+    "title_ru": "FF Loop 01",
+    "description_en": "Seamless looping fold profile with continuous wave tiling for bedding, curtains and upholstery.",
+    "description_ru": "Бесшовный профиль складки с непрерывным тайлингом волны — идеально для постельного белья, штор и обивки.",
+    "count": "1 Fold",
+    "format": ".fld",
+    "price": 0.0,
+    "images": [
+      "images/products/FF_LOOP_01.jpg"
+    ],
+    "image": "images/products/FF_LOOP_01.jpg",
+    "fld_file": "folds/FF_01_Loop.fld"
   }
 ]
