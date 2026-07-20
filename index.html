@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google" content="notranslate">
     <title>FoldFlow — Procedural Folds & Wrinkles Plugin for 3ds Max</title>
-    <meta name="description" content="Generate realistic cloth folds and leather wrinkles in 3ds Max with FoldFlow modifier. Save hours of manual sculpting. Get your 14-day free trial now!">
+    <meta name="description" content="Generate realistic cloth folds and leather wrinkles in 3ds Max with FoldFlow modifier. Save hours of manual sculpting. Get your 7-day free trial now!">
     <meta name="google-site-verification" content="9x3kDl9SQ_DwjraFJr9hL-wHkQ8fcvDtwQzerYhT5aY" />
     <link rel="stylesheet" href="style.css?v=5">
     <link rel="icon" type="image/png" href="images/logo_icon.png">
@@ -642,14 +642,14 @@
                 <div class="pricing-card card-blue">
                     <div class="card-header">
                         <h3 id="license-title-core">Demo License</h3>
-                        <p id="license-desc-core">Try all features free of charge for 14 days.</p>
-                        <div class="price">Free<span id="price-desc-core">/ 14-day trial</span></div>
+                        <p id="license-desc-core">Try all features free of charge for 7 days.</p>
+                        <div class="price">Free<span id="price-desc-core">/ 7-day trial</span></div>
                     </div>
                     <ul class="features-list">
+                        <li id="feature-internet-core"><span class="icon">✓</span> Requires active internet connection</li>
                         <li id="f-modifier-1"><span class="icon">✓</span> 3ds Max procedural modifier</li>
                         <li id="f-viewport-1"><span class="icon">✓</span> Real-time viewport deformation</li>
-                        <li id="f-profiles-1"><span class="icon">✓</span> 50+ pre-installed fold profiles</li>
-                        <li id="feature-updates-core"><span class="icon">✓</span> 2 years of free updates</li>
+                        <li id="feature-updates-core" class="unsupported"><span class="icon">✗</span> <span class="disabled">2 years of free updates</span></li>
                         <li id="f-exporter-1" class="unsupported"><span class="icon">✗</span> <span class="disabled">FoldExporter (.fld) module</span></li>
                         <li id="f-support-1" class="unsupported"><span class="icon">✗</span> <span class="disabled">Priority email support</span></li>
                     </ul>
@@ -667,7 +667,6 @@
                     <ul class="features-list">
                         <li id="f-modifier-2"><span class="icon">✓</span> 3ds Max procedural modifier</li>
                         <li id="f-viewport-2"><span class="icon">✓</span> Real-time viewport deformation</li>
-                        <li id="f-profiles-2"><span class="icon">✓</span> 50+ pre-installed fold profiles</li>
                         <li id="f-exporter-2"><span class="icon">✓</span> <strong>FoldExporter (.fld) module</strong></li>
                         <li id="f-support-2"><span class="icon">✓</span> <strong>Priority email support</strong></li>
                         <li id="feature-updates-pro"><span class="icon">✓</span> 2 years of free updates</li>
@@ -1149,7 +1148,7 @@
                 pricing_badge: "Flexible Licensing",
                 pricing_title: "Choose Your License",
                 pricing_desc: "Get lifetime access to the FoldFlow modifier. Select the tier that best matches your production scale.",
-                license_desc_core: "Try all features free of charge for 14 days.",
+                license_desc_core: "Try all features free of charge for 7 days.",
                 license_desc_pro: "For professional 3D artists who require full API and pipeline automation.",
                 license_desc_enterprise: "For design studios, game companies, and large production pipelines.",
                 license_badge_pro: "Most Popular",
@@ -1203,10 +1202,11 @@
                 license_core: "Demo License",
                 license_pro: "Pro License",
                 license_enterprise: "Studio / Enterprise",
-                price_desc_core: "/ 14-day trial",
+                price_desc_core: "/ 7-day trial",
                 price_desc_pro: "/ perpetual",
                 price_desc_enterprise: "/ site license",
                 feature_updates: "2 years of free updates",
+                feature_internet: "Requires active internet connection",
                 
                 // Compliance Modal
                 modal_tab_about: "About Service",
@@ -1341,7 +1341,7 @@
                 pricing_badge: "Гибкие лицензии",
                 pricing_title: "Выберите тип лицензии",
                 pricing_desc: "Получите пожизненный доступ к процедурному модификатору FoldFlow. Выберите уровень лицензии под ваши задачи.",
-                license_desc_core: "Попробуйте все возможности плагина бесплатно на 14 дней.",
+                license_desc_core: "Попробуйте все возможности плагина бесплатно на 7 дней.",
                 license_desc_pro: "Для профессиональных 3D-художников и фрилансеров.",
                 license_desc_enterprise: "Для студий дизайна, игровых компаний и производственных пайплайнов.",
                 license_badge_pro: "Популярный выбор",
@@ -1395,10 +1395,11 @@
                 license_core: "Демо-лицензия",
                 license_pro: "Pro License",
                 license_enterprise: "Studio / Enterprise",
-                price_desc_core: "/ на 14 дней",
+                price_desc_core: "/ на 7 дней",
                 price_desc_pro: "/ навсегда",
                 price_desc_enterprise: "/ лицензия на сайт",
                 feature_updates: "2 года поддержки обновлений",
+                feature_internet: "Требуется подключение к интернету",
                 
                 // Compliance Modal
                 modal_tab_about: "О сервисе",
@@ -1759,9 +1760,12 @@
             if (btnContactSales) btnContactSales.textContent = trans.btn_contact_sales;
 
             // Feature Updates
-            document.getElementById('feature-updates-core').innerHTML = `<span class="icon">✓</span> ` + trans.feature_updates;
+            document.getElementById('feature-updates-core').innerHTML = `<span class="icon">✗</span> <span class="disabled">` + trans.feature_updates + `</span>`;
             document.getElementById('feature-updates-pro').innerHTML = `<span class="icon">✓</span> ` + trans.feature_updates;
             document.getElementById('feature-updates-enterprise').innerHTML = `<span class="icon">✓</span> ` + trans.feature_updates;
+
+            const fInternet = document.getElementById('feature-internet-core');
+            if (fInternet) fInternet.innerHTML = `<span class="icon">✓</span> <strong>` + trans.feature_internet + `</strong>`;
 
             // Tutorials Section
             document.getElementById('tutorials-badge').textContent = trans.tutorials_badge;
