@@ -2644,8 +2644,22 @@
                 </div>
             </div>
         </div>
+    <!-- Glassmorphic Checkout Modal -->
+    <div id="checkout-modal" class="modal-overlay" style="display: none;" onclick="if(event.target === this) closeCheckoutModal();">
+        <div class="modal-card checkout-modal-card" style="max-width: 680px; width: 92%; padding: 24px; border-radius: 20px; background: rgba(15, 18, 35, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(0, 204, 102, 0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.9); position: relative;">
+            <button class="modal-close" onclick="closeCheckoutModal()" aria-label="Close modal" style="position: absolute; top: 16px; right: 16px;">&times;</button>
+            <div style="text-align: center; margin-bottom: 16px;">
+                <h3 style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px;" id="checkout-modal-title">FoldFlow Commercial License</h3>
+                <p style="font-size: 13px; color: #a0aec0;" id="checkout-modal-subtitle">Secure Checkout • Instant Delivery • 2 HWID Seats ($49)</p>
+            </div>
+            <div id="checkout-iframe-container" style="width: 100%; height: 580px; overflow: hidden; border-radius: 12px; background: #14182e;">
+                <iframe id="checkout-iframe" src="" style="width: 100%; height: 100%; border: none; border-radius: 12px;" title="Checkout"></iframe>
+            </div>
+        </div>
+    </div>
+
     <!-- Floating Buy Button -->
-    <a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, 'pricing')" class="floating-buy-btn" id="floating-buy-btn">
+    <a href="javascript:void(0)" onclick="openCheckoutModal()" class="floating-buy-btn" id="floating-buy-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
         <span id="floating-buy-text">Buy License</span>
     </a>

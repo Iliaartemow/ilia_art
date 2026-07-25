@@ -74,7 +74,7 @@
                 <!-- Header CTA Buttons -->
                 <div class="header-cta-buttons">
                     <a href="trial.html" class="header-cta-btn header-btn-trial" id="nav-btn-trial">Try Free</a>
-                    <button class="header-cta-btn header-btn-pro" id="nav-btn-pro" onclick="navigateToSection('fold-flow', null, 'pricing')">Buy License</button>
+                    <button class="header-cta-btn header-btn-pro" id="nav-btn-pro" onclick="openCheckoutModal()">Buy License</button>
                 </div>
 
                 <div class="lang-switcher">
@@ -672,7 +672,7 @@
                         <li id="f-support-2"><span class="icon">✓</span> <strong>Priority email & Discord support</strong></li>
                         <li id="feature-updates-pro"><span class="icon">✓</span> Lifetime access & free updates</li>
                     </ul>
-                    <button id="pricing-btn-pro" class="pricing-btn primary" onclick="window.location.href='pro.html'">Buy License</button>
+                    <button id="pricing-btn-pro" class="pricing-btn primary" onclick="openCheckoutModal()">Buy License</button>
                 </div>
 
                 <!-- Enterprise Card -->
@@ -3009,7 +3009,7 @@
             </div>
         </div>
     <!-- Floating Buy Button -->
-    <a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, 'pricing')" class="floating-buy-btn" id="floating-buy-btn">
+    <a href="javascript:void(0)" onclick="openCheckoutModal()" class="floating-buy-btn" id="floating-buy-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
         <span id="floating-buy-text">Buy License</span>
     </a>
@@ -3037,6 +3037,30 @@
                 btn.classList.remove('visible');
             }
         });
+
+        // Checkout Modal Logic
+        function openCheckoutModal() {
+            const modal = document.getElementById('checkout-modal');
+            const iframe = document.getElementById('checkout-iframe');
+            const langParam = (typeof currentLang !== 'undefined' && currentLang === 'ru') ? 'ru-RU' : 'en-US';
+            const payUrl = `https://pay.digiseller.ru/pay/id_product/5943232?lang=${langParam}`;
+            if (iframe && iframe.src !== payUrl) {
+                iframe.src = payUrl;
+            }
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCheckoutModal() {
+            const modal = document.getElementById('checkout-modal');
+            const iframe = document.getElementById('checkout-iframe');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
 
         // Download dropdown toggle logic
         const downloadTrigger = document.getElementById('download-trigger-btn');
