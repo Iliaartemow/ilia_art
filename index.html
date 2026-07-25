@@ -73,8 +73,8 @@
             <div class="header-right">
                 <!-- Header CTA Buttons -->
                 <div class="header-cta-buttons">
-                    <a href="trial.html" class="header-cta-btn header-btn-trial" id="nav-btn-trial">Get Trial</a>
-                    <button class="header-cta-btn header-btn-pro" id="nav-btn-pro" onclick="navigateToSection('fold-flow', null, 'pricing')">Buy Pro</button>
+                    <a href="trial.html" class="header-cta-btn header-btn-trial" id="nav-btn-trial">Try Free</a>
+                    <button class="header-cta-btn header-btn-pro" id="nav-btn-pro" onclick="navigateToSection('fold-flow', null, 'pricing')">Buy License</button>
                 </div>
 
                 <div class="lang-switcher">
@@ -656,22 +656,23 @@
                     <button id="pricing-btn-core" class="pricing-btn" onclick="window.location.href='trial.html'">Get Trial</button>
                 </div>
 
-                <!-- Pro Card (Featured) -->
+                <!-- Commercial Card (Featured) -->
                 <div class="pricing-card card-green featured">
                     <div class="card-badge" id="license-badge-pro">Most Popular</div>
                     <div class="card-header">
-                        <h3 id="license-title-pro">Pro License</h3>
-                        <p id="license-desc-pro">For professional artists who need advanced pipeline tools.</p>
+                        <h3 id="license-title-pro">Commercial License</h3>
+                        <p id="license-desc-pro">For 3D artists & freelancers needing commercial rights for 3ds Max 2021–2027.</p>
                         <div class="price">$49<span id="price-desc-pro">/ perpetual</span></div>
                     </div>
                     <ul class="features-list">
                         <li id="f-modifier-2"><span class="icon">✓</span> 3ds Max procedural modifier</li>
                         <li id="f-viewport-2"><span class="icon">✓</span> Real-time viewport deformation</li>
                         <li id="f-exporter-2"><span class="icon">✓</span> <strong>FoldExporter (.fld) module</strong></li>
-                        <li id="f-support-2"><span class="icon">✓</span> <strong>Priority email support</strong></li>
-                        <li id="feature-updates-pro"><span class="icon">✓</span> 2 years of free updates</li>
+                        <li id="f-seats-2"><span class="icon">✓</span> <strong>2 HWID Seats (Desktop + Laptop)</strong></li>
+                        <li id="f-support-2"><span class="icon">✓</span> <strong>Priority email & Discord support</strong></li>
+                        <li id="feature-updates-pro"><span class="icon">✓</span> Lifetime access & free updates</li>
                     </ul>
-                    <button id="pricing-btn-pro" class="pricing-btn primary" onclick="window.location.href='pro.html'">Buy Pro</button>
+                    <button id="pricing-btn-pro" class="pricing-btn primary" onclick="window.location.href='pro.html'">Buy License</button>
                 </div>
 
                 <!-- Enterprise Card -->
@@ -1109,10 +1110,10 @@
                 item_desc_plugin: "Core C++ 3ds Max plugin",
                 item_title_alphas: "Fold Library",
                 item_desc_alphas: "Procedural fold profiles",
-                floating_buy: "Buy Pro",
-                download: "Get Trial",
+                floating_buy: "Buy License",
+                download: "Try Free",
                 download_free: "Free (Trial)",
-                download_pro: "Pro License",
+                download_pro: "Commercial License",
                 gallery_feature_title: "Real-Time Procedural Cloth",
                 gallery_feature_bullets: "No Simulation. No Sculpting. Instant viewport feedback.",
                 comp_badge: "Workflow Comparison",
@@ -1149,21 +1150,21 @@
                 pricing_title: "Choose Your License",
                 pricing_desc: "Get lifetime access to the FoldFlow modifier. Select the tier that best matches your production scale.",
                 license_desc_core: "Try all features free of charge for 7 days.",
-                license_desc_pro: "For professional 3D artists who require full API and pipeline automation.",
+                license_desc_pro: "For 3D artists & freelancers needing commercial rights for 3ds Max 2021–2027.",
                 license_desc_enterprise: "For design studios, game companies, and large production pipelines.",
                 license_badge_pro: "Most Popular",
                 feature_modifier: "Procedural 3ds Max modifier",
                 feature_viewport: "Real-time viewport deformations",
                 feature_profiles: "50+ pre-installed fold and wrinkle profiles",
                 feature_exporter: "FoldExporter (.fld) module",
-                feature_support: "Priority email support",
+                feature_support: "Priority email & Discord support",
                 feature_rlm: "Floating license server (RLM support)",
                 feature_api: "Full MAXScript / Python API access",
                 feature_users: "Unlimited users (single site / node-locked)",
                 feature_slack: "Dedicated Slack channel support",
                 feature_custom: "Custom software builds and NDAs",
                 btn_buy_core: "Get Trial",
-                btn_buy_pro: "Buy Pro",
+                btn_buy_pro: "Buy License",
                 btn_contact_sales: "Contact Sales",
                 hero_title: "Supercharge Your Cloth Modeling",
                 hero_desc: "Create hyper-realistic folds, wrinkles, and fabric details in real-time directly in your viewport with the FoldFlow C++ engine.",
@@ -1200,7 +1201,7 @@
                 t5_desc: "A guide on preparing quad mesh topology, uniform subdivisions, and cleaning up imported assets to ensure artifact-free modifier results.",
                 pack_soon: "Pack release is coming soon! You can buy it in a bundle with the plugin via mail: gggiantt@mail.ru",
                 license_core: "Demo License",
-                license_pro: "Pro License",
+                license_pro: "Commercial License",
                 license_enterprise: "Studio / Enterprise",
                 price_desc_core: "/ 7-day trial",
                 price_desc_pro: "/ perpetual",
@@ -1393,7 +1394,7 @@
                 t5_desc: "Руководство по подготовке четырехугольной сетки, равномерному разбиению полигонов и чистке импортированных моделей для идеальной работы модификатора.",
                 pack_soon: "Выход пакета ожидается в ближайшее время! Вы можете приобрести его в бандле с плагином напрямую через почту: gggiantt@mail.ru",
                 license_core: "Демо-лицензия",
-                license_pro: "Pro License",
+                license_pro: "Коммерческая лицензия",
                 license_enterprise: "Studio / Enterprise",
                 price_desc_core: "/ на 7 дней",
                 price_desc_pro: "/ навсегда",
@@ -3010,7 +3011,7 @@
     <!-- Floating Buy Button -->
     <a href="javascript:void(0)" onclick="navigateToSection('fold-flow', null, 'pricing')" class="floating-buy-btn" id="floating-buy-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-        <span id="floating-buy-text">Buy Pro</span>
+        <span id="floating-buy-text">Buy License</span>
     </a>
 
     <!-- Scroll and ScrollRestoration scripts -->
