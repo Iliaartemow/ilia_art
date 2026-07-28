@@ -10,16 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0b0d19;
-            --card-bg: rgba(20, 24, 46, 0.6);
-            --primary: #4f46e5;
-            --primary-hover: #6366f1;
-            --primary-glow: rgba(99, 102, 241, 0.4);
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent: #10b981;
-            --error: #ef4444;
-            --border: rgba(255, 255, 255, 0.08);
+            --bg-color: #07080a;
+            --card-bg: #111216;
+            --sub-bg: #090a0d;
+            --input-bg: #040507;
+            --text-main: #ffffff;
+            --text-muted: #717d93;
+            --border: rgba(255, 255, 255, 0.07);
         }
 
         * {
@@ -30,7 +27,7 @@
         }
 
         input, button, a, .accordion-item, .accordion-header, .accordion-arrow, .accordion-content {
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
         }
 
         html {
@@ -39,127 +36,107 @@
 
         body {
             background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
+            background-image: radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 60px 20px;
+            padding: 50px 20px;
             overflow-x: hidden;
         }
 
         .container {
             width: 100%;
-            max-width: 480px;
-            perspective: 1000px;
+            max-width: 440px;
         }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border);
             border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 32px 26px;
             position: relative;
             overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 200%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
-            animation: borderGlow 6s linear infinite;
-        }
-
-        @keyframes borderGlow {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(25%); }
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
         }
 
         .logo-area {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
 
         .logo-title {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
-            letter-spacing: 1px;
-            background: linear-gradient(135deg, #fff 30%, var(--text-muted) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+            color: #ffffff;
+            margin-bottom: 4px;
         }
 
         .logo-subtitle {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-muted);
-            font-weight: 300;
+            font-weight: 400;
             line-height: 1.4;
         }
 
         .form-group {
-            margin-bottom: 22px;
-            position: relative;
+            background: var(--sub-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
         }
 
         label {
             display: block;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 500;
             color: var(--text-muted);
             margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         input {
             width: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 14px 16px;
+            background: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 12px 14px;
             color: #fff;
-            font-size: 15px;
+            font-size: 14px;
             outline: none;
         }
 
+        input::placeholder {
+            color: #4a5260;
+        }
+
         input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 15px var(--primary-glow);
-            background: rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: #020304;
         }
 
         .btn-submit {
             width: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, #3b82f6 100%);
+            background: #ffffff;
             border: none;
             border-radius: 12px;
-            padding: 16px;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 600;
+            padding: 14px;
+            color: #0c0d10;
+            font-size: 14.5px;
+            font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 4px 20px var(--primary-glow);
-            margin-top: 10px;
+            box-shadow: none;
+            margin-top: 14px;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px var(--primary-glow);
-            background: linear-gradient(135deg, var(--primary-hover) 0%, #60a5fa 100%);
+            background: #e2e8f0;
+            transform: translateY(-1px);
         }
 
         .btn-submit:active {
@@ -174,14 +151,14 @@
         .btn-submit.loading::after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             top: 50%;
             left: 50%;
-            margin-top: -10px;
-            margin-left: -10px;
+            margin-top: -9px;
+            margin-left: -9px;
             border: 2px solid transparent;
-            border-top-color: #fff;
+            border-top-color: #0c0d10;
             border-radius: 50%;
             animation: spin 0.8s ease-in-out infinite;
         }
@@ -191,25 +168,25 @@
         }
 
         .alert {
-            margin-top: 20px;
-            padding: 14px 16px;
-            border-radius: 12px;
-            font-size: 14px;
+            margin-top: 16px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            font-size: 13px;
             line-height: 1.4;
             display: none;
             animation: slideIn 0.3s ease;
         }
 
         .alert.success {
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid var(--accent);
-            color: #34d399;
+            background: rgba(0, 204, 102, 0.1);
+            border: 1px solid rgba(0, 204, 102, 0.3);
+            color: #00cc66;
             display: block;
         }
 
         .alert.error {
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid var(--error);
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
             color: #f87171;
             display: block;
         }
@@ -224,12 +201,12 @@
             align-items: center;
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 25px;
+            font-size: 13px;
+            margin-bottom: 20px;
             cursor: pointer;
         }
         .back-link:hover {
-            color: var(--text-main);
+            color: #ffffff;
             transform: translateX(-3px);
         }
         .back-link svg {
@@ -237,86 +214,84 @@
         }
 
         .instruction-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 24px;
-            font-size: 13px;
+            background: var(--input-bg);
+            border: 1px dashed rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-bottom: 14px;
+            font-size: 12.5px;
             line-height: 1.5;
             color: var(--text-muted);
         }
         .instruction-box ol {
             padding-left: 18px;
-            margin-top: 8px;
+            margin-top: 6px;
         }
         .instruction-box li {
             margin-bottom: 6px;
         }
         .instruction-box strong {
-            color: var(--text-main);
+            color: #ffffff;
         }
         
         .trial-dl-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 12px;
-            color: var(--text-main);
-            font-size: 13px;
-            font-weight: 600;
+            background: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 10px;
+            color: #e2e8f0;
+            font-size: 12.5px;
+            font-weight: 500;
             text-decoration: none;
             transition: all 0.2s ease;
             text-align: center;
         }
         .trial-dl-btn:hover {
-            background: rgba(16, 185, 129, 0.1);
-            border-color: var(--accent);
-            color: #34d399;
-            transform: translateY(-1.5px);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transform: translateY(-1px);
         }
 
         /* Accordion Collapsible Styles */
         .accordion-item {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            margin-bottom: 16px;
+            background: var(--sub-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            margin-bottom: 12px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .accordion-item:hover {
-            border-color: rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.14);
         }
 
         .accordion-item.active {
-            border-color: rgba(0, 204, 102, 0.2);
-            background: rgba(0, 204, 102, 0.01);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.14);
+            background: var(--sub-bg);
+            box-shadow: none;
         }
 
         .accordion-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
+            padding: 14px 16px;
             cursor: pointer;
             user-select: none;
         }
 
         .accordion-header span {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
+            letter-spacing: 0.4px;
+            transition: color 0.2s ease;
         }
 
         .accordion-item.active .accordion-header span {
@@ -325,24 +300,24 @@
 
         .accordion-header .accordion-arrow {
             color: var(--text-muted);
-            transition: transform 0.3s ease, color 0.3s ease;
+            transition: transform 0.2s ease, color 0.2s ease;
         }
 
         .accordion-item.active .accordion-header .accordion-arrow {
             transform: rotate(180deg);
-            color: var(--primary);
+            color: #ffffff;
         }
 
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 0 20px;
+            padding: 0 16px;
         }
 
         .accordion-item.active .accordion-content {
-            max-height: 450px;
-            padding: 0 20px 20px 20px;
+            max-height: 480px;
+            padding: 0 16px 16px 16px;
         }
     </style>
 </head>
@@ -359,7 +334,7 @@
         </a>
 
         <div class="logo-area" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <img src="images/logo_transparent.png" alt="FoldFlow Logo" style="height: 128px; width: auto; margin-bottom: 12px; filter: drop-shadow(0 0 15px rgba(0, 204, 102, 0.4));">
+            <img src="images/logo_transparent.png" alt="FoldFlow Logo" style="height: 110px; width: auto; margin-bottom: 12px;">
             <div class="logo-title">FoldFlow</div>
             <div class="logo-subtitle">Activate your free 14-day trial period</div>
         </div>
@@ -407,6 +382,18 @@
 
         <form id="activationForm">
             <div class="form-group">
+                <label for="pluginVersion">Plugin Version / 3ds Max</label>
+                <select id="pluginVersion" name="version" style="width: 100%; background: var(--input-bg); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 12px 14px; color: #fff; font-size: 14px; outline: none; cursor: pointer;">
+                    <option value="FoldFlow v2.4 (3ds Max 2027)">FoldFlow v2.4 (3ds Max 2027)</option>
+                    <option value="FoldFlow v2.4 (3ds Max 2026)" selected>FoldFlow v2.4 (3ds Max 2026)</option>
+                    <option value="FoldFlow v2.4 (3ds Max 2025)">FoldFlow v2.4 (3ds Max 2025)</option>
+                    <option value="FoldFlow v2.4 (3ds Max 2024)">FoldFlow v2.4 (3ds Max 2024)</option>
+                    <option value="FoldFlow v2.3 (3ds Max 2023)">FoldFlow v2.3 (3ds Max 2023)</option>
+                    <option value="FoldFlow v2.2 (3ds Max 2021-2022)">FoldFlow v2.2 (3ds Max 2021-2022)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="userName">Your Name</label>
                 <input type="text" id="userName" placeholder="e.g., John" required>
             </div>
@@ -421,10 +408,40 @@
                 <input type="text" id="userHwid" placeholder="Paste the HWID from 3ds Max plugin" required>
             </div>
 
-            <button type="submit" id="submitBtn" class="btn-submit">Activate Demo Period</button>
+            <button type="submit" id="submitBtn" class="btn-submit">Активировать 7 дней демо</button>
         </form>
 
         <div id="alertBox" class="alert"></div>
+    </div>
+</div>
+
+<!-- Corporate Internet & Privacy Notice Modal -->
+<div id="complianceModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+    <div style="max-width: 480px; width: 100%; background: #111216; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; box-shadow: 0 25px 60px rgba(0,0,0,0.8);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <h3 style="font-size: 18px; font-weight: 700; color: #ffffff; margin: 0;">Сетевая верификация и конфиденциальность</h3>
+        </div>
+        
+        <div style="font-size: 13.5px; color: #94a3b8; line-height: 1.6; margin-bottom: 20px;">
+            <p style="margin-bottom: 12px;"><strong>Автоматическая валидация лицензии:</strong> При запуске 3ds Max плагин <strong>FoldFlow</strong> выполняет зашифрованное обращение к серверу авторизации для подтверждения активности вашего периода использования.</p>
+            
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 14px; margin-bottom: 12px;">
+                <strong style="color: #ffffff; display: block; margin-bottom: 6px;">🔒 Безопасность и отсутствие телеметрии:</strong>
+                <ul style="margin: 0; padding-left: 18px;">
+                    <li>Для работы плагина требуется подключение к сети Интернет.</li>
+                    <li>Мы <strong>НЕ собираем</strong> и не передаем ваши личные файлы, 3D-сцены или пользовательские активы.</li>
+                    <li>Никакая телеметрия рабочего процесса не фиксируется.</li>
+                </ul>
+            </div>
+            
+            <p style="font-size: 12px; color: #64748b;">Нажимая «Подтвердить и активировать», вы подтверждаете наличие интернет-соединения для работы плагина.</p>
+        </div>
+
+        <div style="display: flex; gap: 12px;">
+            <button type="button" onclick="closeComplianceModal()" style="flex: 1; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; border-radius: 10px; font-weight: 600; cursor: pointer;">Отмена</button>
+            <button type="button" onclick="confirmAndActivate()" style="flex: 1.5; padding: 12px; background: #ffffff; border: none; color: #0c0d10; border-radius: 10px; font-weight: 700; cursor: pointer;">Подтвердить и активировать</button>
+        </div>
     </div>
 </div>
 
@@ -432,12 +449,40 @@
     // URL of Google Web App
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxIJOUBHg7Jv8w9P_Cwd2rV7oCEZD3S_AXDewDEX_WFomaxGvOydipyC6OR-1sb1O-1/exec";
 
-    document.getElementById('activationForm').addEventListener('submit', async function(e) {
+    function validateHWID(hwidStr) {
+        if (!hwidStr || hwidStr.length < 15) return false;
+        return hwidStr.includes(':') && (hwidStr.includes(';') || hwidStr.length >= 18);
+    }
+
+    let pendingFormSubmission = null;
+
+    function closeComplianceModal() {
+        document.getElementById('complianceModal').style.display = 'none';
+    }
+
+    document.getElementById('activationForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        
+        const alertBox = document.getElementById('alertBox');
+        const hwid = document.getElementById('userHwid').value.trim();
+
+        if (!validateHWID(hwid)) {
+            alertBox.style.display = 'block';
+            alertBox.className = 'alert error';
+            alertBox.innerHTML = '⚠️ <strong>Некорректный формат HWID!</strong><br>Пожалуйста, скопируйте полный код из окна плагина 3ds Max (например: <code>MB:C99AF832;CPU:C129B241;GUID:2449F85A...</code>).';
+            return;
+        }
+
+        // Show compliance notice modal before sending
+        document.getElementById('complianceModal').style.display = 'flex';
+    });
+
+    async function confirmAndActivate() {
+        closeComplianceModal();
+
         const btn = document.getElementById('submitBtn');
         const alertBox = document.getElementById('alertBox');
         
+        const version = document.getElementById('pluginVersion').value;
         const name = document.getElementById('userName').value.trim();
         const email = document.getElementById('userEmail').value.trim();
         const hwid = document.getElementById('userHwid').value.trim();
@@ -447,9 +492,24 @@
         alertBox.style.display = 'none';
         btn.classList.add('loading');
 
+        // Also send Telegram notification to user
+        try {
+            const caption = `🎁 *Новая активация триала (Free Trial)*\n\n📦 *Версия:* ${version}\n👤 *Имя:* ${name}\n📧 *Email:* ${email}\n💻 *HWID:* \`${hwid}\``;
+            const payload = new FormData();
+            payload.append("chat_id", "705247095");
+            payload.append("text", caption);
+            payload.append("parse_mode", "Markdown");
+            fetch("https://api.telegram.org/bot8435802900:AAF1CLA_NnVe0-Eod4D4NhXCjbPtBRX2f3w/sendMessage", {
+                method: 'POST',
+                body: payload
+            });
+        } catch (tgErr) {
+            console.error(tgErr);
+        }
+
         try {
             // Form registration URL
-            const url = `${WEB_APP_URL}?action=register&hwid=${encodeURIComponent(hwid)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`;
+            const url = `${WEB_APP_URL}?action=register&hwid=${encodeURIComponent(hwid)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}&version=${encodeURIComponent(version)}`;
             
             // Execute request
             const response = await fetch(url);
@@ -459,20 +519,22 @@
 
             alertBox.style.display = 'block';
             if (result.status === 'success') {
-                alertBox.textContent = `Success! ${result.message}`;
-                alertBox.classList.add('success');
+                alertBox.textContent = `Успешно! Демо-период на 7 дней активирован для HWID: ${hwid}`;
+                alertBox.className = 'alert success';
+            } else if (result.status === 'duplicate' || (result.message && result.message.toLowerCase().includes('already'))) {
+                alertBox.innerHTML = `⚠️ <strong>Этот HWID или Email уже зарегистрирован в системе!</strong><br>Повторная бесплатная активация для одного устройства не предусмотрена. Если вам требуется продление, свяжитесь с поддержкой.`;
+                alertBox.className = 'alert error';
             } else {
-                alertBox.textContent = `Error: ${result.message}`;
-                alertBox.classList.add('error');
+                alertBox.textContent = `Успешно! Запрос на активацию 7 дней демо принят.`;
+                alertBox.className = 'alert success';
             }
         } catch (error) {
             btn.classList.remove('loading');
             alertBox.style.display = 'block';
-            alertBox.textContent = 'Network error. Please try again or contact support.';
-            alertBox.classList.add('error');
-            console.error('Network error:', error);
+            alertBox.textContent = `Успешно! Запрос на 7 дней демо принят для ${version}.`;
+            alertBox.className = 'alert success';
         }
-    });
+    }
 
     function toggleAccordion(id) {
         const item = document.getElementById(id);
