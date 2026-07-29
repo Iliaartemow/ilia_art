@@ -379,20 +379,7 @@
                 </div>
             </div>
         </div>
-
         <form id="activationForm">
-            <div class="form-group">
-                <label for="pluginVersion">Plugin Version / 3ds Max</label>
-                <select id="pluginVersion" name="version" style="width: 100%; background: var(--input-bg); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 12px 14px; color: #fff; font-size: 14px; outline: none; cursor: pointer;">
-                    <option value="FoldFlow v2.4 (3ds Max 2027)">FoldFlow v2.4 (3ds Max 2027)</option>
-                    <option value="FoldFlow v2.4 (3ds Max 2026)" selected>FoldFlow v2.4 (3ds Max 2026)</option>
-                    <option value="FoldFlow v2.4 (3ds Max 2025)">FoldFlow v2.4 (3ds Max 2025)</option>
-                    <option value="FoldFlow v2.4 (3ds Max 2024)">FoldFlow v2.4 (3ds Max 2024)</option>
-                    <option value="FoldFlow v2.3 (3ds Max 2023)">FoldFlow v2.3 (3ds Max 2023)</option>
-                    <option value="FoldFlow v2.2 (3ds Max 2021-2022)">FoldFlow v2.2 (3ds Max 2021-2022)</option>
-                </select>
-            </div>
-
             <div class="form-group">
                 <label for="userName">Your Name</label>
                 <input type="text" id="userName" placeholder="e.g., John" required>
@@ -408,7 +395,7 @@
                 <input type="text" id="userHwid" placeholder="Paste the HWID from 3ds Max plugin" required>
             </div>
 
-            <button type="submit" id="submitBtn" class="btn-submit">Активировать 7 дней демо</button>
+            <button type="submit" id="submitBtn" class="btn-submit">Activate 7-Day Free Trial</button>
         </form>
 
         <div id="alertBox" class="alert"></div>
@@ -420,27 +407,27 @@
     <div style="max-width: 480px; width: 100%; background: #111216; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; box-shadow: 0 25px 60px rgba(0,0,0,0.8);">
         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            <h3 style="font-size: 18px; font-weight: 700; color: #ffffff; margin: 0;">Сетевая верификация и конфиденциальность</h3>
+            <h3 style="font-size: 18px; font-weight: 700; color: #ffffff; margin: 0;">Network Verification & Privacy</h3>
         </div>
         
         <div style="font-size: 13.5px; color: #94a3b8; line-height: 1.6; margin-bottom: 20px;">
-            <p style="margin-bottom: 12px;"><strong>Автоматическая валидация лицензии:</strong> При запуске 3ds Max плагин <strong>FoldFlow</strong> выполняет зашифрованное обращение к серверу авторизации для подтверждения активности вашего периода использования.</p>
+            <p style="margin-bottom: 12px;"><strong>Automatic License Validation:</strong> Upon starting 3ds Max, the FoldFlow plugin performs an encrypted request to the authorization server to confirm your active trial period.</p>
             
             <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 14px; margin-bottom: 12px;">
-                <strong style="color: #ffffff; display: block; margin-bottom: 6px;">🔒 Безопасность и отсутствие телеметрии:</strong>
+                <strong style="color: #ffffff; display: block; margin-bottom: 6px;">🔒 Security & Zero Telemetry Guarantee:</strong>
                 <ul style="margin: 0; padding-left: 18px;">
-                    <li>Для работы плагина требуется подключение к сети Интернет.</li>
-                    <li>Мы <strong>НЕ собираем</strong> и не передаем ваши личные файлы, 3D-сцены или пользовательские активы.</li>
-                    <li>Никакая телеметрия рабочего процесса не фиксируется.</li>
+                    <li>An active Internet connection is required for plugin operation.</li>
+                    <li>We <strong>DO NOT collect</strong> or transmit your personal files, 3D scenes, or user assets.</li>
+                    <li>No workflow telemetry or user project data is recorded.</li>
                 </ul>
             </div>
             
-            <p style="font-size: 12px; color: #64748b;">Нажимая «Подтвердить и активировать», вы подтверждаете наличие интернет-соединения для работы плагина.</p>
+            <p style="font-size: 12px; color: #64748b;">By clicking "Confirm & Activate", you confirm you have an active internet connection for the plugin.</p>
         </div>
 
         <div style="display: flex; gap: 12px;">
-            <button type="button" onclick="closeComplianceModal()" style="flex: 1; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; border-radius: 10px; font-weight: 600; cursor: pointer;">Отмена</button>
-            <button type="button" onclick="confirmAndActivate()" style="flex: 1.5; padding: 12px; background: #ffffff; border: none; color: #0c0d10; border-radius: 10px; font-weight: 700; cursor: pointer;">Подтвердить и активировать</button>
+            <button type="button" onclick="closeComplianceModal()" style="flex: 1; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; border-radius: 10px; font-weight: 600; cursor: pointer;">Cancel</button>
+            <button type="button" onclick="confirmAndActivate()" style="flex: 1.5; padding: 12px; background: #ffffff; border: none; color: #0c0d10; border-radius: 10px; font-weight: 700; cursor: pointer;">Confirm & Activate</button>
         </div>
     </div>
 </div>
@@ -468,7 +455,7 @@
         if (!validateHWID(hwid)) {
             alertBox.style.display = 'block';
             alertBox.className = 'alert error';
-            alertBox.innerHTML = '⚠️ <strong>Некорректный формат HWID!</strong><br>Пожалуйста, скопируйте полный код из окна плагина 3ds Max (например: <code>MB:C99AF832;CPU:C129B241;GUID:2449F85A...</code>).';
+            alertBox.innerHTML = '⚠️ <strong>Invalid HWID format!</strong><br>Please copy the full HWID code from the FoldFlow plugin in 3ds Max (e.g., <code>MB:C99AF832;CPU:C129B241;GUID:2449F85A...</code>).';
             return;
         }
 
@@ -482,7 +469,7 @@
         const btn = document.getElementById('submitBtn');
         const alertBox = document.getElementById('alertBox');
         
-        const version = document.getElementById('pluginVersion').value;
+        const version = "FoldFlow v2.4 (3ds Max 2017-2027)";
         const name = document.getElementById('userName').value.trim();
         const email = document.getElementById('userEmail').value.trim();
         const hwid = document.getElementById('userHwid').value.trim();
@@ -494,7 +481,7 @@
 
         // Also send Telegram notification to user
         try {
-            const caption = `🎁 *Новая активация триала (Free Trial)*\n\n📦 *Версия:* ${version}\n👤 *Имя:* ${name}\n📧 *Email:* ${email}\n💻 *HWID:* \`${hwid}\``;
+            const caption = `🎁 *New Free Trial Activation*\n\n📦 *Version:* ${version}\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n💻 *HWID:* \`${hwid}\``;
             const payload = new FormData();
             payload.append("chat_id", "705247095");
             payload.append("text", caption);
@@ -519,19 +506,19 @@
 
             alertBox.style.display = 'block';
             if (result.status === 'success') {
-                alertBox.textContent = `Успешно! Демо-период на 7 дней активирован для HWID: ${hwid}`;
+                alertBox.textContent = `Success! 7-day trial period activated for HWID: ${hwid}`;
                 alertBox.className = 'alert success';
             } else if (result.status === 'duplicate' || (result.message && result.message.toLowerCase().includes('already'))) {
-                alertBox.innerHTML = `⚠️ <strong>Этот HWID или Email уже зарегистрирован в системе!</strong><br>Повторная бесплатная активация для одного устройства не предусмотрена. Если вам требуется продление, свяжитесь с поддержкой.`;
+                alertBox.innerHTML = `⚠️ <strong>This HWID or Email is already registered in the system!</strong><br>Repeated free trial activation is not allowed for the same device. If you need an extension, please contact support.`;
                 alertBox.className = 'alert error';
             } else {
-                alertBox.textContent = `Успешно! Запрос на активацию 7 дней демо принят.`;
+                alertBox.textContent = `Success! 7-Day Demo activation request accepted.`;
                 alertBox.className = 'alert success';
             }
         } catch (error) {
             btn.classList.remove('loading');
             alertBox.style.display = 'block';
-            alertBox.textContent = `Успешно! Запрос на 7 дней демо принят для ${version}.`;
+            alertBox.textContent = `Success! 7-Day Demo activation request accepted.`;
             alertBox.className = 'alert success';
         }
     }
