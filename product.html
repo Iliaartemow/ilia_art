@@ -654,17 +654,5 @@
         // Run
         initPage();
     </script>
-    <!-- Local Analytics Tracking Script -->
-    <script>
-        (function() {
-            try {
-                const path = window.location.pathname;
-                const ref = document.referrer || "";
-                const res = `${window.screen.width}x${window.screen.height}`;
-                const url = `http://localhost:8081/api/track?path=${encodeURIComponent(path)}&ref=${encodeURIComponent(ref)}&res=${encodeURIComponent(res)}`;
-                fetch(url, { mode: 'no-cors' }).catch(() => {});
-            } catch(e) {}
-        })();
-    </script>
 </body>
 </html>
