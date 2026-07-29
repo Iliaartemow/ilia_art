@@ -148,7 +148,7 @@
                                 <span class="release-text-main" id="release-banner-main">RELEASE &nbsp;<span>V 1.4</span></span>
                                 <span class="release-text-sub" id="release-banner-sub">CORE C++ ENGINE FOR 3DS MAX (2017–2027)</span>
                             </div>
-                            <video id="bento-hero-video" class="bento-window-video" src="timeline1.mp4" autoplay muted playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; transition: opacity 1.2s ease; z-index: 10; border-radius: 8px; background: transparent;"></video>
+                            <video id="bento-hero-video" class="bento-window-video" src="timeline1.mp4" autoplay loop muted playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; z-index: 10; border-radius: 8px; opacity: 1;"></video>
                         </div>
                     </div>
 
@@ -2772,47 +2772,26 @@
                 observer.observe(img, { attributes: true });
             }
 
-            // Bento Hero Showcase Controller: Single pass (timeline1.mp4 -> RELEASE V1.4 -> FF_2.mp4 -> NOW AVAILABLE Banner Stop)
+            // Bento Hero Video Controller: Infinite video loop (timeline1.mp4 <-> FF_2.mp4), opacity stays 1 always
             const heroVid = document.getElementById('bento-hero-video');
-            const mainText = document.getElementById('release-banner-main');
-            const subText = document.getElementById('release-banner-sub');
-            let sequenceStep = 1;
+            let isSecondVideo = false;
 
             if (heroVid) {
                 heroVid.muted = true;
                 heroVid.defaultMuted = true;
+                heroVid.style.opacity = '1';
                 heroVid.play().catch(function(e) { console.log('Autoplay error:', e); });
 
                 heroVid.addEventListener('ended', function() {
-                    heroVid.style.opacity = '0';
-
-                    if (sequenceStep === 1) {
-                        // 1. timeline1.mp4 ended -> Show RELEASE V 1.4 banner for 3.5s, then load and play FF_2.mp4
-                        sequenceStep = 2;
-                        if (mainText) mainText.innerHTML = `RELEASE &nbsp;<span>V 1.4</span>`;
-                        if (subText) subText.textContent = `CORE C++ ENGINE FOR 3DS MAX`;
-
-                        setTimeout(function() {
-                            heroVid.src = 'FF_2.mp4';
-                            heroVid.load();
-                            const playPromise = heroVid.play();
-                            if (playPromise !== undefined) {
-                                playPromise.then(function() {
-                                    heroVid.style.opacity = '1';
-                                }).catch(function() {
-                                    heroVid.style.opacity = '1';
-                                });
-                            } else {
-                                heroVid.style.opacity = '1';
-                            }
-                        }, 3500);
-
-                    } else if (sequenceStep === 2) {
-                        // 2. FF_2.mp4 ended -> Show NOW AVAILABLE banner and STOP PERMANENTLY
-                        sequenceStep = 3;
-                        if (mainText) mainText.innerHTML = `NOW &nbsp;<span>AVAILABLE</span>`;
-                        if (subText) subText.textContent = `FOLDFLOW V 1.4 FOR 3DS MAX (2017–2027)`;
+                    if (!isSecondVideo) {
+                        isSecondVideo = true;
+                        heroVid.src = 'FF_2.mp4';
+                    } else {
+                        isSecondVideo = false;
+                        heroVid.src = 'timeline1.mp4';
                     }
+                    heroVid.load();
+                    heroVid.play().catch(function(e) { console.log('Play next error:', e); });
                 });
             }
         });
