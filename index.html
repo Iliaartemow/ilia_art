@@ -148,7 +148,7 @@
                                 <span class="release-text-main" id="release-banner-main">RELEASE &nbsp;<span>V 1.4</span></span>
                                 <span class="release-text-sub" id="release-banner-sub">CORE C++ ENGINE FOR 3DS MAX (2017–2027)</span>
                             </div>
-                            <video id="bento-hero-video" class="bento-window-video" src="timeline1.mp4" autoplay loop muted playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; z-index: 10; border-radius: 8px; opacity: 1;"></video>
+                            <video id="bento-hero-video" class="bento-window-video" src="timeline1.mp4" muted playsinline preload="auto" controlsList="nodownload no-remote-playback noremoteplayback" disablePictureInPicture oncontextmenu="return false;" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; transition: opacity 1.2s ease; z-index: 10; border-radius: 8px; opacity: 0; background: transparent; pointer-events: none; -webkit-user-select: none; user-select: none;"></video>
                         </div>
                     </div>
 
@@ -2772,26 +2772,83 @@
                 observer.observe(img, { attributes: true });
             }
 
-            // Bento Hero Video Controller: Infinite video loop (timeline1.mp4 <-> FF_2.mp4), opacity stays 1 always
+            // Bento Hero Video Controller: Scroll-Triggered Presentation Sequence
+            // 1. User scrolls down to video container -> IntersectionObserver triggers Video 1 (timeline1.mp4)
+            // 2. Video 1 finishes -> Release Banner (3.5s): "RELEASE V 1.4 / REAL-TIME VIEWPORT DEFORMATION ENGINE"
+            // 3. Video 2 (FF_2.mp4) plays
+            // 4. Video 2 finishes -> Final Banner (Permanent): "NOW AVAILABLE / FOLDFLOW V 1.4 FOR 3DS MAX (2017–2027)" (STOP)
             const heroVid = document.getElementById('bento-hero-video');
-            let isSecondVideo = false;
+            const mainText = document.getElementById('release-banner-main');
+            const subText = document.getElementById('release-banner-sub');
+            let videoState = 0; // 0 = Idle waiting for scroll, 1 = Video 1 playing, 2 = Release banner, 3 = Video 2 playing, 4 = Final banner (stop)
+            let hasStarted = false;
 
             if (heroVid) {
                 heroVid.muted = true;
                 heroVid.defaultMuted = true;
-                heroVid.style.opacity = '1';
-                heroVid.play().catch(function(e) { console.log('Autoplay error:', e); });
+                heroVid.style.opacity = '0';
+
+                // Scroll observer: Start video presentation ONLY when user scrolls down to the video container
+                const scrollObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting && !hasStarted) {
+                            hasStarted = true;
+                            videoState = 1;
+                            heroVid.src = 'timeline1.mp4';
+                            heroVid.load();
+                            const playPromise = heroVid.play();
+                            if (playPromise !== undefined) {
+                                playPromise.then(function() {
+                                    heroVid.style.opacity = '1';
+                                }).catch(function() {
+                                    heroVid.style.opacity = '1';
+                                });
+                            } else {
+                                heroVid.style.opacity = '1';
+                            }
+                        }
+                    });
+                }, { threshold: 0.25 });
+
+                const heroCard = document.querySelector('.bento-card-hero') || heroVid;
+                scrollObserver.observe(heroCard);
+
+                // Anti-download protections: disable right-click context menu and drag operations
+                heroCard.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
+                heroCard.addEventListener('dragstart', function(e) { e.preventDefault(); return false; });
+                heroVid.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
 
                 heroVid.addEventListener('ended', function() {
-                    if (!isSecondVideo) {
-                        isSecondVideo = true;
-                        heroVid.src = 'FF_2.mp4';
-                    } else {
-                        isSecondVideo = false;
-                        heroVid.src = 'timeline1.mp4';
+                    if (videoState === 1) {
+                        // Video 1 (timeline1.mp4) finished -> Show Release V 1.4 banner for 3.5 seconds
+                        videoState = 2;
+                        heroVid.style.opacity = '0';
+                        if (mainText) mainText.innerHTML = `RELEASE &nbsp;<span>V 1.4</span>`;
+                        if (subText) subText.textContent = `REAL-TIME VIEWPORT DEFORMATION ENGINE`;
+
+                        setTimeout(function() {
+                            videoState = 3;
+                            heroVid.src = 'FF_2.mp4';
+                            heroVid.load();
+                            const playPromise = heroVid.play();
+                            if (playPromise !== undefined) {
+                                playPromise.then(function() {
+                                    heroVid.style.opacity = '1';
+                                }).catch(function() {
+                                    heroVid.style.opacity = '1';
+                                });
+                            } else {
+                                heroVid.style.opacity = '1';
+                            }
+                        }, 3500);
+
+                    } else if (videoState === 3) {
+                        // Video 2 (FF_2.mp4) finished -> Show NOW AVAILABLE banner and STOP PERMANENTLY
+                        videoState = 4;
+                        heroVid.style.opacity = '0';
+                        if (mainText) mainText.innerHTML = `NOW &nbsp;<span>AVAILABLE</span>`;
+                        if (subText) subText.textContent = `FOLDFLOW V 1.4 FOR 3DS MAX (2017–2027)`;
                     }
-                    heroVid.load();
-                    heroVid.play().catch(function(e) { console.log('Play next error:', e); });
                 });
             }
         });
